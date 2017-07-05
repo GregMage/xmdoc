@@ -54,8 +54,8 @@ $modversion['tables'][1] = 'xmdoc_category';
 //$modversion['tables'][2] = 'xmdoc_doc';
 
 // Admin Templates
-/*$modversion['templates'][] = array('file' => 'xmdoc_admin_category.tpl', 'description' => '', 'type' => 'admin');
-$modversion['templates'][] = array('file' => 'xmdoc_admin_doc.tpl', 'description' => '', 'type' => 'admin');
+$modversion['templates'][] = array('file' => 'xmdoc_admin_category.tpl', 'description' => '', 'type' => 'admin');
+/*$modversion['templates'][] = array('file' => 'xmdoc_admin_doc.tpl', 'description' => '', 'type' => 'admin');
 $modversion['templates'][] = array('file' => 'xmdoc_admin_permission.tpl', 'description' => '', 'type' => 'admin');*/
 
 // User Templates
