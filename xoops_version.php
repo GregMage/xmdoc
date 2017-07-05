@@ -51,7 +51,7 @@ $modversion['adminmenu']   = 'admin/menu.php';
 $modversion['sqlfile']['mysql'] = 'sql/mysql.sql';
 
 $modversion['tables'][1] = 'xmdoc_category';
-$modversion['tables'][2] = 'xmdoc_doc';
+//$modversion['tables'][2] = 'xmdoc_doc';
 
 // Admin Templates
 /*$modversion['templates'][] = array('file' => 'xmdoc_admin_category.tpl', 'description' => '', 'type' => 'admin');
