@@ -62,7 +62,55 @@ $modversion['templates'][] = array('file' => 'xmdoc_admin_permission.tpl', 'desc
 //$modversion['templates'][] = array('file' => 'xmdoc_action.tpl', 'description' => '');
 
 // Configs
+$modversion['config'] = array();
 
+$modversion['config'][] = array(
+    'name'        => 'break',
+    'title'       => '_MI_XMDOC_PREF_HEAD_GENERAL',
+    'description' => '',
+    'formtype'    => 'line_break',
+    'valuetype'   => 'text',
+    'default'     => 'head',
+);
+
+$modversion['config'][] = array(
+    'name'        => 'general_perpage',
+    'title'       => '_MI_XMDOC_PREF_GENERALITEMPERPAGE',
+    'description' => '',
+    'formtype'    => 'textbox',
+    'valuetype'   => 'int',
+    'default'     => 15
+);
+
+xoops_load('xoopseditorhandler');
+$editorHandler = XoopsEditorHandler::getInstance();
+$modversion['config'][] = array(
+    'name'        => 'general_editor',
+    'title'       => '_MI_XMDOC_PREF_EDITOR',
+    'description' => '',
+    'formtype'    => 'select',
+    'valuetype'   => 'text',
+    'default'     => 'dhtmltextarea',
+    'options'     => array_flip($editorHandler->getList())
+);
+
+$modversion['config'][] = array(
+    'name'        => 'break',
+    'title'       => '_MI_XMDOC_PREF_HEAD_ADMIN',
+    'description' => '',
+    'formtype'    => 'line_break',
+    'valuetype'   => 'text',
+    'default'     => 'head',
+);
+
+$modversion['config'][] = array(
+    'name'        => 'admin_perpage',
+    'title'       => '_MI_XMDOC_PREF_ITEMPERPAGE',
+    'description' => '',
+    'formtype'    => 'textbox',
+    'valuetype'   => 'int',
+    'default'     => 15
+);
 
 // About stuff
 $modversion['module_status'] = 'Alpha';
