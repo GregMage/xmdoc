@@ -44,7 +44,7 @@ $modversion['adminindex']  = 'admin/index.php';
 $modversion['adminmenu']   = 'admin/menu.php';
 
 // Install and update
-//$modversion['onInstall']        = 'include/install.php';
+$modversion['onInstall']        = 'include/install.php';
 //$modversion['onUpdate']         = 'include/update.php';
 
 // Tables

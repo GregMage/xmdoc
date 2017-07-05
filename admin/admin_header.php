@@ -33,9 +33,9 @@ $helper = Helper::getHelper(basename(dirname(__DIR__)));
 $helper->loadLanguage('main');
 
 // Config
-/*$nb_limit = $helper->getConfig('admin_perpage', 15);
+$nb_limit = $helper->getConfig('admin_perpage', 15);
 $url_logo_category = XOOPS_UPLOAD_URL . '/xmdoc/images/category/';
 $path_logo_category = XOOPS_UPLOAD_PATH . '/xmdoc/images/category/';
 $url_logo_article = XOOPS_UPLOAD_URL . '/xmdoc/documents/';
-$path_logo_article = XOOPS_UPLOAD_PATH . '/xmdoc/documents/';*/
+$path_logo_article = XOOPS_UPLOAD_PATH . '/xmdoc/documents/';
 xoops_cp_header();
