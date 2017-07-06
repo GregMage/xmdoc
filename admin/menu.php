@@ -39,11 +39,11 @@ $adminmenu[] = array(
     'icon'  => $pathIcon32 . 'category.png'
 ) ;
 // Permission
-/*$adminmenu[] = array(
+$adminmenu[] = array(
     'title' => _MI_XMDOC_MENU_PERMISSION ,
     'link'  => 'admin/permission.php' ,
     'icon'  => $pathIcon32 . 'permissions.png'
-) ;*/
+) ;
 // About
 $adminmenu[] = array(
     'title' => _MI_XMDOC_MENU_ABOUT ,

@@ -23,6 +23,7 @@ define('_MA_XMDOC_CATEGORY_LIST', 'Category list');
 
 // Error message
 define('_MA_XMDOC_ERROR_NOCATEGORY', 'There are no categories in the database');
+define('_MA_XMDOC_ERROR_PERMISSION', 'To use permissions, you must create categories.');
 define('_MA_XMDOC_ERROR_WEIGHT', 'Weight must be a number');
 
 // Shared
@@ -49,6 +50,11 @@ define('_MA_XMDOC_CATEGORY_UPLOADSIZE', 'Maximum size: %s kB');
 define('_MA_XMDOC_CATEGORY_WEIGHT', 'Weight');
 
 // permission
-
+define('_MA_XMDOC_PERMISSION_VIEW', 'View Permissions');
+define('_MA_XMDOC_PERMISSION_VIEW_DSC', 'Select groups that can view an article in categories');
+define('_MA_XMDOC_PERMISSION_VIEW_THIS', 'Select groups that can view in this category');
+define('_MA_XMDOC_PERMISSION_SUBMIT', 'Submit permission');
+define('_MA_XMDOC_PERMISSION_SUBMIT_DSC', 'Select groups that can submit an article in categories');
+define('_MA_XMDOC_PERMISSION_SUBMIT_THIS', 'Select groups that can submit in this category');
 
 // user
