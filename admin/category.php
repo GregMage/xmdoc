@@ -135,7 +135,6 @@ switch ($op) {
                         $criteria->add(new Criteria('category_logo', $obj->getVar('category_logo')));
                         $category_count = $categoryHandler->getCount($criteria);
                         if ($category_count == 0){
-                            echo 'del ok:' . $category_count;
                             $urlfile = $path_logo_category . $obj->getVar('category_logo');
                             if (is_file($urlfile)) {
                                 chmod($urlfile, 0777);
