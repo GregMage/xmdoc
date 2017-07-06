@@ -14,7 +14,7 @@
     <{$form}>
 </div>
 <{if $category_count != 0}>
-    <table id="xo-xmcontact-sorter" cellspacing="1" class="outer tablesorter">
+    <table id="xo-xmdoc-sorter" cellspacing="1" class="outer tablesorter">
         <thead>
         <tr>
             <th class="txtcenter width10"><{$smarty.const._MA_XMDOC_CATEGORY_LOGO}></th>
