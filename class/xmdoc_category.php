@@ -92,7 +92,7 @@ class xmdoc_category extends XoopsObject
             $this->setVar('category_weight', Xmf\Request::getInt('category_weight', 0));
             if ($categoryHandler->insert($this)) {
                 // permissions
-                /*if ($this->get_new_enreg() == 0){
+                if ($this->get_new_enreg() == 0){
 					$perm_id = $this->getVar('category_id');
 				} else {
 					$perm_id = $this->get_new_enreg();
@@ -103,7 +103,7 @@ class xmdoc_category extends XoopsObject
                 $permHelper->savePermissionForItem('xmdoc_view', $perm_id, $groups_view);
                 // permission submit
                 $groups_submit = \Xmf\Request::getArray('xmdoc_submit_perms', array(), 'POST');
-                $permHelper->savePermissionForItem('xmdoc_submit', $perm_id, $groups_submit);*/
+                $permHelper->savePermissionForItem('xmdoc_submit', $perm_id, $groups_submit);
                 redirect_header($action, 2, _MA_XMDOC_REDIRECT_SAVE);
             } else {
                 $error_message =  $this->getHtmlErrors();
@@ -182,9 +182,9 @@ class xmdoc_category extends XoopsObject
         $form->addElement($form_status);
 
         // permission
-        /*$permHelper = new \Xmf\Module\Helper\Permission();
-        $form->addElement($permHelper->getGroupSelectFormForItem('xmdoc_view', $this->getVar('category_id'),  _MA_XMDOC_PERMISSION_VIEW_THIS, 'xmarticle_view_perms', true));
-        $form->addElement($permHelper->getGroupSelectFormForItem('xmdoc_submit', $this->getVar('category_id'),  _MA_XMDOC_PERMISSION_SUBMIT_THIS, 'xmarticle_submit_perms', true));*/
+        $permHelper = new \Xmf\Module\Helper\Permission();
+        $form->addElement($permHelper->getGroupSelectFormForItem('xmdoc_view', $this->getVar('category_id'),  _MA_XMDOC_PERMISSION_VIEW_THIS, 'xmdoc_view_perms', true));
+        $form->addElement($permHelper->getGroupSelectFormForItem('xmdoc_submit', $this->getVar('category_id'),  _MA_XMDOC_PERMISSION_SUBMIT_THIS, 'xmdoc_submit_perms', true));
 
         $form->addElement(new XoopsFormHidden('op', 'save'));
         // submit

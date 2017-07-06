@@ -43,7 +43,7 @@ if (isset($tab_perm)){
     switch ($permission) {
         case 1:    // View permission
             $formTitle = _MA_XMDOC_PERMISSION_VIEW;
-            $permissionName = 'xmarticle_view';
+            $permissionName = 'xmdoc_view';
             $permissionDescription = _MA_XMDOC_PERMISSION_VIEW_DSC;
             foreach (array_keys($category_arr) as $i) {
                 $global_perms_array[$i] = $category_arr[$i]->getVar('category_name');
@@ -52,7 +52,7 @@ if (isset($tab_perm)){
 
         case 2:    // Submit permission
             $formTitle = _MA_XMDOC_PERMISSION_SUBMIT;
-            $permissionName = 'xmarticle_submit';
+            $permissionName = 'xmdoc_submit';
             $permissionDescription = _MA_XMDOC_PERMISSION_SUBMIT_DSC;
             foreach (array_keys($category_arr) as $i) {
                 $global_perms_array[$i] = $category_arr[$i]->getVar('category_name');

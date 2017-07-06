@@ -137,9 +137,9 @@ switch ($op) {
                         }
                     }
                     // Del permissions
-                    /*$permHelper = new \Xmf\Module\Helper\Permission();
+                    $permHelper = new \Xmf\Module\Helper\Permission();
                     $permHelper->deletePermissionForItem('xmdoc_view', $category_id);
-                    $permHelper->deletePermissionForItem('xmdoc_submit', $category_id);*/
+                    $permHelper->deletePermissionForItem('xmdoc_submit', $category_id);
 
                     redirect_header('category.php', 2, _MA_XMDOC_REDIRECT_SAVE);
                 } else {
