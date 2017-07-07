@@ -43,8 +43,10 @@ define('_MA_XMDOC_CATEGORY_FORMPATH', 'Files are in: %s');
 define('_MA_XMDOC_CATEGORY_LOGO', 'Logo');
 define('_MA_XMDOC_CATEGORY_LOGOFILE', 'Logo file');
 define('_MA_XMDOC_CATEGORY_NAME', 'Name');
+define('_MA_XMDOC_CATEGORY_SIZE', 'Maximum download size');
 define('_MA_XMDOC_CATEGORY_SUREDEL', 'Sure to delete this category? %s');
 define('_MA_XMDOC_CATEGORY_THEREAREARTICLE', 'There are <strong>%s</strong> articles in this category!');
+define('_MA_XMDOC_CATEGORY_UNIT', '[kB]');
 define('_MA_XMDOC_CATEGORY_UPLOAD', 'Upload');
 define('_MA_XMDOC_CATEGORY_UPLOADSIZE', 'Maximum size: %s kB');
 define('_MA_XMDOC_CATEGORY_WEIGHT', 'Weight');
@@ -56,5 +58,11 @@ define('_MA_XMDOC_PERMISSION_VIEW_THIS', 'Select groups that can view in this ca
 define('_MA_XMDOC_PERMISSION_SUBMIT', 'Submit permission');
 define('_MA_XMDOC_PERMISSION_SUBMIT_DSC', 'Select groups that can submit an article in categories');
 define('_MA_XMDOC_PERMISSION_SUBMIT_THIS', 'Select groups that can submit in this category');
+
+// utility
+define('_MA_XMDOC_UTILITY_BYTES', "Bytes");
+define('_MA_XMDOC_UTILITY_KBYTES', "kB");
+define('_MA_XMDOC_UTILITY_MBYTES', "MB");
+define('_MA_XMDOC_UTILITY_GBYTES', "GB");
 
 // user
