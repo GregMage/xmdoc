@@ -23,4 +23,24 @@
 class XmdocUtility
 {    
     
+    public static function FileSizeConvert($size){
+        if ($size > 0) {
+            $kb = 1024;
+            $mb = 1024*1024;
+            $gb = 1024*1024*1024;
+            if ($size > $gb) {
+                $mysize = sprintf ("%01.2f",$size/$gb) . " " . _MA_XMDOC_UTILITY_GBYTES;
+            } elseif ($size > $mb) {
+                $mysize = sprintf ("%01.2f",$size/$mb) . " " . _MA_XMDOC_UTILITY_MBYTES;
+            } elseif ($size >= $kb) {
+                $mysize = sprintf ("%01.2f",$size/$kb) . " " . _MA_XMDOC_UTILITY_KBYTES;
+            } else {
+                $mysize = sprintf ("%01.2f",$size) . " " . _MA_XMDOC_UTILITY_BYTES;
+            }
+
+            return $mysize;
+        } else {
+            return '';
+        }
+    }
 }
