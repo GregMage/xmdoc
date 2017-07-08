@@ -28,9 +28,9 @@ class XmdocUtility
             $kb = 1024;
             $mb = 1024*1024;
             $gb = 1024*1024*1024;
-            if ($size > $gb) {
+            if ($size >= $gb) {
                 $mysize = sprintf ("%01.2f",$size/$gb) . " " . _MA_XMDOC_UTILITY_GBYTES;
-            } elseif ($size > $mb) {
+            } elseif ($size >= $mb) {
                 $mysize = sprintf ("%01.2f",$size/$mb) . " " . _MA_XMDOC_UTILITY_MBYTES;
             } elseif ($size >= $kb) {
                 $mysize = sprintf ("%01.2f",$size/$kb) . " " . _MA_XMDOC_UTILITY_KBYTES;
