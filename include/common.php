@@ -22,3 +22,4 @@ $helper = Helper::getHelper(basename(dirname(__DIR__)));
 
 // Get handler
 $categoryHandler = $helper->getHandler('xmdoc_category');
+$documentHandler = $helper->getHandler('xmdoc_document');

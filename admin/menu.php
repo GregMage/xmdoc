@@ -38,6 +38,12 @@ $adminmenu[] = array(
     'link'  => 'admin/category.php' ,
     'icon'  => $pathIcon32 . 'category.png'
 ) ;
+// Document
+$adminmenu[] = array(
+    'title' => _MI_XMDOC_MENU_DOCUMENT ,
+    'link'  => 'admin/document.php' ,
+    'icon'  => $pathIcon32 . 'attach.png'
+) ;
 // Permission
 $adminmenu[] = array(
     'title' => _MI_XMDOC_MENU_PERMISSION ,

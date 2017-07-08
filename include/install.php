@@ -42,6 +42,13 @@ function xoops_module_install_xmdoc()
     }
     chmod($dir, 0777);
     
+    //Creation ".$namemodule."/images/document
+    $dir = XOOPS_ROOT_PATH . '/uploads/' . $namemodule . '/images/category';
+    if (!is_dir($dir)) {
+        mkdir($dir, 0777);
+    }
+    
+    chmod($dir, 0777);
     //Creation ".$namemodule."/documents
     $dir = XOOPS_ROOT_PATH . '/uploads/' . $namemodule . '/documents';
     if (!is_dir($dir)) {
@@ -54,10 +61,13 @@ function xoops_module_install_xmdoc()
     copy($indexFile, XOOPS_ROOT_PATH . '/uploads/' . $namemodule . '/index.html');
     copy($indexFile, XOOPS_ROOT_PATH . '/uploads/' . $namemodule . '/images/index.html');
     copy($indexFile, XOOPS_ROOT_PATH . '/uploads/' . $namemodule . '/images/category/index.html');
+    copy($indexFile, XOOPS_ROOT_PATH . '/uploads/' . $namemodule . '/images/document/index.html');
     copy($indexFile, XOOPS_ROOT_PATH . '/uploads/' . $namemodule . '/documents/index.html');
 
     //Copy blank.gif
     $blankFile = XOOPS_ROOT_PATH . '/modules/' . $namemodule . '/assets/images/blank.gif';
     copy($blankFile, XOOPS_ROOT_PATH . '/uploads/' . $namemodule . '/images/category/blank.gif');
+    $blankFile = XOOPS_ROOT_PATH . '/modules/' . $namemodule . '/assets/images/blank_doc.gif';
+    copy($blankFile, XOOPS_ROOT_PATH . '/uploads/' . $namemodule . '/images/document/blank_doc.gif');
     return true;
 }

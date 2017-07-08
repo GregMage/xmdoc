@@ -52,4 +52,17 @@ class XmdocUtility
         }
         return implode(', ', $extensions);
     }
+    
+    public static function getPermissionCat($permtype = 'xmdoc_view')
+    {
+        global $xoopsUser;
+        $categories = array();
+        $helper = Xmf\Module\Helper::getHelper('xmdoc');
+        $moduleHandler = $helper->getModule();
+        $groups = is_object($xoopsUser) ? $xoopsUser->getGroups() : XOOPS_GROUP_ANONYMOUS;
+        $gpermHandler = xoops_getHandler('groupperm');
+        $categories = $gpermHandler->getItemIds($permtype, $groups, $moduleHandler->getVar('mid'));
+
+        return $categories;
+    }
 }

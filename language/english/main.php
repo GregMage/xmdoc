@@ -20,9 +20,13 @@
 // Button
 define('_MA_XMDOC_CATEGORY_ADD', 'Add category');
 define('_MA_XMDOC_CATEGORY_LIST', 'Category list');
+define('_MA_XMDOC_DOCUMENT_ADD', 'Add document');
+define('_MA_XMDOC_DOCUMENT_LIST', 'Document list');
 
 // Error message
+define('_MA_XMDOC_ERROR_NOACESSCATEGORY', 'You don\'t have access to any categories');
 define('_MA_XMDOC_ERROR_NOCATEGORY', 'There are no categories in the database');
+define('_MA_XMDOC_ERROR_NODOCUMENT', 'There are no documents in the database');
 define('_MA_XMDOC_ERROR_PERMISSION', 'To use permissions, you must create categories.');
 define('_MA_XMDOC_ERROR_WEIGHT', 'Weight must be a number');
 
@@ -31,14 +35,14 @@ define('_MA_XMDOC_ADD', 'Add');
 define('_MA_XMDOC_ACTION', 'Action');
 define('_MA_XMDOC_DEL', 'Delete');
 define('_MA_XMDOC_EDIT', 'Edit');
+define('_MA_XMDOC_REDIRECT_SAVE', 'Successfully saved');
 define('_MA_XMDOC_STATUS', 'Status');
 define('_MA_XMDOC_STATUS_A', 'Active');
 define('_MA_XMDOC_STATUS_NA', 'Disabled');
-define('_MA_XMDOC_REDIRECT_SAVE', 'Successfully saved');
+define('_MA_XMDOC_VIEW', 'View');
 
 // Category
 define('_MA_XMDOC_CATEGORY_DESC', 'Description');
-define('_MA_XMDOC_CATEGORY_FIELD', 'Fields');
 define('_MA_XMDOC_CATEGORY_FORMPATH', 'Files are in: %s');
 define('_MA_XMDOC_CATEGORY_LOGO', 'Logo');
 define('_MA_XMDOC_CATEGORY_LOGOFILE', 'Logo file');
@@ -46,11 +50,25 @@ define('_MA_XMDOC_CATEGORY_MIMETYPE', 'Extensions allowed');
 define('_MA_XMDOC_CATEGORY_NAME', 'Name');
 define('_MA_XMDOC_CATEGORY_SIZE', 'Maximum download size');
 define('_MA_XMDOC_CATEGORY_SUREDEL', 'Sure to delete this category? %s');
-define('_MA_XMDOC_CATEGORY_THEREAREARTICLE', 'There are <strong>%s</strong> articles in this category!');
 define('_MA_XMDOC_CATEGORY_UNIT', '[kB]');
 define('_MA_XMDOC_CATEGORY_UPLOAD', 'Upload');
 define('_MA_XMDOC_CATEGORY_UPLOADSIZE', 'Maximum size: %s kB');
 define('_MA_XMDOC_CATEGORY_WEIGHT', 'Weight');
+
+// document
+define('_MA_XMDOC_DOCUMENT_CATEGORY', 'In category');
+define('_MA_XMDOC_DOCUMENT_DESC', 'Description');
+define('_MA_XMDOC_DOCUMENT_DOCUMENT', 'File to attach');
+define('_MA_XMDOC_DOCUMENT_DOCUMENTURL', 'Document URL');
+define('_MA_XMDOC_DOCUMENT_FORMPATH', 'Files are in: %s');
+define('_MA_XMDOC_DOCUMENT_LOGO', 'Logo');
+define('_MA_XMDOC_DOCUMENT_LOGOFILE', 'Logo file');
+define('_MA_XMDOC_DOCUMENT_NAME', 'Name');
+define('_MA_XMDOC_DOCUMENT_SHOWINFO', 'View file information');
+define('_MA_XMDOC_DOCUMENT_SUREDEL', 'Sure to delete this document? %s');
+define('_MA_XMDOC_DOCUMENT_UPLOAD', 'Upload');
+define('_MA_XMDOC_DOCUMENT_UPLOADSIZE', 'Maximum size: %s kB');
+define('_MA_XMDOC_DOCUMENT_WEIGHT', 'Weight');
 
 // permission
 define('_MA_XMDOC_PERMISSION_VIEW', 'View Permissions');
