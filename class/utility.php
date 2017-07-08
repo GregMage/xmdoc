@@ -43,4 +43,13 @@ class XmdocUtility
             return '';
         }
     }
+        
+    public static function MimeToExtension($mimetypes){
+        $extensionToMime = include $GLOBALS['xoops']->path('include/mimetypes.inc.php');
+        $extensionToMime = array_flip($extensionToMime);
+        foreach (array_keys($mimetypes) as $i) {
+            $extensions[] = $extensionToMime[$mimetypes[$i]];
+        }
+        return implode(', ', $extensions);
+    }
 }

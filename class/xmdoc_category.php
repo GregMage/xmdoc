@@ -39,6 +39,8 @@ class xmdoc_category extends XoopsObject
         $this->initVar('dohtml', XOBJ_DTYPE_INT, 1, false);
         $this->initVar('category_logo', XOBJ_DTYPE_TXTBOX, null, false);
         $this->initVar('category_size', XOBJ_DTYPE_INT, 500, false, 11);
+        $this->initVar('category_size', XOBJ_DTYPE_INT, 500, false, 11);
+        $this->initVar('category_mimetypes', XOBJ_DTYPE_ARRAY, array());
         $this->initVar('category_weight', XOBJ_DTYPE_INT, null, false, 11);
         $this->initVar('category_status', XOBJ_DTYPE_INT, null, false, 1);
     }
@@ -91,6 +93,7 @@ class xmdoc_category extends XoopsObject
         }
         $this->setVar('category_name', Xmf\Request::getString('category_name', ''));
         $this->setVar('category_description',  Xmf\Request::getText('category_description', ''));
+        $this->setVar('category_mimetypes', Xmf\Request::getArray('category_mimetypes', array()));
         $this->setVar('category_status', Xmf\Request::getInt('category_status', 1));
 
         if ($error_message == '') {
@@ -184,6 +187,14 @@ class xmdoc_category extends XoopsObject
         $size->addElement(new XoopsFormText('', 'category_size', 11, 11, $this->getVar('category_size')));
         $size->addElement(new XoopsFormLabel('', _MA_XMDOC_CATEGORY_UNIT));
         $form->addElement($size, true);
+        
+        // mimetypes
+        $extensionToMime = include $GLOBALS['xoops']->path('include/mimetypes.inc.php');
+        $extensionToMime = array_flip($extensionToMime);
+        asort($extensionToMime);
+        $mimetypes = new XoopsFormSelect(_MA_XMDOC_CATEGORY_MIMETYPE, 'category_mimetypes', $this->getVar('category_mimetypes'), 10, true);
+        $mimetypes ->addOptionArray($extensionToMime);
+        $form->addElement($mimetypes, true);        
 
         // weight
         $form->addElement(new XoopsFormText(_MA_XMDOC_CATEGORY_WEIGHT, 'category_weight', 5, 5, $weight), true);
