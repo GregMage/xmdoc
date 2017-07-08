@@ -39,7 +39,6 @@ class xmdoc_category extends XoopsObject
         $this->initVar('dohtml', XOBJ_DTYPE_INT, 1, false);
         $this->initVar('category_logo', XOBJ_DTYPE_TXTBOX, null, false);
         $this->initVar('category_size', XOBJ_DTYPE_INT, 500, false, 11);
-        $this->initVar('category_size', XOBJ_DTYPE_INT, 500, false, 11);
         $this->initVar('category_mimetypes', XOBJ_DTYPE_ARRAY, array());
         $this->initVar('category_weight', XOBJ_DTYPE_INT, null, false, 11);
         $this->initVar('category_status', XOBJ_DTYPE_INT, null, false, 1);
