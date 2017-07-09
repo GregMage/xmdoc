@@ -75,7 +75,10 @@ switch ($op) {
         if ($status != 10){
 			$criteria->add(new Criteria('document_status', $status));
 		}
-        $document_arr = $documentHandler->getall($criteria);
+        $documentHandler->table_link = $documentHandler->db->prefix("xmdoc_category");
+        $documentHandler->field_link = "category_id";
+        $documentHandler->field_object = "document_category";
+        $document_arr = $documentHandler->getByLink($criteria);
         $document_count = $documentHandler->getCount($criteria);
         $xoopsTpl->assign('document_count', $document_count);
         if ($document_count > 0) {
@@ -83,6 +86,7 @@ switch ($op) {
                 $document_id                 = $document_arr[$i]->getVar('document_id');
                 $document['id']              = $document_id;
                 $document['name']            = $document_arr[$i]->getVar('document_name');
+                $document['category']        = $document_arr[$i]->getVar('category_name');
                 $document['document']        = $document_arr[$i]->getVar('document_document');
                 $document['description']     = $document_arr[$i]->getVar('document_description', 'show');
                 $document['showinfo']        = $document_arr[$i]->getVar('document_showinfo');

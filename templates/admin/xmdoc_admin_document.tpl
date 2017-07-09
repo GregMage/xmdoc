@@ -34,6 +34,7 @@
         <thead>
         <tr>
             <th class="txtcenter width10"><{$smarty.const._MA_XMDOC_DOCUMENT_LOGO}></th>
+            <th class="txtleft width15"><{$smarty.const._MA_XMDOC_DOCUMENT_CATEGORY}></th>
             <th class="txtleft width15"><{$smarty.const._MA_XMDOC_DOCUMENT_NAME}></th>
             <th class="txtleft"><{$smarty.const._MA_XMDOC_DOCUMENT_DESC}></th>
             <th class="txtcenter width10"><{$smarty.const._MA_XMDOC_DOCUMENT_SHOWINFO}></th>          
@@ -46,6 +47,7 @@
         <{foreach item=document from=$document}>
             <tr class="<{cycle values='even,odd'}> alignmiddle">
                 <td class="txtcenter"><{$document.logo}></td>
+                <td class="txtleft"><{$document.category}></td>
                 <td class="txtleft"><{$document.name}></td>
                 <td class="txtleft"><{$document.description}></td>
                 <{if $document.showinfo == 0}>

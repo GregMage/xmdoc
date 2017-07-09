@@ -43,6 +43,7 @@ class xmdoc_document extends XoopsObject
         $this->initVar('document_showinfo', XOBJ_DTYPE_INT, null, false, 1);
         $this->initVar('document_weight', XOBJ_DTYPE_INT, null, false, 11);
         $this->initVar('document_status', XOBJ_DTYPE_INT, null, false, 1);
+        $this->initVar('category_name', XOBJ_DTYPE_TXTBOX, null, false);
     }
     /**
      * @return mixed
@@ -243,7 +244,7 @@ class xmdoc_document extends XoopsObject
 }
 
 /**
- * Classxmdocxmdoc_documentHandler
+ * Class xmdocxmdoc_documentHandler
  */
 class xmdocxmdoc_documentHandler extends XoopsPersistableObjectHandler
 {
