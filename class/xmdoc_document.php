@@ -130,12 +130,51 @@ class xmdoc_document extends XoopsObject
         }
         return $error_message;
     }
+    
+    /**
+     * @param bool $action
+     * @return XoopsThemeForm
+     */
+    public function getFormCategory($action = false)
+    {
+        if ($action === false) {
+            $action = $_SERVER['REQUEST_URI'];
+        }
+        include_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
+        include __DIR__ . '/../include/common.php';  
+
+        // Get Permission to submit
+        $submitPermissionCat = XmdocUtility::getPermissionCat('xmdoc_submit');        
+        
+        $form = new XoopsThemeForm(_MA_XMDOC_ADD, 'form', $action, 'post', true);
+        // category       
+        $category = new XoopsFormSelect(_MA_XMDOC_DOCUMENT_CATEGORY, 'document_category', $this->getVar('document_category'));
+        $criteria = new CriteriaCompo();
+        $criteria->setSort('category_weight ASC, category_name');
+        $criteria->setOrder('ASC');
+        if (!empty($submitPermissionCat)){
+            $criteria->add(new Criteria('category_id', '(' . implode(',', $submitPermissionCat) . ')','IN'));
+        }
+        $category_arr = $categoryHandler->getall($criteria);        
+        if (count($category_arr) == 0 || empty($submitPermissionCat)){
+            redirect_header('index.php', 3, _MA_XMDOC_ERROR_NOACESSCATEGORY);
+        }
+        foreach (array_keys($category_arr) as $i) {
+            $category->addOption($category_arr[$i]->getVar('category_id'), $category_arr[$i]->getVar('category_name'));
+        }
+        $form->addElement($category, true);
+        
+        $form->addElement(new XoopsFormHidden('op', 'loaddocument'));        
+        // submit
+        $form->addElement(new XoopsFormButton('', 'submit', _SUBMIT, 'submit'));
+        return $form;
+    } 
 
     /**
      * @param bool $action
      * @return XoopsThemeForm
      */
-    public function getForm($action = false)
+    public function getForm($category_id = 0, $action = false)
     {
         $upload_size = 512000;
         $helper = \Xmf\Module\Helper::getHelper('xmdoc');
@@ -159,12 +198,20 @@ class xmdoc_document extends XoopsObject
             $status = $this->getVar('document_status');
             $showinfo = $this->getVar('document_showinfo');
             $weight = $this->getVar('document_weight');
+            $category_id = $this->getVar('document_category');
         } else {
             $status = 1;
             $showinfo = 1;
             $weight = 0;
         }
 
+        // category
+        $category = $categoryHandler->get($category_id);
+        $url_logo_category = XOOPS_UPLOAD_URL . '/xmdoc/images/category/';
+        $category_img = $category->getVar('category_logo') ?: 'blank.gif';
+        $form->addElement(new xoopsFormLabel (_MA_XMDOC_DOCUMENT_CATEGORY, '<img src="' . $url_logo_category .  $category_img . '" alt="' . $category_img . '" /> <strong>' . $category->getVar('category_name') . '</strong>'));
+        $form->addElement(new XoopsFormHidden('document_category', $category_id));
+        
         // title
         $form->addElement(new XoopsFormText(_MA_XMDOC_DOCUMENT_NAME, 'document_name', 50, 255, $this->getVar('document_name')), true);
         
@@ -174,23 +221,6 @@ class xmdoc_document extends XoopsObject
         $document->addElement($document_url,false);
         $document->addElement(new XoopsFormFile(_MA_XMDOC_DOCUMENT_DOCUMENT, 'document_document', 104857600), false); // 100 MB (Verification with the category when saving)
         $form->addElement($document);
-
-        // category       
-        $category = new XoopsFormSelect(_MA_XMDOC_DOCUMENT_CATEGORY, 'document_category', $this->getVar('document_category'));
-        $criteria = new CriteriaCompo();
-        $criteria->setSort('category_weight ASC, category_name');
-        $criteria->setOrder('ASC');
-        if (!empty($submitPermissionCat)){
-            $criteria->add(new Criteria('category_id', '(' . implode(',', $submitPermissionCat) . ')','IN'));
-        }
-        $category_arr = $categoryHandler->getall($criteria);        
-        if (count($category_arr) == 0 || empty($submitPermissionCat)){
-            redirect_header('index.php', 3, _MA_XMDOC_ERROR_NOACESSCATEGORY);
-        }
-        foreach (array_keys($category_arr) as $i) {
-            $category->addOption($category_arr[$i]->getVar('category_id'), $category_arr[$i]->getVar('category_name'));
-        }
-        $form->addElement($category, true);
 
         // description
         $editor_configs           =array();

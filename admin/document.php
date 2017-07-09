@@ -118,10 +118,25 @@ switch ($op) {
         if ($category_count > 0) {
             // Form
             $obj  = $documentHandler->create();
-            $form = $obj->getForm();
+            $form = $obj->getFormCategory();
             $xoopsTpl->assign('form', $form->render());
         } else {
             redirect_header('category.php?op=add', 2, _MA_XMDOC_ERROR_NOCATEGORY);
+        }
+        break;
+    
+    // Loaddocument
+    case 'loaddocument':
+        // Module admin
+        $moduleAdmin->addItemButton(_MA_XMDOC_DOCUMENT_LIST, 'document.php', 'list');
+        $xoopsTpl->assign('renderbutton', $moduleAdmin->renderButton());  
+        $document_category = Request::getInt('document_category', 0);
+        if ($document_category == 0) {
+            $xoopsTpl->assign('error_message', _MA_XMDOC_ERROR_NOCATEGORY);
+        } else {
+            $obj  = $documentHandler->create();
+            $form = $obj->getForm($document_category);
+            $xoopsTpl->assign('form', $form->render());
         }
         break;
         
