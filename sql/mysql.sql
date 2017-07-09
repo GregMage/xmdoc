@@ -4,7 +4,7 @@ CREATE TABLE `xmdoc_category` (
   `category_description`    text,
   `category_logo`           varchar(50)         NOT NULL DEFAULT '',
   `category_size`           int(11)             NOT NULL DEFAULT '500',
-  `category_mimetypes`      text,
+  `category_extensions`      text,
   `category_weight`         int(11)             NOT NULL DEFAULT '0',
   `category_status`         tinyint(1)          NOT NULL DEFAULT '1',
   

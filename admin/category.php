@@ -51,7 +51,7 @@ switch ($op) {
                 $category['id']              = $category_id;
                 $category['name']            = $category_arr[$i]->getVar('category_name');
                 $category['description']     = $category_arr[$i]->getVar('category_description', 'show');
-                $category['mimetypes']       = XmdocUtility::MimeToExtension($category_arr[$i]->getVar('category_mimetypes'));
+                $category['extensions']      = implode(', ', $category_arr[$i]->getVar('category_extensions'));
                 $category['size']            = XmdocUtility::FileSizeConvert($category_arr[$i]->getVar('category_size')*1024);
                 $category['weight']          = $category_arr[$i]->getVar('category_weight');
                 $category['status']          = $category_arr[$i]->getVar('category_status');

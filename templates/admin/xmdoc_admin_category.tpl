@@ -21,7 +21,7 @@
             <th class="txtleft width15"><{$smarty.const._MA_XMDOC_CATEGORY_NAME}></th>
             <th class="txtleft"><{$smarty.const._MA_XMDOC_CATEGORY_DESC}></th>
             <th class="txtcenter width10"><{$smarty.const._MA_XMDOC_CATEGORY_SIZE}></th>
-            <th class="txtcenter width10"><{$smarty.const._MA_XMDOC_CATEGORY_MIMETYPE}></th>            
+            <th class="txtcenter width10"><{$smarty.const._MA_XMDOC_CATEGORY_EXTENSION}></th>            
             <th class="txtcenter width5"><{$smarty.const._MA_XMDOC_CATEGORY_WEIGHT}></th>
             <th class="txtcenter width5"><{$smarty.const._MA_XMDOC_STATUS}></th>
             <th class="txtcenter width10"><{$smarty.const._MA_XMDOC_ACTION}></th>
@@ -34,7 +34,7 @@
                 <td class="txtleft"><{$category.name}></td>
                 <td class="txtleft"><{$category.description}></td>
                 <td class="txtcenter"><{$category.size}></td>
-                <td class="txtcenter"><{$category.mimetypes}></td>
+                <td class="txtcenter"><{$category.extensions}></td>
                 <td class="txtcenter"><{$category.weight}></td>
                 <td class="xo-actions txtcenter">
                     <img id="loading_sml<{$category.id}>" src="../assets/images/spinner.gif" style="display:none;" title="<{$smarty.const._AM_SYSTEM_LOADING}>"

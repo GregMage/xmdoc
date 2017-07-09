@@ -46,7 +46,7 @@ define('_MA_XMDOC_CATEGORY_DESC', 'Description');
 define('_MA_XMDOC_CATEGORY_FORMPATH', 'Files are in: %s');
 define('_MA_XMDOC_CATEGORY_LOGO', 'Logo');
 define('_MA_XMDOC_CATEGORY_LOGOFILE', 'Logo file');
-define('_MA_XMDOC_CATEGORY_MIMETYPE', 'Extensions allowed');
+define('_MA_XMDOC_CATEGORY_EXTENSION', 'Extensions allowed');
 define('_MA_XMDOC_CATEGORY_NAME', 'Name');
 define('_MA_XMDOC_CATEGORY_SIZE', 'Maximum download size');
 define('_MA_XMDOC_CATEGORY_SUREDEL', 'Sure to delete this category? %s');

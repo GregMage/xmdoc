@@ -44,13 +44,12 @@ class XmdocUtility
         }
     }
         
-    public static function MimeToExtension($mimetypes){
+    public static function ExtensionToMime($extensions){
         $extensionToMime = include $GLOBALS['xoops']->path('include/mimetypes.inc.php');
-        $extensionToMime = array_flip($extensionToMime);
-        foreach (array_keys($mimetypes) as $i) {
-            $extensions[] = $extensionToMime[$mimetypes[$i]];
+        foreach (array_keys($extensions) as $i) {
+            $mimetypes[] = $extensionToMime[$extensions[$i]];
         }
-        return implode(', ', $extensions);
+        return $mimetypes;
     }
     
     public static function getPermissionCat($permtype = 'xmdoc_view')
