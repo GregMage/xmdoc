@@ -23,3 +23,11 @@ $helper = Helper::getHelper(basename(dirname(__DIR__)));
 // Get handler
 $categoryHandler = $helper->getHandler('xmdoc_category');
 $documentHandler = $helper->getHandler('xmdoc_document');
+
+// Path & url Config
+$url_logo_category = XOOPS_UPLOAD_URL . '/xmdoc/images/category/';
+$path_logo_category = XOOPS_UPLOAD_PATH . '/xmdoc/images/category/';
+$url_logo_document = XOOPS_UPLOAD_URL . '/xmdoc/images/document/';
+$path_logo_document = XOOPS_UPLOAD_PATH . '/xmdoc/images/document/';
+$url_document = XOOPS_UPLOAD_URL . '/xmdoc/documents/';
+$path_document = XOOPS_UPLOAD_PATH . '/xmdoc/documents/';

@@ -34,10 +34,4 @@ $helper->loadLanguage('main');
 
 // Config
 $nb_limit = $helper->getConfig('admin_perpage', 15);
-$url_logo_category = XOOPS_UPLOAD_URL . '/xmdoc/images/category/';
-$path_logo_category = XOOPS_UPLOAD_PATH . '/xmdoc/images/category/';
-$url_logo_document = XOOPS_UPLOAD_URL . '/xmdoc/images/document/';
-$path_logo_document = XOOPS_UPLOAD_PATH . '/xmdoc/images/document/';
-$url_document = XOOPS_UPLOAD_URL . '/xmdoc/documents/';
-$path_document = XOOPS_UPLOAD_PATH . '/xmdoc/documents/';
 xoops_cp_header();

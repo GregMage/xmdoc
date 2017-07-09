@@ -77,8 +77,6 @@ class xmdoc_document extends XoopsObject
         $category_id = Xmf\Request::getInt('document_category', 1);
         $category = $categoryHandler->get($category_id);
         $category->getVar('category_size');
-        $path_document = XOOPS_UPLOAD_PATH . '/xmdoc/documents/';
-        $url_document = XOOPS_UPLOAD_URL . '/xmdoc/documents/';
         if ($_FILES['document_document']['error'] != UPLOAD_ERR_NO_FILE) {
             include_once XOOPS_ROOT_PATH . '/class/uploader.php';
             $uploader_document_img = new XoopsMediaUploader($path_document, XmdocUtility::ExtensionToMime($category->getVar('category_extensions')), $category->getVar('category_size') * 1024, null, null);
@@ -97,7 +95,6 @@ class xmdoc_document extends XoopsObject
         }
 
         //logo
-        $path_logo_document = XOOPS_UPLOAD_PATH . '/xmdoc/images/document/';
         if ($_FILES['document_logo']['error'] != UPLOAD_ERR_NO_FILE) {
             include_once XOOPS_ROOT_PATH . '/class/uploader.php';
             $uploader_document_img = new XoopsMediaUploader($path_logo_document, array('image/gif', 'image/jpeg', 'image/pjpeg', 'image/x-png', 'image/png'), $upload_size, null, null);
@@ -235,18 +232,18 @@ class xmdoc_document extends XoopsObject
         
         // logo
         $blank_img = $this->getVar('document_logo') ?: 'blank_doc.gif';
-        $uploadirectory='/uploads/xmdoc/images/document';
+        $uploadirectory = str_replace(XOOPS_URL, '', $url_logo_document);
         $imgtray_img     = new XoopsFormElementTray(_MA_XMDOC_DOCUMENT_LOGOFILE  . '<br /><br />' . sprintf(_MA_XMDOC_DOCUMENT_UPLOADSIZE, $upload_size/1024), '<br />');
         $imgpath_img     = sprintf(_MA_XMDOC_DOCUMENT_FORMPATH, $uploadirectory);
         $imageselect_img = new XoopsFormSelect($imgpath_img, 'document_logo', $blank_img);
-        $image_array_img = XoopsLists::getImgListAsArray(XOOPS_ROOT_PATH . $uploadirectory);
+        $image_array_img = XoopsLists::getImgListAsArray($path_logo_document);
         $imageselect_img->addOption("$blank_img", $blank_img);
         foreach ($image_array_img as $image_img) {
             $imageselect_img->addOption("$image_img", $image_img);
         }
         $imageselect_img->setExtra("onchange='showImgSelected(\"image_img2\", \"document_logo\", \"" . $uploadirectory . "\", \"\", \"" . XOOPS_URL . "\")'");
         $imgtray_img->addElement($imageselect_img, false);
-        $imgtray_img->addElement(new XoopsFormLabel('', "<br /><img src='" . XOOPS_URL . '/' . $uploadirectory . '/' . $blank_img . "' name='image_img2' id='image_img2' alt='' />"));
+        $imgtray_img->addElement(new XoopsFormLabel('', "<br /><img src='" . $url_logo_document . '/' . $blank_img . "' name='image_img2' id='image_img2' alt='' />"));
         $fileseltray_img = new XoopsFormElementTray('<br />', '<br /><br />');
         $fileseltray_img->addElement(new XoopsFormFile(_MA_XMDOC_DOCUMENT_UPLOAD, 'document_logo', $upload_size), false);
         $fileseltray_img->addElement(new XoopsFormLabel(''), false);
