@@ -53,6 +53,7 @@ define('_MA_XMDOC_CATEGORY_SUREDEL', 'Sure to delete this category? %s');
 define('_MA_XMDOC_CATEGORY_UNIT', '[kB]');
 define('_MA_XMDOC_CATEGORY_UPLOAD', 'Upload');
 define('_MA_XMDOC_CATEGORY_UPLOADSIZE', 'Maximum size: %s kB');
+define('_MA_XMDOC_CATEGORY_WARNINGDELARTICLE', '<strong>Warning, the following items will also be removed!</strong>');
 define('_MA_XMDOC_CATEGORY_WEIGHT', 'Weight');
 
 // document

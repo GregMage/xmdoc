@@ -64,4 +64,22 @@ class XmdocUtility
 
         return $categories;
     }
+    
+    public static function documentNamePerCat($category_id)
+    {
+        include __DIR__ . '/../include/common.php';
+        $document_name = '';
+        $criteria = new CriteriaCompo();
+        $criteria->setSort('document_name');
+        $criteria->setOrder('ASC');
+        $criteria->add(new Criteria('document_category', $category_id));
+        $document_arr = $documentHandler->getall($criteria);
+        if (count($document_arr) > 0){
+            $document_name .= _MA_XMDOC_CATEGORY_WARNINGDELARTICLE . '<br>';
+            foreach (array_keys($document_arr) as $i) {
+                $document_name .= $document_arr[$i]->getVar('document_name') . '<br>';
+            }
+        }
+        return $document_name;
+    }
 }

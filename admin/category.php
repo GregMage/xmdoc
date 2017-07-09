@@ -148,7 +148,14 @@ switch ($op) {
                     $permHelper = new \Xmf\Module\Helper\Permission();
                     $permHelper->deletePermissionForItem('xmdoc_view', $category_id);
                     $permHelper->deletePermissionForItem('xmdoc_submit', $category_id);
-
+                    
+                    // Del document
+                    $criteria = new CriteriaCompo();
+                    $criteria->add(new Criteria('document_category', $category_id));
+                    $document_count = $documentHandler->getCount($criteria);
+                    if ($document_count > 0){
+                        $documentHandler->deleteAll($criteria);
+                    }
                     redirect_header('category.php', 2, _MA_XMDOC_REDIRECT_SAVE);
                 } else {
                     $xoopsTpl->assign('error_message', $obj->getHtmlErrors());
@@ -158,7 +165,7 @@ switch ($op) {
                 xoops_confirm(array('surdel' => true, 'category_id' => $category_id, 'op' => 'del'), $_SERVER['REQUEST_URI'], 
                                     sprintf(_MA_XMDOC_CATEGORY_SUREDEL, $obj->getVar('category_name')) . '<br>
                                     <img src="' . $url_logo_category . $category_img . '" title="' . 
-                                    $obj->getVar('category_name') . '" /><br>');
+                                    $obj->getVar('category_name') . '" /><br>' . XmdocUtility::documentNamePerCat($category_id));
             }
         }
         
