@@ -4,7 +4,7 @@ CREATE TABLE `xmdoc_category` (
   `category_description`    text,
   `category_logo`           varchar(50)         NOT NULL DEFAULT '',
   `category_size`           int(11)             NOT NULL DEFAULT '500',
-  `category_extensions`      text,
+  `category_extensions`     text,
   `category_weight`         int(11)             NOT NULL DEFAULT '0',
   `category_status`         tinyint(1)          NOT NULL DEFAULT '1',
   
@@ -14,7 +14,7 @@ CREATE TABLE `xmdoc_category` (
 
 CREATE TABLE `xmdoc_document` (
   `document_id`             int(11) unsigned    NOT NULL AUTO_INCREMENT,
-  `document_category`         int(11)             NOT NULL DEFAULT '0',
+  `document_category`       int(11)             NOT NULL DEFAULT '0',
   `document_name`           varchar(255)        NOT NULL DEFAULT '',
   `document_description`    text,
   `document_logo`           varchar(50)         NOT NULL DEFAULT '',
