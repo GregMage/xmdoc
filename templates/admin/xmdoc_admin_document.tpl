@@ -10,9 +10,25 @@
         <{$error_message}>
     </div>
 <{/if}>
-<div>
-    <{$form}>
-</div>
+<{if $form}>
+    <div>
+        <{$form}>
+    </div>
+<{/if}>
+<{if $filter}>
+	<div align="right">
+		<form id="form_document_tri" name="form_document_tri" method="get" action="document.php">
+			<{$smarty.const._MA_XMDOC_DOCUMENT_CATEGORY}>
+			<select name="category_filter" id="category_filter" onchange="location='document.php?start=<{$start}>&status=<{$status}>&category='+this.options[this.selectedIndex].value">
+				<{$category_options}>
+			<select>
+			<{$smarty.const._MA_XMDOC_STATUS}>
+			<select name="status_filter" id="status_filter" onchange="location='document.php?start=<{$start}>&category=<{$category}>&status='+this.options[this.selectedIndex].value">
+				<{$status_options}>
+			<select>
+		</form>
+	</div>
+<{/if}>
 <{if $document_count != 0}>
     <table id="xo-xmdoc-sorter" cellspacing="1" class="outer tablesorter">
         <thead>

@@ -36,12 +36,45 @@ switch ($op) {
         $xoopsTpl->assign('renderbutton', $moduleAdmin->renderButton());        
         // Get start pager
         $start = Request::getInt('start', 0);
+        $xoopsTpl->assign('start', $start);
+        
+        $xoopsTpl->assign('filter', true);
+        // Category
+		$category = Request::getInt('category', 0);
+        $xoopsTpl->assign('category', $category);
+		$criteria = new CriteriaCompo();
+		$criteria->setSort('category_weight ASC, category_name');
+		$criteria->setOrder('ASC');
+		$category_arr = $categoryHandler->getall($criteria);		
+		if (count($category_arr) > 0) {
+			$category_options = '<option value="0"' . ($category == 0 ? ' selected="selected"' : '') . '>' . _ALL .'</option>';
+			foreach (array_keys($category_arr) as $i) {
+				$category_options .= '<option value="' . $i . '"' . ($category == $i ? ' selected="selected"' : '') . '>' . $category_arr[$i]->getVar('category_name') . '</option>';
+			}
+			$xoopsTpl->assign('category_options', $category_options);
+		}
+        // Status
+        $status = Request::getInt('status', 10);
+        $xoopsTpl->assign('status', $status);
+        $status_options_arr = array(1 => _MA_XMDOC_STATUS_A, 0 =>_MA_XMDOC_STATUS_NA);
+		$status_options = '<option value="10"' . ($status == 0 ? ' selected="selected"' : '') . '>' . _ALL .'</option>';
+        foreach (array_keys($status_options_arr) as $i) {
+            $status_options .= '<option value="' . $i . '"' . ($status == $i ? ' selected="selected"' : '') . '>' . $status_options_arr[$i] . '</option>';
+        }
+        $xoopsTpl->assign('status_options', $status_options);
+        
         // Criteria
         $criteria = new CriteriaCompo();
         $criteria->setSort('document_weight ASC, document_name');
         $criteria->setOrder('ASC');
         $criteria->setStart($start);
         $criteria->setLimit($nb_limit);
+        if ($category != 0){
+			$criteria->add(new Criteria('document_category', $category));
+		}
+        if ($status != 10){
+			$criteria->add(new Criteria('document_status', $status));
+		}
         $document_arr = $documentHandler->getall($criteria);
         $document_count = $documentHandler->getCount($criteria);
         $xoopsTpl->assign('document_count', $document_count);
@@ -62,7 +95,7 @@ switch ($op) {
             }
             // Display Page Navigation
             if ($document_count > $nb_limit) {
-                $nav = new XoopsPageNav($document_count, $nb_limit, $start, 'start');
+                $nav = new XoopsPageNav($document_count, $nb_limit, $start, 'start', 'category=' . $category . '&status=' . $status);
                 $xoopsTpl->assign('nav_menu', $nav->renderNav(4));
             }
         } else {
