@@ -127,6 +127,9 @@ switch ($op) {
     
     // Loaddocument
     case 'loaddocument':
+        // Define Stylesheet
+        $xoTheme->addStylesheet(XOOPS_URL . '/modules/system/css/admin.css');
+        $xoTheme->addScript('modules/system/js/admin.js');
         // Module admin
         $moduleAdmin->addItemButton(_MA_XMDOC_DOCUMENT_LIST, 'document.php', 'list');
         $xoopsTpl->assign('renderbutton', $moduleAdmin->renderButton());  
@@ -134,6 +137,10 @@ switch ($op) {
         if ($document_category == 0) {
             $xoopsTpl->assign('error_message', _MA_XMDOC_ERROR_NOCATEGORY);
         } else {
+            $category = $categoryHandler->get($document_category);
+            $xoopsTpl->assign('tips', true);
+            $xoopsTpl->assign('extensions', implode(', ', $category->getVar('category_extensions')));
+            $xoopsTpl->assign('size', XmdocUtility::FileSizeConvert($category->getVar('category_size')*1024));
             $obj  = $documentHandler->create();
             $form = $obj->getForm($document_category);
             $xoopsTpl->assign('form', $form->render());

@@ -5,6 +5,20 @@
 <div>
     <{$renderbutton}>
 </div>
+<{if $tips != ''}>
+    <div class="tips ui-corner-all">
+        <img class="floatleft tooltip" src="<{xoAdminIcons tips.png}>" alt="<{$smarty.const._AM_SYSTEM_TIPS}>" title="<{$smarty.const._AM_SYSTEM_TIPS}>"/>
+
+        <div class="floatleft">
+            <h4><{$smarty.const._MA_XMDOC_DOCUMENT_DOCUMENT}></h4>
+            <ul>
+                <li><{$smarty.const._MA_XMDOC_CATEGORY_SIZE}>: <{$size}></li>
+                <li><{$smarty.const._MA_XMDOC_CATEGORY_EXTENSION}>: <{$extensions}></li>
+            </ul>        
+        </div>
+        <div class="clear">&nbsp;</div>
+    </div>
+<{/if}>
 <{if $error_message != ''}>
     <div class="errorMsg" style="text-align: left;">
         <{$error_message}>
