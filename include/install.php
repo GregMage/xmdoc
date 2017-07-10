@@ -43,7 +43,7 @@ function xoops_module_install_xmdoc()
     chmod($dir, 0777);
     
     //Creation ".$namemodule."/images/document
-    $dir = XOOPS_ROOT_PATH . '/uploads/' . $namemodule . '/images/category';
+    $dir = XOOPS_ROOT_PATH . '/uploads/' . $namemodule . '/images/document';
     if (!is_dir($dir)) {
         mkdir($dir, 0777);
     }
