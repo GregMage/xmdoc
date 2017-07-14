@@ -147,6 +147,7 @@ class xmdoc_document extends XoopsObject
         // category       
         $category = new XoopsFormSelect(_MA_XMDOC_DOCUMENT_CATEGORY, 'document_category', $this->getVar('document_category'));
         $criteria = new CriteriaCompo();
+		$criteria->add(new Criteria('category_status', 1));
         $criteria->setSort('category_weight ASC, category_name');
         $criteria->setOrder('ASC');
         if (!empty($submitPermissionCat)){
