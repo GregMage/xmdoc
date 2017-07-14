@@ -85,4 +85,7 @@ define('_MA_XMDOC_UTILITY_KBYTES', "kB");
 define('_MA_XMDOC_UTILITY_MBYTES', "MB");
 define('_MA_XMDOC_UTILITY_GBYTES', "GB");
 
-// user
+// formDoc
+define('_MA_XMDOC_FORMDOC_ADD', 'Add documents');
+define('_MA_XMDOC_FORMDOC_NAME', 'Document management');
+define('_MA_XMDOC_FORMDOC_REMOVE', 'Remove documents');
