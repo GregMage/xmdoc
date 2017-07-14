@@ -82,4 +82,19 @@ class XmdocUtility
         }
         return $document_name;
     }
+	
+	public static function removeDocuments()
+    {
+        include __DIR__ . '/../include/common.php';
+		// remove field
+		$error_message = '';
+		if (isset($_REQUEST['removeDocs']) && is_array($_REQUEST['removeDocs'])) {
+			foreach ($_REQUEST['removeDocs'] as $index) {
+				$obj  = $docdataHandler->get($index);
+				$docdataHandler->delete($obj);
+				$error_message .= 'docdata id: ' . $index . '<br>' . $obj->getHtmlErrors();
+			}
+		}
+        return $error_message;
+    }
 }
