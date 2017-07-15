@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="<{$xoops_langcode}>">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=<{$xoops_charset}>">
+    <meta http-equiv="content-language" content="<{$xoops_langcode}>">
+    <title><{$xoops_sitename}> <{$lang_imgmanager}></title>
+    <{$image_form.javascript}>
+    <link rel="stylesheet" type="text/css" media="screen" href="<{xoAppUrl xoops.css}>">
+	<link rel="stylesheet" type="text/css" media="screen" href="<{xoAppUrl modules/xmdoc/assets/css/styles.css}>">
+    <link rel="stylesheet" type="text/css" media="screen" href="<{xoAppUrl media/font-awesome/css/font-awesome.min.css}>">
+</head>
+
+<body onload="window.resizeTo(<{$xsize|default:600}>, <{$ysize|default:600}>);">
+<div class="xmdoc">
+	<{if $selected}>
+		<{$smarty.const._MA_XMDOC_FORMDOC_SELECTED}>
+	<{/if}>
+	<{if $form}>
+		<div class="xmform">
+			<{$form}>
+		</div>
+	<{/if}>
+	<{if $document != ""}>
+        <h3 class="tdm-title"><{$smarty.const._MA_XMDOC_FORMDOC_LISTDOCUMENT}>:</h3>
+		<form name="formsel" id="formsel" action="docmanager.php" method="post">
+			<table>
+				<thead>
+				<tr>
+					<th class="txtcenter width5"><{$smarty.const._MA_XMDOC_FORMDOC_SELECT}></th>
+					<th class="txtcenter width10"><{$smarty.const._MA_XMDOC_DOCUMENT_LOGO}></th>
+					<th class="txtleft width15"><{$smarty.const._MA_XMDOC_DOCUMENT_NAME}></th>
+				</tr>
+				</thead>
+				<tbody>
+				
+				<{foreach item=document from=$document}>
+					<tr class="<{cycle values='even,odd'}> alignmiddle">
+						<td class="txtcenter"><input type="checkbox" name="selDocs[]" id="selDocs<{$document.id}>"  title="Selectio documents" value="<{$document.id}>"  /></td>
+						<td class="txtcenter"><{$document.logo}></td>
+						<td class="txtleft"><{$document.name}></td>
+					</tr>
+				<{/foreach}>
+
+				</tbody>
+			</table>
+		<input type="hidden" name="select" id="select" value="true" />
+		<input type='submit' class='formButton' name='select'  id='select' value='<{$smarty.const._MA_XMDOC_FORMDOC_SELECT}>' title='<{$smarty.const._MA_XMDOC_FORMDOC_SELECT}>'  />
+		</form>
+    <{/if}>
+    <div class="clear spacer"></div>
+    <{if $nav_menu}>
+        <div class="floatright"><{$nav_menu}></div>
+        <div class="clear spacer"></div>
+    <{/if}>
+</div><!-- .xmdoc -->
+
+
+
+
+
+<div id="footer">
+    <input value="<{$smarty.const._CLOSE}>" type="button" onclick="window.close();"/>
+</div>
+
+</body>
+</html>

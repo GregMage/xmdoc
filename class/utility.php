@@ -83,18 +83,40 @@ class XmdocUtility
         return $document_name;
     }
 	
-	public static function removeDocuments()
+	public static function Documents($modulename = '', $itemid = 0)
     {
-        include __DIR__ . '/../include/common.php';		
+        include __DIR__ . '/../include/common.php';
+		$error_message = '';		
+		// remove doc
 		if (isset($_REQUEST['removeDocs']) && is_array($_REQUEST['removeDocs'])) {
 			foreach ($_REQUEST['removeDocs'] as $index) {
 				$obj  = $docdataHandler->get($index);
 				if ($docdataHandler->delete($obj)){
-					$error_message = '';
+					$error_message .= '';
 				} else {
 					$error_message .= 'docdata id: ' . $index . '<br>' . $obj->getHtmlErrors();
 				}
 			}
+		}
+		// add doc
+		// module id
+		$helper = \Xmf\Module\Helper::getHelper($modulename);
+		$moduleid = $helper->getModule()->getVar('mid');
+		var_dump($_SESSION['seldocs']);
+		if (isset($_SESSION['seldocs']) && is_array($_SESSION['seldocs'])) {
+			foreach ($_SESSION['seldocs'] as $index) {
+				$obj  = $docdataHandler->create();
+				$obj->setVar('docdata_docid', $index);
+				$obj->setVar('docdata_modid', $moduleid);
+				$obj->setVar('docdata_itemid', $itemid);
+				
+				if ($docdataHandler->insert($obj)){
+					$error_message .= '';
+				} else {
+					$error_message .= 'docdata id: ' . $index . '<br>' . $obj->getHtmlErrors();
+				}
+			}
+			unset($_SESSION['seldocs']);
 		}
         return $error_message;
     }
