@@ -104,16 +104,23 @@ class XmdocUtility
 		$moduleid = $helper->getModule()->getVar('mid');
 		var_dump($_SESSION['seldocs']);
 		if (isset($_SESSION['seldocs']) && is_array($_SESSION['seldocs'])) {
-			foreach ($_SESSION['seldocs'] as $index) {
-				$obj  = $docdataHandler->create();
-				$obj->setVar('docdata_docid', $index);
-				$obj->setVar('docdata_modid', $moduleid);
-				$obj->setVar('docdata_itemid', $itemid);
-				
-				if ($docdataHandler->insert($obj)){
-					$error_message .= '';
-				} else {
-					$error_message .= 'docdata id: ' . $index . '<br>' . $obj->getHtmlErrors();
+			foreach ($_SESSION['seldocs'] as $index) {				
+				// vérification pour savoir si le document est déjà existant
+				$criteria = new CriteriaCompo();
+				$criteria->add(new Criteria('docdata_docid', $index));
+				$criteria->add(new Criteria('docdata_modid', $moduleid));
+				$criteria->add(new Criteria('docdata_itemid', $itemid));
+				$docdata_count = $docdataHandler->getCount($criteria);
+				if ($docdata_count == 0) {
+					$obj  = $docdataHandler->create();
+					$obj->setVar('docdata_docid', $index);
+					$obj->setVar('docdata_modid', $moduleid);
+					$obj->setVar('docdata_itemid', $itemid);					
+					if ($docdataHandler->insert($obj)){
+						$error_message .= '';
+					} else {
+						$error_message .= 'docdata id: ' . $index . '<br>' . $obj->getHtmlErrors();
+					}
 				}
 			}
 			unset($_SESSION['seldocs']);
