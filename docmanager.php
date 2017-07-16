@@ -34,13 +34,46 @@ $search = Request::getString('search', '');
 $reset = Request::getString('reset', '');
 $select = Request::getString('select', '');
 
-if ($select != ''){
+if (isset($_REQUEST['selectreset'])){
+	unset($_SESSION['seldocs']);
+}
+
+if (isset($_SESSION['seldocs']) || isset($_REQUEST['selDocs'])){	
 	if (isset($_REQUEST['selDocs']) && is_array($_REQUEST['selDocs'])) {
 		foreach ($_REQUEST['selDocs'] as $index) {
-			$_SESSION['seldocs'][] = $index;
+			if (!isset($_SESSION['seldocs'])){
+				$_SESSION['seldocs'][] = $index;
+			} elseif (!in_array($index, $_SESSION['seldocs'])){
+				$_SESSION['seldocs'][] = $index;
+			}
 		}
 	}
 	$xoopsTpl->assign('selected', true);
+	
+	$criteria = new CriteriaCompo();
+	$criteria->add(new Criteria('document_status', 1));
+	$criteria->add(new Criteria('document_id', '(' . implode(',', $_SESSION['seldocs']) . ')','IN'));	
+	$criteria->setSort('document_weight ASC, document_name');
+	$criteria->setOrder('ASC');
+	$documentHandler->table_link = $documentHandler->db->prefix("xmdoc_category");
+	$documentHandler->field_link = "category_id";
+	$documentHandler->field_object = "document_category";
+	$seldoc_arr = $documentHandler->getByLink($criteria);
+	$seldoc_count = $documentHandler->getCount($criteria);
+	$xoopsTpl->assign('seldoc_count', $seldoc_count);
+	if ($seldoc_count > 0) {
+		$count = 1;
+		foreach (array_keys($seldoc_arr) as $i) {
+			$seldoc['name']            = $seldoc_arr[$i]->getVar('document_name');
+			$seldoc_img                = $seldoc_arr[$i]->getVar('document_logo') ?: 'blank_doc.gif';
+			$seldoc['logo']            = '<img src="' . $url_logo_document .  $seldoc_img . '" alt="' . $seldoc_img . '" />';
+			$seldoc['count']           = $count;
+			$xoopsTpl->append_by_ref('seldoc', $seldoc);
+			unset($seldoc);
+			$count++;
+			
+		}
+	}	
 	$reset = '';
 }
 
@@ -57,7 +90,7 @@ $nb_limit = 15;
 // Get start pager
 $start = Request::getInt('start', 0); 
 
-$form = new XoopsThemeForm(_MA_XMDOC_SEARCH, 'form', 'docmanager.php', 'post', true);
+$form = new XoopsThemeForm('', 'form', 'docmanager.php', 'post', true);
 // name
 $form->addElement(new XoopsFormText(_MA_XMDOC_DOCUMENT_NAME, 's_name', 50, 255, $s_name));
 
@@ -115,6 +148,7 @@ if ($search != ''){
 			$document_id                 = $document_arr[$i]->getVar('document_id');
 			$document['id']              = $document_id;
 			$document['name']            = $document_arr[$i]->getVar('document_name');
+			$document['description']     = $document_arr[$i]->getVar('document_description', 'show');
 			$document['category']        = $document_arr[$i]->getVar('category_name');
 			$document_img                = $document_arr[$i]->getVar('document_logo') ?: 'blank_doc.gif';
 			$document['logo']            = '<img src="' . $url_logo_document .  $document_img . '" alt="' . $document_img . '" />';
