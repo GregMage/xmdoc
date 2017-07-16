@@ -83,7 +83,7 @@ class XmdocUtility
         return $document_name;
     }
 	
-	public static function Documents($modulename = '', $itemid = 0)
+	public static function saveDocuments($modulename = '', $itemid = 0)
     {
         include __DIR__ . '/../include/common.php';
 		$error_message = '';		
@@ -126,5 +126,39 @@ class XmdocUtility
 			unset($_SESSION['seldocs']);
 		}
         return $error_message;
+    }
+	
+	public static function renderDocuments($modulename = '', $itemid = 0)
+    {
+        include __DIR__ . '/../include/common.php';
+		$helper = \Xmf\Module\Helper::getHelper($modulename);
+		$moduleid = $helper->getModule()->getVar('mid');
+		
+		$criteria = new CriteriaCompo();
+		$criteria->add(new Criteria('docdata_modid', $moduleid));
+		$criteria->add(new Criteria('docdata_itemid', $itemid));
+		$criteria->setSort('document_weight ASC, document_name');
+        $criteria->setOrder('ASC');
+		$documentHandler->table_link = $documentHandler->db->prefix("xmdoc_category");
+        $documentHandler->field_link = "category_id";
+        $documentHandler->field_object = "document_category";
+        $document_arr = $documentHandler->getByLink($criteria);
+        $document_count = $documentHandler->getCount($criteria);
+		if ($document_count > 0) {
+            foreach (array_keys($document_arr) as $i) {
+                $document_id                 = $document_arr[$i]->getVar('document_id');
+                $document['id']              = $document_id;
+                $document['name']            = $document_arr[$i]->getVar('document_name');
+                $document['category']        = $document_arr[$i]->getVar('category_name');
+                $document['document']        = $document_arr[$i]->getVar('document_document');
+                $document['description']     = $document_arr[$i]->getVar('document_description', 'show');
+                $document['showinfo']        = $document_arr[$i]->getVar('document_showinfo');
+                $document_img                = $document_arr[$i]->getVar('document_logo') ?: 'blank_doc.gif';
+                $document['logo']            = '<img src="' . $url_logo_document .  $document_img . '" alt="' . $document_img . '" />';
+                $xoopsTpl->append_by_ref('document', $document);
+                unset($document);
+            }
+        }
+        return $document_name;
     }
 }
