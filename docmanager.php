@@ -73,6 +73,8 @@ if (isset($_SESSION['seldocs']) || isset($_REQUEST['selDocs'])){
 			$count++;
 			
 		}
+	} else {
+		$xoopsTpl->assign('error_message', _MA_XMDOC_ERROR_NODOCUMENT);
 	}	
 	$reset = '';
 }

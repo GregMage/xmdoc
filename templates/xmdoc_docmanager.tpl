@@ -7,6 +7,7 @@
     <{$image_form.javascript}>
     <link rel="stylesheet" type="text/css" media="screen" href="<{xoAppUrl xoops.css}>">
 	<link rel="stylesheet" type="text/css" media="screen" href="<{xoAppUrl modules/system/css/imagemanager.css}>">
+	<link rel="stylesheet" type="text/css" media="screen" href="<{xoAppUrl modules/system/css/admin.css}>">
     <link rel="stylesheet" type="text/css" media="screen" href="<{xoAppUrl media/font-awesome/css/font-awesome.min.css}>">
 </head>
 
@@ -35,6 +36,11 @@
 		<div class="xmform">
 			<h2><{$smarty.const._MA_XMDOC_SEARCH}></h2>
 			<{$form}>
+		</div>
+	<{/if}>
+	<{if $error_message != ''}>
+		<div class="errorMsg" style="text-align: left;">
+			<{$error_message}>
 		</div>
 	<{/if}>
 	<{if $document != ""}>
