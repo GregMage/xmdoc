@@ -27,7 +27,7 @@ xoops_load('utility', basename(__DIR__));
 include_once $GLOBALS['xoops']->path('class/xoopsformloader.php');
 
 // Get Permission to submit
-$submitPermissionCat = XmdocUtility::getPermissionCat('xmdoc_submit');       
+$viewPermissionCat = XmdocUtility::getPermissionCat('xmdoc_view');
 
 // Get values
 $search = Request::getString('search', '');
@@ -100,11 +100,11 @@ $criteria = new CriteriaCompo();
 $criteria->add(new Criteria('category_status', 1));
 $criteria->setSort('category_weight ASC, category_name');
 $criteria->setOrder('ASC');
-if (!empty($submitPermissionCat)){
-	$criteria->add(new Criteria('category_id', '(' . implode(',', $submitPermissionCat) . ')','IN'));
+if (!empty($viewPermissionCat)){
+	$criteria->add(new Criteria('category_id', '(' . implode(',', $viewPermissionCat) . ')','IN'));
 }
 $category_arr = $categoryHandler->getall($criteria);        
-if (count($category_arr) == 0 || empty($submitPermissionCat)){
+if (count($category_arr) == 0 || empty($viewPermissionCat)){
 	redirect_header('index.php', 3, _MA_XMDOC_ERROR_NOACESSCATEGORY);
 }
 $category->addOption(0, _ALL);
@@ -131,7 +131,10 @@ if ($search != ''){
 	}
 	if ($s_cat != 0){
 		$criteria->add(new Criteria('document_category', $s_cat));
-	}	
+	}
+	if (!empty($viewPermissionCat)){
+		$criteria->add(new Criteria('document_category', '(' . implode(',', $viewPermissionCat) . ')','IN'));
+	}
 	$criteria->setSort('document_weight ASC, document_name');
 	$criteria->setOrder('ASC');
 	$criteria->setStart($start);
