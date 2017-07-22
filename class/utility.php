@@ -161,4 +161,11 @@ class XmdocUtility
         }
         return $document_name;
     }
+
+    public static function renderDocForm($form, $modulename = '', $itemid = 0)
+    {
+        xoops_load('formdoc', 'xmdoc');
+        $form->addElement(new XmdocFormDoc($modulename, $itemid), false);
+        return $form;
+    }
 }
