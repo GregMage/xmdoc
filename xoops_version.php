@@ -61,6 +61,7 @@ $modversion['templates'][] = array('file' => 'xmdoc_admin_permission.tpl', 'desc
 
 // User Templates
 $modversion['templates'][] = array('file' => 'xmdoc_docmanager.tpl', 'description' => '');
+$modversion['templates'][] = array('file' => 'xmdoc_viewdoc.tpl', 'description' => '');
 
 // Configs
 $modversion['config'] = array();

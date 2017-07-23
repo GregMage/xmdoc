@@ -138,23 +138,39 @@ class XmdocUtility
         return $error_message;
     }
 	
-	public static function renderDocuments($modulename = '', $itemid = 0)
+	public static function renderDocuments($xoopsTpl, $xoTheme, $modulename = '', $itemid = 0)
     {
         include __DIR__ . '/../include/common.php';
+        
+        $xoTheme->addStylesheet( XOOPS_URL . '/modules/xmdoc/assets/css/styles.css', null );
+        
+        $xmdocHelper = Xmf\Module\Helper::getHelper('xmdoc');
+        // Load language files
+        $xmdocHelper->loadLanguage('main');
+        
 		$helper = \Xmf\Module\Helper::getHelper($modulename);
 		$moduleid = $helper->getModule()->getVar('mid');
-		
-		$criteria = new CriteriaCompo();
+		//docdata
+        $criteria = new CriteriaCompo();
 		$criteria->add(new Criteria('docdata_modid', $moduleid));
 		$criteria->add(new Criteria('docdata_itemid', $itemid));
+        $docdata_arr = $docdataHandler->getAll($criteria);
+        $docdata_ids = array();
+        if (count($docdata_arr) > 0) {
+            foreach (array_keys($docdata_arr) as $i) {
+                $docdata_ids[] = $docdata_arr[$i]->getVar('docdata_docid');
+            }
+        }
+        // Document  
+        $criteria = new CriteriaCompo();
+        $criteria->add(new Criteria('document_id', '(' . implode(',', $docdata_ids) . ')','IN'));
 		$criteria->setSort('document_weight ASC, document_name');
         $criteria->setOrder('ASC');
 		$documentHandler->table_link = $documentHandler->db->prefix("xmdoc_category");
         $documentHandler->field_link = "category_id";
         $documentHandler->field_object = "document_category";
         $document_arr = $documentHandler->getByLink($criteria);
-        $document_count = $documentHandler->getCount($criteria);
-		if ($document_count > 0) {
+		if (count($document_arr) > 0) {
             foreach (array_keys($document_arr) as $i) {
                 $document_id                 = $document_arr[$i]->getVar('document_id');
                 $document['id']              = $document_id;
@@ -164,12 +180,12 @@ class XmdocUtility
                 $document['description']     = $document_arr[$i]->getVar('document_description', 'show');
                 $document['showinfo']        = $document_arr[$i]->getVar('document_showinfo');
                 $document_img                = $document_arr[$i]->getVar('document_logo') ?: 'blank_doc.gif';
-                $document['logo']            = '<img src="' . $url_logo_document .  $document_img . '" alt="' . $document_img . '" />';
+                $document['logo']            = '<img src="' . $url_logo_document .  $document_img . '" alt="' . $document['name'] . '" />';
                 $xoopsTpl->append_by_ref('document', $document);
                 unset($document);
             }
         }
-        return $document_name;
+        //return $document;
     }
 
     public static function renderDocForm($form, $modulename = '', $itemid = 0)
