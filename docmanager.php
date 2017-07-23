@@ -38,15 +38,16 @@ if (isset($_REQUEST['selectreset'])){
 	unset($_SESSION['seldocs']);
 }
 
-if (isset($_SESSION['seldocs']) || isset($_REQUEST['selDocs'])){	
+if (isset($_SESSION['seldocs']) || isset($_REQUEST['selDocs'])){		
 	if (isset($_REQUEST['selDocs']) && is_array($_REQUEST['selDocs'])) {
 		foreach ($_REQUEST['selDocs'] as $index) {
 			if (!isset($_SESSION['seldocs'])){
 				$_SESSION['seldocs'][] = $index;
-			} elseif (!in_array($index, $_SESSION['seldocs'])){
+            } elseif (!in_array($index, $_SESSION['seldocs'])){
 				$_SESSION['seldocs'][] = $index;
 			}
 		}
+
 	}
 	$xoopsTpl->assign('selected', true);
 	
