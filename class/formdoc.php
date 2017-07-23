@@ -34,7 +34,7 @@ class XmdocFormDoc extends XoopsFormElementTray
         
 		include __DIR__ . '/../include/common.php';
 		xoops_loadLanguage('main', 'xmdoc');
-		unset($_SESSION['seldocs']);
+		unset($_SESSION['xmdoc_selectiondocs']);
 		parent::__construct(_MA_XMDOC_FORMDOC_NAME, '<br>');
 		// module id
 		$helper = \Xmf\Module\Helper::getHelper($modulename);

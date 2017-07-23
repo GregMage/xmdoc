@@ -34,26 +34,35 @@ $search = Request::getString('search', '');
 $reset = Request::getString('reset', '');
 $select = Request::getString('select', '');
 
-if (isset($_REQUEST['selectreset'])){
-	unset($_SESSION['seldocs']);
-}
+$sessionHelper = new \Xmf\Module\Helper\Session();
 
-if (isset($_SESSION['seldocs']) || isset($_REQUEST['selDocs'])){		
+if (isset($_REQUEST['selectreset'])){
+    $sessionHelper->del('selectiondocs');
+}
+		
+if (isset($_REQUEST['selDocs'])){			
 	if (isset($_REQUEST['selDocs']) && is_array($_REQUEST['selDocs'])) {
+        if ($sessionHelper->get('selectiondocs') != false){
+            $arr_selectiondocs = $sessionHelper->get('selectiondocs');
+        } else {
+            $arr_selectiondocs = array();
+        }
 		foreach ($_REQUEST['selDocs'] as $index) {
-			if (!isset($_SESSION['seldocs'])){
-				$_SESSION['seldocs'][] = $index;
-            } elseif (!in_array($index, $_SESSION['seldocs'])){
-				$_SESSION['seldocs'][] = $index;
+            if (!in_array($index, $arr_selectiondocs)){
+				$arr_selectiondocs[] = $index;
 			}
 		}
-
+        $sessionHelper->set('selectiondocs', $arr_selectiondocs);
 	}
+}
+if ($sessionHelper->get('selectiondocs') != False){
 	$xoopsTpl->assign('selected', true);
 	
 	$criteria = new CriteriaCompo();
 	$criteria->add(new Criteria('document_status', 1));
-	$criteria->add(new Criteria('document_id', '(' . implode(',', $_SESSION['seldocs']) . ')','IN'));	
+    if (is_array($sessionHelper->get('selectiondocs'))){
+        $criteria->add(new Criteria('document_id', '(' . implode(',', $sessionHelper->get('selectiondocs')) . ')','IN'));
+    }
 	$criteria->setSort('document_weight ASC, document_name');
 	$criteria->setOrder('ASC');
 	$documentHandler->table_link = $documentHandler->db->prefix("xmdoc_category");

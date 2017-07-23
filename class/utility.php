@@ -112,8 +112,9 @@ class XmdocUtility
 		// module id
 		$helper = \Xmf\Module\Helper::getHelper($modulename);
 		$moduleid = $helper->getModule()->getVar('mid');
-		if (isset($_SESSION['seldocs']) && is_array($_SESSION['seldocs'])) {
-			foreach ($_SESSION['seldocs'] as $index) {				
+		if (isset($_SESSION['xmdoc_selectiondocs'])){
+            $selectiondocs = unserialize($_SESSION['xmdoc_selectiondocs']);
+			foreach ($selectiondocs as $index) {				
 				// vérification pour savoir si le document est déjà existant
 				$criteria = new CriteriaCompo();
 				$criteria->add(new Criteria('docdata_docid', $index));
@@ -132,7 +133,7 @@ class XmdocUtility
 					}
 				}
 			}
-			unset($_SESSION['seldocs']);
+			unset($_SESSION['xmdoc_selectiondocs']);
 		}
         return $error_message;
     }
