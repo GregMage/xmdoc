@@ -109,12 +109,12 @@ class XmdocUtility
             }
 		}
 		// add doc
+        $sessionHelper = new \Xmf\Module\Helper\Session('xmdoc');
 		// module id
 		$helper = \Xmf\Module\Helper::getHelper($modulename);
 		$moduleid = $helper->getModule()->getVar('mid');
-		if (isset($_SESSION['xmdoc_selectiondocs'])){
-            $selectiondocs = unserialize($_SESSION['xmdoc_selectiondocs']);
-			foreach ($selectiondocs as $index) {				
+		if ($sessionHelper->get('selectiondocs') != false){
+			foreach ($sessionHelper->get('selectiondocs') as $index) {				
 				// vérification pour savoir si le document est déjà existant
 				$criteria = new CriteriaCompo();
 				$criteria->add(new Criteria('docdata_docid', $index));
@@ -133,7 +133,7 @@ class XmdocUtility
 					}
 				}
 			}
-			unset($_SESSION['xmdoc_selectiondocs']);
+            $sessionHelper->del('selectiondocs');
 		}
         return $error_message;
     }
@@ -185,7 +185,6 @@ class XmdocUtility
                 unset($document);
             }
         }
-        //return $document;
     }
 
     public static function renderDocForm($form, $modulename = '', $itemid = 0)
