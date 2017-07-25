@@ -184,6 +184,7 @@ class XmdocUtility
                 $xoopsTpl->append_by_ref('document', $document);
                 unset($document);
             }
+            $xoopsTpl->assign('xmdoc_viewdocs', true);
         }
     }
 
