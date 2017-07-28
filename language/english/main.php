@@ -59,17 +59,21 @@ define('_MA_XMDOC_CATEGORY_WEIGHT', 'Weight');
 
 // document
 define('_MA_XMDOC_DOCUMENT_CATEGORY', 'In category');
+define('_MA_XMDOC_DOCUMENT_DATEUPDATE', 'Update the creation date');
 define('_MA_XMDOC_DOCUMENT_DESC', 'Description');
 define('_MA_XMDOC_DOCUMENT_DOCUMENT', 'File to attach');
 define('_MA_XMDOC_DOCUMENT_DOCUMENTURL', 'Document URL');
 define('_MA_XMDOC_DOCUMENT_FORMPATH', 'Files are in: %s');
 define('_MA_XMDOC_DOCUMENT_LOGO', 'Logo');
 define('_MA_XMDOC_DOCUMENT_LOGOFILE', 'Logo file');
+define('_MA_XMDOC_DOCUMENT_MDATEUPDATE', 'Update the modification date');
 define('_MA_XMDOC_DOCUMENT_NAME', 'Name');
+define('_MA_XMDOC_DOCUMENT_RESETMDATE', 'Reset (empty date)');
 define('_MA_XMDOC_DOCUMENT_SHOWINFO', 'View file information');
 define('_MA_XMDOC_DOCUMENT_SUREDEL', 'Sure to delete this document? %s');
 define('_MA_XMDOC_DOCUMENT_UPLOAD', 'Upload');
 define('_MA_XMDOC_DOCUMENT_UPLOADSIZE', 'Maximum size: %s kB');
+define('_MA_XMDOC_DOCUMENT_USERID', 'Author');
 define('_MA_XMDOC_DOCUMENT_WEIGHT', 'Weight');
 
 // permission

@@ -40,6 +40,12 @@ class xmdoc_document extends XoopsObject
         $this->initVar('dohtml', XOBJ_DTYPE_INT, 1, false);
         $this->initVar('document_logo', XOBJ_DTYPE_TXTBOX, null, false);
         $this->initVar('document_document', XOBJ_DTYPE_TXTBOX, null, false);
+        $this->initVar('document_userid', XOBJ_DTYPE_INT, null, false, 8);
+        $this->initVar('document_date', XOBJ_DTYPE_INT, null, false, 10);
+        $this->initVar('document_mdate', XOBJ_DTYPE_INT, null, false, 10);
+        $this->initVar('document_rating', XOBJ_DTYPE_OTHER, null, false, 10);
+        $this->initVar('document_votes', XOBJ_DTYPE_INT, null, false, 11);
+        $this->initVar('document_counter', XOBJ_DTYPE_INT, null, false, 8);
         $this->initVar('document_showinfo', XOBJ_DTYPE_INT, null, false, 1);
         $this->initVar('document_weight', XOBJ_DTYPE_INT, null, false, 11);
         $this->initVar('document_status', XOBJ_DTYPE_INT, null, false, 1);
@@ -60,6 +66,7 @@ class xmdoc_document extends XoopsObject
      */
     public function saveDocument($documentHandler, $action = false)
     {
+        global $xoopsUser;        
         if ($action === false) {
             $action = $_SERVER['REQUEST_URI'];
         }
@@ -116,6 +123,28 @@ class xmdoc_document extends XoopsObject
         $this->setVar('document_description',  Xmf\Request::getText('document_description', ''));
         $this->setVar('document_showinfo', Xmf\Request::getInt('document_showinfo', 1));
         $this->setVar('document_status', Xmf\Request::getInt('document_status', 1));
+        
+        if (isset($_POST['document_userid'])) {
+            $this->setVar('document_userid', Xmf\Request::getInt('document_userid', 0));
+        } else {
+            $this->setVar('document_userid', !empty($xoopsUser) ? $xoopsUser->getVar('uid') : 0);
+        }
+		if (isset($_POST['document_date'])) {
+			if ($_POST['date_update'] == 'Y'){
+				$this->setVar('document_date', strtotime(Xmf\Request::getString('document_date', '')));
+			}
+			$this->setVar('document_mdate', time());
+        } else {
+			$this->setVar('document_date', time());
+        }
+		if (isset($_POST['document_mdate'])) {
+			if ($_POST['mdate_update'] == 'Y'){
+				$this->setVar('document_mdate', strtotime(Xmf\Request::getString('document_mdate', '')));
+			}
+			if ($_POST['mdate_update'] == 'R'){
+				$this->setVar('document_mdate', 0);
+			}
+        }
 
         if ($error_message == '') {
             $this->setVar('document_weight', Xmf\Request::getInt('document_weight', 0));
@@ -174,6 +203,7 @@ class xmdoc_document extends XoopsObject
      */
     public function getForm($category_id = 0, $action = false)
     {
+        global $xoopsUser;
         $upload_size = 512000;
         $helper = \Xmf\Module\Helper::getHelper('xmdoc');
         if ($action === false) {
@@ -255,6 +285,36 @@ class xmdoc_document extends XoopsObject
         
         // weight
         $form->addElement(new XoopsFormText(_MA_XMDOC_DOCUMENT_WEIGHT, 'document_weight', 5, 5, $weight), true);
+        
+        if ($helper->isUserAdmin() == true){
+			if ($this->isNew()) {
+				$userid = !empty($xoopsUser) ? $xoopsUser->getVar('uid') : 0;
+			} else {
+				$userid = $this->getVar('document_userid');
+			}
+			// userid
+			$form->addElement(new XoopsFormSelectUser(_MA_XMDOC_DOCUMENT_USERID, 'document_userid', true, $userid, 1, false), true);
+			
+			// date and mdate
+			if (!$this->isNew()) {
+				$selection_date = new XoopsFormElementTray(_MA_XMDOC_DOCUMENT_DATEUPDATE);
+				$date = new XoopsFormRadio('', 'date_update', 'N');
+				$options = array('N' =>_NO . ' (' . formatTimestamp($this->getVar('document_date'),'s') . ')', 'Y' => _YES);
+				$date->addOptionArray($options);
+				$selection_date->addElement($date);
+				$selection_date->addElement(new XoopsFormTextDateSelect('', 'document_date', '', time()));
+				$form->addElement($selection_date);
+				if ($this->getVar('document_mdate') != 0){
+					$selection_mdate = new XoopsFormElementTray(_MA_XMDOC_DOCUMENT_MDATEUPDATE);
+					$mdate = new XoopsFormRadio('', 'mdate_update', 'N');
+					$options = array('N' =>_NO . ' (' . formatTimestamp($this->getVar('document_mdate'),'s') . ')', 'R' => _MA_XMDOC_DOCUMENT_RESETMDATE, 'Y' => _YES);
+					$mdate->addOptionArray($options);
+					$selection_mdate->addElement($mdate);
+					$selection_mdate->addElement(new XoopsFormTextDateSelect('', 'document_mdate', '', time()));
+					$form->addElement($selection_mdate);
+				}
+			}
+		}
 
 		// status
         $form_status = new XoopsFormRadio(_MA_XMDOC_STATUS, 'document_status', $status);
