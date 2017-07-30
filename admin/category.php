@@ -50,7 +50,7 @@ switch ($op) {
                 $category_id                 = $category_arr[$i]->getVar('category_id');
                 $category['id']              = $category_id;
                 $category['name']            = $category_arr[$i]->getVar('category_name');
-                $category['description']     = \Xmf\Metagen::generateDescription($category_arr[$i]->getVar('category_description', 'show'), 30) . ' ...';
+                $category['description']     = \Xmf\Metagen::generateDescription($category_arr[$i]->getVar('category_description', 'show'), 30);
                 $category['extensions']      = implode(', ', $category_arr[$i]->getVar('category_extensions'));
                 $category['size']            = XmdocUtility::FileSizeConvert($category_arr[$i]->getVar('category_size')*1024);
                 $category['weight']          = $category_arr[$i]->getVar('category_weight');
