@@ -45,6 +45,8 @@ define('_MA_XMDOC_VIEW', 'View');
 // Category
 define('_MA_XMDOC_CATEGORY_DESC', 'Description');
 define('_MA_XMDOC_CATEGORY_FORMPATH', 'Files are in: %s');
+define('_MA_XMDOC_CATEGORY_LIMITDOWNLOAD', 'Number of downloads in 24 hours<br><small>Number of download for each user in 24 hours. Select 0 for unlimited.</small>');
+define('_MA_XMDOC_CATEGORY_LIMITITEM', 'Number of downloads for each file in 24 hours<br><small>Number of downloads for each file in 24 hours by each user. Select 0 for unlimited.</small>');
 define('_MA_XMDOC_CATEGORY_LOGO', 'Logo');
 define('_MA_XMDOC_CATEGORY_LOGOFILE', 'Logo file');
 define('_MA_XMDOC_CATEGORY_EXTENSION', 'Extensions allowed');

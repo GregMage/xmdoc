@@ -31,5 +31,4 @@ foreach (array_keys( $folder) as $i) {
     $moduleAdmin->addConfigBoxLine(array($folder[$i], '777'), 'chmod');
 }
 $moduleAdmin->displayIndex();
-echo str_shuffle(substr(uniqid(), 6, 7)) . uniqid();
 require __DIR__ . '/admin_footer.php';

@@ -83,16 +83,16 @@ class xmdoc_document extends XoopsObject
         // document
         $category_id = Xmf\Request::getInt('document_category', 1);
         $category = $categoryHandler->get($category_id);
-        $category->getVar('category_size');
+        $folder = $category->getVar('category_folder');
         if ($_FILES['document_document']['error'] != UPLOAD_ERR_NO_FILE) {
             include_once XOOPS_ROOT_PATH . '/class/uploader.php';
-            $uploader_document_img = new XoopsMediaUploader($path_document, XmdocUtility::ExtensionToMime($category->getVar('category_extensions')), $category->getVar('category_size') * 1024, null, null);
+            $uploader_document_img = new XoopsMediaUploader($path_document . $folder .'/', XmdocUtility::ExtensionToMime($category->getVar('category_extensions')), $category->getVar('category_size') * 1024, null, null);
             if ($uploader_document_img->fetchMedia('document_document')) {
                 $uploader_document_img->setPrefix('document_');
                 if (!$uploader_document_img->upload()) {
                     $error_message .= $uploader_document_img->getErrors() . '<br />';
                 } else {
-                    $this->setVar('document_document', $url_document . $uploader_document_img->getSavedFileName());
+                    $this->setVar('document_document', $url_document . $folder .'/' . $uploader_document_img->getSavedFileName());
                 }
             } else {
                 $error_message .= $uploader_document_img->getErrors();

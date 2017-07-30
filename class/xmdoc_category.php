@@ -40,6 +40,9 @@ class xmdoc_category extends XoopsObject
         $this->initVar('category_logo', XOBJ_DTYPE_TXTBOX, null, false);
         $this->initVar('category_size', XOBJ_DTYPE_INT, 500, false, 11);
         $this->initVar('category_extensions', XOBJ_DTYPE_ARRAY, array());
+        $this->initVar('category_folder', XOBJ_DTYPE_TXTBOX, null, false);
+        $this->initVar('category_limitdownload', XOBJ_DTYPE_INT, null, false, 5);
+        $this->initVar('category_limititem', XOBJ_DTYPE_INT, null, false, 5);
         $this->initVar('category_weight', XOBJ_DTYPE_INT, null, false, 11);
         $this->initVar('category_status', XOBJ_DTYPE_INT, null, false, 1);
     }
@@ -95,6 +98,12 @@ class xmdoc_category extends XoopsObject
         $this->setVar('category_description',  Xmf\Request::getText('category_description', ''));
         $this->setVar('category_extensions', Xmf\Request::getArray('category_extensions', array()));
         $this->setVar('category_status', Xmf\Request::getInt('category_status', 1));
+        if ($this->getVar('category_folder') == '') {
+            $folder = XmdocUtility::creatFolder($path_document);
+            $this->setVar('category_folder', $folder);
+        }
+        $this->setVar('category_limitdownload', Xmf\Request::getInt('category_limitdownload', 1));
+        $this->setVar('category_limititem', Xmf\Request::getInt('category_limititem', 1));
 
         if ($error_message == '') {
             $this->setVar('category_weight', Xmf\Request::getInt('category_weight', 0));
@@ -193,12 +202,16 @@ class xmdoc_category extends XoopsObject
         $extension_list = include $GLOBALS['xoops']->path('include/mimetypes.inc.php');
         ksort($extension_list);     
         $extension = new XoopsFormSelect(_MA_XMDOC_CATEGORY_EXTENSION, 'category_extensions', $this->getVar('category_extensions'), 10, true);
-        //$i = 0;
         foreach ($extension_list as $key => $val) {
             $extension ->addOption($key, $key);
-            //$i++;
         }
-        $form->addElement($extension, true);        
+        $form->addElement($extension, true);
+        
+        // limitdownload
+        $form->addElement(new XoopsFormText(_MA_XMDOC_CATEGORY_LIMITDOWNLOAD, 'category_limitdownload', 5, 5, $this->getVar('category_limitdownload')), true);
+        
+        // limititem
+        $form->addElement(new XoopsFormText(_MA_XMDOC_CATEGORY_LIMITITEM, 'category_limititem', 5, 5, $this->getVar('category_limititem')), true);
 
         // weight
         $form->addElement(new XoopsFormText(_MA_XMDOC_CATEGORY_WEIGHT, 'category_weight', 5, 5, $weight), true);

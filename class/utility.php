@@ -205,4 +205,18 @@ class XmdocUtility
         $form->addElement(new XmdocFormDoc($modulename, $itemid), false);
         return $form;
     }
+    
+    public static function creatFolder($path = '')
+    {
+        $folder = str_shuffle(substr(uniqid(), 6, 7)) . uniqid();
+        $dir = $path . $folder;
+        if (!is_dir($dir)) {
+            mkdir($dir, 0777);
+        }
+        //Copy index.html
+        $indexFile = XOOPS_ROOT_PATH . '/modules/xmdoc/include/index.html';
+        copy($indexFile, $dir . '/index.html');
+        return $folder;
+    }
+    
 }
