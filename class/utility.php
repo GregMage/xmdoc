@@ -164,6 +164,7 @@ class XmdocUtility
         // Document  
         $criteria = new CriteriaCompo();
         $criteria->add(new Criteria('document_id', '(' . implode(',', $docdata_ids) . ')','IN'));
+        $criteria->add(new Criteria('document_status', 1));
 		$criteria->setSort('document_weight ASC, document_name');
         $criteria->setOrder('ASC');
 		$documentHandler->table_link = $documentHandler->db->prefix("xmdoc_category");
@@ -179,10 +180,18 @@ class XmdocUtility
                 $document['category']          = $document_arr[$i]->getVar('category_name');
                 $document['document']          = $document_arr[$i]->getVar('document_document');
                 $document['description']       = $document_arr[$i]->getVar('document_description', 'show');
-                $document['description_short'] = \Xmf\Metagen::generateDescription($document_arr[$i]->getVar('document_description', 'show'), 10) . ' ...';
+                $document['description_short'] = \Xmf\Metagen::generateDescription($document_arr[$i]->getVar('document_description', 'show'), 10);
+                $document['author']            = XoopsUser::getUnameFromId($document_arr[$i]->getVar('document_userid'));
+                $document['date']              = formatTimestamp($document_arr[$i]->getVar('document_date'), 's');
+                if ($document_arr[$i]->getVar('document_mdate') != 0) {
+                    $document['mdate']         = formatTimestamp($document_arr[$i]->getVar('document_mdate'), 's');
+                }                
+                $document['rating']            = number_format($document_arr[$i]->getVar('document_rating'), 1);
+                $document['votes']             = sprintf(_MA_XMDOC_FORMDOC_VOTES, $document_arr[$i]->getVar('document_votes'));
+                $document['counter']           = $document_arr[$i]->getVar('document_counter');
                 $document['showinfo']          = $document_arr[$i]->getVar('document_showinfo');
                 $document_img                  = $document_arr[$i]->getVar('document_logo') ?: 'blank_doc.gif';
-                $document['logo']              = '<img src="' . $url_logo_document .  $document_img . '" alt="' . $document['name'] . '" />';
+                $document['logo']              = $url_logo_document . $document_img;
                 $xoopsTpl->append_by_ref('document', $document);
                 unset($document);
             }

@@ -92,12 +92,18 @@ define('_MA_XMDOC_UTILITY_GBYTES', "GB");
 
 // formDoc
 define('_MA_XMDOC_FORMDOC_ADD', 'Add documents');
+define('_MA_XMDOC_FORMDOC_AUTHOR', 'Author');
+define('_MA_XMDOC_FORMDOC_DATE', 'Creation date');
+define('_MA_XMDOC_FORMDOC_DOWNLOAD', 'Downloads');
+define('_MA_XMDOC_FORMDOC_MDATE', 'Modification date');
 define('_MA_XMDOC_FORMDOC_NAME', 'Document management');
 define('_MA_XMDOC_FORMDOC_REMOVE', 'Remove documents');
 define('_MA_XMDOC_FORMDOC_LISTDOCUMENT', 'List of documents');
+define('_MA_XMDOC_FORMDOC_RATING', 'Rating');
 define('_MA_XMDOC_FORMDOC_RESETSELECTED', 'Reset documents selected');
 define('_MA_XMDOC_FORMDOC_SELECT', 'Select');
 define('_MA_XMDOC_FORMDOC_SELECTED', 'Documents selected');
+define('_MA_XMDOC_FORMDOC_VOTES', '(%s Votes)');
 
 // viewdoc
 define('_MA_XMDOC_DOWNLOAD', 'Download');

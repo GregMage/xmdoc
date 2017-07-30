@@ -21,3 +21,16 @@
     text-align: justify;
     margin: 5px 0 5px 0;
 }
+
+.xm-document-view.row {
+    font-weight: bold;
+    color: #999;
+    font-size: 1em;
+}
+
+.xm-document-view {
+    padding-bottom: 5px;
+}
+.xm-document-view-top {
+    padding-top: 25px;
+}
