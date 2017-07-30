@@ -88,7 +88,7 @@ switch ($op) {
                 $document['name']            = $document_arr[$i]->getVar('document_name');
                 $document['category']        = $document_arr[$i]->getVar('category_name');
                 $document['document']        = $document_arr[$i]->getVar('document_document');
-                $document['description']     = $document_arr[$i]->getVar('document_description', 'show');
+                $document['description']     = \Xmf\Metagen::generateDescription($document_arr[$i]->getVar('document_description', 'show'), 30) . ' ...';
                 $document['showinfo']        = $document_arr[$i]->getVar('document_showinfo');
                 $document['weight']          = $document_arr[$i]->getVar('document_weight');
                 $document['status']          = $document_arr[$i]->getVar('document_status');

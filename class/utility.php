@@ -170,17 +170,19 @@ class XmdocUtility
         $documentHandler->field_link = "category_id";
         $documentHandler->field_object = "document_category";
         $document_arr = $documentHandler->getByLink($criteria);
+        
 		if (count($document_arr) > 0) {
             foreach (array_keys($document_arr) as $i) {
-                $document_id                 = $document_arr[$i]->getVar('document_id');
-                $document['id']              = $document_id;
-                $document['name']            = $document_arr[$i]->getVar('document_name');
-                $document['category']        = $document_arr[$i]->getVar('category_name');
-                $document['document']        = $document_arr[$i]->getVar('document_document');
-                $document['description']     = $document_arr[$i]->getVar('document_description', 'show');
-                $document['showinfo']        = $document_arr[$i]->getVar('document_showinfo');
-                $document_img                = $document_arr[$i]->getVar('document_logo') ?: 'blank_doc.gif';
-                $document['logo']            = '<img src="' . $url_logo_document .  $document_img . '" alt="' . $document['name'] . '" />';
+                $document_id                   = $document_arr[$i]->getVar('document_id');
+                $document['id']                = $document_id;
+                $document['name']              = $document_arr[$i]->getVar('document_name');
+                $document['category']          = $document_arr[$i]->getVar('category_name');
+                $document['document']          = $document_arr[$i]->getVar('document_document');
+                $document['description']       = $document_arr[$i]->getVar('document_description', 'show');
+                $document['description_short'] = \Xmf\Metagen::generateDescription($document_arr[$i]->getVar('document_description', 'show'), 10) . ' ...';
+                $document['showinfo']          = $document_arr[$i]->getVar('document_showinfo');
+                $document_img                  = $document_arr[$i]->getVar('document_logo') ?: 'blank_doc.gif';
+                $document['logo']              = '<img src="' . $url_logo_document .  $document_img . '" alt="' . $document['name'] . '" />';
                 $xoopsTpl->append_by_ref('document', $document);
                 unset($document);
             }

@@ -9,7 +9,7 @@
             </a>
 
             <div class="xm-document-description">
-                <{$document.description}>
+                <{$document.description_short}>
             </div>
 
             <a class="btn btn-primary btn-xs col-md-9" title="<{$document.name}>" href="">
