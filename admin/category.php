@@ -156,6 +156,8 @@ switch ($op) {
                     if ($document_count > 0){
                         $documentHandler->deleteAll($criteria);
                     }
+                    // del directory
+                    XmdocUtility::delDirectory($path_document . $obj->getVar('category_folder') . '/');
                     redirect_header('category.php', 2, _MA_XMDOC_REDIRECT_SAVE);
                 } else {
                     $xoopsTpl->assign('error_message', $obj->getHtmlErrors());

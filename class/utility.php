@@ -219,4 +219,19 @@ class XmdocUtility
         return $folder;
     }
     
+    public static function delDirectory($dir)
+    {
+        if (is_dir($dir)) {
+            if ($dirHandle = opendir($dir)) {
+                while (($file = readdir($dirHandle)) !== false) {
+                    if (filetype($dir . $file) === 'file') {
+                        unlink($dir . $file);
+                    }
+                }
+                closedir($dirHandle);
+            }
+            rmdir($dir);
+        }
+    }
+    
 }
