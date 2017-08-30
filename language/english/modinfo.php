@@ -33,6 +33,9 @@ define('_MI_XMDOC_MENU_ABOUT', 'About');
 // Pref
 define('_MI_XMDOC_PREF_HEAD_GENERAL', "<span style='font-weight: bold;'>General</span>");
 define('_MI_XMDOC_PREF_GENERALITEMPERPAGE', 'Number of items per page in the general view');
+define('_MI_XMDOC_PREF_HEAD_DOWNLOAD', "<span style='font-weight: bold;'>Download</span>");
+define('_MI_XMDOC_PREF_CHECKHOST', 'Disallow direct download linking (leeching)?');
+define('_MI_XMDOC_PREF_HOST', 'These sites can link directly to your files. Separate each one with "|"');
 define('_MI_XMDOC_PREF_HEAD_ADMIN', "<span style='font-weight: bold;'>Administration</span>");
 define('_MI_XMDOC_PREF_EDITOR', 'Text Editor');
 define('_MI_XMDOC_PREF_ITEMPERPAGE', 'Number of items per page in the administration view');

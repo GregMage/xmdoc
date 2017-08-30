@@ -98,6 +98,34 @@ $modversion['config'][] = array(
 
 $modversion['config'][] = array(
     'name'        => 'break',
+    'title'       => '_MI_XMDOC_PREF_HEAD_DOWNLOAD',
+    'description' => '',
+    'formtype'    => 'line_break',
+    'valuetype'   => 'text',
+    'default'     => 'head',
+);
+
+$modversion['config'][] = array(
+    'name'        => 'download_checkhost',
+    'title'       => '_MI_XMDOC_PREF_CHECKHOST',
+    'description' => '',
+    'formtype'    => 'yesno',
+    'valuetype'   => 'int',
+    'default'     => 0,
+);
+
+$xoops_url = parse_url(XOOPS_URL);
+$modversion['config'][] = array(
+    'name'        => 'download_host',
+    'title'       => '_MI_XMDOC_PREF_HOST',
+    'description' => '',
+    'formtype'    => 'textarea',
+    'valuetype'   => 'array',
+    'default'     => array($xoops_url['host']),
+);
+
+$modversion['config'][] = array(
+    'name'        => 'break',
     'title'       => '_MI_XMDOC_PREF_HEAD_ADMIN',
     'description' => '',
     'formtype'    => 'line_break',
