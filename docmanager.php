@@ -117,7 +117,7 @@ if (!empty($viewPermissionCat)){
 }
 $category_arr = $categoryHandler->getall($criteria);        
 if (count($category_arr) == 0 || empty($viewPermissionCat)){
-	redirect_header('index.php', 3, _MA_XMDOC_ERROR_NOACESSCATEGORY);
+	redirect_header(XOOPS_URL, 3, _MA_XMDOC_ERROR_NOACESSCATEGORY);
 }
 $category->addOption(0, _ALL);
 foreach (array_keys($category_arr) as $i) {
