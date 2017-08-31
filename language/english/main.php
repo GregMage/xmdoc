@@ -51,6 +51,7 @@ define('_MA_XMDOC_CATEGORY_LOGO', 'Logo');
 define('_MA_XMDOC_CATEGORY_LOGOFILE', 'Logo file');
 define('_MA_XMDOC_CATEGORY_EXTENSION', 'Extensions allowed');
 define('_MA_XMDOC_CATEGORY_NAME', 'Name');
+define('_MA_XMDOC_CATEGORY_RENAME', 'Rename documents uploaded?<br><small>If the option is no and you uploaded a file with a name that already exists on the server, it will be overwritten</small>');
 define('_MA_XMDOC_CATEGORY_SIZE', 'Maximum upload size');
 define('_MA_XMDOC_CATEGORY_SUREDEL', 'Sure to delete this category? %s');
 define('_MA_XMDOC_CATEGORY_UNIT', '[kB]');

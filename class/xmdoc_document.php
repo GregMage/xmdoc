@@ -88,7 +88,9 @@ class xmdoc_document extends XoopsObject
             include_once XOOPS_ROOT_PATH . '/class/uploader.php';
             $uploader_document_img = new XoopsMediaUploader($path_document . $folder .'/', XmdocUtility::ExtensionToMime($category->getVar('category_extensions')), $category->getVar('category_size') * 1024, null, null);
             if ($uploader_document_img->fetchMedia('document_document')) {
-                $uploader_document_img->setPrefix('document_');
+				if ($category->getVar('category_rename') == true){
+					$uploader_document_img->setPrefix('document_');
+				}                
                 if (!$uploader_document_img->upload()) {
                     $error_message .= $uploader_document_img->getErrors() . '<br />';
                 } else {

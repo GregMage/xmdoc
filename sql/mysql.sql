@@ -6,6 +6,7 @@ CREATE TABLE `xmdoc_category` (
   `category_size`           int(11)             NOT NULL DEFAULT '500',
   `category_extensions`     text,
   `category_folder`         varchar(50)         NOT NULL DEFAULT '',
+  `category_rename`         tinyint(1)          NOT NULL DEFAULT '1',
   `category_limitdownload`  int(5)              NOT NULL DEFAULT '0',
   `category_limititem`      int(5)              NOT NULL DEFAULT '0',
   `category_weight`         int(11)             NOT NULL DEFAULT '0',

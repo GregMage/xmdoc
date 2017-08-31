@@ -41,6 +41,7 @@ class xmdoc_category extends XoopsObject
         $this->initVar('category_size', XOBJ_DTYPE_INT, 500, false, 11);
         $this->initVar('category_extensions', XOBJ_DTYPE_ARRAY, array());
         $this->initVar('category_folder', XOBJ_DTYPE_TXTBOX, null, false);
+		$this->initVar('category_rename', XOBJ_DTYPE_INT, null, false, 1);
         $this->initVar('category_limitdownload', XOBJ_DTYPE_INT, null, false, 5);
         $this->initVar('category_limititem', XOBJ_DTYPE_INT, null, false, 5);
         $this->initVar('category_weight', XOBJ_DTYPE_INT, null, false, 11);
@@ -97,6 +98,7 @@ class xmdoc_category extends XoopsObject
         $this->setVar('category_name', Xmf\Request::getString('category_name', ''));
         $this->setVar('category_description',  Xmf\Request::getText('category_description', ''));
         $this->setVar('category_extensions', Xmf\Request::getArray('category_extensions', array()));
+        $this->setVar('category_rename', Xmf\Request::getInt('category_rename', 0));
         $this->setVar('category_status', Xmf\Request::getInt('category_status', 1));
         if ($this->getVar('category_folder') == '') {
             $folder = XmdocUtility::creatFolder($path_document);
@@ -154,9 +156,11 @@ class xmdoc_category extends XoopsObject
             $form->addElement(new XoopsFormHidden('category_id', $this->getVar('category_id')));
             $status = $this->getVar('category_status');
             $weight = $this->getVar('category_weight');
+			$rename = $this->getVar('category_rename');
         } else {
             $status = 1;
             $weight = 0;
+            $rename = 1;
         }
 
         // title
@@ -213,8 +217,11 @@ class xmdoc_category extends XoopsObject
         // limititem
         $form->addElement(new XoopsFormText(_MA_XMDOC_CATEGORY_LIMITITEM, 'category_limititem', 5, 5, $this->getVar('category_limititem')), true);
 
+		// rename
+        $form->addElement(new XoopsFormRadioYN(_MA_XMDOC_CATEGORY_RENAME, 'category_rename', $rename), true);
+
         // weight
-        $form->addElement(new XoopsFormText(_MA_XMDOC_CATEGORY_WEIGHT, 'category_weight', 5, 5, $weight), true);
+        $form->addElement(new XoopsFormText(_MA_XMDOC_CATEGORY_WEIGHT, 'category_weight', 5, 5, $weight));
 
 		// status
         $form_status = new XoopsFormRadio(_MA_XMDOC_STATUS, 'category_status', $status);
