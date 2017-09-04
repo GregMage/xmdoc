@@ -147,6 +147,14 @@ class xmdoc_document extends XoopsObject
 				$this->setVar('document_mdate', 0);
 			}
         }
+		// Captcha
+        if ($xoopsModuleConfig['general_captcha'] == 1) {
+            xoops_load('xoopscaptcha');
+            $xoopsCaptcha = XoopsCaptcha::getInstance();
+            if (! $xoopsCaptcha->verify() ) {
+                $error_message .= $xoopsCaptcha->getMessage();
+            }
+        }
 
         if ($error_message == '') {
             $this->setVar('document_weight', Xmf\Request::getInt('document_weight', 0));
@@ -323,6 +331,11 @@ class xmdoc_document extends XoopsObject
         $options = array(1 => _MA_XMDOC_STATUS_A, 0 =>_MA_XMDOC_STATUS_NA,);
         $form_status->addOptionArray($options);
         $form->addElement($form_status);
+		
+		//captcha		
+		if ($helper->getConfig('general_captcha', 0) == 1) {
+			$form->addElement(new XoopsFormCaptcha(), true);
+		}
 
         $form->addElement(new XoopsFormHidden('op', 'save'));
         // submit
