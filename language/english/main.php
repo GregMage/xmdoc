@@ -81,10 +81,10 @@ define('_MA_XMDOC_DOCUMENT_WEIGHT', 'Weight');
 
 // permission
 define('_MA_XMDOC_PERMISSION_VIEW', 'View Permissions');
-define('_MA_XMDOC_PERMISSION_VIEW_DSC', 'Select groups that can view an article in categories');
+define('_MA_XMDOC_PERMISSION_VIEW_DSC', 'Select groups that can view a document in categories');
 define('_MA_XMDOC_PERMISSION_VIEW_THIS', 'Select groups that can view in this category');
 define('_MA_XMDOC_PERMISSION_SUBMIT', 'Submit permission');
-define('_MA_XMDOC_PERMISSION_SUBMIT_DSC', 'Select groups that can submit an article in categories');
+define('_MA_XMDOC_PERMISSION_SUBMIT_DSC', 'Select groups that can submit a document in categories');
 define('_MA_XMDOC_PERMISSION_SUBMIT_THIS', 'Select groups that can submit in this category');
 
 // utility
