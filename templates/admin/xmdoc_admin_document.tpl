@@ -51,6 +51,7 @@
             <th class="txtleft width15"><{$smarty.const._MA_XMDOC_DOCUMENT_CATEGORY}></th>
             <th class="txtleft width15"><{$smarty.const._MA_XMDOC_DOCUMENT_NAME}></th>
             <th class="txtleft"><{$smarty.const._MA_XMDOC_DOCUMENT_DESC}></th>
+            <th class="txtcenter width5"><{$smarty.const._MA_XMDOC_FORMDOC_DOWNLOAD}></th> 
             <th class="txtcenter width10"><{$smarty.const._MA_XMDOC_DOCUMENT_SHOWINFO}></th>          
             <th class="txtcenter width5"><{$smarty.const._MA_XMDOC_DOCUMENT_WEIGHT}></th>
             <th class="txtcenter width5"><{$smarty.const._MA_XMDOC_STATUS}></th>
@@ -64,6 +65,7 @@
                 <td class="txtleft"><{$document.category}></td>
                 <td class="txtleft"><{$document.name}></td>
                 <td class="txtleft"><{$document.description}></td>
+                <td class="txtcenter"><{$document.counter}></td>
                 <{if $document.showinfo == 0}>
                     <td class="txtcenter"><span style="color: red; font-weight:bold;"><{$smarty.const._NO}><span></td>
                 <{else}>

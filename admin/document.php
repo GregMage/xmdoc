@@ -90,6 +90,7 @@ switch ($op) {
                 $document['categoryid']      = $document_arr[$i]->getVar('document_category');
                 $document['document']        = $document_arr[$i]->getVar('document_document');
                 $document['description']     = \Xmf\Metagen::generateDescription($document_arr[$i]->getVar('document_description', 'show'), 30);
+                $document['counter']         = $document_arr[$i]->getVar('document_counter');
                 $document['showinfo']        = $document_arr[$i]->getVar('document_showinfo');
                 $document['weight']          = $document_arr[$i]->getVar('document_weight');
                 $document['status']          = $document_arr[$i]->getVar('document_status');
