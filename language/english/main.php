@@ -24,6 +24,7 @@ define('_MA_XMDOC_DOCUMENT_ADD', 'Add document');
 define('_MA_XMDOC_DOCUMENT_LIST', 'Document list');
 
 // Error message
+define('_MA_XMDOC_ERROR_NACTIVE', 'Error: Disable content!');
 define('_MA_XMDOC_ERROR_NOACESSCATEGORY', 'You don\'t have access to any categories');
 define('_MA_XMDOC_ERROR_NOCATEGORY', 'There are no categories in the database');
 define('_MA_XMDOC_ERROR_NODOCUMENT', 'There are no documents in the database');

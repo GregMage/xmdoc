@@ -234,4 +234,23 @@ class XmdocUtility
         }
     }
     
+    /**
+     * formatURL()
+     *
+     * @param mixed $url
+     * @return mixed|string
+     */
+    public static function formatURL($url)
+    {
+        $url = trim($url);
+        if ($url != '') {
+            if ((!preg_match('/^http[s]*:\/\//i', $url)) && (!preg_match('/^ftp*:\/\//i', $url)) && (!preg_match('/^ed2k*:\/\//i', $url))) {
+                $url = 'http://' . $url;
+            }
+        }
+        return $url;
+    }
+    
+    
+    
 }
