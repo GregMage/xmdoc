@@ -51,6 +51,10 @@ if ($category->getVar('category_status') == 0 || $document->getVar('document_sta
     redirect_header(XOOPS_URL, 2, _MA_XMDOC_ERROR_NACTIVE);
 }
 
+//counter
+$sql = 'UPDATE ' . $xoopsDB->prefix('xmdoc_document') . ' SET document_counter=document_counter+1 WHERE document_id = ' . $doc_id;
+$xoopsDB->queryF($sql);
+
 $url = XmdocUtility::formatURL($document->getVar('document_document'));
 Header("Location: $url");
 exit();
