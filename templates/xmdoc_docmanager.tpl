@@ -58,7 +58,12 @@
 					<tr class="<{cycle values='even,odd'}> alignmiddle">
 						<td class="txtcenter"><input type="checkbox" name="selDocs[]" id="selDocs<{$document.id}>"  title="Selectio documents" value="<{$document.id}>"  /></td>
 						<td class="txtcenter"><{$document.logo}></td>
-						<td class="txtleft"><h4><{$document.name}></h4><br><{$document.description}></td>
+						<td class="txtleft">
+                            <a title="<{$document.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank">
+                                <h4><{$document.name}></h4>
+                            </a>
+                            <br><{$document.description}>
+                        </td>
 					</tr>
 				<{/foreach}>
 
