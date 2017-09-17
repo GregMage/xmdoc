@@ -4,14 +4,14 @@
             <div class="xm-document-logo">
                 <img src="<{$document.logo}>" alt="<{$document.name}>">
             </div>
-            <a class="xm-document-title" title="<{$document.name}>" href="">
+            <a class="xm-document-title" title="<{$document.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank">
                 <{$document.name}>
             </a>
 
             <div class="xm-document-description">
                 <{$document.description_short}> <button type="button" class="btn btn-default btn-xs glyphicon glyphicon-eye-open" data-toggle="modal" data-target="#myModal<{$document.id}>"></button>
             </div>
-            <a class="btn btn-primary btn-xs col-md-9" title="<{$document.name}>" href="">
+            <a class="btn btn-primary btn-xs col-md-9" title="<{$document.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank">
                 <{$smarty.const._MA_XMDOC_DOWNLOAD}>
             </a>
         </div>

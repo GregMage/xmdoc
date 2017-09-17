@@ -79,7 +79,7 @@
                     title="<{if $document.status}><{$smarty.const._MA_XMDOC_STATUS_NA}><{else}><{$smarty.const._MA_XMDOC_STATUS_A}><{/if}>"/>
                 </td>
                 <td class="xo-actions txtcenter">
-                    <a class="tooltip" href="<{$document.document}>" title="<{$smarty.const._MA_XMDOC_VIEW}>">
+                    <a class="tooltip" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" title="<{$smarty.const._MA_XMDOC_VIEW}>" target="_blank">
                         <img src="<{xoAdminIcons view.png}>" alt="<{$smarty.const._MA_XMDOC_VIEW}>"/>
                     </a>
                     <a class="tooltip" href="document.php?op=edit&amp;document_id=<{$document.id}>" title="<{$smarty.const._MA_XMDOC_EDIT}>">

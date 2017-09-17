@@ -87,6 +87,7 @@ switch ($op) {
                 $document['id']              = $document_id;
                 $document['name']            = $document_arr[$i]->getVar('document_name');
                 $document['category']        = $document_arr[$i]->getVar('category_name');
+                $document['categoryid']      = $document_arr[$i]->getVar('document_category');
                 $document['document']        = $document_arr[$i]->getVar('document_document');
                 $document['description']     = \Xmf\Metagen::generateDescription($document_arr[$i]->getVar('document_description', 'show'), 30);
                 $document['showinfo']        = $document_arr[$i]->getVar('document_showinfo');
