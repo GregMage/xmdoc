@@ -46,3 +46,14 @@ CREATE TABLE `xmdoc_docdata` (
   PRIMARY KEY (`docdata_id`),
   KEY `docdata_docid` (`docdata_docid`)
 ) ENGINE=MyISAM;
+
+CREATE TABLE `xmdoc_downlimit` (
+  `downlimit_id`           int(11) unsigned    NOT NULL AUTO_INCREMENT,
+  `downlimit_docid`        int(11)             NOT NULL DEFAULT '0',
+  `downlimit_catid`        int(11)             NOT NULL DEFAULT '0',
+  `downlimit_uid`          int(11)             NOT NULL DEFAULT '0',
+  `downlimit_hostname`     varchar(50)         NOT NULL DEFAULT '',
+  `downlimit_date`         int(10) unsigned    NOT NULL DEFAULT '0',
+  
+  PRIMARY KEY (`downlimit_id`)
+) ENGINE=MyISAM;

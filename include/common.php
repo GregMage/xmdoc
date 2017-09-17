@@ -24,6 +24,7 @@ $helper = Helper::getHelper(basename(dirname(__DIR__)));
 $categoryHandler = $helper->getHandler('xmdoc_category');
 $documentHandler = $helper->getHandler('xmdoc_document');
 $docdataHandler = $helper->getHandler('xmdoc_docdata');
+$downlimitHandler = $helper->getHandler('xmdoc_downlimit');
 
 // Path & url Config
 $url_logo_category = XOOPS_UPLOAD_URL . '/xmdoc/images/category/';

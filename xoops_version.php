@@ -53,6 +53,7 @@ $modversion['sqlfile']['mysql'] = 'sql/mysql.sql';
 $modversion['tables'][1] = 'xmdoc_category';
 $modversion['tables'][2] = 'xmdoc_document';
 $modversion['tables'][3] = 'xmdoc_docdata';
+$modversion['tables'][4] = 'xmdoc_downlimit';
 
 // Admin Templates
 $modversion['templates'][] = array('file' => 'xmdoc_admin_category.tpl', 'description' => '', 'type' => 'admin');

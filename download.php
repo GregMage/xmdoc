@@ -51,6 +51,55 @@ if ($category->getVar('category_status') == 0 || $document->getVar('document_sta
     redirect_header(XOOPS_URL, 2, _MA_XMDOC_ERROR_NACTIVE);
 }
 
+//check download limit download
+if ($category->getVar('category_limitdownload') != 0){
+    $limitdownload = $category->getVar('category_limitdownload');
+    $yesterday = time() - 86400; //24hrs    
+    $criteria = new CriteriaCompo();
+    if ($xoopsUser) {
+        $criteria->add(new Criteria('downlimit_uid', $xoopsUser->getVar('uid') , '='));
+    } else {
+        $criteria->add(new Criteria('downlimit_hostname', getenv("REMOTE_ADDR"), '='));
+    }
+    $criteria->add(new Criteria('downlimit_date', $yesterday , '>'));
+    $criteria->add(new Criteria('downlimit_catid', $cat_id , '='));
+    $downlimit_count = $downlimitHandler->getCount($criteria);
+    if ($downlimit_count >= $limitdownload) {
+        redirect_header(XOOPS_URL, 5, sprintf(_MA_XMDOC_ERROR_LIMITDOWNLOAD, $downlimit_count, $limitdownload));
+    }    
+}
+
+//check download limit item
+if ($category->getVar('category_limititem') != 0){
+    $limititem = $category->getVar('category_limititem');
+    $yesterday = time() - 86400; //24hrs    
+    $criteria = new CriteriaCompo();
+    if ($xoopsUser) {
+        $criteria->add(new Criteria('downlimit_uid', $xoopsUser->getVar('uid') , '='));
+    } else {
+        $criteria->add(new Criteria('downlimit_hostname', getenv("REMOTE_ADDR"), '='));
+    }
+    $criteria->add(new Criteria('downlimit_date', $yesterday , '>'));
+    $criteria->add(new Criteria('downlimit_docid', $doc_id , '='));
+    $downlimit_count = $downlimitHandler->getCount($criteria);
+    if ($downlimit_count >= $limititem) {
+        redirect_header(XOOPS_URL, 5, sprintf(_MA_XMDOC_ERROR_LIMITDOWNLOADITEM, $downlimit_count, $limititem));
+    }    
+}
+
+// save information to limit downloading 
+if ($category->getVar('category_limitdownload') != 0 || $category->getVar('category_limititem') != 0){
+    $obj = $downlimitHandler->create();
+    $obj->setVar('downlimit_docid', $doc_id);
+    $obj->setVar('downlimit_catid', $cat_id);
+    $obj->setVar('downlimit_uid', !empty($xoopsUser) ? $xoopsUser->getVar('uid') : 0);
+    $obj->setVar('downlimit_hostname', getenv("REMOTE_ADDR"));
+    $obj->setVar('downlimit_date', time());
+    $downlimitHandler->insert($obj) or $obj->getHtmlErrors();
+}
+
+
+
 // checkhost
 if ($helper->getConfig('download_checkhost', 0) == 1) {
     $goodhost      = false;
