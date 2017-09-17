@@ -71,7 +71,7 @@ class xmdoc_document extends XoopsObject
             $action = $_SERVER['REQUEST_URI'];
         }
         include __DIR__ . '/../include/common.php';
-
+        $helper = \Xmf\Module\Helper::getHelper('xmdoc');
         $error_message = '';
         $upload_size = 512000;
         // test error
