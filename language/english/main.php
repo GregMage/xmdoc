@@ -28,6 +28,7 @@ define('_MA_XMDOC_ERROR_NACTIVE', 'Error: Disable content!');
 define('_MA_XMDOC_ERROR_NOACESSCATEGORY', 'You don\'t have access to any categories');
 define('_MA_XMDOC_ERROR_NOCATEGORY', 'There are no categories in the database');
 define('_MA_XMDOC_ERROR_NODOCUMENT', 'There are no documents in the database');
+define('_MA_XMDOC_ERROR_NOPERMISETOLINK', 'This file does not belong to the website from where you are coming.<br /><br />thanks for writing an email to the webmaster of the website from where you are coming and tell him: <br /><strong>NO OWNERSHIP OF LINKS FROM OTHER SITES! (LEECH)</strong><br /><br /><strong>Leecher definition: </strong>Someone who is lazy to link to its own server or steals the hard work done by other people <br /><br />You are already <strong>registered</strong>.');
 define('_MA_XMDOC_ERROR_PERMISSION', 'To use permissions, you must create categories.');
 define('_MA_XMDOC_ERROR_WEIGHT', 'Weight must be a number');
 

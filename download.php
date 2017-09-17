@@ -51,6 +51,25 @@ if ($category->getVar('category_status') == 0 || $document->getVar('document_sta
     redirect_header(XOOPS_URL, 2, _MA_XMDOC_ERROR_NACTIVE);
 }
 
+// checkhost
+if ($helper->getConfig('download_checkhost', 0) == 1) {
+    $goodhost      = false;
+    $referer       = parse_url(xoops_getenv('HTTP_REFERER'));
+    $referer_host  = $referer['host'];
+    $host          = $helper->getConfig('download_host');
+    foreach ($host as $ref) {
+        if ( !empty($ref) && preg_match("/".$ref."/i", $referer_host) ) {
+            $goodhost = true;
+            break;
+        }
+    }
+    if ($goodhost == false) {
+        redirect_header(XOOPS_URL, 30, _MA_XMDOC_ERROR_NOPERMISETOLINK);
+    }
+}
+
+
+
 //counter
 $sql = 'UPDATE ' . $xoopsDB->prefix('xmdoc_document') . ' SET document_counter=document_counter+1 WHERE document_id = ' . $doc_id;
 $xoopsDB->queryF($sql);
