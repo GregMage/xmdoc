@@ -32,7 +32,7 @@ $doc_id  = Request::getInt('doc_id', 0);
 
 // Checking access
 if ($cat_id == 0) {
-    redirect_header(XOOPS_URL, 2, _MA_XMDOC_ERROR_NOCATEGORY . 'AAA');
+    redirect_header(XOOPS_URL, 2, _MA_XMDOC_ERROR_NOCATEGORY);
 }
 // permission to view
 $permHelper->checkPermissionRedirect('xmdoc_view', $cat_id, 'index.php', 2, _NOPERM);
@@ -42,7 +42,7 @@ if ($doc_id == 0) {
 $category = $categoryHandler->get($cat_id);
 $document = $documentHandler->get($doc_id);
 if (count($category) == 0) {
-    redirect_header(XOOPS_URL, 2, _MA_XMDOC_ERROR_NOCATEGORY . 'BBB');
+    redirect_header(XOOPS_URL, 2, _MA_XMDOC_ERROR_NOCATEGORY);
 }
 if (count($document) == 0) {
     redirect_header(XOOPS_URL, 2, _MA_XMDOC_ERROR_NODOCUMENT);

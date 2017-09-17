@@ -38,22 +38,22 @@
                                         <div class="col-md-6"><span class="glyphicon glyphicon-calendar" title="<{$smarty.const._MA_XMDOC_FORMDOC_DATE}>"></span>
                                             <{$smarty.const._MA_XMDOC_FORMDOC_DATE}>: <{$document.date}>
                                         </div>
-                                        <div class="col-md-6"><span class="glyphicon glyphicon-user" title="<{$smarty.const._MA_XMARTICLE_AUTHOR}>"></span>
+                                        <div class="col-md-6"><span class="glyphicon glyphicon-user" title="<{$smarty.const._MA_XMDOC_FORMDOC_AUTHOR}>"></span>
                                             <{$smarty.const._MA_XMDOC_FORMDOC_AUTHOR}>: <{$document.author}>
                                         </div>
                                     </div>
                                     <{if $document.mdate}>
                                     <div class="row xm-document-view">
-                                        <div class="col-md-6"><span class="glyphicon glyphicon-calendar" title="<{$smarty.const._MA_XMARTICLE_MDATE}>"></span>
+                                        <div class="col-md-6"><span class="glyphicon glyphicon-calendar" title="<{$smarty.const._MA_XMDOC_FORMDOC_MDATE}>"></span>
                                             <{$smarty.const._MA_XMDOC_FORMDOC_MDATE}>: <{$document.mdate}>
                                         </div>
                                     </div>
                                     <{/if}>
                                     <div class="row xm-document-view">
-                                        <div class="col-md-6"><span class="glyphicon glyphicon-download-alt" title="<{$smarty.const._MA_XMARTICLE_DATE}>"></span>
+                                        <div class="col-md-6"><span class="glyphicon glyphicon-download-alt" title="<{$smarty.const._MA_XMDOC_FORMDOC_DOWNLOAD}>"></span>
                                             <{$smarty.const._MA_XMDOC_FORMDOC_DOWNLOAD}>: <{$document.counter}>
                                         </div>
-                                        <div class="col-md-6"><span class="glyphicon glyphicon-star-empty" title="<{$smarty.const._MA_XMARTICLE_DATE}>"></span>
+                                        <div class="col-md-6"><span class="glyphicon glyphicon-star-empty" title="<{$smarty.const._MA_XMDOC_FORMDOC_RATING}>"></span>
                                             <{$smarty.const._MA_XMDOC_FORMDOC_RATING}>: <{$document.rating}> <{$document.votes}>
                                         </div>
                                     </div>
