@@ -148,7 +148,7 @@ class xmdoc_document extends XoopsObject
 			}
         }
 		// Captcha
-        if ($xoopsModuleConfig['general_captcha'] == 1) {
+        if ($helper->getConfig('general_captcha', 0) == 1) {
             xoops_load('xoopscaptcha');
             $xoopsCaptcha = XoopsCaptcha::getInstance();
             if (! $xoopsCaptcha->verify() ) {
