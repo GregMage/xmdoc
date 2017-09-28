@@ -67,8 +67,7 @@ if (isset($tab_perm)){
 			$permissionDescription = _MA_XMDOC_PERMISSION_OTHER_DSC;
 			$global_perms_array    = [
 				'4' => _MA_XMDOC_PERMISSION_OTHER_4 ,
-				'8' => _MA_XMDOC_PERMISSION_OTHER_8,
-				'16' => _MA_XMDOC_PERMISSION_OTHER_16
+				'16' => _MA_XMDOC_PERMISSION_OTHER_8
 			];
 			break;
     }
