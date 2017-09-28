@@ -38,6 +38,9 @@
 			<{$form}>
 		</div>
 	<{/if}>
+	<div id="addimage" class="txtright">
+		<a href="<{$xoops_url}>/modules/xmdoc/action.php?op=add" title="<{$smarty.const._MA_XMDOC_DOCUMENT_ADD}>" target="_blank"><{$smarty.const._MA_XMDOC_DOCUMENT_ADD}></a>
+	</div>
 	<{if $error_message != ''}>
 		<div class="errorMsg" style="text-align: left;">
 			<{$error_message}>
