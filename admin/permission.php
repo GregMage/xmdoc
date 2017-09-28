@@ -31,7 +31,10 @@ $permission = Request::getInt('permission', 1);
 $criteria = new CriteriaCompo();
 $category_arr = $categoryHandler->getall($criteria);
 if (count($category_arr) > 0) {
-    $tab_perm = array(1 => _MA_XMDOC_PERMISSION_VIEW, 2 => _MA_XMDOC_PERMISSION_SUBMIT);
+    $tab_perm = array(1 => _MA_XMDOC_PERMISSION_VIEW, 2 => _MA_XMDOC_PERMISSION_SUBMIT, 3 => _MA_XMDOC_PERMISSION_OTHER);
+} else {
+    $tab_perm = [3 => _MA_XMDOC_PERMISSION_OTHER];
+    $permission = 3;
 }
 if (isset($tab_perm)){
     $permission_options = '';
@@ -58,6 +61,16 @@ if (isset($tab_perm)){
                 $global_perms_array[$i] = $category_arr[$i]->getVar('category_name');
             }
             break;
+		case 3:    // Other permission
+			$formTitle = _MA_XMDOC_PERMISSION_OTHER;
+			$permissionName = 'xmdoc_other';
+			$permissionDescription = _MA_XMDOC_PERMISSION_OTHER_DSC;
+			$global_perms_array    = [
+				'4' => _MA_XMDOC_PERMISSION_OTHER_4 ,
+				'8' => _MA_XMDOC_PERMISSION_OTHER_8,
+				'16' => _MA_XMDOC_PERMISSION_OTHER_16
+			];
+			break;
     }
     $permissionsForm = new XoopsGroupPermForm($formTitle, $helper->getModule()->getVar('mid'), $permissionName, $permissionDescription, 'admin/permission.php?permission=' . $permission);
     foreach ($global_perms_array as $perm_id => $permissionName) {
