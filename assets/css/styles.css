@@ -50,3 +50,8 @@ a.xm-category-image {
     max-height: 120px;
     min-height: 120px;
 }
+
+.xm-document-general-button {
+    text-align: center;
+	padding-top: 15px;
+}
