@@ -1,5 +1,8 @@
 <div class="xmdoc">
     <{if count($categories) gt 0}>
+        <ol class="breadcrumb">
+            <li class="active"><{$smarty.const._MA_XMDOC_SELECTCATEGORY}></li>
+        </ol>
 		<div class="xm-category row">
 			<{foreach item=category from=$categories}>
 				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 xm-category-list">
@@ -51,19 +54,24 @@
 			<{$error_message}>
 		</div>
 	<{/if}>    
-	<{if $tips != ''}>
-		<div class="alert alert-info alert-dismissible" role="alert">
-			<div class="floatleft">
-				<h4><{$smarty.const._MA_XMDOC_DOCUMENT_DOCUMENT}></h4>
-				<ul>
-					<li><{$smarty.const._MA_XMDOC_CATEGORY_SIZE}>: <{$size}></li>
-					<li><{$smarty.const._MA_XMDOC_CATEGORY_EXTENSION}>: <{$extensions}></li>
-				</ul>        
-			</div>
-			<div class="clear">&nbsp;</div>
-		</div>
-	<{/if}>
+
 	<{if $form}>
+        <ol class="breadcrumb">
+            <li><a href="action.php?op=add"><{$smarty.const._MA_XMDOC_SELECTCATEGORY}></a></li>
+            <li class="active"><{$smarty.const._MA_XMDOC_ADD}></li>
+        </ol>
+        <{if $tips != ''}>
+            <div class="alert alert-info alert-dismissible" role="alert">
+                <div class="floatleft">
+                    <h4><{$smarty.const._MA_XMDOC_DOCUMENT_DOCUMENT}></h4>
+                    <ul>
+                        <li><{$smarty.const._MA_XMDOC_CATEGORY_SIZE}>: <{$size}></li>
+                        <li><{$smarty.const._MA_XMDOC_CATEGORY_EXTENSION}>: <{$extensions}></li>
+                    </ul>        
+                </div>
+                <div class="clear">&nbsp;</div>
+            </div>
+        <{/if}>
 		<div>
 			<{$form}>
 		</div>

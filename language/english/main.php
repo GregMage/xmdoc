@@ -116,5 +116,6 @@ define('_MA_XMDOC_FORMDOC_SELECT', 'Select');
 define('_MA_XMDOC_FORMDOC_SELECTED', 'Documents selected');
 define('_MA_XMDOC_FORMDOC_VOTES', '(%s Votes)');
 
-// viewdoc
+// user
 define('_MA_XMDOC_DOWNLOAD', 'Download');
+define('_MA_XMDOC_SELECTCATEGORY', 'Select a category to add an item to');
