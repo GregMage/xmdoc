@@ -72,7 +72,7 @@ $modversion['blocks'][] = array(
     'description' => _MI_XMDOC_BLOCK_DATE_DESC,
     'show_func'   => 'block_xmdoc_show',
     'edit_func'   => 'block_xmdoc_edit',
-	'options'     => 'date|0|5',
+	'options'     => '0|5|date',
     'template'    => 'xmdoc_block.tpl'
 );
 $modversion['blocks'][] = array(
@@ -81,7 +81,7 @@ $modversion['blocks'][] = array(
     'description' => _MI_XMDOC_BLOCK_HITS_DESC,
     'show_func'   => 'block_xmdoc_show',
     'edit_func'   => 'block_xmdoc_edit',
-	'options'     => 'hits|0|5',
+	'options'     => '0|5|hits',
     'template'    => 'xmdoc_block.tpl'
 );
 $modversion['blocks'][] = array(
@@ -90,7 +90,7 @@ $modversion['blocks'][] = array(
     'description' => _MI_XMDOC_BLOCK_RATING_DESC,
     'show_func'   => 'block_xmdoc_show',
     'edit_func'   => 'block_xmdoc_edit',
-	'options'     => 'rating|0|5',
+	'options'     => '0|5|rating',
     'template'    => 'xmdoc_block.tpl'
 );
 $modversion['blocks'][] = array(
@@ -99,7 +99,7 @@ $modversion['blocks'][] = array(
     'description' => _MI_XMDOC_BLOCK_RANDOM_DESC,
     'show_func'   => 'block_xmdoc_show',
     'edit_func'   => 'block_xmdoc_edit',
-	'options'     => 'random|0|5',
+	'options'     => '0|5|random',
     'template'    => 'xmdoc_block.tpl'
 );
 

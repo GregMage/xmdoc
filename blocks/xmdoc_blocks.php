@@ -23,9 +23,11 @@ function block_xmdoc_show($options) {
 	$helper = Helper::getHelper('xmdoc');
 	$helper->loadLanguage('main');
 	
+	$block = array();
+	
 	$criteria = new CriteriaCompo();
 	$criteria->add(new Criteria('document_status', 1));
-	switch ($options[0]) {
+	switch ($options[2]) {
         case "date":
 			$criteria->setSort('document_date DESC, document_name');
 			$criteria->setOrder('ASC');
@@ -45,11 +47,11 @@ function block_xmdoc_show($options) {
             $criteria->setSort('RAND()');
         break;
     }
-	$category_ids = explode(',', $options[1]);
+	$category_ids = explode(',', $options[0]);
 	if (!in_array(0, $category_ids)) {
-        $criteria->add(new Criteria('category_id', '(' . $options[1] . ')', 'IN'));
+        $criteria->add(new Criteria('category_id', '(' . $options[0] . ')', 'IN'));
     }
-	$criteria->setLimit($options[2]);
+	$criteria->setLimit($options[1]);
 	$documentHandler->table_link = $documentHandler->db->prefix("xmdoc_category");
 	$documentHandler->field_link = "category_id";
 	$documentHandler->field_object = "document_category";
@@ -97,14 +99,15 @@ function block_xmdoc_edit($options) {
     xoops_load('XoopsFormLoader');
 
     $form = new XmdocBlockForm();
-	$category = new XoopsFormSelect(_MB_XMDOC_CATEGORY, 'options[1]', $options[1], 5, true);
+	$category = new XoopsFormSelect(_MB_XMDOC_CATEGORY, 'options[0]', $options[0], 5, true);
 	$category->addOption(0, _MB_XMDOC_ALLCATEGORY);
 	foreach (array_keys($category_arr) as $i) {
-		$category->addOption($category_arr[$i]->getVar('category_id'), $category_arr[$i]->getVar('category_title'));
+		$category->addOption($category_arr[$i]->getVar('category_id'), $category_arr[$i]->getVar('category_name'));
 	}
 	
 	$form->addElement($category);
-	$form->addElement(new XoopsFormText(_MB_XMDOC_NBDOC, '$options[1]', 5, 5, $options[2]), true);
+	$form->addElement(new XoopsFormText(_MB_XMDOC_NBDOC, 'options[1]', 5, 5, $options[1]), true);
+	$form->addElement(new XoopsFormHidden('options[2]', $options[2]));
 
 	return $form->render();
 }
