@@ -65,6 +65,44 @@ $modversion['templates'][] = array('file' => 'xmdoc_docmanager.tpl', 'descriptio
 $modversion['templates'][] = array('file' => 'xmdoc_viewdoc.tpl', 'description' => '');
 $modversion['templates'][] = array('file' => 'xmdoc_action.tpl', 'description' => '');
 
+// Blocks
+$modversion['blocks'][] = array(
+    'file'        => 'xmdoc_blocks.php',
+    'name'        => _MI_XMDOC_BLOCK_DATE,
+    'description' => _MI_XMDOC_BLOCK_DATE_DESC,
+    'show_func'   => 'block_xmdoc_show',
+    'edit_func'   => 'block_xmdoc_edit',
+	'options'     => 'date|0|5',
+    'template'    => 'xmdoc_block.tpl'
+);
+$modversion['blocks'][] = array(
+    'file'        => 'xmdoc_blocks.php',
+    'name'        => _MI_XMDOC_BLOCK_HITS,
+    'description' => _MI_XMDOC_BLOCK_HITS_DESC,
+    'show_func'   => 'block_xmdoc_show',
+    'edit_func'   => 'block_xmdoc_edit',
+	'options'     => 'hits|0|5',
+    'template'    => 'xmdoc_block.tpl'
+);
+$modversion['blocks'][] = array(
+    'file'        => 'xmdoc_blocks.php',
+    'name'        => _MI_XMDOC_BLOCK_RATING,
+    'description' => _MI_XMDOC_BLOCK_RATING_DESC,
+    'show_func'   => 'block_xmdoc_show',
+    'edit_func'   => 'block_xmdoc_edit',
+	'options'     => 'rating|0|5',
+    'template'    => 'xmdoc_block.tpl'
+);
+$modversion['blocks'][] = array(
+    'file'        => 'xmdoc_blocks.php',
+    'name'        => _MI_XMDOC_BLOCK_RANDOM,
+    'description' => _MI_XMDOC_BLOCK_RANDOM_DESC,
+    'show_func'   => 'block_xmdoc_show',
+    'edit_func'   => 'block_xmdoc_edit',
+	'options'     => 'random|0|5',
+    'template'    => 'xmdoc_block.tpl'
+);
+
 // Configs
 $modversion['config'] = array();
 

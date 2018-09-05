@@ -27,8 +27,15 @@ define('_MI_XMDOC_MENU_DOCUMENT', 'Document');
 define('_MI_XMDOC_MENU_PERMISSION', 'Permission');
 define('_MI_XMDOC_MENU_ABOUT', 'About');
 
-// Sub menu
-
+// Block
+define('_MI_XMDOC_BLOCK_DATE', 'Recent Documents');
+define('_MI_XMDOC_BLOCK_DATE_DESC', 'Display Recent Documents');
+define('_MI_XMDOC_BLOCK_HITS', 'Top Documents');
+define('_MI_XMDOC_BLOCK_HITS_DESC', 'Display Top Documents');
+define('_MI_XMDOC_BLOCK_RATING', 'Top Rated Documents');
+define('_MI_XMDOC_BLOCK_RATING_DESC', 'Display Top Rated Documents');
+define('_MI_XMDOC_BLOCK_RANDOM', 'Random Documents');
+define('_MI_XMDOC_BLOCK_RANDOM_DESC', 'Display documents randomly');
 
 // Pref
 define('_MI_XMDOC_PREF_HEAD_GENERAL', "<span style='font-weight: bold;'>General</span>");
