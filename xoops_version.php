@@ -31,8 +31,8 @@ $modversion['official']    = 0;
 $modversion['image']       = 'assets/images/xmdoc_logo.png';
 
 // Menu
-/*$modversion['hasMain'] = 1;
-$modversion['sub'][] = array(
+$modversion['hasMain'] = 1;
+/*$modversion['sub'][] = array(
     'name' => _MI_XMDOC_SUB_ADD,
     'url'  => 'action.php?op=add'
 );*/
