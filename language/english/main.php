@@ -95,6 +95,11 @@ define('_MA_XMDOC_PERMISSION_OTHER_DSC', 'Select groups that can:');
 define('_MA_XMDOC_PERMISSION_OTHER_4', 'Submit a document');
 define('_MA_XMDOC_PERMISSION_OTHER_8', 'Delete a document');
 
+// about
+define('_MA_XMDOC_ABOUT_FILEPROTECTION', "Files Protection");
+define('_MA_XMDOC_ABOUT_FILEPROTECTION_INFO1', "To protect your files against unwanted downloads (compared to permissions), you have to create an '.htaccess' file in the folder:");
+define('_MA_XMDOC_ABOUT_FILEPROTECTION_INFO2', "With the following content:");
+
 // utility
 define('_MA_XMDOC_UTILITY_BYTES', "Bytes");
 define('_MA_XMDOC_UTILITY_KBYTES', "kB");

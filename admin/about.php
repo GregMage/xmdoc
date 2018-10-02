@@ -24,6 +24,13 @@ require __DIR__ . '/admin_header.php';
 $moduleAdmin = Admin::getInstance();
 $moduleAdmin->displayNavigation('about.php');
 Admin::setPaypal('9MYQB7GUK5MCS');
+// file protection
+$xoops_url = parse_url(XOOPS_URL);
+$xoops_url = str_replace ('www.','', $xoops_url['host']);
+$file_protection = _MA_XMDOC_ABOUT_FILEPROTECTION_INFO1 . "<br /><br />" . XOOPS_ROOT_PATH . "/uploads/xmdoc/documents/" . "<br /><br />" . _MA_XMDOC_ABOUT_FILEPROTECTION_INFO2 . "<br /><br />";
+$file_protection .= "RewriteEngine on" . "<br />" . "RewriteCond %{HTTP_REFERER} !" . $xoops_url . "/.*$ [NC]<br />ReWriteRule \.*$ - [F]";
+$moduleAdmin->addInfoBox(_MA_XMDOC_ABOUT_FILEPROTECTION);
+$moduleAdmin->addInfoBoxLine($file_protection);
 $moduleAdmin->displayAbout(false);
 
 require __DIR__ . '/admin_footer.php';
