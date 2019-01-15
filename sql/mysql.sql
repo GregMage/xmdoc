@@ -23,6 +23,7 @@ CREATE TABLE `xmdoc_document` (
   `document_description`    text,
   `document_logo`           varchar(50)             NOT NULL DEFAULT '',
   `document_document`       varchar(255)            NOT NULL DEFAULT '',
+  `document_size`           varchar(15)             NOT NULL DEFAULT '',
   `document_userid`         mediumint(8) unsigned   NOT NULL default '0',
   `document_date`           int(10) unsigned        NOT NULL DEFAULT '0',
   `document_mdate`          int(10) unsigned        NOT NULL DEFAULT '0',

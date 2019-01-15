@@ -251,7 +251,30 @@ class XmdocUtility
         }
         return $url;
     }
-    
-    
-    
+     /**
+     * XmdocUtility::GetFileSize()
+     *
+     * @param mixed $url
+     * @return mixed|string
+     */
+    public static function GetFileSize($url)
+    {
+		if (function_exists('curl_init') && false !== ($curlHandle  = curl_init($url))) {
+			$ch = curl_init($url);
+			curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, TRUE);
+			curl_setopt($curlHandle, CURLOPT_HEADER, TRUE);
+			curl_setopt($curlHandle, CURLOPT_NOBODY, TRUE);			
+			$curlReturn = curl_exec($curlHandle);
+			if (false === $curlReturn) {
+				trigger_error(curl_error($curlHandle));
+				$size = 0;
+			} else {
+				$size = curl_getinfo($curlHandle, CURLINFO_CONTENT_LENGTH_DOWNLOAD);
+			}
+			curl_close($curlHandle);
+			return XmdocUtility::FileSizeConvert($size);
+		} else {
+			return 0;
+		}
+    }       
 }

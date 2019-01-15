@@ -40,6 +40,7 @@ class xmdoc_document extends XoopsObject
         $this->initVar('dohtml', XOBJ_DTYPE_INT, 1, false);
         $this->initVar('document_logo', XOBJ_DTYPE_TXTBOX, null, false);
         $this->initVar('document_document', XOBJ_DTYPE_TXTBOX, null, false);
+		$this->initVar('document_size', XOBJ_DTYPE_TXTBOX, null, false);
         $this->initVar('document_userid', XOBJ_DTYPE_INT, null, false, 8);
         $this->initVar('document_date', XOBJ_DTYPE_INT, null, false, 10);
         $this->initVar('document_mdate', XOBJ_DTYPE_INT, null, false, 10);
@@ -81,6 +82,7 @@ class xmdoc_document extends XoopsObject
         }
         
         // document
+		$mediaSize = 0;
         $category_id = Xmf\Request::getInt('document_category', 1);
         $category = $categoryHandler->get($category_id);
         $folder = $category->getVar('category_folder');
@@ -94,6 +96,7 @@ class xmdoc_document extends XoopsObject
                 if (!$uploader_document_img->upload()) {
                     $error_message .= $uploader_document_img->getErrors() . '<br />';
                 } else {
+					$mediaSize = $uploader_document_img->getMediaSize();
                     $this->setVar('document_document', $url_document . $folder .'/' . $uploader_document_img->getSavedFileName());
                 }
             } else {
@@ -125,6 +128,16 @@ class xmdoc_document extends XoopsObject
         $this->setVar('document_description',  Xmf\Request::getText('document_description', ''));
         $this->setVar('document_showinfo', Xmf\Request::getInt('document_showinfo', 1));
         $this->setVar('document_status', Xmf\Request::getInt('document_status', 1));
+		//Automatic file size
+		if (Xmf\Request::getString('sizeValue', '') == ''){
+			if ($mediaSize == 0) {
+				$this->setVar('document_size', XmdocUtility::GetFileSize(Xmf\Request::getString('document_document', '')));
+			} else {
+				$this->setVar('document_size', XmdocUtility::FileSizeConvert($mediaSize));
+			}
+		} else {
+			$this->setVar('document_size', Xmf\Request::getString('sizeValue', '') . ' ' . Xmf\Request::getString('sizeType', ''));
+		}
         
         if (isset($_POST['document_userid'])) {
             $this->setVar('document_userid', Xmf\Request::getInt('document_userid', 0));
@@ -289,6 +302,24 @@ class xmdoc_document extends XoopsObject
         $fileseltray_img->addElement(new XoopsFormLabel(''), false);
         $imgtray_img->addElement($fileseltray_img);
         $form->addElement($imgtray_img);
+		
+		// size		
+		$size_value_arr = explode(' ', $this->getVar('document_size'));
+		$aff_size = new \XoopsFormElementTray(_MA_XMDOC_DOCUMENT_SIZE, '');
+		$aff_size->addElement(new \XoopsFormText('', 'sizeValue', 10, 10, $size_value_arr[0]));
+		if (array_key_exists (1, $size_value_arr) == false){
+			$size_value_arr[1] = _MA_XMDOC_UTILITY_BYTES;
+		}
+		$type     = new \XoopsFormSelect('', 'sizeType', $size_value_arr[1]);
+		$typeArray = [
+			_MA_XMDOC_UTILITY_BYTES  => '[' . _MA_XMDOC_UTILITY_BYTES . ']',
+			_MA_XMDOC_UTILITY_KBYTES => '[' . _MA_XMDOC_UTILITY_KBYTES . ']',
+			_MA_XMDOC_UTILITY_MBYTES => '[' . _MA_XMDOC_UTILITY_MBYTES . ']',
+			_MA_XMDOC_UTILITY_GBYTES => '[' . _MA_XMDOC_UTILITY_GBYTES . ']'
+		];
+		$type->addOptionArray($typeArray);
+		$aff_size->addElement($type);
+		$form->addElement($aff_size);
         
         // showinfo
         $form->addElement(new XoopsFormRadioYN(_MA_XMDOC_DOCUMENT_SHOWINFO, 'document_showinfo', $showinfo));
