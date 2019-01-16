@@ -33,6 +33,7 @@ define('_MA_XMDOC_ERROR_NODOCUMENT', 'There are no documents in the database');
 define('_MA_XMDOC_ERROR_NOPERMISETOLINK', 'This file does not belong to the website from where you are coming.<br /><br />thanks for writing an email to the webmaster of the website from where you are coming and tell him: <br /><strong>NO OWNERSHIP OF LINKS FROM OTHER SITES! (LEECH)</strong><br /><br /><strong>Leecher definition: </strong>Someone who is lazy to link to its own server or steals the hard work done by other people <br /><br />You are already <strong>registered</strong>.');
 define('_MA_XMDOC_ERROR_PERMISSION', 'To use permissions, you must create categories.');
 define('_MA_XMDOC_ERROR_WEIGHT', 'Weight must be a number');
+define('_MA_XMDOC_ERROR_SIZE', "<span style='color: #FF0000; font-weight: bold;'>The system failed to determine the file size, it is necessary to do it manually.</span>");
 
 // Shared
 define('_MA_XMDOC_ADD', 'Add');
@@ -55,7 +56,7 @@ define('_MA_XMDOC_CATEGORY_LOGO', 'Logo');
 define('_MA_XMDOC_CATEGORY_LOGOFILE', 'Logo file');
 define('_MA_XMDOC_CATEGORY_EXTENSION', 'Extensions allowed');
 define('_MA_XMDOC_CATEGORY_NAME', 'Name');
-define('_MA_XMDOC_CATEGORY_RENAME', 'Rename documents uploaded?<br><small>If the option is no and you uploaded a file with a name that already exists on the server, it will be overwritten</small>');
+define('_MA_XMDOC_CATEGORY_RENAME', "Rename documents uploaded?<br><span style='font-size: small;'>If the option is no and you uploaded a file with a name that already exists on the server, it will be overwritten</span>");
 define('_MA_XMDOC_CATEGORY_SIZE', 'Maximum upload size');
 define('_MA_XMDOC_CATEGORY_SUREDEL', 'Sure to delete this category? %s');
 define('_MA_XMDOC_CATEGORY_UNIT', '[kB]');

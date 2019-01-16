@@ -263,7 +263,8 @@ class XmdocUtility
 			$ch = curl_init($url);
 			curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, TRUE);
 			curl_setopt($curlHandle, CURLOPT_HEADER, TRUE);
-			curl_setopt($curlHandle, CURLOPT_NOBODY, TRUE);			
+			curl_setopt($curlHandle, CURLOPT_NOBODY, TRUE);	
+			curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, false);			
 			$curlReturn = curl_exec($curlHandle);
 			if (false === $curlReturn) {
 				trigger_error(curl_error($curlHandle));
@@ -272,7 +273,11 @@ class XmdocUtility
 				$size = curl_getinfo($curlHandle, CURLINFO_CONTENT_LENGTH_DOWNLOAD);
 			}
 			curl_close($curlHandle);
-			return XmdocUtility::FileSizeConvert($size);
+			if ($size <= 0){
+				return 0;
+			} else {			
+				return XmdocUtility::FileSizeConvert($size);
+			}
 		} else {
 			return 0;
 		}

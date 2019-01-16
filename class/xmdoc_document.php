@@ -171,8 +171,14 @@ class xmdoc_document extends XoopsObject
 
         if ($error_message == '') {
             $this->setVar('document_weight', Xmf\Request::getInt('document_weight', 0));
+			$timeToRedirect = 2;
+			if ($this->getVar('document_size') == 0){
+				$this->setVar('document_size', '');
+				$error_message = _MA_XMDOC_ERROR_SIZE;
+				$timeToRedirect = 10;
+			}
             if ($documentHandler->insert($this)) {
-                redirect_header($action, 2, _MA_XMDOC_REDIRECT_SAVE);
+				redirect_header($action, $timeToRedirect, _MA_XMDOC_REDIRECT_SAVE . '<br><br>' . $error_message);
             } else {
                 $error_message =  $this->getHtmlErrors();
             }
