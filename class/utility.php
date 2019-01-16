@@ -43,6 +43,28 @@ class XmdocUtility
             return '';
         }
     }
+	
+	public static function StringSizeConvert($stringSize){
+        if ($stringSize != '') {
+            $kb = 1024;
+            $mb = 1024*1024;
+            $gb = 1024*1024*1024;
+			$size_value_arr = explode(' ', $stringSize);
+			
+            if ($size_value_arr[1] == _MA_XMDOC_UTILITY_BYTES) {
+                $mysize = $size_value_arr[0];
+            } elseif ($size_value_arr[1] == _MA_XMDOC_UTILITY_KBYTES) {
+                $mysize = $size_value_arr[0] * $kb;
+            } elseif ($size_value_arr[1] == _MA_XMDOC_UTILITY_MBYTES) {
+                $mysize = $size_value_arr[0] * $mb;
+            } else {
+                $mysize = $size_value_arr[0] * $gb;
+            }
+            return $mysize;
+        } else {
+            return 0;
+        }
+    }
         
     public static function ExtensionToMime($extensions){
         $extensionToMime = include $GLOBALS['xoops']->path('include/mimetypes.inc.php');

@@ -117,12 +117,12 @@ if ($helper->getConfig('download_checkhost', 0) == 1) {
     }
 }
 
-
-
 //counter
 $sql = 'UPDATE ' . $xoopsDB->prefix('xmdoc_document') . ' SET document_counter=document_counter+1 WHERE document_id = ' . $doc_id;
 $xoopsDB->queryF($sql);
 
 $url = XmdocUtility::formatURL($document->getVar('document_document'));
+$contentLength = XmdocUtility::StringSizeConvert($document->getVar('document_size'));
+Header("Content-Length: $contentLength");
 Header("Location: $url");
 exit();
