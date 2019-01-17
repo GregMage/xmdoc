@@ -51,11 +51,11 @@ class XmdocUtility{
             $gb = 1024*1024*1024;
 			$size_value_arr = explode(' ', $stringSize);
 			
-            if ($size_value_arr[1] == _MA_XMDOC_UTILITY_BYTES) {
+            if ($size_value_arr[1] == 'B') {
                 $mysize = $size_value_arr[0];
-            } elseif ($size_value_arr[1] == _MA_XMDOC_UTILITY_KBYTES) {
+            } elseif ($size_value_arr[1] == 'K') {
                 $mysize = $size_value_arr[0] * $kb;
-            } elseif ($size_value_arr[1] == _MA_XMDOC_UTILITY_MBYTES) {
+            } elseif ($size_value_arr[1] == 'M') {
                 $mysize = $size_value_arr[0] * $mb;
             } else {
                 $mysize = $size_value_arr[0] * $gb;
@@ -78,7 +78,7 @@ class XmdocUtility{
 							$mysizeString = $size_value_arr[0] . ' ' . _MA_XMDOC_UTILITY_BYTES;
 							break;
 							
-						case 'k':
+						case 'K':
 							$mysizeString = $size_value_arr[0] . ' ' . _MA_XMDOC_UTILITY_KBYTES;
 							break;
 							
@@ -355,5 +355,22 @@ class XmdocUtility{
         $html .= '</fieldset><br>';
 
         return $html;
-    }	
+    }
+	
+	public static function returnBytes($val)
+	{
+		switch (mb_substr($val, -1)) {
+			case 'K':
+			case 'k':
+				return (int)$val * 1024;
+			case 'M':
+			case 'm':
+				return (int)$val * 1048576;
+			case 'G':
+			case 'g':
+				return (int)$val * 1073741824;
+			default:
+				return $val;
+		}
+	}
 }

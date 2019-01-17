@@ -314,12 +314,12 @@ class xmdoc_document extends XoopsObject
 		$aff_size = new \XoopsFormElementTray(_MA_XMDOC_DOCUMENT_SIZE, '');
 		$aff_size->addElement(new \XoopsFormText('', 'sizeValue', 13, 13, $size_value_arr[0]));
 		if (array_key_exists (1, $size_value_arr) == false){
-			$size_value_arr[1] = 'k';
+			$size_value_arr[1] = 'K';
 		}
 		$type     = new \XoopsFormSelect('', 'sizeType', $size_value_arr[1]);
 		$typeArray = [
-			'B'  => _MA_XMDOC_UTILITY_BYTES,
-			'k' => _MA_XMDOC_UTILITY_KBYTES,
+			'B' => _MA_XMDOC_UTILITY_BYTES,
+			'K' => _MA_XMDOC_UTILITY_KBYTES,
 			'M' => _MA_XMDOC_UTILITY_MBYTES,
 			'G' => _MA_XMDOC_UTILITY_GBYTES
 		];

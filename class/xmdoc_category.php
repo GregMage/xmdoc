@@ -38,7 +38,7 @@ class xmdoc_category extends XoopsObject
         // use html
         $this->initVar('dohtml', XOBJ_DTYPE_INT, 1, false);
         $this->initVar('category_logo', XOBJ_DTYPE_TXTBOX, null, false);
-        $this->initVar('category_size', XOBJ_DTYPE_INT, 500, false, 11);
+        $this->initVar('category_size', XOBJ_DTYPE_TXTBOX, '500 K', false);
         $this->initVar('category_extensions', XOBJ_DTYPE_ARRAY, array());
         $this->initVar('category_folder', XOBJ_DTYPE_TXTBOX, null, false);
 		$this->initVar('category_rename', XOBJ_DTYPE_INT, null, false, 1);
@@ -74,10 +74,14 @@ class xmdoc_category extends XoopsObject
             $error_message .= _MA_XMDOC_ERROR_WEIGHT . '<br>';
             $this->setVar('category_weight', 0);
         }
-        if ((int)$_REQUEST['category_size'] == 0 && $_REQUEST['category_size'] != '0') {
-            $error_message .= _MA_XMDOC_ERROR_SIZE . '<br>';
-            $this->setVar('category_size', 0);
-        }
+		
+		$iniPostMaxSize = XmdocUtility::returnBytes(ini_get('post_max_size'));
+		$iniUploadMaxFileSize = XmdocUtility::returnBytes(ini_get('upload_max_filesize'));
+		if (min($iniPostMaxSize, $iniUploadMaxFileSize) < XmdocUtility::StringSizeConvert(Xmf\Request::getString('sizeValue', '') . ' ' . Xmf\Request::getString('sizeType', ''))) {
+			$error_message .= _MA_XMDOC_ERROR_CATEGORYSIZE . '<br>';
+			$this->setVar('category_size', '500 K');
+		}
+		
         //logo
         if ($_FILES['category_logo']['error'] != UPLOAD_ERR_NO_FILE) {
             include_once XOOPS_ROOT_PATH . '/class/uploader.php';
@@ -109,7 +113,7 @@ class xmdoc_category extends XoopsObject
 
         if ($error_message == '') {
             $this->setVar('category_weight', Xmf\Request::getInt('category_weight', 0));
-            $this->setVar('category_size', Xmf\Request::getInt('category_size', 0));
+			$this->setVar('category_size', Xmf\Request::getString('sizeValue', '') . ' ' . Xmf\Request::getString('sizeType', ''));
             if ($categoryHandler->insert($this)) {
                 // permissions
                 if ($this->get_new_enreg() == 0){
@@ -196,11 +200,24 @@ class xmdoc_category extends XoopsObject
         $imgtray_img->addElement($fileseltray_img);
         $form->addElement($imgtray_img);
         
-        // upload size max
-        $size = new XoopsFormElementTray(_MA_XMDOC_CATEGORY_SIZE, '');
-        $size->addElement(new XoopsFormText('', 'category_size', 11, 11, $this->getVar('category_size')));
-        $size->addElement(new XoopsFormLabel('', _MA_XMDOC_CATEGORY_UNIT));
-        $form->addElement($size, true);
+        // upload size max		
+		$size_value_arr = explode(' ', $this->getVar('category_size'));
+		$aff_size = new \XoopsFormElementTray(_MA_XMDOC_CATEGORY_SIZE, '');
+		$aff_size->addElement(new \XoopsFormText('', 'sizeValue', 13, 13, $size_value_arr[0]));
+		if (array_key_exists (1, $size_value_arr) == false){
+			$size_value_arr[1] = 'K';
+		}
+		$type     = new \XoopsFormSelect('', 'sizeType', $size_value_arr[1]);
+		$typeArray = [
+			'B' => _MA_XMDOC_UTILITY_BYTES,
+			'K' => _MA_XMDOC_UTILITY_KBYTES,
+			'M' => _MA_XMDOC_UTILITY_MBYTES,
+			'G' => _MA_XMDOC_UTILITY_GBYTES
+		];
+		$type->addOptionArray($typeArray);
+		$aff_size->addElement($type);
+		$aff_size->addElement(new \XoopsFormElementTray(_MA_XMDOC_CATEGORY_SIZEINFO, 'dfsdfdf'));
+		$form->addElement($aff_size);
         
         // extensions
         $extension_list = include $GLOBALS['xoops']->path('include/mimetypes.inc.php');

@@ -52,7 +52,7 @@ switch ($op) {
                 $category['name']            = $category_arr[$i]->getVar('category_name');
                 $category['description']     = \Xmf\Metagen::generateDescription($category_arr[$i]->getVar('category_description', 'show'), 30);
                 $category['extensions']      = implode(', ', $category_arr[$i]->getVar('category_extensions'));
-                $category['size']            = XmdocUtility::FileSizeConvert($category_arr[$i]->getVar('category_size')*1024);
+                $category['size']            = XmdocUtility::SizeConvertString($category_arr[$i]->getVar('category_size'));
                 $category['weight']          = $category_arr[$i]->getVar('category_weight');
                 $category['status']          = $category_arr[$i]->getVar('category_status');
                 $category_img                = $category_arr[$i]->getVar('category_logo') ?: 'blank.gif';

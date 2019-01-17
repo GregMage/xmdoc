@@ -34,6 +34,7 @@ define('_MA_XMDOC_ERROR_NOPERMISETOLINK', 'This file does not belong to the webs
 define('_MA_XMDOC_ERROR_PERMISSION', 'To use permissions, you must create categories.');
 define('_MA_XMDOC_ERROR_WEIGHT', 'Weight must be a number');
 define('_MA_XMDOC_ERROR_SIZE', "<span style='color: #FF0000; font-weight: bold;'>The system failed to determine the file size, it is necessary to do it manually.</span>");
+define('_MA_XMDOC_ERROR_CATEGORYSIZE', "The size exceeds the maximum values defined in 'post_max_size' or 'upload_max_filesize' in your configuration in php.ini");
 
 // Shared
 define('_MA_XMDOC_ADD', 'Add');
@@ -68,6 +69,7 @@ define('_MA_XMDOC_CATEGORY_EXTENSION', 'Extensions allowed');
 define('_MA_XMDOC_CATEGORY_NAME', 'Name');
 define('_MA_XMDOC_CATEGORY_RENAME', "Rename documents uploaded?<br><span style='font-size: small;'>If the option is no and you uploaded a file with a name that already exists on the server, it will be overwritten</span>");
 define('_MA_XMDOC_CATEGORY_SIZE', 'Maximum upload size');
+define('_MA_XMDOC_CATEGORY_SIZEINFO', "The size should not exceed the values of 'post_max_size' and 'upload_max_filesize' in your configuration in php.ini");
 define('_MA_XMDOC_CATEGORY_SUREDEL', 'Sure to delete this category? %s');
 define('_MA_XMDOC_CATEGORY_UNIT', '[kB]');
 define('_MA_XMDOC_CATEGORY_UPLOAD', 'Upload');
