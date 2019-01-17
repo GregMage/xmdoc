@@ -1,4 +1,5 @@
 ﻿<?php
+
 /*
  You may not change or alter any portion of this comment or credits
  of supporting developers from this source code or any supporting source code
@@ -20,9 +21,8 @@
 /**
  * Class XmdocUtility
  */
-class XmdocUtility
-{    
-    
+class XmdocUtility{
+	
     public static function FileSizeConvert($size){
         if ($size > 0) {
             $kb = 1024;
@@ -334,5 +334,26 @@ class XmdocUtility
 		} else {
 			return 0;
 		}
-    }       
+    }  
+    public static function getServerStats()
+    {
+        $moduleDirName      = basename(dirname(dirname(__DIR__)));
+        $moduleDirNameUpper = mb_strtoupper($moduleDirName);
+        xoops_loadLanguage('common', $moduleDirName);
+        $html = '';
+        $html .= "<fieldset><legend style='font-weight: bold; color: #900;'>" . _MA_XMDOC_INDEX_IMAGEINFO . "</legend>\n";
+        $html .= "<div style='padding: 8px;'>\n";
+        $html .= '<div>' . _MA_XMDOC_INDEX_SPHPINI . "</div>\n";
+        $html .= "<ul>\n";
+        $downloads = ini_get('file_uploads') ? '<span style="color: #008000;">' . _MA_XMDOC_INDEX_ON . '</span>' : '<span style="color: #ff0000;">' . _MA_XMDOC_INDEX_OFF . '</span>';
+        $html      .= '<li>' . _MA_XMDOC_INDEX_SERVERUPLOADSTATUS . $downloads;
+        $html .= '<li>' . _MA_XMDOC_INDEX_MAXUPLOADSIZE . ' <b><span style="color: #0000ff;">' . ini_get('upload_max_filesize') . "</span></b>\n";
+        $html .= '<li>' . _MA_XMDOC_INDEX_MAXPOSTSIZE . ' <b><span style="color: #0000ff;">' . ini_get('post_max_size') . "</span></b>\n";
+        $html .= '<li>' . _MA_XMDOC_INDEX_MEMORYLIMIT . ' <b><span style="color: #0000ff;">' . ini_get('memory_limit') . "</span></b>\n";
+        $html .= "</ul>\n";
+        $html .= '</div>';
+        $html .= '</fieldset><br>';
+
+        return $html;
+    }	
 }
