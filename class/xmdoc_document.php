@@ -312,16 +312,16 @@ class xmdoc_document extends XoopsObject
 		// size		
 		$size_value_arr = explode(' ', $this->getVar('document_size'));
 		$aff_size = new \XoopsFormElementTray(_MA_XMDOC_DOCUMENT_SIZE, '');
-		$aff_size->addElement(new \XoopsFormText('', 'sizeValue', 10, 10, $size_value_arr[0]));
+		$aff_size->addElement(new \XoopsFormText('', 'sizeValue', 13, 13, $size_value_arr[0]));
 		if (array_key_exists (1, $size_value_arr) == false){
-			$size_value_arr[1] = _MA_XMDOC_UTILITY_BYTES;
+			$size_value_arr[1] = 'k';
 		}
 		$type     = new \XoopsFormSelect('', 'sizeType', $size_value_arr[1]);
 		$typeArray = [
-			_MA_XMDOC_UTILITY_BYTES  => '[' . _MA_XMDOC_UTILITY_BYTES . ']',
-			_MA_XMDOC_UTILITY_KBYTES => '[' . _MA_XMDOC_UTILITY_KBYTES . ']',
-			_MA_XMDOC_UTILITY_MBYTES => '[' . _MA_XMDOC_UTILITY_MBYTES . ']',
-			_MA_XMDOC_UTILITY_GBYTES => '[' . _MA_XMDOC_UTILITY_GBYTES . ']'
+			'B'  => _MA_XMDOC_UTILITY_BYTES,
+			'k' => _MA_XMDOC_UTILITY_KBYTES,
+			'M' => _MA_XMDOC_UTILITY_MBYTES,
+			'G' => _MA_XMDOC_UTILITY_GBYTES
 		];
 		$type->addOptionArray($typeArray);
 		$aff_size->addElement($type);

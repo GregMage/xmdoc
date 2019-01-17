@@ -29,13 +29,13 @@ class XmdocUtility
             $mb = 1024*1024;
             $gb = 1024*1024*1024;
             if ($size >= $gb) {
-                $mysize = sprintf ("%01.2f",$size/$gb) . " " . _MA_XMDOC_UTILITY_GBYTES;
+                $mysize = sprintf ("%01.2f",$size/$gb) . " " . 'G';
             } elseif ($size >= $mb) {
-                $mysize = sprintf ("%01.2f",$size/$mb) . " " . _MA_XMDOC_UTILITY_MBYTES;
+                $mysize = sprintf ("%01.2f",$size/$mb) . " " . 'M';
             } elseif ($size >= $kb) {
-                $mysize = sprintf ("%01.2f",$size/$kb) . " " . _MA_XMDOC_UTILITY_KBYTES;
+                $mysize = sprintf ("%01.2f",$size/$kb) . " " . 'k';
             } else {
-                $mysize = sprintf ("%01.2f",$size) . " " . _MA_XMDOC_UTILITY_BYTES;
+                $mysize = sprintf ("%01.2f",$size) . " " . 'B';
             }
 
             return $mysize;
@@ -64,6 +64,37 @@ class XmdocUtility
         } else {
             return 0;
         }
+    }
+	
+	public static function SizeConvertString($sizeString){
+		$mysizeString = '';
+		if ($sizeString != '') {
+			$size_value_arr = explode(' ', $sizeString);
+			if (array_key_exists (0, $size_value_arr) == true && array_key_exists (1, $size_value_arr) == true){
+				if ($size_value_arr[0] != ''){
+					$mysizeString = '';
+					switch ($size_value_arr[1]) {
+						case 'B':
+							$mysizeString = $size_value_arr[0] . ' ' . _MA_XMDOC_UTILITY_BYTES;
+							break;
+							
+						case 'k':
+							$mysizeString = $size_value_arr[0] . ' ' . _MA_XMDOC_UTILITY_KBYTES;
+							break;
+							
+						case 'M':
+							$mysizeString = $size_value_arr[0] . ' ' . _MA_XMDOC_UTILITY_MBYTES;
+							break;
+							
+						case 'G':
+							$mysizeString = $size_value_arr[0] . ' ' . _MA_XMDOC_UTILITY_GBYTES;
+							break;
+					}					
+					return $mysizeString;
+				}
+			}
+		}		
+		return $mysizeString;
     }
         
     public static function ExtensionToMime($extensions){

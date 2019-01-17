@@ -43,8 +43,15 @@
 								</div>
 								<{if $document.mdate}>
 								<div class="row xm-document-view">
-									<div class="col-md-6"><span class="glyphicon glyphicon-calendar" title="<{$smarty.const._MA_XMDOC_FORMDOC_MDATE}>"></span>
+									<div class="col-md-12"><span class="glyphicon glyphicon-calendar" title="<{$smarty.const._MA_XMDOC_FORMDOC_MDATE}>"></span>
 										<{$smarty.const._MA_XMDOC_FORMDOC_MDATE}>: <{$document.mdate}>
+									</div>
+								</div>
+								<{/if}>
+								<{if $document.size != ''}>
+								<div class="row xm-document-view">
+									<div class="col-md-12"><span class="glyphicon glyphicon-resize-full" title="<{$smarty.const._MA_XMDOC_FORMDOC_MDATE}>"></span>
+										<{$smarty.const._MA_XMDOC_FORMDOC_SIZE}>: <{$document.size}>
 									</div>
 								</div>
 								<{/if}>
