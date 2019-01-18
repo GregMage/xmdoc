@@ -19,7 +19,7 @@
 use Xmf\Module\Helper;
 function block_xmdoc_show($options) {
 	include __DIR__ . '/../include/common.php';
-	include __DIR__ . '/../class/utility.php';
+	include_once __DIR__ . '/../class/utility.php';
 	
 	$helper = Helper::getHelper('xmdoc');
 	$helper->loadLanguage('main');
