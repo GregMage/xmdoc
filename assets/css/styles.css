@@ -15,11 +15,16 @@
 }
 
 .xm-document-description {
-    max-height: 50px;
-    min-height: 50px;
+    min-height: 45px;
     overflow: hidden;
     text-align: justify;
     margin: 5px 0 5px 0;
+}
+.xm-document-view {
+    height: 30px;
+    overflow: hidden;
+    text-align: center;
+    margin: 0px 0 5px 0;
 }
 
 .xm-document-view.row {
