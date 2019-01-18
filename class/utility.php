@@ -33,7 +33,7 @@ class XmdocUtility{
             } elseif ($size >= $mb) {
                 $mysize = sprintf ("%01.2f",$size/$mb) . " " . 'M';
             } elseif ($size >= $kb) {
-                $mysize = sprintf ("%01.2f",$size/$kb) . " " . 'k';
+                $mysize = sprintf ("%01.2f",$size/$kb) . " " . 'K';
             } else {
                 $mysize = sprintf ("%01.2f",$size) . " " . 'B';
             }
