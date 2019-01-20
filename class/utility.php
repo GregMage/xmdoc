@@ -313,7 +313,6 @@ class XmdocUtility{
     public static function GetFileSize($url)
     {
 		if (function_exists('curl_init') && false !== ($curlHandle  = curl_init($url))) {
-			$ch = curl_init($url);
 			curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, TRUE);
 			curl_setopt($curlHandle, CURLOPT_HEADER, TRUE);
 			curl_setopt($curlHandle, CURLOPT_NOBODY, TRUE);	
