@@ -86,7 +86,7 @@ if ($op == 'add' || $op == 'save' || $op == 'loaddocument' || $op == 'edit' || $
 				$category = $categoryHandler->get($category_id);
 				$xoopsTpl->assign('tips', true);
 				$xoopsTpl->assign('extensions', implode(', ', $category->getVar('category_extensions')));
-				$xoopsTpl->assign('size', XmdocUtility::FileSizeConvert($category->getVar('category_size')*1024));
+				$xoopsTpl->assign('size', XmdocUtility::SizeConvertString($category->getVar('category_size')));
 				$obj  = $documentHandler->create();
 				$form = $obj->getForm($category_id);
 				$xoopsTpl->assign('form', $form->render());

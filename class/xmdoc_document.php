@@ -88,19 +88,19 @@ class xmdoc_document extends XoopsObject
         $folder = $category->getVar('category_folder');
         if ($_FILES['document_document']['error'] != UPLOAD_ERR_NO_FILE) {
             include_once XOOPS_ROOT_PATH . '/class/uploader.php';
-            $uploader_document_img = new XoopsMediaUploader($path_document . $folder .'/', XmdocUtility::ExtensionToMime($category->getVar('category_extensions')), $category->getVar('category_size') * 1024, null, null);
-            if ($uploader_document_img->fetchMedia('document_document')) {
+            $uploader_document = new XoopsMediaUploader($path_document . $folder .'/', XmdocUtility::ExtensionToMime($category->getVar('category_extensions')), XmdocUtility::StringSizeConvert($category->getVar('category_size')9, null, null);
+            if ($uploader_document->fetchMedia('document_document')) {
 				if ($category->getVar('category_rename') == true){
-					$uploader_document_img->setPrefix('document_');
+					$uploader_document->setPrefix('document_');
 				}                
-                if (!$uploader_document_img->upload()) {
-                    $error_message .= $uploader_document_img->getErrors() . '<br />';
+                if (!$uploader_document->upload()) {
+                    $error_message .= $uploader_document->getErrors() . '<br />';
                 } else {
-					$mediaSize = $uploader_document_img->getMediaSize();
-                    $this->setVar('document_document', $url_document . $folder .'/' . $uploader_document_img->getSavedFileName());
+					$mediaSize = $uploader_document->getMediaSize();
+                    $this->setVar('document_document', $url_document . $folder .'/' . $uploader_document->getSavedFileName());
                 }
             } else {
-                $error_message .= $uploader_document_img->getErrors();
+                $error_message .= $uploader_document->getErrors();
             }
         } else {
             $this->setVar('document_document', Xmf\Request::getString('document_document', ''));
@@ -131,7 +131,7 @@ class xmdoc_document extends XoopsObject
 		//Automatic file size
 		if (Xmf\Request::getString('sizeValue', '') == ''){
 			if ($mediaSize == 0) {
-				$this->setVar('document_size', XmdocUtility::GetFileSize(Xmf\Request::getString('document_document', '')));
+				$this->setVar('document_size', XmdocUtility::GetFileSize(Xmf\Request::getUrl('document_document', '')));
 			} else {
 				$this->setVar('document_size', XmdocUtility::FileSizeConvert($mediaSize));
 			}
