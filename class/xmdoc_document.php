@@ -136,7 +136,7 @@ class xmdoc_document extends XoopsObject
 				$this->setVar('document_size', XmdocUtility::FileSizeConvert($mediaSize));
 			}
 		} else {
-			$this->setVar('document_size', Xmf\Request::getString('sizeValue', '') . ' ' . Xmf\Request::getString('sizeType', ''));
+			$this->setVar('document_size', Xmf\Request::getInt('sizeValue', 0) . ' ' . Xmf\Request::getString('sizeType', ''));
 		}
         
         if (isset($_POST['document_userid'])) {
