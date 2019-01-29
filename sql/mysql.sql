@@ -12,8 +12,7 @@ CREATE TABLE `xmdoc_category` (
   `category_weight`         smallint(5) unsigned    NOT NULL DEFAULT '0',
   `category_status`         tinyint(1)  unsigned    NOT NULL DEFAULT '1',
   
-  PRIMARY KEY (`category_id`),
-  KEY `category_name` (`category_name`)
+  PRIMARY KEY (`category_id`)
 ) ENGINE=MyISAM;
 
 CREATE TABLE `xmdoc_document` (
@@ -28,14 +27,15 @@ CREATE TABLE `xmdoc_document` (
   `document_date`           int(10)       unsigned  NOT NULL DEFAULT '0',
   `document_mdate`          int(10)       unsigned  NOT NULL DEFAULT '0',
   `document_rating`         double(6,4)             NOT NULL default '0.0000',
-  `document_votes`          mediumint(8) unsigned   NOT NULL default '0',
-  `document_counter`        mediumint(8) unsigned   NOT NULL DEFAULT '0',
-  `document_showinfo`       tinyint(1)   unsigned   NOT NULL DEFAULT '1',
-  `document_weight`         smallint(5)  unsigned   NOT NULL DEFAULT '0',
-  `document_status`         tinyint(1)   unsigned   NOT NULL DEFAULT '1',
+  `document_votes`          mediumint(8)  unsigned  NOT NULL default '0',
+  `document_counter`        mediumint(8)  unsigned  NOT NULL DEFAULT '0',
+  `document_showinfo`       tinyint(1)    unsigned  NOT NULL DEFAULT '1',
+  `document_weight`         smallint(5)   unsigned  NOT NULL DEFAULT '0',
+  `document_status`         tinyint(1)    unsigned  NOT NULL DEFAULT '1',
   
   PRIMARY KEY (`document_id`),
-  KEY `document_name` (`document_name`)
+  KEY `document_category` (`document_category`),
+  KEY `document_userid` (`document_userid`)
 ) ENGINE=MyISAM;
 
 CREATE TABLE `xmdoc_docdata` (
@@ -45,7 +45,9 @@ CREATE TABLE `xmdoc_docdata` (
   `docdata_itemid`         mediumint(8) unsigned    NOT NULL DEFAULT '0',
   
   PRIMARY KEY (`docdata_id`),
-  KEY `docdata_docid` (`docdata_docid`)
+  KEY `docdata_docid` (`docdata_docid`),
+  KEY `docdata_modid` (`docdata_modid`),
+  KEY `docdata_itemid` (`docdata_itemid`)
 ) ENGINE=MyISAM;
 
 CREATE TABLE `xmdoc_downlimit` (
@@ -56,5 +58,8 @@ CREATE TABLE `xmdoc_downlimit` (
   `downlimit_hostname`     varchar(50)              NOT NULL DEFAULT '',
   `downlimit_date`         int(10)       unsigned   NOT NULL DEFAULT '0',
   
-  PRIMARY KEY (`downlimit_id`)
+  PRIMARY KEY (`downlimit_id`),
+  KEY `downlimit_docid` (`downlimit_docid`),
+  KEY `downlimit_catid` (`downlimit_catid`),
+  KEY `downlimit_uid` (`downlimit_uid`)
 ) ENGINE=MyISAM;
