@@ -137,6 +137,15 @@ $modversion['config'][] = array(
 );
 
 $modversion['config'][] = array(
+    'name'        => 'general_xmsocial',
+    'title'       => '_MI_XMDOC_PREF_XMSOCIAL',
+    'description' => '_MI_XMDOC_PREF_XMSOCIAL_DESC',
+    'formtype'    => 'yesno',
+    'valuetype'   => 'int',
+    'default'     => 0
+);
+
+$modversion['config'][] = array(
     'name'        => 'general_captcha',
     'title'       => '_MI_XMDOC_PREF_CAPTCHA',
     'description' => '_MI_XMDOC_PREF_CAPTCHA_DESC',
@@ -200,4 +209,4 @@ $modversion['module_website_url']  = 'github.com/GregMage';
 $modversion['module_website_name'] = 'github.com/GregMage';
 
 $modversion['min_xoops'] = '2.5.10';
-$modversion['min_php']   = '5.3.7';
+$modversion['min_php']   = '5.6.31';

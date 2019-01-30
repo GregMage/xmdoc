@@ -57,6 +57,8 @@ define('_MA_XMDOC_INDEX_SERVERUPLOADSTATUS', 'Server uploads status: ');
 define('_MA_XMDOC_INDEX_MAXPOSTSIZE', 'Max post size permitted (post_max_size directive in php.ini): ');
 define('_MA_XMDOC_INDEX_MAXUPLOADSIZE', 'Max upload size permitted (upload_max_filesize directive in php.ini): ');
 define('_MA_XMDOC_INDEX_MEMORYLIMIT', 'Memory limit (memory_limit directive in php.ini): ');
+define('_MA_XMDOC_INDEXCONFIG_XMSOCIAL_WARNINGNOTINSTALLED', 'You have not installed the xmsocial module, this module is required if you want to rate documents');
+define('_MA_XMDOC_INDEXCONFIG_XMSOCIAL_WARNINGNOTACTIVATE', 'You must enable in xmdoc preferences the use of xmsocial (if you want to rate documents)');
 
 // Category
 define('_MA_XMDOC_CATEGORY_DESC', 'Description');

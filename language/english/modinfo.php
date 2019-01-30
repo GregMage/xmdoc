@@ -40,6 +40,8 @@ define('_MI_XMDOC_BLOCK_RANDOM_DESC', 'Display documents randomly');
 // Pref
 define('_MI_XMDOC_PREF_HEAD_GENERAL', "<span style='font-weight: bold;'>General</span>");
 define('_MI_XMDOC_PREF_GENERALITEMPERPAGE', 'Number of items per page in the general view');
+define('_MI_XMDOC_PREF_XMSOCIAL', 'Use xmsocial module to rate document');
+define('_MI_XMDOC_PREF_XMSOCIAL_DESC', '');
 define('_MI_XMDOC_PREF_CAPTCHA', 'Use Captcha?');
 define('_MI_XMDOC_PREF_CAPTCHA_DESC', 'Select Yes to use Captcha in the submit form');
 define('_MI_XMDOC_PREF_HEAD_DOWNLOAD', "<span style='font-weight: bold;'>Download</span>");
