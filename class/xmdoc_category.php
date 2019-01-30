@@ -113,7 +113,7 @@ class xmdoc_category extends XoopsObject
 
         if ($error_message == '') {
             $this->setVar('category_weight', Xmf\Request::getInt('category_weight', 0));
-			$this->setVar('category_size', Xmf\Request::getInt('sizeValue', 0) . ' ' . Xmf\Request::getString('sizeType', ''));
+			$this->setVar('category_size', Xmf\Request::getFloat('sizeValue', 0) . ' ' . Xmf\Request::getString('sizeType', ''));
             if ($categoryHandler->insert($this)) {
                 // permissions
                 if ($this->get_new_enreg() == 0){
