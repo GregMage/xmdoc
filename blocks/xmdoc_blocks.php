@@ -24,6 +24,9 @@ function block_xmdoc_show($options) {
 	$helper = Helper::getHelper('xmdoc');
 	$helper->loadLanguage('main');
 	
+	// Get Permission to view
+	$viewPermissionCat = XmdocUtility::getPermissionCat('xmdoc_view');
+	
 	$block = array();
 	
 	$criteria = new CriteriaCompo();
@@ -53,11 +56,14 @@ function block_xmdoc_show($options) {
         $criteria->add(new Criteria('category_id', '(' . $options[0] . ')', 'IN'));
     }
 	$criteria->setLimit($options[1]);
+	if (!empty($viewPermissionCat)) {
+		$criteria->add(new Criteria('document_category', '(' . implode(',', $viewPermissionCat) . ')', 'IN'));
+	}
 	$documentHandler->table_link = $documentHandler->db->prefix("xmdoc_category");
 	$documentHandler->field_link = "category_id";
 	$documentHandler->field_object = "document_category";
 	$document_arr = $documentHandler->getByLink($criteria);
-	if (count($document_arr) > 0) {
+	if (count($document_arr) > 0 && !empty($viewPermissionCat)) {
 		foreach (array_keys($document_arr) as $i) {
 			$document_id                   = $document_arr[$i]->getVar('document_id');
 			$document['id']                = $document_id;

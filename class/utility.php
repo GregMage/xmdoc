@@ -214,18 +214,22 @@ class XmdocUtility{
                 $docdata_ids[] = $docdata_arr[$i]->getVar('docdata_docid');
             }
         }
+		// Get Permission to view
+		$viewPermissionCat = XmdocUtility::getPermissionCat('xmdoc_view');
         // Document  
         $criteria = new CriteriaCompo();
         $criteria->add(new Criteria('document_id', '(' . implode(',', $docdata_ids) . ')','IN'));
         $criteria->add(new Criteria('document_status', 1));
 		$criteria->setSort('document_weight ASC, document_name');
         $criteria->setOrder('ASC');
+		if (!empty($viewPermissionCat)) {
+			$criteria->add(new Criteria('document_category', '(' . implode(',', $viewPermissionCat) . ')', 'IN'));
+		}
 		$documentHandler->table_link = $documentHandler->db->prefix("xmdoc_category");
         $documentHandler->field_link = "category_id";
         $documentHandler->field_object = "document_category";
-        $document_arr = $documentHandler->getByLink($criteria);
-        
-		if (count($document_arr) > 0) {
+        $document_arr = $documentHandler->getByLink($criteria);        
+		if (count($document_arr) > 0 && !empty($viewPermissionCat)) {
             foreach (array_keys($document_arr) as $i) {
                 $document_id                   = $document_arr[$i]->getVar('document_id');
                 $document['id']                = $document_id;
