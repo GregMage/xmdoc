@@ -64,6 +64,7 @@ $modversion['templates'][] = array('file' => 'xmdoc_admin_permission.tpl', 'desc
 $modversion['templates'][] = array('file' => 'xmdoc_docmanager.tpl', 'description' => '');
 $modversion['templates'][] = array('file' => 'xmdoc_viewdoc.tpl', 'description' => '');
 $modversion['templates'][] = array('file' => 'xmdoc_action.tpl', 'description' => '');
+$modversion['templates'][] = array('file' => 'xmdoc_index.tpl', 'description' => '');
 
 // Blocks
 $modversion['blocks'][] = array(

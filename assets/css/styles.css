@@ -1,5 +1,9 @@
 .xmdoc {
 }
+.xm-document {
+    margin: 0px 0 20px 0;
+	overflow: hidden;
+}
 .xm-document-logo {
     max-height: 120px;
     min-height: 120px;
