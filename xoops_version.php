@@ -108,7 +108,44 @@ $modversion['config'] = array();
 
 $modversion['config'][] = array(
     'name'        => 'break',
-    'title'       => '_MI_XMDOC_PREF_HEAD_GENERAL',
+    'title'       => '_MI_XMDOC_PREF_HEAD_INDEX',
+    'description' => '',
+    'formtype'    => 'line_break',
+    'valuetype'   => 'text',
+    'default'     => 'head',
+);
+
+$modversion['config'][] = array(
+    'name'        => 'index_column',
+    'title'       => '_MI_XMDOC_PREF_COLUMN',
+    'description' => '_MI_XMDOC_PREF_COLUMN_DESC',
+    'formtype'    => 'select',
+    'valuetype'   => 'int',
+    'default'     => 2,
+    'options'     => array(1 => 1, 2 => 2, 3 => 3, 4 => 4)
+);
+
+$modversion['config'][] = array(
+    'name'        => 'index_header',
+    'title'       => '_MI_XMDOC_PREF_HEADER',
+    'description' => '_MI_XMDOC_PREF_HEADER_DESC',
+    'formtype'    => 'textarea',
+    'valuetype'   => 'text',
+    'default'     => ''
+);
+
+$modversion['config'][] = array(
+    'name'        => 'index_footer',
+    'title'       => '_MI_XMDOC_PREF_FOOTER',
+    'description' => '_MI_XMDOC_PREF_FOOTER_DESC',
+    'formtype'    => 'textarea',
+    'valuetype'   => 'text',
+    'default'     => ''
+);
+
+$modversion['config'][] = array(
+    'name'        => 'break',
+    'title'       => '_MI_XMDOC_PREF_HEAD_OPTIONS',
     'description' => '',
     'formtype'    => 'line_break',
     'valuetype'   => 'text',

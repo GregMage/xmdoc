@@ -38,15 +38,22 @@ define('_MI_XMDOC_BLOCK_RANDOM', 'Random Documents');
 define('_MI_XMDOC_BLOCK_RANDOM_DESC', 'Display documents randomly');
 
 // Pref
-define('_MI_XMDOC_PREF_HEAD_GENERAL', "<span style='font-weight: bold;'>General</span>");
+define('_MI_XMDOC_PREF_HEAD_INDEX', '<span style="font-size: large;  font-weight: bold;">Index</span>');
+define('_MI_XMDOC_PREF_COLUMN', 'Number of column for download View');
+define('_MI_XMDOC_PREF_COLUMN_DESC', 'Number of download that can be viewed in index: 1, 2, 3 or 4 columns');
+define('_MI_XMDOC_PREF_HEADER', 'Header index page');
+define('_MI_XMDOC_PREF_HEADER_DESC', 'Set HTML codes to show in index page');
+define('_MI_XMDOC_PREF_FOOTER', 'Footer index page');
+define('_MI_XMDOC_PREF_FOOTER_DESC', 'Set HTML codes to show in index page');
+define('_MI_XMDOC_PREF_HEAD_OPTIONS', '<span style="font-size: large;  font-weight: bold;">Options</span>');
 define('_MI_XMDOC_PREF_GENERALITEMPERPAGE', 'Number of items per page in the general view');
 define('_MI_XMDOC_PREF_XMSOCIAL', 'Use xmsocial module to rate document');
 define('_MI_XMDOC_PREF_XMSOCIAL_DESC', '');
 define('_MI_XMDOC_PREF_CAPTCHA', 'Use Captcha?');
 define('_MI_XMDOC_PREF_CAPTCHA_DESC', 'Select Yes to use Captcha in the submit form');
-define('_MI_XMDOC_PREF_HEAD_DOWNLOAD', "<span style='font-weight: bold;'>Download</span>");
+define('_MI_XMDOC_PREF_HEAD_DOWNLOAD', '<span style="font-size: large;  font-weight: bold;">Download</span>');
 define('_MI_XMDOC_PREF_CHECKHOST', 'Disallow direct download linking (leeching)?');
 define('_MI_XMDOC_PREF_HOST', 'These sites can link directly to your files. Separate each one with "|"');
-define('_MI_XMDOC_PREF_HEAD_ADMIN', "<span style='font-weight: bold;'>Administration</span>");
+define('_MI_XMDOC_PREF_HEAD_ADMIN', '<span style="font-size: large;  font-weight: bold;">Administration</span>');
 define('_MI_XMDOC_PREF_EDITOR', 'Text Editor');
 define('_MI_XMDOC_PREF_ITEMPERPAGE', 'Number of items per page in the administration view');
