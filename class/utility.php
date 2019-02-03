@@ -234,7 +234,7 @@ class XmdocUtility{
                 $document['categoryid']        = $document_arr[$i]->getVar('document_category');
                 $document['document']          = $document_arr[$i]->getVar('document_document');
                 $document['description']       = $document_arr[$i]->getVar('document_description', 'show');
-                $document['description_short'] = \Xmf\Metagen::generateDescription($document_arr[$i]->getVar('document_description', 'show'), 10);
+				$document['description_short'] = $document_arr[$i]->getVar('document_description', 'n');
                 $document['author']            = XoopsUser::getUnameFromId($document_arr[$i]->getVar('document_userid'));
                 $document['date']              = formatTimestamp($document_arr[$i]->getVar('document_date'), 's');
                 if ($document_arr[$i]->getVar('document_mdate') != 0) {
