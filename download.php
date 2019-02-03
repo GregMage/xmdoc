@@ -41,10 +41,10 @@ if ($doc_id == 0) {
 }
 $category = $categoryHandler->get($cat_id);
 $document = $documentHandler->get($doc_id);
-if (count($category) == 0) {
+if (empty($category)) {
     redirect_header(XOOPS_URL, 2, _MA_XMDOC_ERROR_NOCATEGORY);
 }
-if (count($document) == 0) {
+if (empty($document)) {
     redirect_header(XOOPS_URL, 2, _MA_XMDOC_ERROR_NODOCUMENT);
 }
 if ($category->getVar('category_status') == 0 || $document->getVar('document_status') == 0) {
