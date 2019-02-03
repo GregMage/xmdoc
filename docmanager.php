@@ -97,7 +97,7 @@ if ($reset == ''){
 	$s_cat = 0;
 }
 
-$nb_limit = 15;
+$nb_limit = $helper->getConfig('general_perpage', 15);
 
 // Get start pager
 $start = Request::getInt('start', 0); 
