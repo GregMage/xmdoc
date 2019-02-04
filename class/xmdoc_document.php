@@ -47,9 +47,9 @@ class xmdoc_document extends XoopsObject
         $this->initVar('document_rating', XOBJ_DTYPE_OTHER, null, false, 10);
         $this->initVar('document_votes', XOBJ_DTYPE_INT, null, false, 11);
         $this->initVar('document_counter', XOBJ_DTYPE_INT, null, false, 8);
-        $this->initVar('document_showinfo', XOBJ_DTYPE_INT, null, false, 1);
-        $this->initVar('document_weight', XOBJ_DTYPE_INT, null, false, 11);
-        $this->initVar('document_status', XOBJ_DTYPE_INT, null, false, 1);
+        $this->initVar('document_showinfo', XOBJ_DTYPE_INT, 1, false, 1);
+        $this->initVar('document_weight', XOBJ_DTYPE_INT, 0, false, 11);
+        $this->initVar('document_status', XOBJ_DTYPE_INT, 1, false, 1);
         $this->initVar('category_name', XOBJ_DTYPE_TXTBOX, null, false);
     }
     /**
@@ -127,6 +127,7 @@ class xmdoc_document extends XoopsObject
         $this->setVar('document_category', $category_id);
         $this->setVar('document_description',  Xmf\Request::getText('document_description', ''));
         $this->setVar('document_showinfo', Xmf\Request::getInt('document_showinfo', 1));
+		$this->setVar('document_weight', Xmf\Request::getInt('document_weight', 0));
         $this->setVar('document_status', Xmf\Request::getInt('document_status', 1));
 		//Automatic file size
 		if (Xmf\Request::getString('sizeValue', '') == ''){
@@ -170,7 +171,6 @@ class xmdoc_document extends XoopsObject
         }
 
         if ($error_message == '') {
-            $this->setVar('document_weight', Xmf\Request::getInt('document_weight', 0));
 			$timeToRedirect = 2;
 			if ($this->getVar('document_size') == 0){
 				$this->setVar('document_size', '');
@@ -256,10 +256,6 @@ class xmdoc_document extends XoopsObject
             $showinfo = $this->getVar('document_showinfo');
             $weight = $this->getVar('document_weight');
             $category_id = $this->getVar('document_category');
-        } else {
-            $status = 1;
-            $showinfo = 1;
-            $weight = 0;
         }
 
         // category
@@ -328,10 +324,10 @@ class xmdoc_document extends XoopsObject
 		$form->addElement($aff_size);
         
         // showinfo
-        $form->addElement(new XoopsFormRadioYN(_MA_XMDOC_DOCUMENT_SHOWINFO, 'document_showinfo', $showinfo));
+        $form->addElement(new XoopsFormRadioYN(_MA_XMDOC_DOCUMENT_SHOWINFO, 'document_showinfo', $this->getVar('document_showinfo')));
         
         // weight
-        $form->addElement(new XoopsFormText(_MA_XMDOC_DOCUMENT_WEIGHT, 'document_weight', 5, 5, $weight), true);
+        $form->addElement(new XoopsFormText(_MA_XMDOC_DOCUMENT_WEIGHT, 'document_weight', 5, 5, $this->getVar('document_weight')), true);
         
         if ($helper->isUserAdmin() == true){
 			if ($this->isNew()) {
@@ -364,7 +360,7 @@ class xmdoc_document extends XoopsObject
 		}
 
 		// status
-        $form_status = new XoopsFormRadio(_MA_XMDOC_STATUS, 'document_status', $status);
+        $form_status = new XoopsFormRadio(_MA_XMDOC_STATUS, 'document_status', $this->getVar('document_status'));
         $options = array(1 => _MA_XMDOC_STATUS_A, 0 =>_MA_XMDOC_STATUS_NA,);
         $form_status->addOptionArray($options);
         $form->addElement($form_status);

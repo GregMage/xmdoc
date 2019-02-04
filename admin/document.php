@@ -179,7 +179,8 @@ switch ($op) {
         $error_message = $obj->saveDocument($documentHandler, 'document.php');
         if ($error_message != ''){
             $xoopsTpl->assign('error_message', $error_message);
-            $form = $obj->getForm();
+			$document_category = Request::getInt('document_category', 0);
+            $form = $obj->getForm($document_category);
             $xoopsTpl->assign('form', $form->render());
         }
         
