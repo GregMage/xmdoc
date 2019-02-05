@@ -23,7 +23,7 @@ require __DIR__ . '/admin_header.php';
 $moduleAdmin = Admin::getInstance();
 $moduleAdmin->displayNavigation('index.php');
 $moduleAdmin->addConfigModuleVersion('system', 214);
-// xmdoc
+// xmsocial
 if (xoops_isActiveModule('xmsocial')){
 	if ($helper->getConfig('general_xmsocial', 0) == 1){
 		$moduleAdmin->addConfigModuleVersion('xmsocial', 100);
