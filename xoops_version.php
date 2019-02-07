@@ -37,6 +37,11 @@ $modversion['hasMain'] = 1;
     'url'  => 'action.php?op=add'
 );*/
 
+// Search
+$modversion['hasSearch'] = 1;
+$modversion['search']['file'] = 'include/search.inc.php';
+$modversion['search']['func'] = 'xmdoc_search';
+
 // Admin things
 $modversion['hasAdmin']    = 1;
 $modversion['system_menu'] = 1;
