@@ -27,8 +27,8 @@ CREATE TABLE `xmdoc_document` (
   `document_date`           int(10)       unsigned  NOT NULL DEFAULT '0',
   `document_mdate`          int(10)       unsigned  NOT NULL DEFAULT '0',
   `document_rating`         double(6,4)             NOT NULL default '0.0000',
-  `document_votes`          mediumint(8)  unsigned  NOT NULL default '0',
-  `document_counter`        mediumint(8)  unsigned  NOT NULL DEFAULT '0',
+  `document_votes`          smallint(5)   unsigned  NOT NULL default '0',
+  `document_counter`        smallint(5)   unsigned  NOT NULL DEFAULT '0',
   `document_showinfo`       tinyint(1)    unsigned  NOT NULL DEFAULT '1',
   `document_weight`         smallint(5)   unsigned  NOT NULL DEFAULT '0',
   `document_status`         tinyint(1)    unsigned  NOT NULL DEFAULT '1',
@@ -60,6 +60,5 @@ CREATE TABLE `xmdoc_downlimit` (
   
   PRIMARY KEY (`downlimit_id`),
   KEY `downlimit_docid` (`downlimit_docid`),
-  KEY `downlimit_catid` (`downlimit_catid`),
-  KEY `downlimit_uid` (`downlimit_uid`)
+  KEY `downlimit_catid` (`downlimit_catid`)
 ) ENGINE=MyISAM;
