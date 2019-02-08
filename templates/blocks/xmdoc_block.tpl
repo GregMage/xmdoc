@@ -88,3 +88,4 @@
 		</div>
 	</div>
 <{/foreach}>
+<div class="clearfix"></div>
