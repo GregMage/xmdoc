@@ -22,7 +22,11 @@ function xmdoc_search($queryarray, $andor, $limit, $offset, $userid)
     global $xoopsDB;
 
     $sql = "SELECT document_id, document_category, document_name, document_description, document_date, document_userid FROM " . $xoopsDB->prefix("xmdoc_document") . " WHERE document_status = 1";
-
+	
+	if ( $userid != 0 ) {
+        $sql .= " AND document_userid=" . intval($userid) . " ";
+    }
+	
     if ( is_array($queryarray) && $count = count($queryarray) )
     {
         $sql .= " AND ((document_name LIKE '%$queryarray[0]%' OR document_description LIKE '%$queryarray[0]%')";
