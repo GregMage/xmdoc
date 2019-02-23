@@ -252,9 +252,6 @@ class xmdoc_document extends XoopsObject
 
         if (!$this->isNew()) {
             $form->addElement(new XoopsFormHidden('document_id', $this->getVar('document_id')));
-            $status = $this->getVar('document_status');
-            $showinfo = $this->getVar('document_showinfo');
-            $weight = $this->getVar('document_weight');
             $category_id = $this->getVar('document_category');
         }
 
