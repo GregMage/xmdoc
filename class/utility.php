@@ -218,7 +218,11 @@ class XmdocUtility{
 		$viewPermissionCat = XmdocUtility::getPermissionCat('xmdoc_view');
         // Document  
         $criteria = new CriteriaCompo();
-        $criteria->add(new Criteria('document_id', '(' . implode(',', $docdata_ids) . ')','IN'));
+		if (count($docdata_ids) > 0) {
+			$criteria->add(new Criteria('document_id', '(' . implode(',', $docdata_ids) . ')','IN'));
+		} else {
+			$criteria->add(new Criteria('document_id', 0));
+		}
         $criteria->add(new Criteria('document_status', 1));
 		$criteria->setSort('document_weight ASC, document_name');
         $criteria->setOrder('ASC');
@@ -228,7 +232,7 @@ class XmdocUtility{
 		$documentHandler->table_link = $documentHandler->db->prefix("xmdoc_category");
         $documentHandler->field_link = "category_id";
         $documentHandler->field_object = "document_category";
-        $document_arr = $documentHandler->getByLink($criteria);        
+        $document_arr = $documentHandler->getByLink($criteria);    
 		if (count($document_arr) > 0 && !empty($viewPermissionCat)) {
             foreach (array_keys($document_arr) as $i) {
                 $document_id                   = $document_arr[$i]->getVar('document_id');
