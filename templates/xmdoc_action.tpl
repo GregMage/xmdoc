@@ -1,5 +1,5 @@
 <div class="xmdoc">
-    <{if count($categories) gt 0}>
+    <{if $category_count gt 0}>
         <ol class="breadcrumb">
             <li class="active"><{$smarty.const._MA_XMDOC_SELECTCATEGORY}></li>
         </ol>
