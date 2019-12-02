@@ -12,7 +12,7 @@
 /**
  * xmdoc module
  *
- * @copyright       XOOPS Project (http://xoops.org)
+ * @copyright       XOOPS Project (https://xoops.org)
  * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
  * @author          Mage Gregory (AKA Mage)
  */
@@ -229,8 +229,7 @@ switch ($op) {
                                     <img src="' . $url_logo_document . $document_img . '" title="' . 
                                     $obj->getVar('document_name') . '" /><br>');
             }
-        }
-        
+        }        
         break;
         
     // Update status

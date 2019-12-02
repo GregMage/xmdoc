@@ -12,11 +12,12 @@
 /**
  * xmdoc module
  *
- * @copyright       XOOPS Project (http://xoops.org)
+ * @copyright       XOOPS Project (https://xoops.org)
  * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
  * @author          Mage Gregory (AKA Mage)
  */
-use \Xmf\Request;
+use Xmf\Request;
+use Xmf\Module\Helper;
 
 include_once __DIR__ . '/header.php';
 $GLOBALS['xoopsOption']['template_main'] = 'xmdoc_action.tpl';
@@ -160,7 +161,7 @@ if ($op == 'add' || $op == 'save' || $op == 'loaddocument' || $op == 'edit' || $
 							}
 						}
 						// Del permissions
-						$permHelper = new \Xmf\Module\Helper\Permission();
+						$permHelper = new Helper\Permission();
 						$permHelper->deletePermissionForItem('xmdoc_view', $document_id);
 						$permHelper->deletePermissionForItem('xmdoc_submit', $document_id);
 

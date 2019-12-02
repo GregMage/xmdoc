@@ -12,10 +12,12 @@
 /**
  * xmdoc module
  *
- * @copyright       XOOPS Project (http://xoops.org)
+ * @copyright       XOOPS Project (https://xoops.org)
  * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
  * @author          Mage Gregory (AKA Mage)
  */
+use Xmf\Request;
+use Xmf\Module\Helper;
 
 if (!defined('XOOPS_ROOT_PATH')) {
     die('XOOPS root path not defined');
@@ -72,7 +74,7 @@ class xmdoc_document extends XoopsObject
             $action = $_SERVER['REQUEST_URI'];
         }
         include __DIR__ . '/../include/common.php';
-        $helper = \Xmf\Module\Helper::getHelper('xmdoc');
+        $helper = Helper::getHelper('xmdoc');
         $error_message = '';
         $upload_size = 512000;
         // test error
@@ -83,7 +85,7 @@ class xmdoc_document extends XoopsObject
         
         // document
 		$mediaSize = 0;
-        $category_id = Xmf\Request::getInt('document_category', 1);
+        $category_id = Request::getInt('document_category', 1);
         $category = $categoryHandler->get($category_id);
         $folder = $category->getVar('category_folder');
         if ($_FILES['document_document']['error'] != UPLOAD_ERR_NO_FILE) {
@@ -103,7 +105,7 @@ class xmdoc_document extends XoopsObject
                 $error_message .= $uploader_document->getErrors();
             }
         } else {
-            $this->setVar('document_document', Xmf\Request::getString('document_document', ''));
+            $this->setVar('document_document', Request::getString('document_document', ''));
         }
 
         //logo
@@ -121,33 +123,33 @@ class xmdoc_document extends XoopsObject
                 $error_message .= $uploader_document_img->getErrors();
             }
         } else {
-            $this->setVar('document_logo', Xmf\Request::getString('document_logo', ''));
+            $this->setVar('document_logo', Request::getString('document_logo', ''));
         }
-        $this->setVar('document_name', Xmf\Request::getString('document_name', ''));
+        $this->setVar('document_name', Request::getString('document_name', ''));
         $this->setVar('document_category', $category_id);
-        $this->setVar('document_description',  Xmf\Request::getText('document_description', ''));
-        $this->setVar('document_showinfo', Xmf\Request::getInt('document_showinfo', 1));
-		$this->setVar('document_weight', Xmf\Request::getInt('document_weight', 0));
-        $this->setVar('document_status', Xmf\Request::getInt('document_status', 1));
+        $this->setVar('document_description',  Request::getText('document_description', ''));
+        $this->setVar('document_showinfo', Request::getInt('document_showinfo', 1));
+		$this->setVar('document_weight', Request::getInt('document_weight', 0));
+        $this->setVar('document_status', Request::getInt('document_status', 1));
 		//Automatic file size
-		if (Xmf\Request::getString('sizeValue', '') == ''){
+		if (Request::getString('sizeValue', '') == ''){
 			if ($mediaSize == 0) {
-				$this->setVar('document_size', XmdocUtility::GetFileSize(Xmf\Request::getUrl('document_document', '')));
+				$this->setVar('document_size', XmdocUtility::GetFileSize(Request::getUrl('document_document', '')));
 			} else {
 				$this->setVar('document_size', XmdocUtility::FileSizeConvert($mediaSize));
 			}
 		} else {
-			$this->setVar('document_size', Xmf\Request::getFloat('sizeValue', 0) . ' ' . Xmf\Request::getString('sizeType', ''));
+			$this->setVar('document_size', Request::getFloat('sizeValue', 0) . ' ' . Request::getString('sizeType', ''));
 		}
         
         if (isset($_POST['document_userid'])) {
-            $this->setVar('document_userid', Xmf\Request::getInt('document_userid', 0));
+            $this->setVar('document_userid', Request::getInt('document_userid', 0));
         } else {
             $this->setVar('document_userid', !empty($xoopsUser) ? $xoopsUser->getVar('uid') : 0);
         }
 		if (isset($_POST['document_date'])) {
 			if ($_POST['date_update'] == 'Y'){
-				$this->setVar('document_date', strtotime(Xmf\Request::getString('document_date', '')));
+				$this->setVar('document_date', strtotime(Request::getString('document_date', '')));
 			}
 			$this->setVar('document_mdate', time());
         } else {
@@ -155,7 +157,7 @@ class xmdoc_document extends XoopsObject
         }
 		if (isset($_POST['document_mdate'])) {
 			if ($_POST['mdate_update'] == 'Y'){
-				$this->setVar('document_mdate', strtotime(Xmf\Request::getString('document_mdate', '')));
+				$this->setVar('document_mdate', strtotime(Request::getString('document_mdate', '')));
 			}
 			if ($_POST['mdate_update'] == 'R'){
 				$this->setVar('document_mdate', 0);
@@ -234,7 +236,7 @@ class xmdoc_document extends XoopsObject
     {
         global $xoopsUser;
         $upload_size = 512000;
-        $helper = \Xmf\Module\Helper::getHelper('xmdoc');
+        $helper = Helper::getHelper('xmdoc');
         if ($action === false) {
             $action = $_SERVER['REQUEST_URI'];
         }

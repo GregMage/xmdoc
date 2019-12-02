@@ -12,7 +12,7 @@
 /**
  * xmdoc module
  *
- * @copyright       XOOPS Project (http://xoops.org)
+ * @copyright       XOOPS Project (https://xoops.org)
  * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
  * @author          Mage Gregory (AKA Mage)
  */
@@ -25,7 +25,7 @@ include __DIR__ . '/include/common.php';
 xoops_load('utility', basename(__DIR__));
 
 $helper     = Helper::getHelper('xmdoc');
-$permHelper = new \Xmf\Module\Helper\Permission();
+$permHelper = new Helper\Permission();
 
 $cat_id = Request::getInt('cat_id', 0);
 $doc_id  = Request::getInt('doc_id', 0);

@@ -12,10 +12,12 @@
 /**
  * xmdoc module
  *
- * @copyright       XOOPS Project (http://xoops.org)
+ * @copyright       XOOPS Project (https://xoops.org)
  * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
  * @author          Mage Gregory (AKA Mage)
  */
+use Xmf\Request;
+use Xmf\Module\Helper;
 
 if (!defined('XOOPS_ROOT_PATH')) {
     die('XOOPS root path not defined');
@@ -77,7 +79,7 @@ class xmdoc_category extends XoopsObject
 		
 		$iniPostMaxSize = XmdocUtility::returnBytes(ini_get('post_max_size'));
 		$iniUploadMaxFileSize = XmdocUtility::returnBytes(ini_get('upload_max_filesize'));
-		if (min($iniPostMaxSize, $iniUploadMaxFileSize) < XmdocUtility::StringSizeConvert(Xmf\Request::getString('sizeValue', '') . ' ' . Xmf\Request::getString('sizeType', ''))) {
+		if (min($iniPostMaxSize, $iniUploadMaxFileSize) < XmdocUtility::StringSizeConvert(Request::getString('sizeValue', '') . ' ' . Request::getString('sizeType', ''))) {
 			$error_message .= _MA_XMDOC_ERROR_CATEGORYSIZE . '<br>';
 			$this->setVar('category_size', '500 K');
 		}
@@ -97,23 +99,23 @@ class xmdoc_category extends XoopsObject
                 $error_message .= $uploader_category_img->getErrors();
             }
         } else {
-            $this->setVar('category_logo', Xmf\Request::getString('category_logo', ''));
+            $this->setVar('category_logo', Request::getString('category_logo', ''));
         }
-        $this->setVar('category_name', Xmf\Request::getString('category_name', ''));
-        $this->setVar('category_description',  Xmf\Request::getText('category_description', ''));
-        $this->setVar('category_extensions', Xmf\Request::getArray('category_extensions', array()));
-        $this->setVar('category_rename', Xmf\Request::getInt('category_rename', 0));
-        $this->setVar('category_status', Xmf\Request::getInt('category_status', 1));
+        $this->setVar('category_name', Request::getString('category_name', ''));
+        $this->setVar('category_description',  Request::getText('category_description', ''));
+        $this->setVar('category_extensions', Request::getArray('category_extensions', array()));
+        $this->setVar('category_rename', Request::getInt('category_rename', 0));
+        $this->setVar('category_status', Request::getInt('category_status', 1));
         if ($this->getVar('category_folder') == '') {
             $folder = XmdocUtility::creatFolder($path_document);
             $this->setVar('category_folder', $folder);
         }
-        $this->setVar('category_limitdownload', Xmf\Request::getInt('category_limitdownload', 1));
-        $this->setVar('category_limititem', Xmf\Request::getInt('category_limititem', 1));
+        $this->setVar('category_limitdownload', Request::getInt('category_limitdownload', 1));
+        $this->setVar('category_limititem', Request::getInt('category_limititem', 1));
 
         if ($error_message == '') {
-            $this->setVar('category_weight', Xmf\Request::getInt('category_weight', 0));
-			$this->setVar('category_size', Xmf\Request::getFloat('sizeValue', 0) . ' ' . Xmf\Request::getString('sizeType', ''));
+            $this->setVar('category_weight', Request::getInt('category_weight', 0));
+			$this->setVar('category_size',Request::getFloat('sizeValue', 0) . ' ' . Request::getString('sizeType', ''));
             if ($categoryHandler->insert($this)) {
                 // permissions
                 if ($this->get_new_enreg() == 0){
@@ -121,12 +123,12 @@ class xmdoc_category extends XoopsObject
 				} else {
 					$perm_id = $this->get_new_enreg();
 				}
-                $permHelper = new \Xmf\Module\Helper\Permission();
+                $permHelper = new Helper\Permission();
                 // permission view
-                $groups_view = \Xmf\Request::getArray('xmdoc_view_perms', array(), 'POST');
+                $groups_view = Request::getArray('xmdoc_view_perms', array(), 'POST');
                 $permHelper->savePermissionForItem('xmdoc_view', $perm_id, $groups_view);
                 // permission submit
-                $groups_submit = \Xmf\Request::getArray('xmdoc_submit_perms', array(), 'POST');
+                $groups_submit = Request::getArray('xmdoc_submit_perms', array(), 'POST');
                 $permHelper->savePermissionForItem('xmdoc_submit', $perm_id, $groups_submit);
                 redirect_header($action, 2, _MA_XMDOC_REDIRECT_SAVE);
             } else {
@@ -143,7 +145,7 @@ class xmdoc_category extends XoopsObject
     public function getForm($action = false)
     {
         $upload_size = 512000;
-        $helper = \Xmf\Module\Helper::getHelper('xmdoc');
+        $helper = Helper::getHelper('xmdoc');
         if ($action === false) {
             $action = $_SERVER['REQUEST_URI'];
         }
@@ -247,7 +249,7 @@ class xmdoc_category extends XoopsObject
         $form->addElement($form_status);
 
         // permission
-        $permHelper = new \Xmf\Module\Helper\Permission();
+        $permHelper = new Helper\Permission();
         $form->addElement($permHelper->getGroupSelectFormForItem('xmdoc_view', $this->getVar('category_id'),  _MA_XMDOC_PERMISSION_VIEW_THIS, 'xmdoc_view_perms', true));
         $form->addElement($permHelper->getGroupSelectFormForItem('xmdoc_submit', $this->getVar('category_id'),  _MA_XMDOC_PERMISSION_SUBMIT_THIS, 'xmdoc_submit_perms', true));
 

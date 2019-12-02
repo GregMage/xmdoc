@@ -12,10 +12,11 @@
 /**
  * xmdoc module
  *
- * @copyright       XOOPS Project (http://xoops.org)
+ * @copyright       XOOPS Project (https://xoops.org)
  * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
  * @author          Mage Gregory (AKA Mage)
  */
+use Xmf\Module\Helper;
 $path = dirname(dirname(dirname(__DIR__)));
 require_once $path . '/mainfile.php';
 require_once $path . '/include/cp_functions.php';
@@ -26,8 +27,6 @@ include_once __DIR__ . '/../include/common.php';
 xoops_load('utility', basename(dirname(__DIR__)));
 
 class_exists('\Xmf\Module\Admin') or die('XMF is required.');
-
-use Xmf\Module\Helper;
 
 $helper = Helper::getHelper(basename(dirname(__DIR__)));
 

@@ -12,11 +12,12 @@
 /**
  * xmdoc module
  *
- * @copyright       XOOPS Project (http://xoops.org)
+ * @copyright       XOOPS Project (https://xoops.org)
  * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
  * @author          Mage Gregory (AKA Mage)
  */
-use \Xmf\Request;
+use Xmf\Request;
+use Xmf\Module\Helper;
 
 require_once dirname(dirname(__DIR__)) . '/mainfile.php';
 require_once $GLOBALS['xoops']->path('class/template.php');
@@ -34,7 +35,7 @@ $search = Request::getString('search', '');
 $reset = Request::getString('reset', '');
 $select = Request::getString('select', '');
 
-$sessionHelper = new \Xmf\Module\Helper\Session();
+$sessionHelper = new Helper\Session();
 
 if (isset($_REQUEST['selectreset'])){
     $sessionHelper->del('selectiondocs');
