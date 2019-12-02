@@ -16,14 +16,11 @@
  * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
  * @author          Mage Gregory (AKA Mage)
  */
-
+use Xmf\Module\Admin; 
 defined('XOOPS_ROOT_PATH') || die('XOOPS root path not defined');
 
 // get path to icons
-$pathIcon32='';
-if (class_exists('Xmf\Module\Admin', true)) {
-    $pathIcon32 = \Xmf\Module\Admin::menuIconPath('');
-}
+$pathIcon32 = Admin::menuIconPath('');
 
 $adminmenu=array();
 // Index
