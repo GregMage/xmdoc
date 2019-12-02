@@ -12,10 +12,11 @@
 /**
  * xmdoc module
  *
- * @copyright       XOOPS Project (http://xoops.org)
+ * @copyright       XOOPS Project (https://xoops.org)
  * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
  * @author          Mage Gregory (AKA Mage)
  */
+use Xmf\Module\Helper;
 
 defined('XOOPS_ROOT_PATH') || exit('Restricted access');
 
@@ -35,12 +36,12 @@ class XmdocFormDoc extends XoopsFormElementTray
 		include __DIR__ . '/../include/common.php';
 		xoops_loadLanguage('main', 'xmdoc');
         
-        $sessionHelper = new \Xmf\Module\Helper\Session('xmdoc');
+        $sessionHelper = new Helper\Session('xmdoc');
         $sessionHelper->del('selectiondocs');
 
 		parent::__construct(_MA_XMDOC_FORMDOC_NAME, '<br>');
 		// module id
-		$helper = \Xmf\Module\Helper::getHelper($modulename);
+		$helper = Helper::getHelper($modulename);
 		$moduleid = $helper->getModule()->getVar('mid');
 		// remove doc
         $criteria = new CriteriaCompo();

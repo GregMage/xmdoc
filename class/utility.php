@@ -13,11 +13,11 @@
 /**
  * xmdoc module
  *
- * @copyright       XOOPS Project (http://xoops.org)
+ * @copyright       XOOPS Project (https://xoops.org)
  * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
  * @author          Mage Gregory (AKA Mage)
  */
-
+use Xmf\Module\Helper;
 /**
  * Class XmdocUtility
  */
@@ -109,7 +109,7 @@ class XmdocUtility{
     {
         global $xoopsUser;
         $categories = array();
-        $helper = Xmf\Module\Helper::getHelper('xmdoc');
+        $helper = Helper::getHelper('xmdoc');
         $moduleHandler = $helper->getModule();
         $groups = is_object($xoopsUser) ? $xoopsUser->getGroups() : XOOPS_GROUP_ANONYMOUS;
         $gpermHandler = xoops_getHandler('groupperm');
@@ -162,9 +162,9 @@ class XmdocUtility{
             }
 		}
 		// add doc
-        $sessionHelper = new \Xmf\Module\Helper\Session('xmdoc');
+        $sessionHelper = new Helper\Session('xmdoc');
 		// module id
-		$helper = \Xmf\Module\Helper::getHelper($modulename);
+		$helper = Helper::getHelper($modulename);
 		$moduleid = $helper->getModule()->getVar('mid');
 		if ($sessionHelper->get('selectiondocs') != false){
 			foreach ($sessionHelper->get('selectiondocs') as $index) {				
@@ -197,11 +197,11 @@ class XmdocUtility{
         
         $xoTheme->addStylesheet( XOOPS_URL . '/modules/xmdoc/assets/css/styles.css', null );
         
-        $xmdocHelper = Xmf\Module\Helper::getHelper('xmdoc');
+        $xmdocHelper = Helper::getHelper('xmdoc');
         // Load language files
         $xmdocHelper->loadLanguage('main');
         
-		$helper = \Xmf\Module\Helper::getHelper($modulename);
+		$helper = Helper::getHelper($modulename);
 		$moduleid = $helper->getModule()->getVar('mid');
 		//docdata
         $criteria = new CriteriaCompo();
