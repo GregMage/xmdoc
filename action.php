@@ -129,7 +129,7 @@ if ($op == 'add' || $op == 'save' || $op == 'loaddocument' || $op == 'edit' || $
             break;
 
 		// del
-		case 'del':	
+		case 'del':
 			$document_id = Request::getInt('document_id', 0);
 			if ($document_id == 0) {
 				$xoopsTpl->assign('error_message', _MA_XMDOC_ERROR_NODOCUMENT);
@@ -137,34 +137,14 @@ if ($op == 'add' || $op == 'save' || $op == 'loaddocument' || $op == 'edit' || $
 				$surdel = Request::getBool('surdel', false);
 				$obj  = $documentHandler->get($document_id);
 				// Get Permission to delete in category
-				$permHelper->checkPermissionRedirect('xmdoc_delete', $obj->getVar('document_category'), 'index.php', 2, _NOPERM);
+				$permHelper->checkPermissionRedirect('xmdoc_delete', $obj->getVar('document_category'), 'index.php', 2, _NOPERM);	
 				if ($surdel === true) {
 					if (!$GLOBALS['xoopsSecurity']->check()) {
-						redirect_header(XOOPS_URL, 3, implode('<br />', $GLOBALS['xoopsSecurity']->getErrors()));
+						redirect_header(XOOPS_URL, 3, implode('<br>', $GLOBALS['xoopsSecurity']->getErrors()));
 					}
-					if ($documentHandler->delete($obj)) {
-						//Del logo
-						if ($obj->getVar('document_logo') != 'blank_doc.gif') {
-							// Test if the image is used
-							$criteria = new CriteriaCompo();
-							$criteria->add(new Criteria('document_logo', $obj->getVar('document_logo')));
-							$document_count = $documentHandler->getCount($criteria);
-							if ($document_count == 0){
-								$urlfile = $path_logo_document . $obj->getVar('document_logo');
-								if (is_file($urlfile)) {
-									chmod($urlfile, 0777);
-									unlink($urlfile);
-								}
-							}
-						}
-						// Del permissions
-						$permHelper = new Helper\Permission();
-						$permHelper->deletePermissionForItem('xmdoc_view', $document_id);
-						$permHelper->deletePermissionForItem('xmdoc_submit', $document_id);
-
-						redirect_header(XOOPS_URL, 2, _MA_XMDOC_REDIRECT_SAVE);
-					} else {
-						$xoopsTpl->assign('error_message', $obj->getHtmlErrors());
+					$error_message = $obj->delDocument($documentHandler, 'index.php');
+					if ($error_message != ''){
+						$xoopsTpl->assign('error_message', $error_message);
 					}
 				} else {
 					$document_img = $obj->getVar('document_logo') ?: 'blank.gif';
@@ -173,8 +153,7 @@ if ($op == 'add' || $op == 'save' || $op == 'loaddocument' || $op == 'edit' || $
 										<img src="' . $url_logo_document . $document_img . '" title="' . 
 										$obj->getVar('document_name') . '" /><br>');
 				}
-			}
-			
+			}        
 			break;
     }
 } else {

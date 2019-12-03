@@ -387,6 +387,37 @@ class xmdoc_document extends XoopsObject
 
         return $form;
     }
+	/**
+     * @return mixed
+     */
+    public function delDocument($documentHandler, $action = false)
+    {
+		if ($action === false) {
+            $action = $_SERVER['REQUEST_URI'];
+        }
+		$error_message = '';
+		include __DIR__ . '/../include/common.php';
+		if ($documentHandler->delete($this)) {
+			//Del logo
+			if ($this->getVar('document_logo') != 'blank_doc.gif') {
+				// Test if the image is used
+				$criteria = new CriteriaCompo();
+				$criteria->add(new Criteria('document_logo', $this->getVar('document_logo')));
+				$document_count = $documentHandler->getCount($criteria);
+				if ($document_count == 0){
+					$urlfile = $path_logo_document . $this->getVar('document_logo');
+					if (is_file($urlfile)) {
+						chmod($urlfile, 0777);
+						unlink($urlfile);
+					}
+				}
+			}
+			redirect_header($action, 2, _MA_XMDOC_REDIRECT_SAVE);			
+		} else {
+			$error_message .= $obj->getHtmlErrors();
+		}		
+		return $error_message;
+	}
 }
 
 /**

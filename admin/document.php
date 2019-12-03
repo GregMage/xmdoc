@@ -18,6 +18,7 @@
  */
 use Xmf\Module\Admin;
 use Xmf\Request;
+use Xmf\Metagen;
 
 
 require __DIR__ . '/admin_header.php';
@@ -89,7 +90,7 @@ switch ($op) {
                 $document['category']        = $document_arr[$i]->getVar('category_name');
                 $document['categoryid']      = $document_arr[$i]->getVar('document_category');
                 $document['document']        = $document_arr[$i]->getVar('document_document');
-                $document['description']     = \Xmf\Metagen::generateDescription($document_arr[$i]->getVar('document_description', 'show'), 30);
+                $document['description']     = Metagen::generateDescription($document_arr[$i]->getVar('document_description', 'show'), 30);
                 $document['counter']         = $document_arr[$i]->getVar('document_counter');
                 $document['showinfo']        = $document_arr[$i]->getVar('document_showinfo');
                 $document['weight']          = $document_arr[$i]->getVar('document_weight');
@@ -185,54 +186,32 @@ switch ($op) {
         }
         
         break;
-        
-    // del
-    case 'del':    
-        $document_id = Request::getInt('document_id', 0);
-        if ($document_id == 0) {
-            $xoopsTpl->assign('error_message', _MA_XMDOC_ERROR_NODOCUMENT);
-        } else {
-            $surdel = Request::getBool('surdel', false);
-            $obj  = $documentHandler->get($document_id);
-            if ($surdel === true) {
-                if (!$GLOBALS['xoopsSecurity']->check()) {
-                    redirect_header('document.php', 3, implode('<br />', $GLOBALS['xoopsSecurity']->getErrors()));
-                }
-                if ($documentHandler->delete($obj)) {
-                    //Del logo
-                    if ($obj->getVar('document_logo') != 'blank_doc.gif') {
-                        // Test if the image is used
-                        $criteria = new CriteriaCompo();
-                        $criteria->add(new Criteria('document_logo', $obj->getVar('document_logo')));
-                        $document_count = $documentHandler->getCount($criteria);
-                        if ($document_count == 0){
-                            $urlfile = $path_logo_document . $obj->getVar('document_logo');
-                            if (is_file($urlfile)) {
-                                chmod($urlfile, 0777);
-                                unlink($urlfile);
-                            }
-                        }
-                    }
-                    // Del permissions
-                    $permHelper = new \Xmf\Module\Helper\Permission();
-                    $permHelper->deletePermissionForItem('xmdoc_view', $document_id);
-                    $permHelper->deletePermissionForItem('xmdoc_submit', $document_id);
-                    $permHelper->deletePermissionForItem('xmdoc_editapprove', $document_id);
-                    $permHelper->deletePermissionForItem('xmdoc_delete', $document_id);
 
-                    redirect_header('document.php', 2, _MA_XMDOC_REDIRECT_SAVE);
-                } else {
-                    $xoopsTpl->assign('error_message', $obj->getHtmlErrors());
-                }
-            } else {
-                $document_img = $obj->getVar('document_logo') ?: 'blank.gif';
-                xoops_confirm(array('surdel' => true, 'document_id' => $document_id, 'op' => 'del'), $_SERVER['REQUEST_URI'], 
-                                    sprintf(_MA_XMDOC_DOCUMENT_SUREDEL, $obj->getVar('document_name')) . '<br>
-                                    <img src="' . $url_logo_document . $document_img . '" title="' . 
-                                    $obj->getVar('document_name') . '" /><br>');
-            }
-        }        
-        break;
+	// del
+	case 'del':
+		$document_id = Request::getInt('document_id', 0);
+		if ($document_id == 0) {
+			$xoopsTpl->assign('error_message', _MA_XMDOC_ERROR_NODOCUMENT);
+		} else {
+			$surdel = Request::getBool('surdel', false);
+			$obj  = $documentHandler->get($document_id);
+			if ($surdel === true) {
+				if (!$GLOBALS['xoopsSecurity']->check()) {
+					redirect_header('document.php', 3, implode('<br />', $GLOBALS['xoopsSecurity']->getErrors()));
+				}
+				$error_message = $obj->delDocument($documentHandler, 'document.php');
+				if ($error_message != ''){
+					$xoopsTpl->assign('error_message', $error_message);
+				}
+			} else {
+				$document_img = $obj->getVar('document_logo') ?: 'blank.gif';
+				xoops_confirm(array('surdel' => true, 'document_id' => $document_id, 'op' => 'del'), $_SERVER['REQUEST_URI'], 
+									sprintf(_MA_XMDOC_DOCUMENT_SUREDEL, $obj->getVar('document_name')) . '<br>
+									<img src="' . $url_logo_document . $document_img . '" title="' . 
+									$obj->getVar('document_name') . '" /><br>');
+			}
+		}        
+		break;
         
     // Update status
     case 'document_update_status':

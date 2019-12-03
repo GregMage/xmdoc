@@ -18,7 +18,8 @@
  */
 use Xmf\Module\Admin;
 use Xmf\Request;
-
+use Xmf\Module\Helper;
+use Xmf\Metagen;
 
 require __DIR__ . '/admin_header.php';
 $moduleAdmin = Admin::getInstance();
@@ -50,7 +51,7 @@ switch ($op) {
                 $category_id                 = $category_arr[$i]->getVar('category_id');
                 $category['id']              = $category_id;
                 $category['name']            = $category_arr[$i]->getVar('category_name');
-                $category['description']     = \Xmf\Metagen::generateDescription($category_arr[$i]->getVar('category_description', 'show'), 30);
+                $category['description']     = Metagen::generateDescription($category_arr[$i]->getVar('category_description', 'show'), 30);
                 $category['extensions']      = implode(', ', $category_arr[$i]->getVar('category_extensions'));
                 $category['size']            = XmdocUtility::SizeConvertString($category_arr[$i]->getVar('category_size'));
                 $category['weight']          = $category_arr[$i]->getVar('category_weight');
@@ -145,9 +146,11 @@ switch ($op) {
                         }
                     }
                     // Del permissions
-                    $permHelper = new \Xmf\Module\Helper\Permission();
-                    $permHelper->deletePermissionForItem('xmdoc_view', $category_id);
-                    $permHelper->deletePermissionForItem('xmdoc_submit', $category_id);
+                    $permHelper = new Helper\Permission();
+					$permHelper->deletePermissionForItem('xmdoc_view', $category_id);
+					$permHelper->deletePermissionForItem('xmdoc_submit', $category_id);
+					$permHelper->deletePermissionForItem('xmdoc_editapprove', $category_id);
+					$permHelper->deletePermissionForItem('xmdoc_delete', $category_id);
                     
                     // Del document
                     $criteria = new CriteriaCompo();
