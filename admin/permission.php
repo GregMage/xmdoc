@@ -31,11 +31,9 @@ $permission = Request::getInt('permission', 1);
 $criteria = new CriteriaCompo();
 $category_arr = $categoryHandler->getall($criteria);
 if (count($category_arr) > 0) {
-    $tab_perm = array(1 => _MA_XMDOC_PERMISSION_VIEW, 2 => _MA_XMDOC_PERMISSION_SUBMIT, 3 => _MA_XMDOC_PERMISSION_OTHER);
-} else {
-    $tab_perm = [3 => _MA_XMDOC_PERMISSION_OTHER];
-    $permission = 3;
+    $tab_perm = array(1 => _MA_XMDOC_PERMISSION_VIEW, 2 => _MA_XMDOC_PERMISSION_SUBMIT, 3  => _MA_XMDOC_PERMISSION_EDITAPPROVE, 4 => _MA_XMDOC_PERMISSION_DELETE);
 }
+
 if (isset($tab_perm)){
     $permission_options = '';
     foreach (array_keys($tab_perm) as $i) {
@@ -61,14 +59,23 @@ if (isset($tab_perm)){
                 $global_perms_array[$i] = $category_arr[$i]->getVar('category_name');
             }
             break;
-		case 3:    // Other permission
-			$formTitle = _MA_XMDOC_PERMISSION_OTHER;
-			$permissionName = 'xmdoc_other';
-			$permissionDescription = _MA_XMDOC_PERMISSION_OTHER_DSC;
-			$global_perms_array    = [
-				'4' => _MA_XMDOC_PERMISSION_OTHER_4 ,
-				'16' => _MA_XMDOC_PERMISSION_OTHER_8
-			];
+
+		case 3:    // Edit/appove permission
+			$formTitle = _MA_XMDOC_PERMISSION_EDITAPPROVE;
+			$permissionName = 'xmdoc_editapprove';
+			$permissionDescription = _MA_XMDOC_PERMISSION_EDITAPPROVE_DSC;
+			foreach (array_keys($category_arr) as $i) {
+				$global_perms_array[$i] = $category_arr[$i]->getVar('category_name');
+			}
+			break;
+
+		case 4:    // Delete permission
+			$formTitle = _MA_XMDOC_PERMISSION_DELETE;
+			$permissionName = 'xmdoc_delete';
+			$permissionDescription = _MA_XMDOC_PERMISSION_DELETE_DSC;
+			foreach (array_keys($category_arr) as $i) {
+				$global_perms_array[$i] = $category_arr[$i]->getVar('category_name');
+			}
 			break;
     }
     $permissionsForm = new XoopsGroupPermForm($formTitle, $helper->getModule()->getVar('mid'), $permissionName, $permissionDescription, 'admin/permission.php?permission=' . $permission);

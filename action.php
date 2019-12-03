@@ -35,10 +35,11 @@ if ($op == 'add' || $op == 'save' || $op == 'loaddocument' || $op == 'edit' || $
     switch ($op) {
         // Add
         case 'add':
-			// permission to submitt
-			$permHelper->checkPermissionRedirect('xmdoc_other', 4, XOOPS_URL, 2, _NOPERM);
 			// Get Permission to submit
 			$submitPermissionCat = XmdocUtility::getPermissionCat('xmdoc_submit');
+			if (empty($submitPermissionCat)){
+				redirect_header('index.php', 2, _NOPERM);
+			}	
 			$criteria = new CriteriaCompo();
 			$criteria->add(new Criteria('category_status', 1));
 			$criteria->setSort('category_weight ASC, category_name');
@@ -73,17 +74,12 @@ if ($op == 'add' || $op == 'save' || $op == 'loaddocument' || $op == 'edit' || $
             break;
 		// Loaddocument
         case 'loaddocument':
-			// permission to submitt
-			$permHelper->checkPermissionRedirect('xmdoc_other', 4, XOOPS_URL, 2, _NOPERM);
-			// Get Permission to submit in category
-			$submitPermissionCat = XmdocUtility::getPermissionCat('xmdoc_submit');
-			$category_id = Request::getInt('category_id', 0);
-			if (!in_array($category_id, $submitPermissionCat)) {
-				redirect_header('action.php?op=add', 2, _NOPERM);
-			}
+			$category_id = Request::getInt('category_id', 0);		
 			if ($category_id == 0) {
 				$xoopsTpl->assign('error_message', _MA_XMDOC_ERROR_NOCATEGORY);
 			} else {
+				// Get Permission to submit in category
+				$permHelper->checkPermissionRedirect('xmdoc_submit', $category_id, 'action.php?op=add', 2, _NOPERM);
 				$category = $categoryHandler->get($category_id);
 				$xoopsTpl->assign('tips', true);
 				$xoopsTpl->assign('extensions', implode(', ', $category->getVar('category_extensions')));
@@ -96,8 +92,9 @@ if ($op == 'add' || $op == 'save' || $op == 'loaddocument' || $op == 'edit' || $
 
         // Save
         case 'save':
-			// permission to submitt
-			$permHelper->checkPermissionRedirect('xmdoc_other', 4, XOOPS_URL, 2, _NOPERM);
+			$category_id = Request::getInt('category_id', 0);
+			// Get Permission to submit in category
+			$permHelper->checkPermissionRedirect('xmdoc_submit', $category_id, 'index.php', 2, _NOPERM);
 			if (!$GLOBALS['xoopsSecurity']->check()) {
 				redirect_header(XOOPS_URL, 3, implode('<br />', $GLOBALS['xoopsSecurity']->getErrors()));
 			}
@@ -118,29 +115,29 @@ if ($op == 'add' || $op == 'save' || $op == 'loaddocument' || $op == 'edit' || $
 			
 		// Edit
         case 'edit':
-			// permission to submitt
-			$permHelper->checkPermissionRedirect('xmdoc_other', 4, XOOPS_URL, 2, _NOPERM);
 			// Form
 			$document_id = Request::getInt('document_id', 0);
 			if ($document_id == 0) {
 				$xoopsTpl->assign('error_message', _MA_XMDOC_ERROR_NODOCUMENT);
 			} else {
 				$obj = $documentHandler->get($document_id);
+				// Get Permission to edit in category
+				$permHelper->checkPermissionRedirect('xmdoc_editapprove', $obj->getVar('document_category'), 'index.php', 2, _NOPERM);
 				$form = $obj->getForm();
 				$xoopsTpl->assign('form', $form->render()); 
 			}
             break;
 
 		// del
-		case 'del':
-			// permission to del
-            $permHelper->checkPermissionRedirect('xmdoc_other', 8, XOOPS_URL, 2, _NOPERM);		
+		case 'del':	
 			$document_id = Request::getInt('document_id', 0);
 			if ($document_id == 0) {
 				$xoopsTpl->assign('error_message', _MA_XMDOC_ERROR_NODOCUMENT);
 			} else {
 				$surdel = Request::getBool('surdel', false);
 				$obj  = $documentHandler->get($document_id);
+				// Get Permission to delete in category
+				$permHelper->checkPermissionRedirect('xmdoc_delete', $obj->getVar('document_category'), 'index.php', 2, _NOPERM);
 				if ($surdel === true) {
 					if (!$GLOBALS['xoopsSecurity']->check()) {
 						redirect_header(XOOPS_URL, 3, implode('<br />', $GLOBALS['xoopsSecurity']->getErrors()));

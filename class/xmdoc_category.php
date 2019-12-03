@@ -130,6 +130,12 @@ class xmdoc_category extends XoopsObject
                 // permission submit
                 $groups_submit = Request::getArray('xmdoc_submit_perms', array(), 'POST');
                 $permHelper->savePermissionForItem('xmdoc_submit', $perm_id, $groups_submit);
+				// permission edit and approve
+                $groups_submit = Request::getArray('xmdoc_editapprove_perms', [], 'POST');
+                $permHelper->savePermissionForItem('xmdoc_editapprove', $perm_id, $groups_submit);
+				// permission delete
+                $groups_submit = Request::getArray('xmdoc_delete_perms', [], 'POST');
+                $permHelper->savePermissionForItem('xmdoc_delete', $perm_id, $groups_submit);
                 redirect_header($action, 2, _MA_XMDOC_REDIRECT_SAVE);
             } else {
                 $error_message =  $this->getHtmlErrors();
@@ -252,6 +258,8 @@ class xmdoc_category extends XoopsObject
         $permHelper = new Helper\Permission();
         $form->addElement($permHelper->getGroupSelectFormForItem('xmdoc_view', $this->getVar('category_id'),  _MA_XMDOC_PERMISSION_VIEW_THIS, 'xmdoc_view_perms', true));
         $form->addElement($permHelper->getGroupSelectFormForItem('xmdoc_submit', $this->getVar('category_id'),  _MA_XMDOC_PERMISSION_SUBMIT_THIS, 'xmdoc_submit_perms', true));
+        $form->addElement($permHelper->getGroupSelectFormForItem('xmdoc_editapprove', $this->getVar('category_id'),  _MA_XMDOC_PERMISSION_EDITAPPROVE_THIS, 'xmdoc_editapprove_perms', true));
+        $form->addElement($permHelper->getGroupSelectFormForItem('xmdoc_delete', $this->getVar('category_id'),  _MA_XMDOC_PERMISSION_DELETE_THIS, 'xmdoc_delete_perms', true));
 
         $form->addElement(new XoopsFormHidden('op', 'save'));
         // submit

@@ -106,10 +106,12 @@ define('_MA_XMDOC_PERMISSION_VIEW_THIS', 'Select groups that can view in this ca
 define('_MA_XMDOC_PERMISSION_SUBMIT', 'Submit permission');
 define('_MA_XMDOC_PERMISSION_SUBMIT_DSC', 'Select groups that can submit a document in categories');
 define('_MA_XMDOC_PERMISSION_SUBMIT_THIS', 'Select groups that can submit in this category');
-define('_MA_XMDOC_PERMISSION_OTHER', 'Other permissions');
-define('_MA_XMDOC_PERMISSION_OTHER_DSC', 'Select groups that can:');
-define('_MA_XMDOC_PERMISSION_OTHER_4', 'Submit a document');
-define('_MA_XMDOC_PERMISSION_OTHER_8', 'Delete a document');
+define('_MA_XMDOC_PERMISSION_EDITAPPROVE', 'Edit and approve permission');
+define('_MA_XMDOC_PERMISSION_EDITAPPROVE_DSC', 'Select groups that can edit and approve a news in categories');
+define('_MA_XMDOC_PERMISSION_EDITAPPROVE_THIS', 'Select groups that can edit and approve in this category');
+define('_MA_XMDOC_PERMISSION_DELETE', 'Delete permission');
+define('_MA_XMDOC_PERMISSION_DELETE_DSC', 'Select groups that can delete a news in categories');
+define('_MA_XMDOC_PERMISSION_DELETE_THIS', 'Select groups that can delete in this category');
 
 // about
 define('_MA_XMDOC_ABOUT_FILEPROTECTION', "Files Protection");

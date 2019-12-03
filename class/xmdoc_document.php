@@ -130,7 +130,6 @@ class xmdoc_document extends XoopsObject
         $this->setVar('document_description',  Request::getText('document_description', ''));
         $this->setVar('document_showinfo', Request::getInt('document_showinfo', 1));
 		$this->setVar('document_weight', Request::getInt('document_weight', 0));
-        $this->setVar('document_status', Request::getInt('document_status', 1));
 		//Automatic file size
 		if (Request::getString('sizeValue', '') == ''){
 			if ($mediaSize == 0) {
@@ -162,6 +161,14 @@ class xmdoc_document extends XoopsObject
 			if ($_POST['mdate_update'] == 'R'){
 				$this->setVar('document_mdate', 0);
 			}
+        }
+		// permission edit and approve submitted doc		
+        $permHelper = new Helper\Permission();
+		$permission = $permHelper->checkPermission('xmdoc_editapprove', $news_cid);
+        if ($permission == false){
+            $this->setVar('document_status', 2);
+        } else {
+            $this->setVar('document_status', Request::getInt('document_status', 1));
         }
 		// Captcha
         if ($helper->getConfig('general_captcha', 0) == 1) {
@@ -358,11 +365,16 @@ class xmdoc_document extends XoopsObject
 			}
 		}
 
-		// status
-        $form_status = new XoopsFormRadio(_MA_XMDOC_STATUS, 'document_status', $this->getVar('document_status'));
-        $options = array(1 => _MA_XMDOC_STATUS_A, 0 =>_MA_XMDOC_STATUS_NA,);
-        $form_status->addOptionArray($options);
-        $form->addElement($form_status);
+		// permission edit and approve submitted doc		
+        $permHelper = new Helper\Permission();
+		$permission = $permHelper->checkPermission('xmdoc_editapprove', $category_id);
+        if ($permission == true || $helper->isUserAdmin() == true){
+            // status
+			$form_status = new XoopsFormRadio(_MA_XMDOC_STATUS, 'document_status', $this->getVar('document_status'));
+			$options = array(1 => _MA_XMDOC_STATUS_A, 0 =>_MA_XMDOC_STATUS_NA,);
+			$form_status->addOptionArray($options);
+			$form->addElement($form_status);
+        }
 		
 		//captcha		
 		if ($helper->getConfig('general_captcha', 0) == 1) {

@@ -217,6 +217,8 @@ switch ($op) {
                     $permHelper = new \Xmf\Module\Helper\Permission();
                     $permHelper->deletePermissionForItem('xmdoc_view', $document_id);
                     $permHelper->deletePermissionForItem('xmdoc_submit', $document_id);
+                    $permHelper->deletePermissionForItem('xmdoc_editapprove', $document_id);
+                    $permHelper->deletePermissionForItem('xmdoc_delete', $document_id);
 
                     redirect_header('document.php', 2, _MA_XMDOC_REDIRECT_SAVE);
                 } else {
