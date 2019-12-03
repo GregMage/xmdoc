@@ -33,3 +33,5 @@ $url_logo_document  = $helper->uploadUrl('images/document/');
 $path_logo_document = $helper->uploadPath('images/document/');
 $url_document       = $helper->uploadUrl('documents/');
 $path_document      = $helper->uploadPath('documents/');
+
+$upload_size = $helper->getConfig('general_maxuploadsize', 104858);

@@ -197,6 +197,23 @@ $modversion['config'][] = array(
     'default'     => 0
 );
 
+$optionMaxsize['0.1 ' . _MI_XMDOC_PREF_MAXUPLOADSIZE_MBYTES] = 104858;
+$optionMaxsize['0.5 ' . _MI_XMDOC_PREF_MAXUPLOADSIZE_MBYTES] = 1024*1024*0.5;
+$optionMaxsize['1 ' . _MI_XMDOC_PREF_MAXUPLOADSIZE_MBYTES] = 1024*1024*1;
+$optionMaxsize['1.5 ' . _MI_XMDOC_PREF_MAXUPLOADSIZE_MBYTES] = 1024*1024*1.5;
+$optionMaxsize['2 ' . _MI_XMDOC_PREF_MAXUPLOADSIZE_MBYTES] = 1024*1024*2;
+$optionMaxsize['5 ' . _MI_XMDOC_PREF_MAXUPLOADSIZE_MBYTES] = 1024*1024*5;
+$optionMaxsize['10 ' . _MI_XMDOC_PREF_MAXUPLOADSIZE_MBYTES] = 1024*1024*10;
+$modversion['config'][] = [
+    'name'        => 'general_maxuploadsize',
+    'title'       => '_MI_XMDOC_PREF_MAXUPLOADSIZE',
+    'description' => '_MI_XMDOC_PREF_MAXUPLOADSIZE_DESC',
+    'formtype'    => 'select',
+    'valuetype'   => 'int',
+    'default'     => 104858,
+	'options' => $optionMaxsize,
+];
+
 $modversion['config'][] = array(
     'name'        => 'break',
     'title'       => '_MI_XMDOC_PREF_HEAD_DOWNLOAD',

@@ -150,7 +150,6 @@ class xmdoc_category extends XoopsObject
      */
     public function getForm($action = false)
     {
-        $upload_size = 512000;
         $helper = Helper::getHelper('xmdoc');
         if ($action === false) {
             $action = $_SERVER['REQUEST_URI'];
