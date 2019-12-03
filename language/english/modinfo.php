@@ -20,6 +20,9 @@
 define('_MI_XMDOC_NAME', 'Document');
 define('_MI_XMDOC_DESC', 'Document management');
 
+// submenu
+define('_MI_XMDOC_SUB_ADD', 'Add document');
+
 // Menu
 define('_MI_XMDOC_MENU_HOME', 'Index');
 define('_MI_XMDOC_MENU_CATEGORY', 'Category');
