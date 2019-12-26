@@ -65,7 +65,7 @@ if ($op == 'add' || $op == 'save' || $op == 'loaddocument' || $op == 'edit' || $
 				}
 				// Display Page Navigation
 				if ($category_count > $nb_limit) {
-					$nav = new XoopsPageNav($category_count, $nb_limit, $start, 'start');
+					$nav = new XoopsPageNav($category_count, $nb_limit, $start, 'start', 'op=add');
 					$xoopsTpl->assign('nav_menu', $nav->renderNav(4));
 				}
 			} else {
