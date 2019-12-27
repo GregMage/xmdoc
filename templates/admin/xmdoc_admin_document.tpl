@@ -61,7 +61,7 @@
         <tbody>
         <{foreach item=document from=$document}>
             <tr class="<{cycle values='even,odd'}> alignmiddle">
-                <td class="txtcenter"><{$document.logo}></td>
+                <td class="txtcenter"><img src="<{$document.logo}>" alt="<{$document.name}>" style="max-width:150px"></td>
                 <td class="txtleft"><{$document.category}></td>
                 <td class="txtleft"><{$document.name}></td>
                 <td class="txtleft"><{$document.description}></td>

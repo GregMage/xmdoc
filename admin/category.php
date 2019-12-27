@@ -57,7 +57,7 @@ switch ($op) {
                 $category['weight']          = $category_arr[$i]->getVar('category_weight');
                 $category['status']          = $category_arr[$i]->getVar('category_status');
                 $category_img                = $category_arr[$i]->getVar('category_logo') ?: 'blank.gif';
-                $category['logo']            = '<img src="' . $url_logo_category .  $category_img . '" alt="' . $category_img . '" />';
+                $category['logo']            = $url_logo_category .  $category_img;
                 $xoopsTpl->append_by_ref('category', $category);
                 unset($category);
             }

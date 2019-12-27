@@ -96,7 +96,7 @@ switch ($op) {
                 $document['weight']          = $document_arr[$i]->getVar('document_weight');
                 $document['status']          = $document_arr[$i]->getVar('document_status');
                 $document_img                = $document_arr[$i]->getVar('document_logo') ?: 'blank_doc.gif';
-                $document['logo']            = '<img src="' . $url_logo_document .  $document_img . '" alt="' . $document_img . '" />';
+                $document['logo']            = $url_logo_document .  $document_img;
                 $xoopsTpl->append_by_ref('document', $document);
                 unset($document);
             }
