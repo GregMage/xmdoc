@@ -267,7 +267,7 @@ class xmdoc_document extends XoopsObject
         // category
         $category = $categoryHandler->get($category_id);
         $category_img = $category->getVar('category_logo') ?: 'blank.gif';
-        $form->addElement(new xoopsFormLabel (_MA_XMDOC_DOCUMENT_CATEGORY, '<img src="' . $url_logo_category .  $category_img . '" alt="' . $category_img . '" /> <strong>' . $category->getVar('category_name') . '</strong>'));
+        $form->addElement(new xoopsFormLabel (_MA_XMDOC_DOCUMENT_CATEGORY, '<img src="' . $url_logo_category .  $category_img . '" alt="' . $category_img . '" style="max-width:100px"/> <strong>' . $category->getVar('category_name') . '</strong>'));
         $form->addElement(new XoopsFormHidden('document_category', $category_id));
         
         // title
