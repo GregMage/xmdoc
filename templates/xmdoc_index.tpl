@@ -5,7 +5,41 @@
         </div>
     </div>
 <{/if}>
-
+<{if $filter}>
+	<ol class="breadcrumb">
+		<li class="active"><{$smarty.const._MA_XMDOC_HOME}></li>
+	</ol>
+	<div align="center">
+		<form class="form-inline" id="form_news_tri" name="form_news_tri" method="get" action="index.php">
+			<div class="form-group">
+				<label><{$smarty.const._MA_XMDOC_INDEX_SELECTCATEGORY}></label>
+				<select class="form-control" name="news_filter" id="news_filter" onchange="location='index.php?doc_cid='+this.options[this.selectedIndex].value">
+					<{$doc_cid_options}>
+				<select>
+			</div>
+		</form>
+	</div>
+	<br>		
+	<br>
+<{else}>
+	<ol class="breadcrumb">
+		<li><a href="index.php"><{$smarty.const._MA_XMDOC_HOME}></a></li>
+		<li class="active"><{$category_name}></li>
+	</ol>
+	<div class="media">
+		<div class="media-left">
+			<{if $category_logo != ''}>
+			<img class="media-object" src="<{$category_logo}>" alt="<{$category_name}>" style="max-width:150px">
+			<{/if}>
+		</div>
+		<div class="media-body">
+			<h2 class="media-heading"><{$category_name}></h2>
+			<{$category_description}>
+		</div>
+	</div>
+	<br>		
+	<br>		
+<{/if}>
 <{if $document_count != 0}>
 	<{foreach item=document from=$documents}>
 		<{if $index_column == 1}>
@@ -155,12 +189,16 @@
 									</div>
 									<div class="xm-document-general-button">
 										<div class="btn-group" role="group" aria-label="...">
+											<{if $document.perm_edit == true}>
 											<a href="<{$xoops_url}>/modules/xmdoc/action.php?op=edit&amp;document_id=<{$document.id}>">
 												<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> <{$smarty.const._MA_XMDOC_EDIT}></button>
 											</a>
+											<{/if}>
+											<{if $document.perm_del == true}>
 											<a href="<{$xoops_url}>/modules/xmdoc/action.php?op=del&amp;document_id=<{$document.id}>">
 												<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> <{$smarty.const._MA_XMDOC_DEL}></button>
 											</a>
+											<{/if}>
 										</div>
 									</div>
 								</div>
@@ -182,6 +220,11 @@
 			</div>
 		</div>
 	<{/if}>
+<{else}>
+<div class="alert alert-danger alert-dismissible" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	<{$smarty.const._MA_XMDOC_ERROR_NODOCUMENT}>
+</div>
 <{/if}>
 
 <{if $index_footer}>

@@ -144,6 +144,7 @@ define('_MA_XMDOC_FORMDOC_VOTES', '(%s Votes)');
 define('_MA_XMDOC_DOWNLOAD', 'Download');
 define('_MA_XMDOC_SELECTCATEGORY', 'Select a category to add an item to');
 define('_MA_XMDOC_HOME', 'Document home page');
+define('_MA_XMDOC_INDEX_SELECTCATEGORY', 'Select a category to filter documents');
 
 //block
 define('_MA_XMDOC_GENINFORMATION', 'General informations');
