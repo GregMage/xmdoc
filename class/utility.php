@@ -198,6 +198,7 @@ class XmdocUtility{
         $xoTheme->addStylesheet( XOOPS_URL . '/modules/xmdoc/assets/css/styles.css', null );
         
         $xmdocHelper = Helper::getHelper('xmdoc');
+		$permDocHelper = new Helper\Permission('xmdoc');
         // Load language files
         $xmdocHelper->loadLanguage('main');
         
@@ -255,6 +256,8 @@ class XmdocUtility{
                 $document['showinfo']          = $document_arr[$i]->getVar('document_showinfo');
                 $document_img                  = $document_arr[$i]->getVar('document_logo') ?: 'blank_doc.gif';
                 $document['logo']              = $url_logo_document . $document_img;
+                $document['perm_edit']         = $permDocHelper->checkPermission('xmdoc_editapprove', $document['categoryid']);
+                $document['perm_del']          = $permDocHelper->checkPermission('xmdoc_delete', $document['categoryid']);
                 $xoopsTpl->append_by_ref('document', $document);
                 unset($document);
             }

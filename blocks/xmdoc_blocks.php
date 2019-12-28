@@ -27,6 +27,8 @@ function block_xmdoc_show($options) {
 	// Get Permission to view
 	$viewPermissionCat = XmdocUtility::getPermissionCat('xmdoc_view');
 	
+	$permDocHelper = new Helper\Permission('xmdoc');
+	
 	$block = array();
 	
 	$criteria = new CriteriaCompo();
@@ -85,6 +87,8 @@ function block_xmdoc_show($options) {
 			$document['showinfo']          = $document_arr[$i]->getVar('document_showinfo');
 			$document_img                  = $document_arr[$i]->getVar('document_logo') ?: 'blank_doc.gif';
 			$document['logo']              = $url_logo_document . $document_img;
+			$document['perm_edit']         = $permDocHelper->checkPermission('xmdoc_editapprove', $document['categoryid']);
+			$document['perm_del']          = $permDocHelper->checkPermission('xmdoc_delete', $document['categoryid']);
 			$block['document'][] = $document;
 			unset($document);
 		}

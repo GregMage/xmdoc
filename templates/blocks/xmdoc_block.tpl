@@ -68,12 +68,16 @@
 								</div>
 								<div class="xm-document-general-button">
 									<div class="btn-group" role="group" aria-label="...">
+										<{if $document.perm_edit == true}>
 										<a href="<{$xoops_url}>/modules/xmdoc/action.php?op=edit&amp;document_id=<{$document.id}>">
 											<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> <{$smarty.const._MA_XMDOC_EDIT}></button>
 										</a>
+										<{/if}>
+										<{if $document.perm_del == true}>
 										<a href="<{$xoops_url}>/modules/xmdoc/action.php?op=del&amp;document_id=<{$document.id}>">
 											<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> <{$smarty.const._MA_XMDOC_DEL}></button>
 										</a>
+										<{/if}>
 									</div>
 								</div>
 							</div>
