@@ -28,7 +28,6 @@ $xoTheme->addStylesheet(XOOPS_URL . '/modules/' . $xoopsModule->getVar('dirname'
 
 $xoopsTpl->assign('index_header', $helper->getConfig('index_header', ""));
 $xoopsTpl->assign('index_footer', $helper->getConfig('index_footer', ""));
-$xoopsTpl->assign('index_column', $helper->getConfig('index_column', 2));
 
 // Get Permission to view
 $viewPermissionCat = XmdocUtility::getPermissionCat('xmdoc_view');
@@ -89,8 +88,6 @@ $document_arr         = $documentHandler->getall($criteria);
 $document_count_total = $documentHandler->getCount($criteria);
 $document_count       = count($document_arr);
 $xoopsTpl->assign('document_count', $document_count);
-$count     = 1;
-$count_row = 1;
 $keywords = '';
 if ($document_count > 0 && !empty($viewPermissionCat)) {
 	foreach (array_keys($document_arr) as $i) {
@@ -116,19 +113,6 @@ if ($document_count > 0 && !empty($viewPermissionCat)) {
 		$document['perm_edit']         = $permDocHelper->checkPermission('xmdoc_editapprove', $document['categoryid']);
 		$document['perm_del']          = $permDocHelper->checkPermission('xmdoc_delete', $document['categoryid']);
 		$keywords .= Metagen::generateSeoTitle($document_arr[$i]->getVar('document_name')) . ',';
-		$document['count'] = $count;
-		if ($count_row == $count) {
-			$document['row'] = true;
-			$count_row      = $count_row + $helper->getConfig('index_column', 2);
-		} else {
-			$document['row'] = false;
-		}
-		if ($count == $document_count) {
-			$document['end'] = true;
-		} else {
-			$document['end'] = false;
-		}
-		$count++;
 		$xoopsTpl->append_by_ref('documents', $document);
 		unset($document);
 	}

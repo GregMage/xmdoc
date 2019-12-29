@@ -15,7 +15,7 @@
 				<label><{$smarty.const._MA_XMDOC_INDEX_SELECTCATEGORY}></label>
 				<select class="form-control" name="news_filter" id="news_filter" onchange="location='index.php?doc_cid='+this.options[this.selectedIndex].value">
 					<{$doc_cid_options}>
-				<select>
+				</select>
 			</div>
 		</form>
 	</div>
@@ -41,103 +41,25 @@
 	<br>		
 <{/if}>
 <{if $document_count != 0}>
+	<div class="row">
 	<{foreach item=document from=$documents}>
-		<{if $index_column == 1}>
-			<div class="xm-document">
-				<div class="col-sm-12 col-md-12 xm-minibox">
-					<div class="xm-document-logo">
-						<img src="<{$document.logo}>" alt="<{$document.name}>">
-					</div>
-					<a class="xm-document-title" title="<{$document.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank">
-						<{$document.name}>
-					</a>
-					<div class="xm-document-description">
-						<{$document.description_short|truncateHtml:10:'...'}>
-					</div>
-					<div class="xm-document-view">
-						<button type="button" class="btn btn-default btn-xs glyphicon glyphicon-eye-open" data-toggle="modal" data-target="#myModal<{$document.id}>"></button>
-					</div>
-					<a class="btn btn-primary btn-xs col-md-9" title="<{$document.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank">
-						<{$smarty.const._MA_XMDOC_DOWNLOAD}>
-					</a>
-				</div>				
+		<div class="col-sm-6 col-md-6 xm-minibox">
+			<div class="xm-document-logo">
+				<img src="<{$document.logo}>" alt="<{$document.name}>" style="max-width:150px">
 			</div>
-		<{/if}>
-		<{if $index_column == 2}>
-			<{if $document.row == true}>
-				<div class="row xm-document">
-			<{/if}>
-			<div class="col-sm-6 col-md-6 xm-minibox">
-				<div class="xm-document-logo">
-					<img src="<{$document.logo}>" alt="<{$document.name}>">
-				</div>
-				<a class="xm-document-title" title="<{$document.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank">
-					<{$document.name}>
-				</a>
-				<div class="xm-document-description">
-					<{$document.description_short|truncateHtml:10:'...'}>
-				</div>
-				<div class="xm-document-view">
-					<button type="button" class="btn btn-default btn-xs glyphicon glyphicon-eye-open" data-toggle="modal" data-target="#myModal<{$document.id}>"></button>
-				</div>
-				<a class="btn btn-primary btn-xs col-md-9" title="<{$document.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank">
-					<{$smarty.const._MA_XMDOC_DOWNLOAD}>
-				</a>
-			</div>	
-			<{if $document.count is div by $index_column || $document.end == true}>
-				</div>
-			<{/if}>
-		<{/if}>
-		<{if $index_column == 3}>
-			<{if $document.row == true}>
-				<div class="row xm-document">
-			<{/if}>
-			<div class="col-sm-4 col-md-4 xm-minibox">
-				<div class="xm-document-logo">
-					<img src="<{$document.logo}>" alt="<{$document.name}>">
-				</div>
-				<a class="xm-document-title" title="<{$document.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank">
-					<{$document.name}>
-				</a>
-				<div class="xm-document-description">
-					<{$document.description_short|truncateHtml:10:'...'}>
-				</div>
-				<div class="xm-document-view">
-					<button type="button" class="btn btn-default btn-xs glyphicon glyphicon-eye-open" data-toggle="modal" data-target="#myModal<{$document.id}>"></button>
-				</div>
-				<a class="btn btn-primary btn-xs col-md-9" title="<{$document.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank">
-					<{$smarty.const._MA_XMDOC_DOWNLOAD}>
-				</a>
-			</div>	
-			<{if $document.count is div by $index_column || $document.end == true}>
-				</div>
-			<{/if}>
-		<{/if}>
-		<{if $index_column == 4}>
-			<{if $document.row == true}>
-				<div class="row xm-document">
-			<{/if}>
-			<div class="col-sm-3 col-md-3 xm-minibox">
-				<div class="xm-document-logo">
-					<img src="<{$document.logo}>" alt="<{$document.name}>">
-				</div>
-				<a class="xm-document-title" title="<{$document.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank">
-					<{$document.name}>
-				</a>
-				<div class="xm-document-description">
-					<{$document.description_short|truncateHtml:10:'...'}>
-				</div>
-				<div class="xm-document-view">
-					<button type="button" class="btn btn-default btn-xs glyphicon glyphicon-eye-open" data-toggle="modal" data-target="#myModal<{$document.id}>"></button>
-				</div>
-				<a class="btn btn-primary btn-xs col-md-9" title="<{$document.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank">
-					<{$smarty.const._MA_XMDOC_DOWNLOAD}>
-				</a>
-			</div>	
-			<{if $document.count is div by $index_column || $document.end == true}>
-				</div>
-			<{/if}>
-		<{/if}>
+			<a class="xm-document-title" title="<{$document.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank">
+				<{$document.name}>
+			</a>
+			<div class="xm-document-description">
+				<{$document.description_short|truncateHtml:10:'...'}>
+			</div>
+			<div class="xm-document-view">
+				<button type="button" class="btn btn-default btn-xs glyphicon glyphicon-eye-open" data-toggle="modal" data-target="#myModal<{$document.id}>"></button>
+			</div>
+			<a class="btn btn-primary btn-xs col-md-9" title="<{$document.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank">
+				<{$smarty.const._MA_XMDOC_DOWNLOAD}>
+			</a>
+		</div>
 		<!-- Modal -->
 		<div class="modal fade" id="myModal<{$document.id}>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			<div class="modal-dialog" role="document">
@@ -150,7 +72,7 @@
 						<div class="media">
 							<div class="media-left">
 								<a href="#">
-									<img class="media-object" src="<{$document.logo}>" alt="<{$document.name}>">
+									<img class="media-object" src="<{$document.logo}>" alt="<{$document.name}>" style="max-width:150px">
 								</a>
 							</div>
 							<div class="media-body">
@@ -213,6 +135,7 @@
 			</div>
 		</div>
 	<{/foreach}>
+	</div>
 	<{if $nav_menu}>
 		<div class="row">
 			<div class="col-sm-12" style="padding-bottom: 10px; padding-top: 5px; padding-right: 60px; text-align: right;">

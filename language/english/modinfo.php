@@ -42,8 +42,6 @@ define('_MI_XMDOC_BLOCK_RANDOM_DESC', 'Display documents randomly');
 
 // Pref
 define('_MI_XMDOC_PREF_HEAD_INDEX', '<span style="font-size: large;  font-weight: bold;">Index</span>');
-define('_MI_XMDOC_PREF_COLUMN', 'Number of column for download View');
-define('_MI_XMDOC_PREF_COLUMN_DESC', 'Number of download that can be viewed in index: 1, 2, 3 or 4 columns');
 define('_MI_XMDOC_PREF_HEADER', 'Header index page');
 define('_MI_XMDOC_PREF_HEADER_DESC', 'Set HTML codes to show in index page');
 define('_MI_XMDOC_PREF_FOOTER', 'Footer index page');
