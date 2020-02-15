@@ -32,6 +32,10 @@ $xoopsTpl->assign('index_footer', $helper->getConfig('index_footer', ""));
 // Get Permission to view
 $viewPermissionCat = XmdocUtility::getPermissionCat('xmdoc_view');
 $permDocHelper = new Helper\Permission('xmdoc');
+//xmsocial
+if (xoops_isActiveModule('xmsocial') && $helper->getConfig('general_xmsocial', 0) == 1) {
+	xoops_load('utility', 'xmsocial');
+}
 
 // Get start pager
 $start = Request::getInt('start', 0);
@@ -103,15 +107,20 @@ if ($document_count > 0 && !empty($viewPermissionCat)) {
 		$document['date']              = formatTimestamp($document_arr[$i]->getVar('document_date'), 's');
 		if ($document_arr[$i]->getVar('document_mdate') != 0) {
 			$document['mdate']         = formatTimestamp($document_arr[$i]->getVar('document_mdate'), 's');
-		}                
-		$document['rating']            = number_format($document_arr[$i]->getVar('document_rating'), 1);
-		$document['votes']             = sprintf(_MA_XMDOC_FORMDOC_VOTES, $document_arr[$i]->getVar('document_votes'));
+		}
 		$document['counter']           = $document_arr[$i]->getVar('document_counter');
 		$document['showinfo']          = $document_arr[$i]->getVar('document_showinfo');
 		$document_img                  = $document_arr[$i]->getVar('document_logo') ?: 'blank_doc.gif';
 		$document['logo']              = $url_logo_document . $document_img;
 		$document['perm_edit']         = $permDocHelper->checkPermission('xmdoc_editapprove', $document['categoryid']);
 		$document['perm_del']          = $permDocHelper->checkPermission('xmdoc_delete', $document['categoryid']);
+		//xmsocial
+		if (xoops_isActiveModule('xmsocial') && $helper->getConfig('general_xmsocial', 0) == 1) {
+			XmsocialUtility::renderRating($xoopsTpl, $xoTheme, 'xmdoc', $document_id , 5, $document_arr[$i]->getVar('document_rating'), $document_arr[$i]->getVar('document_votes'));
+			$document['dorating'] = 1;
+		} else {
+			$document['dorating'] = 0;
+		}
 		$keywords .= Metagen::generateSeoTitle($document_arr[$i]->getVar('document_name')) . ',';
 		$xoopsTpl->append_by_ref('documents', $document);
 		unset($document);

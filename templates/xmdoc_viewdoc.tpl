@@ -62,9 +62,11 @@
                                         <div class="col-md-6"><span class="glyphicon glyphicon-download-alt" title="<{$smarty.const._MA_XMDOC_FORMDOC_DOWNLOAD}>"></span>
                                             <{$smarty.const._MA_XMDOC_FORMDOC_DOWNLOAD}>: <{$document.counter}>
                                         </div>
-                                        <div class="col-md-6"><span class="glyphicon glyphicon-star-empty" title="<{$smarty.const._MA_XMDOC_FORMDOC_RATING}>"></span>
-                                            <{$smarty.const._MA_XMDOC_FORMDOC_RATING}>: <{$document.rating}> <{$document.votes}>
-                                        </div>
+										<{if $document.dorating == 1}>
+										<div class="col-md-6">
+											<{include file="db:xmsocial_rating.tpl"}>
+										</div>
+										<{/if}>
                                     </div>
 									<div class="xm-document-general-button">
 										<div class="btn-group" role="group" aria-label="...">
