@@ -2,7 +2,7 @@
     <{foreach item=document from=$document}>
         <div class="col-sm-4 col-md-4 xm-minibox">
             <div class="xm-document-logo">
-                <img src="<{$document.logo}>" alt="<{$document.name}>">
+                <img src="<{$document.logo}>" alt="<{$document.name}>" style="max-width:120px">
             </div>
             <a class="xm-document-title" title="<{$document.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank">
                 <{$document.name}>
@@ -28,9 +28,9 @@
                     <div class="modal-body">
                         <div class="media">
                             <div class="media-left">
-                                <a href="#">
-                                    <img class="media-object" src="<{$document.logo}>" alt="<{$document.name}>">
-                                </a>
+								<div class="xm-document-logo">
+                                    <img class="media-object" src="<{$document.logo}>" alt="<{$document.name}>" style="max-width:120px">
+								</div>
                             </div>
                             <div class="media-body">
                                 <{$document.description}>
@@ -64,7 +64,7 @@
                                         </div>
 										<{if $document.dorating == 1}>
 										<div class="col-md-6">
-											<{include file="db:xmsocial_rating.tpl"}>
+											<{include file="db:xmsocial_rating.tpl" down_xmsocial=$document.xmsocial_arr}>
 										</div>
 										<{/if}>
                                     </div>

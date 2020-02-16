@@ -6,9 +6,8 @@
 }
 .xm-document-logo {
     max-height: 120px;
-    min-height: 120px;
+	max-width: 120px;
     text-align: center;
-    overflow: hidden;
 }
 
 .xm-document-title {

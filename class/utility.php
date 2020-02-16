@@ -237,7 +237,9 @@ class XmdocUtility{
 		$documentHandler->table_link = $documentHandler->db->prefix("xmdoc_category");
         $documentHandler->field_link = "category_id";
         $documentHandler->field_object = "document_category";
-        $document_arr = $documentHandler->getByLink($criteria);    
+        $document_arr = $documentHandler->getByLink($criteria);
+		$options['mod'] = $modulename;
+		$options['id'] = $itemid;
 		if (count($document_arr) > 0 && !empty($viewPermissionCat)) {
             foreach (array_keys($document_arr) as $i) {
                 $document_id                   = $document_arr[$i]->getVar('document_id');
@@ -262,7 +264,7 @@ class XmdocUtility{
                 $document['perm_del']          = $permDocHelper->checkPermission('xmdoc_delete', $document['categoryid']);
 				//xmsocial
 				if (xoops_isActiveModule('xmsocial') && $helper->getConfig('general_xmsocial', 0) == 1) {
-					XmsocialUtility::renderRating($xoopsTpl, $xoTheme, 'xmdoc', $document_id , 5, $document_arr[$i]->getVar('document_rating'), $document_arr[$i]->getVar('document_votes'));
+					$document['xmsocial_arr'] = XmsocialUtility::renderRating($xoTheme, 'xmdoc', $document_id , 5, $document_arr[$i]->getVar('document_rating'), $document_arr[$i]->getVar('document_votes'), $options);
 					$document['dorating'] = 1;
 				} else {
 					$document['dorating'] = 0;

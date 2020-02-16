@@ -116,7 +116,7 @@ if ($document_count > 0 && !empty($viewPermissionCat)) {
 		$document['perm_del']          = $permDocHelper->checkPermission('xmdoc_delete', $document['categoryid']);
 		//xmsocial
 		if (xoops_isActiveModule('xmsocial') && $helper->getConfig('general_xmsocial', 0) == 1) {
-			XmsocialUtility::renderRating($xoopsTpl, $xoTheme, 'xmdoc', $document_id , 5, $document_arr[$i]->getVar('document_rating'), $document_arr[$i]->getVar('document_votes'));
+			$document['xmsocial_arr'] = XmsocialUtility::renderRating($xoTheme, 'xmdoc', $document_id , 5, $document_arr[$i]->getVar('document_rating'), $document_arr[$i]->getVar('document_votes'));
 			$document['dorating'] = 1;
 		} else {
 			$document['dorating'] = 0;
