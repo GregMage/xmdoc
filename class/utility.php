@@ -60,7 +60,7 @@ class XmdocUtility{
             } else {
                 $mysize = $size_value_arr[0] * $gb;
             }
-            return $mysize;
+            return intval($mysize);
         } else {
             return 0;
         }
