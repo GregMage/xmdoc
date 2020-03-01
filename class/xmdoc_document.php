@@ -304,7 +304,7 @@ class xmdoc_document extends XoopsObject
         }
         $imageselect_img->setExtra("onchange='showImgSelected(\"image_img2\", \"document_logo\", \"" . $uploadirectory . "\", \"\", \"" . XOOPS_URL . "\")'");
         $imgtray_img->addElement($imageselect_img, false);
-        $imgtray_img->addElement(new XoopsFormLabel('', "<br /><img src='" . $url_logo_document . '/' . $blank_img . "' name='image_img2' id='image_img2' alt='' />"));
+        $imgtray_img->addElement(new XoopsFormLabel('', "<br /><img src='" . $url_logo_document . '/' . $blank_img . "' name='image_img2' id='image_img2' alt='' style='max-width:100px'/>"));
         $fileseltray_img = new XoopsFormElementTray('<br />', '<br /><br />');
         $fileseltray_img->addElement(new XoopsFormFile(_MA_XMDOC_DOCUMENT_UPLOAD, 'document_logo', $upload_size), false);
         $fileseltray_img->addElement(new XoopsFormLabel(''), false);
