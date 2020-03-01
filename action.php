@@ -30,6 +30,7 @@ $xoTheme->addStylesheet(XOOPS_URL . '/modules/' . $xoopsModule->getVar('dirname'
 $op = Request::getCmd('op', '');
 // Get start pager
 $start = Request::getInt('start', 0);
+$xoopsTpl->assign('index_module', $helper->getModule()->getVar('name'));
 
 if ($op == 'add' || $op == 'save' || $op == 'loaddocument' || $op == 'edit' || $op == 'del') {
     switch ($op) {

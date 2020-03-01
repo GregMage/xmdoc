@@ -5,27 +5,30 @@
         </div>
     </div>
 <{/if}>
-<{if $filter}>
+
+<{if $cat}>
 	<ol class="breadcrumb">
-		<li class="active"><{$smarty.const._MA_XMDOC_HOME}></li>
-	</ol>
-	<div align="center">
-		<form class="form-inline" id="form_news_tri" name="form_news_tri" method="get" action="index.php">
-			<div class="form-group">
-				<label><{$smarty.const._MA_XMDOC_INDEX_SELECTCATEGORY}></label>
-				<select class="form-control" name="news_filter" id="news_filter" onchange="location='index.php?doc_cid='+this.options[this.selectedIndex].value">
-					<{$doc_cid_options}>
-				</select>
-			</div>
-		</form>
-	</div>
-	<br>		
-	<br>
-<{else}>
-	<ol class="breadcrumb">
-		<li><a href="index.php"><{$smarty.const._MA_XMDOC_HOME}></a></li>
+		<li><a href="index.php"><{$index_module}></a></li>
 		<li class="active"><{$category_name}></li>
 	</ol>
+<{else}>
+	<ol class="breadcrumb">
+		<li class="active"><{$index_module}></li>
+	</ol>
+<{/if}>
+<div align="center">
+	<form class="form-inline" id="form_news_tri" name="form_news_tri" method="get" action="index.php">
+		<div class="form-group">
+			<label><{$smarty.const._MA_XMDOC_INDEX_SELECTCATEGORY}></label>
+			<select class="form-control form-control-sm" name="doc_filter" id="doc_filter" onchange="location='index.php?doc_cid='+this.options[this.selectedIndex].value">
+				<{$doc_cid_options}>
+			<select>
+		</div>
+	</form>
+</div>
+<br>		
+<br>
+<{if $cat}>
 	<div class="media">
 		<div class="media-left">
 			<{if $category_logo != ''}>
@@ -38,7 +41,7 @@
 		</div>
 	</div>
 	<br>		
-	<br>		
+	<br>	
 <{/if}>
 <{if $document_count != 0}>
 	<div class="row">

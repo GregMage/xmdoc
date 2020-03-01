@@ -1,6 +1,7 @@
 <div class="xmdoc">
     <{if $category_count gt 0}>
         <ol class="breadcrumb">
+			<li><a href="index.php"><{$index_module}></a></li>
             <li class="active"><{$smarty.const._MA_XMDOC_SELECTCATEGORY}></li>
         </ol>
 		<div class="xm-category row">
@@ -57,6 +58,7 @@
 
 	<{if $form}>
         <ol class="breadcrumb">
+			<li><a href="index.php"><{$index_module}></a></li>
             <li><a href="action.php?op=add"><{$smarty.const._MA_XMDOC_SELECTCATEGORY}></a></li>
             <li class="active"><{$smarty.const._MA_XMDOC_ADD}></li>
         </ol>

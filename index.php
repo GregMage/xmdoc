@@ -40,6 +40,7 @@ if (xoops_isActiveModule('xmsocial') && $helper->getConfig('general_xmsocial', 0
 // Get start pager
 $start = Request::getInt('start', 0);
 $xoopsTpl->assign('start', $start);
+$xoopsTpl->assign('index_module', $helper->getModule()->getVar('name'));
 // Category
 $doc_cid = Request::getInt('doc_cid', 0);
 $xoopsTpl->assign('doc_cid', $doc_cid);
@@ -84,8 +85,9 @@ if ($doc_cid != 0){
 		$xoopsTpl->assign('category_logo', $url_logo_category . $category_img);
 	}
 	$xoopsTpl->assign('category_description', $category_arr[$doc_cid]->getVar('category_description'));
+	$xoopsTpl->assign('cat', true);
 } else {
-	$xoopsTpl->assign('filter', true);
+	$xoopsTpl->assign('cat', false);
 }
 
 $document_arr         = $documentHandler->getall($criteria);
