@@ -26,7 +26,7 @@ define('_MA_XMDOC_DOCUMENT_LIST', 'Liste des documents');
 // Error message
 define('_MA_XMDOC_ERROR_LIMITDOWNLOAD', 'Vous avez téléchargé %s fichiers dans cette catégorie et la limite est de %s en 24h');
 define('_MA_XMDOC_ERROR_LIMITDOWNLOADITEM', 'Vous avez téléchargé ce fichier %s fois et la limite est de %s en 24h');
-define('_MA_XMDOC_ERROR_NACTIVE', 'Erreur: Contenu désactivé!');
+define('_MA_XMDOC_ERROR_NACTIVE', 'Erreur : Contenu désactivé!');
 define('_MA_XMDOC_ERROR_NOACESSCATEGORY', 'Vous n\'avez accès à aucune catégorie');
 define('_MA_XMDOC_ERROR_NOCATEGORY', 'Il n\'y a pas de catégories dans la base de données');
 define('_MA_XMDOC_ERROR_NODOCUMENT', 'Il n\'y a aucun document dans la base de données');
@@ -50,13 +50,13 @@ define('_MA_XMDOC_VIEW', 'Afficher');
 
 //Index
 define('_MA_XMDOC_INDEX_IMAGEINFO', 'Statut du serveur');
-define('_MA_XMDOC_INDEX_SPHPINI', "<span style='font-weight: bold;'>Informations extraites du fichier PHP ini:</span>");
+define('_MA_XMDOC_INDEX_SPHPINI', "<span style='font-weight: bold;'>Informations extraites du fichier PHP ini :</span>");
 define('_MA_XMDOC_INDEX_ON', "<span style='font-weight: bold;'>ON</span>");
 define('_MA_XMDOC_INDEX_OFF', "<span style='font-weight: bold;'>OFF</span>");
-define('_MA_XMDOC_INDEX_SERVERUPLOADSTATUS', 'État des téléchargements du serveur: ');
-define('_MA_XMDOC_INDEX_MAXPOSTSIZE', 'Taille de publication maximale autorisée (directive post_max_size dans php.ini): ');
-define('_MA_XMDOC_INDEX_MAXUPLOADSIZE', 'Taille de téléchargement maximale autorisée (directive upload_max_filesize dans php.ini): ');
-define('_MA_XMDOC_INDEX_MEMORYLIMIT', 'Limite de mémoire (directive memory_limit dans php.ini): ');
+define('_MA_XMDOC_INDEX_SERVERUPLOADSTATUS', 'État des téléchargements du serveur : ');
+define('_MA_XMDOC_INDEX_MAXPOSTSIZE', 'Taille de publication maximale autorisée (directive post_max_size dans php.ini) : ');
+define('_MA_XMDOC_INDEX_MAXUPLOADSIZE', 'Taille de téléchargement maximale autorisée (directive upload_max_filesize dans php.ini) : ');
+define('_MA_XMDOC_INDEX_MEMORYLIMIT', 'Limite de mémoire (directive memory_limit dans php.ini) : ');
 define('_MA_XMDOC_INDEXCONFIG_XMSOCIAL_WARNINGNOTINSTALLED', 'Vous n\'avez pas installé le module xmsocial, ce module est obligatoire si vous souhaitez évaluer des documents');
 define('_MA_XMDOC_INDEXCONFIG_XMSOCIAL_WARNINGNOTACTIVATE', 'Vous devez activer dans les préférences de xmdoc l\'utilisation de xmsocial (si vous souhaitez évaluer des documents)');
 
@@ -96,7 +96,7 @@ define('_MA_XMDOC_DOCUMENT_SHOWINFO', 'Afficher les informations sur le fichier'
 define('_MA_XMDOC_DOCUMENT_SIZE', "Taille du fichier<br><span style='font-size: small;'>Pour utiliser le système automatique de calcul de la taille du fichier, laissez ce champ vide.</span>");
 define('_MA_XMDOC_DOCUMENT_SUREDEL', 'Voulez-vous vraiment supprimer ce document? %s');
 define('_MA_XMDOC_DOCUMENT_UPLOAD', 'Upload');
-define('_MA_XMDOC_DOCUMENT_UPLOADSIZE', 'Taille maximum: %s Ko');
+define('_MA_XMDOC_DOCUMENT_UPLOADSIZE', 'Taille maximum : %s Ko');
 define('_MA_XMDOC_DOCUMENT_USERID', 'Auteur');
 define('_MA_XMDOC_DOCUMENT_WEIGHT', 'Poids');
 
@@ -116,8 +116,8 @@ define('_MA_XMDOC_PERMISSION_DELETE_THIS', 'Sélectionner les groupes pouvant su
 
 // about
 define('_MA_XMDOC_ABOUT_FILEPROTECTION', "Protection des fichiers");
-define('_MA_XMDOC_ABOUT_FILEPROTECTION_INFO1', "Pour protéger vos fichiers contre les téléchargements indésirables (par rapport aux autorisations), vous devez créer un fichier '.htaccess' dans le dossier:");
-define('_MA_XMDOC_ABOUT_FILEPROTECTION_INFO2', "Avec le contenu suivant:");
+define('_MA_XMDOC_ABOUT_FILEPROTECTION_INFO1', "Pour protéger vos fichiers contre les téléchargements indésirables (par rapport aux autorisations), vous devez créer un fichier '.htaccess' dans le dossier : ");
+define('_MA_XMDOC_ABOUT_FILEPROTECTION_INFO2', "Avec le contenu suivant : ");
 
 // utility
 define('_MA_XMDOC_UTILITY_BYTES', "Octets");
