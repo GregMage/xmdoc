@@ -105,7 +105,7 @@ if ($op == 'add' || $op == 'save' || $op == 'loaddocument' || $op == 'edit' || $
 			} else {
 				$obj = $documentHandler->get($document_id);
 			}
-			$error_message = $obj->saveDocument($documentHandler, 'action.php?op=add');
+			$error_message = $obj->saveDocument($documentHandler, 'index.php');
 			if ($error_message != ''){
 				$xoopsTpl->assign('error_message', $error_message);
 				$document_category = Request::getInt('document_category', 0);
