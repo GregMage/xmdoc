@@ -90,7 +90,11 @@ switch ($op) {
                 $document['category']        = $document_arr[$i]->getVar('category_name');
                 $document['categoryid']      = $document_arr[$i]->getVar('document_category');
                 $document['document']        = $document_arr[$i]->getVar('document_document');
-                $document['description']     = Metagen::generateDescription($document_arr[$i]->getVar('document_description', 'show'), 30);
+				if (strlen($document_arr[$i]->getVar('document_description', 'e')) > 300){
+					$document['description'] = substr($document_arr[$i]->getVar('document_description', 'e'), 0, 300) . '...';
+				} else {
+					$document['description'] = $document_arr[$i]->getVar('document_description', 'e');
+				}
                 $document['counter']         = $document_arr[$i]->getVar('document_counter');
                 $document['showinfo']        = $document_arr[$i]->getVar('document_showinfo');
                 $document['weight']          = $document_arr[$i]->getVar('document_weight');

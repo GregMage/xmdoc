@@ -51,7 +51,11 @@ switch ($op) {
                 $category_id                 = $category_arr[$i]->getVar('category_id');
                 $category['id']              = $category_id;
                 $category['name']            = $category_arr[$i]->getVar('category_name');
-                $category['description']     = Metagen::generateDescription($category_arr[$i]->getVar('category_description', 'show'), 30);
+				if (strlen($category_arr[$i]->getVar('category_description', 'e')) > 300){
+					$category['description'] = substr($category_arr[$i]->getVar('category_description', 'e'), 0, 300) . '...';
+				} else {
+					$category['description'] = $category_arr[$i]->getVar('category_description', 'e');
+				}
                 $category['extensions']      = implode(', ', $category_arr[$i]->getVar('category_extensions'));
                 $category['size']            = XmdocUtility::SizeConvertString($category_arr[$i]->getVar('category_size'));
                 $category['weight']          = $category_arr[$i]->getVar('category_weight');
