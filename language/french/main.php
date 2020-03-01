@@ -90,6 +90,7 @@ define('_MA_XMDOC_DOCUMENT_LOGO', 'Logo du document');
 define('_MA_XMDOC_DOCUMENT_LOGOFILE', 'Fichier de logo');
 define('_MA_XMDOC_DOCUMENT_MDATEUPDATE', 'Update the modification date');
 define('_MA_XMDOC_DOCUMENT_NAME', 'Nom');
+define('_MA_XMDOC_DOCUMENT_RESETCOUNTER', 'Réinitialiser le compteur de téléchargement');
 define('_MA_XMDOC_DOCUMENT_RESETMDATE', 'Réinitialiser (date vide)');
 define('_MA_XMDOC_DOCUMENT_SHOWINFO', 'Afficher les informations sur le fichier');
 define('_MA_XMDOC_DOCUMENT_SIZE', "Taille du fichier<br><span style='font-size: small;'>Pour utiliser le système automatique de calcul de la taille du fichier, laissez ce champ vide.</span>");

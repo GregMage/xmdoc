@@ -90,6 +90,7 @@ define('_MA_XMDOC_DOCUMENT_LOGO', 'Logo');
 define('_MA_XMDOC_DOCUMENT_LOGOFILE', 'Logo file');
 define('_MA_XMDOC_DOCUMENT_MDATEUPDATE', 'Update the modification date');
 define('_MA_XMDOC_DOCUMENT_NAME', 'Name');
+define('_MA_XMDOC_DOCUMENT_RESETCOUNTER', 'Reset download counter');
 define('_MA_XMDOC_DOCUMENT_RESETMDATE', 'Reset (empty date)');
 define('_MA_XMDOC_DOCUMENT_SHOWINFO', 'View file information');
 define('_MA_XMDOC_DOCUMENT_SIZE', "File Size<br><span style='font-size: small;'>To use the automatic system for calculating the file size, leave this field empty.</span>");

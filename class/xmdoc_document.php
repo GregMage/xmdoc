@@ -162,6 +162,10 @@ class xmdoc_document extends XoopsObject
 				$this->setVar('document_mdate', 0);
 			}
         }
+		if (Request::getInt('document_resetcounter', 0) == 1){
+			$this->setVar('document_counter', 0);
+		}
+		
 		// permission edit and approve submitted doc		
         $permHelper = new Helper\Permission();
 		$permission = $permHelper->checkPermission('xmdoc_editapprove', $news_cid);
@@ -363,6 +367,10 @@ class xmdoc_document extends XoopsObject
 					$form->addElement($selection_mdate);
 				}
 			}
+			
+			// reset counter
+			$form->addElement(new XoopsFormRadioYN(_MA_XMDOC_DOCUMENT_RESETCOUNTER, 'document_resetcounter', 0, _YES, _NO  . ' (' . $this->getVar('document_counter') . ')'));
+			
 		}
 
 		// permission edit and approve submitted doc		
