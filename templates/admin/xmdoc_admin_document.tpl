@@ -82,14 +82,11 @@
                 </td>
                 <td class="xo-actions txtcenter">
                     <a class="tooltip" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" title="<{$smarty.const._MA_XMDOC_VIEW}>" target="_blank">
-                        <img src="<{xoAdminIcons view.png}>" alt="<{$smarty.const._MA_XMDOC_VIEW}>"/>
-                    </a>
+                        <img src="<{xoAdminIcons view.png}>" alt="<{$smarty.const._MA_XMDOC_VIEW}>"/></a>
                     <a class="tooltip" href="document.php?op=edit&amp;document_id=<{$document.id}>" title="<{$smarty.const._MA_XMDOC_EDIT}>">
-                        <img src="<{xoAdminIcons edit.png}>" alt="<{$smarty.const._MA_XMDOC_EDIT}>"/>
-                    </a>
+                        <img src="<{xoAdminIcons edit.png}>" alt="<{$smarty.const._MA_XMDOC_EDIT}>"/></a>
                     <a class="tooltip" href="document.php?op=del&amp;document_id=<{$document.id}>" title="<{$smarty.const._MA_XMDOC_DEL}>">
-                        <img src="<{xoAdminIcons delete.png}>" alt="<{$smarty.const._MA_XMDOC_DEL}>"/>
-                    </a>
+                        <img src="<{xoAdminIcons delete.png}>" alt="<{$smarty.const._MA_XMDOC_DEL}>"/></a>
                 </td>
             </tr>
         <{/foreach}>
