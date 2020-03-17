@@ -69,7 +69,7 @@ define('_MA_XMDOC_CATEGORY_LOGO', 'Logo de la catégorie');
 define('_MA_XMDOC_CATEGORY_LOGOFILE', 'Fichier de logo');
 define('_MA_XMDOC_CATEGORY_EXTENSION', 'Extensions autorisées');
 define('_MA_XMDOC_CATEGORY_NAME', 'Nom');
-define('_MA_XMDOC_CATEGORY_RENAME', "Renommer les documents téléchargés? <br> <span style = 'font-size: small;'> Si l'option est non et que vous avez téléchargé un fichier avec un nom qui existe déjà sur le serveur, il sera écrasé </span>");
+define('_MA_XMDOC_CATEGORY_RENAME', "Renommez les documents téléchargés ? <br> <span style = 'font-size: small;'> Si l'option est non et que vous avez téléchargé un fichier avec un nom qui existe déjà sur le serveur, il sera écrasé </span>");
 define('_MA_XMDOC_CATEGORY_SIZE', 'Taille de téléchargement maximale');
 define('_MA_XMDOC_CATEGORY_SIZEINFO', "La taille ne doit pas dépasser les valeurs de 'post_max_size' et 'upload_max_filesize' dans votre configuration dans php.ini");
 define('_MA_XMDOC_CATEGORY_SUREDEL', 'Voulez-vous vraiment supprimer cette catégorie? %s');
@@ -88,7 +88,7 @@ define('_MA_XMDOC_DOCUMENT_DOCUMENTURL', 'URL du document');
 define('_MA_XMDOC_DOCUMENT_FORMPATH', 'Les fichiers sont dans :  %s');
 define('_MA_XMDOC_DOCUMENT_LOGO', 'Logo du document');
 define('_MA_XMDOC_DOCUMENT_LOGOFILE', 'Fichier de logo');
-define('_MA_XMDOC_DOCUMENT_MDATEUPDATE', 'Update the modification date');
+define('_MA_XMDOC_DOCUMENT_MDATEUPDATE', 'Mettre à jour la date de modification');
 define('_MA_XMDOC_DOCUMENT_NAME', 'Nom');
 define('_MA_XMDOC_DOCUMENT_RESETCOUNTER', 'Réinitialiser le compteur de téléchargement');
 define('_MA_XMDOC_DOCUMENT_RESETMDATE', 'Réinitialiser (date vide)');
@@ -103,16 +103,16 @@ define('_MA_XMDOC_DOCUMENT_WEIGHT', 'Poids');
 // permission
 define('_MA_XMDOC_PERMISSION_VIEW', 'Autorisation de voir');
 define('_MA_XMDOC_PERMISSION_VIEW_DSC', 'Choisissez les groupes qui peuvent voir un document dans ces catégories');
-define('_MA_XMDOC_PERMISSION_VIEW_THIS', 'Sélectionner les groupes pouvant voir un document dans ces catégories');
+define('_MA_XMDOC_PERMISSION_VIEW_THIS', 'Sélectionnez les groupes pouvant voir un document dans ces catégories');
 define('_MA_XMDOC_PERMISSION_SUBMIT', 'Autorisation de soumettre');
-define('_MA_XMDOC_PERMISSION_SUBMIT_DSC', 'Sélectionner les groupes pouvant soumettre des articles dans ces catégories');
-define('_MA_XMDOC_PERMISSION_SUBMIT_THIS', 'Sélectionner les groupes pouvant soumettre dans ces catégorie');
+define('_MA_XMDOC_PERMISSION_SUBMIT_DSC', 'Sélectionnez les groupes pouvant soumettre des articles dans ces catégories');
+define('_MA_XMDOC_PERMISSION_SUBMIT_THIS', 'Sélectionnez les groupes pouvant soumettre dans ces catégorie');
 define('_MA_XMDOC_PERMISSION_EDITAPPROVE', 'Autorisation de modifier et d\'aprouver');
-define('_MA_XMDOC_PERMISSION_EDITAPPROVE_DSC', 'Sélectionner les groupes pouvant éditer et aprouver des articles dans ces catégories');
-define('_MA_XMDOC_PERMISSION_EDITAPPROVE_THIS', 'Sélectionner les groupes pouvant éditer et aprouver dans ces catégorie');
+define('_MA_XMDOC_PERMISSION_EDITAPPROVE_DSC', 'Sélectionnez les groupes pouvant éditer et aprouver des articles dans ces catégories');
+define('_MA_XMDOC_PERMISSION_EDITAPPROVE_THIS', 'Sélectionnez les groupes pouvant éditer et aprouver dans ces catégorie');
 define('_MA_XMDOC_PERMISSION_DELETE', 'Autorisation de supprimer');
-define('_MA_XMDOC_PERMISSION_DELETE_DSC', 'Sélectionner les groupes pouvant supprimer des articles dans ces catégories');
-define('_MA_XMDOC_PERMISSION_DELETE_THIS', 'Sélectionner les groupes pouvant supprimer dans ces catégories');
+define('_MA_XMDOC_PERMISSION_DELETE_DSC', 'Sélectionnez les groupes pouvant supprimer des articles dans ces catégories');
+define('_MA_XMDOC_PERMISSION_DELETE_THIS', 'Sélectionnez les groupes pouvant supprimer dans ces catégories');
 
 // about
 define('_MA_XMDOC_ABOUT_FILEPROTECTION', "Protection des fichiers");
@@ -127,10 +127,10 @@ define('_MA_XMDOC_UTILITY_GBYTES', "Go");
 
 // formDoc
 define('_MA_XMDOC_FORMDOC_ADD', 'Ajouter des documents');
-define('_MA_XMDOC_FORMDOC_AUTHOR', 'Auteur');
-define('_MA_XMDOC_FORMDOC_DATE', 'Date de création');
-define('_MA_XMDOC_FORMDOC_DOWNLOAD', 'Téléchargements');
-define('_MA_XMDOC_FORMDOC_MDATE', 'Date de modification');
+define('_MA_XMDOC_FORMDOC_AUTHOR', 'Auteur ');
+define('_MA_XMDOC_FORMDOC_DATE', 'Date de création ');
+define('_MA_XMDOC_FORMDOC_DOWNLOAD', 'Téléchargements ');
+define('_MA_XMDOC_FORMDOC_MDATE', 'Date de modification ');
 define('_MA_XMDOC_FORMDOC_NAME', 'Gestion de documents');
 define('_MA_XMDOC_FORMDOC_REMOVE', 'Supprimer des documents');
 define('_MA_XMDOC_FORMDOC_LISTDOCUMENT', 'Liste des documents');
@@ -138,7 +138,7 @@ define('_MA_XMDOC_FORMDOC_RATING', 'Évaluation');
 define('_MA_XMDOC_FORMDOC_RESETSELECTED', 'Réinitialiser les documents sélectionnés');
 define('_MA_XMDOC_FORMDOC_SELECT', 'Sélectionner');
 define('_MA_XMDOC_FORMDOC_SELECTED', 'Documents sélectionnés');
-define('_MA_XMDOC_FORMDOC_SIZE', "Taille du fichier");
+define('_MA_XMDOC_FORMDOC_SIZE', "Taille du fichier ");
 define('_MA_XMDOC_FORMDOC_VOTES', '(%s Votes)');
 
 // user
