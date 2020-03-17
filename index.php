@@ -102,7 +102,7 @@ if ($document_count > 0 && !empty($viewPermissionCat)) {
 		$document['name']              = $document_arr[$i]->getVar('document_name');
 		$document['categoryid']        = $document_arr[$i]->getVar('document_category');
 		$document['document']          = $document_arr[$i]->getVar('document_document');
-		$document['description_short'] = $document_arr[$i]->getVar('document_description', 'n');
+		$document['description_short'] = $document_arr[$i]->getVar('document_description', 'show');
 		$document['description']       = $document_arr[$i]->getVar('document_description', 'show');
 		$document['size']              = XmdocUtility::SizeConvertString($document_arr[$i]->getVar('document_size'));
 		$document['author']            = XoopsUser::getUnameFromId($document_arr[$i]->getVar('document_userid'));
