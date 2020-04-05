@@ -293,7 +293,9 @@ class xmdoc_document extends XoopsObject
         $editor_configs['width']  = '100%';
         $editor_configs['height'] = '400px';
         $editor_configs['editor'] = $helper->getConfig('general_editor', 'Plain Text');
-        $form->addElement(new XoopsFormEditor(_MA_XMDOC_DOCUMENT_DESC, 'document_description', $editor_configs), false);
+		$description = new XoopsFormEditor(_MA_XMDOC_DOCUMENT_DESC, 'document_description', $editor_configs);
+		$description->setDescription(_MA_XMDOC_DOCUMENT_DESC_DESC);
+        $form->addElement($description, false);
         
         // logo
         $blank_img = $this->getVar('document_logo') ?: 'blank_doc.gif';

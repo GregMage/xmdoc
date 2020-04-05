@@ -54,7 +54,7 @@
 				<{$document.name}>
 			</a>
 			<div class="xm-document-description">
-				<{$document.description_short|truncateHtml:10:'...'}>
+				<{$document.description_short}>
 			</div>
 			<div class="xm-document-view">
 				<button type="button" class="btn btn-default btn-xs glyphicon glyphicon-eye-open" data-toggle="modal" data-target="#myModal<{$document.id}>"></button>

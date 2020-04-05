@@ -164,7 +164,11 @@ if ($search != ''){
 			$document_id                 = $document_arr[$i]->getVar('document_id');
 			$document['id']              = $document_id;
 			$document['name']            = $document_arr[$i]->getVar('document_name');
-			$document['description']     = $document_arr[$i]->getVar('document_description', 'show');
+			if (false == strpos($document_arr[$i]->getVar('document_description', 'e'), '[break]')){
+				$document['description'] = substr($document_arr[$i]->getVar('document_description', 'e'), 0, 300) . '...';
+			}else{
+				$document['description'] = substr($document_arr[$i]->getVar('document_description', 'e'), 0, strpos($document_arr[$i]->getVar('document_description', 'e'),'[break]'));
+			}
 			$document['category']        = $document_arr[$i]->getVar('category_name');
 			$document['categoryid']      = $document_arr[$i]->getVar('document_category');
 			$document_img                = $document_arr[$i]->getVar('document_logo') ?: 'blank_doc.gif';

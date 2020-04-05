@@ -102,8 +102,12 @@ if ($document_count > 0 && !empty($viewPermissionCat)) {
 		$document['name']              = $document_arr[$i]->getVar('document_name');
 		$document['categoryid']        = $document_arr[$i]->getVar('document_category');
 		$document['document']          = $document_arr[$i]->getVar('document_document');
-		$document['description_short'] = $document_arr[$i]->getVar('document_description', 'show');
-		$document['description']       = $document_arr[$i]->getVar('document_description', 'show');
+		if (false == strpos($document_arr[$i]->getVar('document_description', 'e'), '[break]')){
+			$document['description_short'] = $document_arr[$i]->getVar('document_description', 'show');
+		}else{
+			$document['description_short'] = substr($document_arr[$i]->getVar('document_description', 'show'), 0, strpos($document_arr[$i]->getVar('document_description', 'show'),'[break]'));
+		}
+		$document['description']       = str_replace('[break]', '', $document_arr[$i]->getVar('document_description', 'show'));
 		$document['size']              = XmdocUtility::SizeConvertString($document_arr[$i]->getVar('document_size'));
 		$document['author']            = XoopsUser::getUnameFromId($document_arr[$i]->getVar('document_userid'));
 		$document['date']              = formatTimestamp($document_arr[$i]->getVar('document_date'), 's');

@@ -83,6 +83,7 @@ define('_MA_XMDOC_CATEGORY_WEIGHT', 'Poids');
 define('_MA_XMDOC_DOCUMENT_CATEGORY', 'Dans la catégorie');
 define('_MA_XMDOC_DOCUMENT_DATEUPDATE', 'Mettre à jour la date de création');
 define('_MA_XMDOC_DOCUMENT_DESC', 'Description');
+define('_MA_XMDOC_DOCUMENT_DESC_DESC', "Utilisez le délimiteur <span style='color:blue'>[break]</span> pour définir la taille de la description courte.");
 define('_MA_XMDOC_DOCUMENT_DOCUMENT', 'Fichier à joindre');
 define('_MA_XMDOC_DOCUMENT_DOCUMENTURL', 'URL du document');
 define('_MA_XMDOC_DOCUMENT_FORMPATH', 'Les fichiers sont dans :  %s');
