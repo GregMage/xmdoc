@@ -77,7 +77,7 @@ if ($sessionHelper->get('selectiondocs') != False){
 		foreach (array_keys($seldoc_arr) as $i) {
 			$seldoc['name']            = $seldoc_arr[$i]->getVar('document_name');
 			$seldoc_img                = $seldoc_arr[$i]->getVar('document_logo') ?: 'blank_doc.gif';
-			$seldoc['logo']            = '<img src="' . $url_logo_document .  $seldoc_img . '" alt="' . $seldoc_img . '" />';
+			$seldoc['logo']            = '<img src="' . $url_logo_document .  $seldoc_img . '" alt="' . $seldoc_img . '" style="max-width:100px" />';
 			$seldoc['count']           = $count;
 			$xoopsTpl->append_by_ref('seldoc', $seldoc);
 			unset($seldoc);
@@ -172,7 +172,7 @@ if ($search != ''){
 			$document['category']        = $document_arr[$i]->getVar('category_name');
 			$document['categoryid']      = $document_arr[$i]->getVar('document_category');
 			$document_img                = $document_arr[$i]->getVar('document_logo') ?: 'blank_doc.gif';
-			$document['logo']            = '<img src="' . $url_logo_document .  $document_img . '" alt="' . $document_img . '" />';
+			$document['logo']            = '<img src="' . $url_logo_document .  $document_img . '" alt="' . $document_img . '" style="max-width:100px" />';
 			$xoopsTpl->append_by_ref('document', $document);
 			unset($document);
 		}

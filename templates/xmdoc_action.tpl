@@ -13,7 +13,7 @@
 					</a>
 
 					<a title="<{$category.name}>" href="<{$xoops_url}>/modules/xmdoc/action.php?op=loaddocument&category_id=<{$category.id}>" class="xm-category-image">
-						<img src="<{$category.logo}>" alt="<{$category.name}>">
+						<img src="<{$category.logo}>" alt="<{$category.name}>" style="max-width:100px">
 					</a>
 
 					<!-- Category Description -->

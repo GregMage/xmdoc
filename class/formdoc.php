@@ -59,7 +59,7 @@ class XmdocFormDoc extends XoopsFormElementTray
 			$remove_doc->columns = 3;
             foreach (array_keys($docdata_arr) as $i) {
 				$document_img = $docdata_arr[$i]->getVar('document_logo') ?: 'blank_doc.gif';
-				$value_doc = '<img src="' . $url_logo_document .  $document_img . '" alt="' . $document_img . '" />' . $docdata_arr[$i]->getVar('document_name');
+				$value_doc = '<img src="' . $url_logo_document .  $document_img . '" alt="' . $document_img . '" style="max-width:100px"/>' . $docdata_arr[$i]->getVar('document_name');
 				$remove_doc->addOption($i, $value_doc);
             }
 			$this->addElement($remove_doc);
