@@ -46,13 +46,18 @@ $doc_cid = Request::getInt('doc_cid', 0);
 $xoopsTpl->assign('doc_cid', $doc_cid);
 $criteria = new CriteriaCompo();
 $criteria->add(new Criteria('category_status', 1));
+if (!empty($viewPermissionCat)) {
+    $criteria->add(new Criteria('category_id', '(' . implode(',', $viewPermissionCat) . ')', 'IN'));
+}
 $criteria->setSort('category_weight ASC, category_name');
 $criteria->setOrder('ASC');
 $category_arr = $categoryHandler->getall($criteria);		
 if (count($category_arr) > 0) {
 	$doc_cid_options = '<option value="0"' . ($doc_cid == 0 ? ' selected="selected"' : '') . '>' . _ALL .'</option>';
-	foreach (array_keys($category_arr) as $i) {
-		$doc_cid_options .= '<option value="' . $i . '"' . ($doc_cid == $i ? ' selected="selected"' : '') . '>' . $category_arr[$i]->getVar('category_name') . '</option>';
+	if (!empty($viewPermissionCat)) {
+		foreach (array_keys($category_arr) as $i) {
+			$doc_cid_options .= '<option value="' . $i . '"' . ($doc_cid == $i ? ' selected="selected"' : '') . '>' . $category_arr[$i]->getVar('category_name') . '</option>';
+		}
 	}
 	$xoopsTpl->assign('doc_cid_options', $doc_cid_options);
 }
