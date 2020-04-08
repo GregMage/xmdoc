@@ -46,7 +46,7 @@ define('_MA_XMDOC_SEARCH', 'Rechercher un document');
 define('_MA_XMDOC_STATUS', 'Statut');
 define('_MA_XMDOC_STATUS_A', 'Activé');
 define('_MA_XMDOC_STATUS_NA', 'Désactivé');
-define('_MA_XMDOC_VIEW', 'Afficher');
+define('_MA_XMDOC_DOWNLOAD', 'Télécharger');
 
 //Index
 define('_MA_XMDOC_INDEX_IMAGEINFO', 'Statut du serveur');
