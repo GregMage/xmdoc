@@ -46,7 +46,6 @@ define('_MA_XMDOC_SEARCH', 'Search document');
 define('_MA_XMDOC_STATUS', 'Status');
 define('_MA_XMDOC_STATUS_A', 'Active');
 define('_MA_XMDOC_STATUS_NA', 'Disabled');
-define('_MA_XMDOC_DOWNLOAD', 'Download');
 
 //Index
 define('_MA_XMDOC_INDEX_IMAGEINFO', 'Server status');
