@@ -277,6 +277,7 @@ class XmdocUtility{
                 unset($document);
             }
             $xoopsTpl->assign('xmdoc_viewdocs', true);
+			$xoopsTpl->assign('use_modal', $xmdocHelper->getConfig('general_usemodal', 1));
         }
     }
 

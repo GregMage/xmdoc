@@ -108,10 +108,10 @@ define('_MA_XMDOC_PERMISSION_SUBMIT', 'Submit permission');
 define('_MA_XMDOC_PERMISSION_SUBMIT_DSC', 'Select groups that can submit a document in categories');
 define('_MA_XMDOC_PERMISSION_SUBMIT_THIS', 'Select groups that can submit in this category');
 define('_MA_XMDOC_PERMISSION_EDITAPPROVE', 'Edit and approve permission');
-define('_MA_XMDOC_PERMISSION_EDITAPPROVE_DSC', 'Select groups that can edit and approve a news in categories');
+define('_MA_XMDOC_PERMISSION_EDITAPPROVE_DSC', 'Select groups that can edit and approve a document in categories');
 define('_MA_XMDOC_PERMISSION_EDITAPPROVE_THIS', 'Select groups that can edit and approve in this category');
 define('_MA_XMDOC_PERMISSION_DELETE', 'Delete permission');
-define('_MA_XMDOC_PERMISSION_DELETE_DSC', 'Select groups that can delete a news in categories');
+define('_MA_XMDOC_PERMISSION_DELETE_DSC', 'Select groups that can delete a document in categories');
 define('_MA_XMDOC_PERMISSION_DELETE_THIS', 'Select groups that can delete in this category');
 
 // about
@@ -148,3 +148,7 @@ define('_MA_XMDOC_INDEX_SELECTCATEGORY', 'Select a category to filter documents'
 
 //block
 define('_MA_XMDOC_GENINFORMATION', 'General informations');
+
+// Info message
+define('_MA_XMDOC_INFO_NEWSDISABLE', 'The document is disabled, you see it because you are allowed to change its status');
+define('_MA_XMDOC_INFO_NEWSWAITING', 'The document is pending validation, you see it because you are allowed to change its status');

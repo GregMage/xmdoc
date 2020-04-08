@@ -47,6 +47,8 @@ define('_MI_XMDOC_PREF_HEADER_DESC', 'Set HTML codes to show in index page');
 define('_MI_XMDOC_PREF_FOOTER', 'Footer index page');
 define('_MI_XMDOC_PREF_FOOTER_DESC', 'Set HTML codes to show in index page');
 define('_MI_XMDOC_PREF_HEAD_OPTIONS', '<span style="font-size: large;  font-weight: bold;">Options</span>');
+define('_MI_XMDOC_PREF_GENERALUSEMODAL', 'Use a modal window to display the details of the document');
+define('_MI_XMDOC_PREF_GENERALUSEMODAL_DESC', 'Detailed information is displayed in a window on the same page (modal). If the option is no, detailed information is displayed on a dedicated page.');
 define('_MI_XMDOC_PREF_GENERALITEMPERPAGE', 'Number of items per page in the general view');
 define('_MI_XMDOC_PREF_XMSOCIAL', 'Use xmsocial module to rate document');
 define('_MI_XMDOC_PREF_XMSOCIAL_DESC', '');

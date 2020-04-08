@@ -28,6 +28,7 @@ $xoTheme->addStylesheet(XOOPS_URL . '/modules/' . $xoopsModule->getVar('dirname'
 
 $xoopsTpl->assign('index_header', $helper->getConfig('index_header', ""));
 $xoopsTpl->assign('index_footer', $helper->getConfig('index_footer', ""));
+$xoopsTpl->assign('use_modal', $helper->getConfig('general_usemodal', 1));
 
 // Get Permission to view
 $viewPermissionCat = XmdocUtility::getPermissionCat('xmdoc_view');

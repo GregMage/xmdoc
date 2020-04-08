@@ -70,6 +70,7 @@ $modversion['templates'][] = array('file' => 'xmdoc_docmanager.tpl', 'descriptio
 $modversion['templates'][] = array('file' => 'xmdoc_viewdoc.tpl', 'description' => '');
 $modversion['templates'][] = array('file' => 'xmdoc_action.tpl', 'description' => '');
 $modversion['templates'][] = array('file' => 'xmdoc_index.tpl', 'description' => '');
+$modversion['templates'][] = array('file' => 'xmdoc_document.tpl', 'description' => '');
 
 // Blocks
 $modversion['blocks'][] = array(
@@ -146,6 +147,15 @@ $modversion['config'][] = array(
     'formtype'    => 'line_break',
     'valuetype'   => 'text',
     'default'     => 'head',
+);
+
+$modversion['config'][] = array(
+    'name'        => 'general_usemodal',
+    'title'       => '_MI_XMDOC_PREF_GENERALUSEMODAL',
+    'description' => '_MI_XMDOC_PREF_GENERALUSEMODAL_DESC',
+    'formtype'    => 'yesno',
+    'valuetype'   => 'int',
+    'default'     => 1
 );
 
 $modversion['config'][] = array(

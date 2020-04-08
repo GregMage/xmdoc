@@ -105,13 +105,13 @@ define('_MA_XMDOC_PERMISSION_VIEW', 'Autorisation de voir');
 define('_MA_XMDOC_PERMISSION_VIEW_DSC', 'Choisissez les groupes qui peuvent voir un document dans ces catégories');
 define('_MA_XMDOC_PERMISSION_VIEW_THIS', 'Sélectionnez les groupes pouvant voir un document dans ces catégories');
 define('_MA_XMDOC_PERMISSION_SUBMIT', 'Autorisation de soumettre');
-define('_MA_XMDOC_PERMISSION_SUBMIT_DSC', 'Sélectionnez les groupes pouvant soumettre des articles dans ces catégories');
+define('_MA_XMDOC_PERMISSION_SUBMIT_DSC', 'Sélectionnez les groupes pouvant soumettre des documents dans ces catégories');
 define('_MA_XMDOC_PERMISSION_SUBMIT_THIS', 'Sélectionnez les groupes pouvant soumettre dans ces catégorie');
 define('_MA_XMDOC_PERMISSION_EDITAPPROVE', 'Autorisation de modifier et d\'aprouver');
-define('_MA_XMDOC_PERMISSION_EDITAPPROVE_DSC', 'Sélectionnez les groupes pouvant éditer et aprouver des articles dans ces catégories');
+define('_MA_XMDOC_PERMISSION_EDITAPPROVE_DSC', 'Sélectionnez les groupes pouvant éditer et aprouver des documents dans ces catégories');
 define('_MA_XMDOC_PERMISSION_EDITAPPROVE_THIS', 'Sélectionnez les groupes pouvant éditer et aprouver dans ces catégorie');
 define('_MA_XMDOC_PERMISSION_DELETE', 'Autorisation de supprimer');
-define('_MA_XMDOC_PERMISSION_DELETE_DSC', 'Sélectionnez les groupes pouvant supprimer des articles dans ces catégories');
+define('_MA_XMDOC_PERMISSION_DELETE_DSC', 'Sélectionnez les groupes pouvant supprimer des documents dans ces catégories');
 define('_MA_XMDOC_PERMISSION_DELETE_THIS', 'Sélectionnez les groupes pouvant supprimer dans ces catégories');
 
 // about
@@ -148,3 +148,7 @@ define('_MA_XMDOC_INDEX_SELECTCATEGORY', 'Sélectionnez une catégorie pour filt
 
 //block
 define('_MA_XMDOC_GENINFORMATION', 'Informations générales');
+
+// Info message
+define('_MA_XMDOC_INFO_NEWSDISABLE', 'Le document est désactivé, vous le voyez car vous êtes autorisé à modifier son statut.');
+define('_MA_XMDOC_INFO_NEWSWAITING', 'Le document est en attente de validation, vous le voyez car vous êtes autorisé à modifier son statut');

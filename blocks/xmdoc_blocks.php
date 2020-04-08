@@ -34,6 +34,7 @@ function block_xmdoc_show($options) {
 	$permDocHelper = new Helper\Permission('xmdoc');
 	
 	$block = array();
+	$block['use_modal'] = $helper->getConfig('general_usemodal', 1);
 	
 	$criteria = new CriteriaCompo();
 	$criteria->add(new Criteria('document_status', 1));

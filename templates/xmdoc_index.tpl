@@ -57,7 +57,13 @@
 				<{$document.description_short}>
 			</div>
 			<div class="xm-document-view">
+				<{if $use_modal == 1}>
 				<button type="button" class="btn btn-default btn-xs glyphicon glyphicon-eye-open" data-toggle="modal" data-target="#myModal<{$document.id}>"></button>
+				<{else}>
+				<a href="<{$xoops_url}>/modules/xmdoc/document.php?doc_id=<{$document.id}>">
+					<button type="button" class="btn btn-default btn-xs glyphicon glyphicon-eye-open"></button>
+				</a>
+				<{/if}>
 			</div>
 			<a class="btn btn-primary btn-xs col-md-9" title="<{$document.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank">
 				<{$smarty.const._MA_XMDOC_DOWNLOAD}>

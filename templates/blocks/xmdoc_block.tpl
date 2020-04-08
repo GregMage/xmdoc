@@ -11,7 +11,13 @@
 			<{$blockdocument.description_short}>
 		</div>
 		<div class="xm-document-view">
+			<{if $block.use_modal == 1}>
 			<button type="button" class="btn btn-default btn-xs glyphicon glyphicon-eye-open" data-toggle="modal" data-target="#myModal<{$blockdocument.id}>"></button>
+			<{else}>
+			<a href="<{$xoops_url}>/modules/xmdoc/document.php?doc_id=<{$blockdocument.id}>" target="_blank">
+				<button type="button" class="btn btn-default btn-xs glyphicon glyphicon-eye-open"></button>
+			</a>
+			<{/if}>
 		</div>
 		<a class="btn btn-primary btn-xs col-md-12" title="<{$blockdocument.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$blockdocument.categoryid}>&amp;doc_id=<{$blockdocument.id}>" target="_blank">
 			<{$smarty.const._MA_XMDOC_DOWNLOAD}>
