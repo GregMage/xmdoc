@@ -1,4 +1,4 @@
-﻿<{if $index_header}>
+<{if $index_header}>
     <div class="row">
         <div class="col-sm-12" style="padding-bottom: 10px; padding-top: 5px;">
             <{$index_header}>
@@ -60,7 +60,7 @@
 				<{if $use_modal == 1}>
 				<button type="button" class="btn btn-default btn-xs glyphicon glyphicon-eye-open" data-toggle="modal" data-target="#myModal<{$document.id}>"></button>
 				<{else}>
-				<a href="<{$xoops_url}>/modules/xmdoc/document.php?doc_id=<{$document.id}>">
+				<a href="document.php?doc_id=<{$document.id}>">
 					<button type="button" class="btn btn-default btn-xs glyphicon glyphicon-eye-open"></button>
 				</a>
 				<{/if}>
