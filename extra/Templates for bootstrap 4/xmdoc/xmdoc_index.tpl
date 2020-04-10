@@ -66,7 +66,13 @@
 						<{$document.description_short}>
 					</div>
 					<div class="col-12 pt-2 text-left">
+						<{if $use_modal == 1}>
 						<button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#myModal<{$document.id}>"><i class="fa fa-eye" aria-hidden="true"></i></button>
+						<{else}>
+						<a href="<{$xoops_url}>/modules/xmdoc/document.php?doc_id=<{$document.id}>">
+							<button type="button" class="btn btn-light btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button>
+						</a>
+						<{/if}>
 					</div>
 					<div class="col-12 pt-2">
 						<a class="text-decoration-none" title="<{$document.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank">
