@@ -73,6 +73,13 @@ $xoopsTpl->assign('doc_id', $doc_id);
 $xoopsTpl->assign('name', $document->getVar('document_name'));
 $xoopsTpl->assign('document', $document->getVar('document_document'));
 $xoopsTpl->assign('description', str_replace('[break]', '', $document->getVar('document_description', 'show')));
+if (false == strpos($document->getVar('document_description', 'e'), '[break]')){
+	$xoopsTpl->assign('description_short', '');
+	$xoopsTpl->assign('description_end', '');
+}else{
+	$xoopsTpl->assign('description_short', substr($document->getVar('document_description', 'show'), 0, strpos($document->getVar('document_description', 'show'),'[break]')));
+	$xoopsTpl->assign('description_end', str_replace('[break]', '', substr($document->getVar('document_description', 'show'), strpos($document->getVar('document_description', 'show'),'[break]'))));
+}
 $xoopsTpl->assign('size', XmdocUtility::SizeConvertString($document->getVar('document_size')));
 $xoopsTpl->assign('author', XoopsUser::getUnameFromId($document->getVar('document_userid')));
 $xoopsTpl->assign('date', formatTimestamp($document->getVar('document_date'), 's'));
