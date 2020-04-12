@@ -23,7 +23,7 @@ require __DIR__ . '/admin_header.php';
 
 $moduleAdmin = Admin::getInstance();
 $moduleAdmin->displayNavigation('about.php');
-Admin::setPaypal('9MYQB7GUK5MCS');
+Admin::setPaypal('U7RJ5VQGYAWDJ');
 // file protection
 $xoops_url = parse_url(XOOPS_URL);
 $xoops_url = str_replace ('www.','', $xoops_url['host']);
