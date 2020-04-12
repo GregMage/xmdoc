@@ -26,6 +26,9 @@ include_once XOOPS_ROOT_PATH . '/header.php';
 
 $xoTheme->addStylesheet(XOOPS_URL . '/modules/' . $xoopsModule->getVar('dirname', 'n') . '/assets/css/styles.css', null);
 
+if ($helper->getConfig('general_usemodal', 1) == 1){
+	redirect_header('index.php', 2, _MA_XMDOC_ERROR_MODAL);	
+}
 $doc_id  = Request::getInt('doc_id', 0);
 
 if ($doc_id == 0) {

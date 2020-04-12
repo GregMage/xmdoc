@@ -47,8 +47,8 @@ define('_MI_XMDOC_PREF_HEADER_DESC', 'Utiliser du code HTML pour la mise en page
 define('_MI_XMDOC_PREF_FOOTER', 'Pied de page de la page d\'index');
 define('_MI_XMDOC_PREF_FOOTER_DESC', 'Utiliser du code HTML pour la mise en page');
 define('_MI_XMDOC_PREF_HEAD_OPTIONS', '<span style="font-size: large;  font-weight: bold;">Options</span>');
-define('_MI_XMDOC_PREF_GENERALUSEMODAL', 'Utiliser une fenètre "modal" pour afficher les détails du document');
-define('_MI_XMDOC_PREF_GENERALUSEMODAL_DESC', 'Les informations détaillées sont affichées dans une fenètre sur la même page (modal). Si l\'option est non, les informations détaillées sont affichées sur une page dédiée.');
+define('_MI_XMDOC_PREF_GENERALUSEMODAL', 'Utiliser une fenêtre "modal" pour afficher les détails du document');
+define('_MI_XMDOC_PREF_GENERALUSEMODAL_DESC', 'Les informations détaillées sont affichées dans une fenêtre sur la même page (modal). Si l\'option est non, les informations détaillées sont affichées sur une page dédiée.');
 define('_MI_XMDOC_PREF_GENERALITEMPERPAGE', 'Nombre d\'éléments par page dans la vue générale');
 define('_MI_XMDOC_PREF_XMSOCIAL', 'Utilisez le module xmsocial pour évaluer les documents');
 define('_MI_XMDOC_PREF_XMSOCIAL_DESC', '');

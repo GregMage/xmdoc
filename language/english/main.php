@@ -26,6 +26,7 @@ define('_MA_XMDOC_DOCUMENT_LIST', 'Document list');
 // Error message
 define('_MA_XMDOC_ERROR_LIMITDOWNLOAD', 'You have downloaded %s files from this category and the limit is %s in 24h');
 define('_MA_XMDOC_ERROR_LIMITDOWNLOADITEM', 'You have downloaded this file %s times and the limit is %s in 24h');
+define('_MA_XMDOC_ERROR_MODAL', 'Information: The form is not available because the information is detailed in a "modal" window (on the same page)');
 define('_MA_XMDOC_ERROR_NACTIVE', 'Error: Disable content!');
 define('_MA_XMDOC_ERROR_NOACESSCATEGORY', 'You don\'t have access to any categories');
 define('_MA_XMDOC_ERROR_NOCATEGORY', 'There are no categories in the database');

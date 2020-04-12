@@ -26,6 +26,7 @@ define('_MA_XMDOC_DOCUMENT_LIST', 'Liste des documents');
 // Error message
 define('_MA_XMDOC_ERROR_LIMITDOWNLOAD', 'Vous avez téléchargé %s fichiers dans cette catégorie et la limite est de %s en 24h');
 define('_MA_XMDOC_ERROR_LIMITDOWNLOADITEM', 'Vous avez téléchargé ce fichier %s fois et la limite est de %s en 24h');
+define('_MA_XMDOC_ERROR_MODAL', 'Information: La fiche n\'est pas disponible car les informations sont détaillées dans une fenêtre "modal" (sur la même page)');
 define('_MA_XMDOC_ERROR_NACTIVE', 'Erreur : Contenu désactivé!');
 define('_MA_XMDOC_ERROR_NOACESSCATEGORY', 'Vous n\'avez accès à aucune catégorie');
 define('_MA_XMDOC_ERROR_NOCATEGORY', 'Il n\'y a pas de catégories dans la base de données');
