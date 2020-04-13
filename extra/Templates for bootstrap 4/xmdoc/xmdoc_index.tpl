@@ -7,16 +7,16 @@
 <{/if}>
 <{if $cat}>
 	<nav aria-label="breadcrumb">
-	  <ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="index.php"><{$index_module}></a></li>
-		<li class="breadcrumb-item active" aria-current="page"><{$category_name}></li>
-	  </ol>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="index.php"><{$index_module}></a></li>
+			<li class="breadcrumb-item active" aria-current="page"><{$category_name}></li>
+		</ol>
 	</nav>
 <{else}>
 	<nav aria-label="breadcrumb">
-	  <ol class="breadcrumb">
-		<li class="breadcrumb-item active" aria-current="page"><{$index_module}></li>
-	  </ol>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item active" aria-current="page"><{$index_module}></li>
+		</ol>
 	</nav>
 <{/if}>
 <div align="center">
@@ -33,7 +33,7 @@
 <br>
 <{if $cat}>
 	<div class="row">
-		<div class="col-3 col-md-4 col-lg-3 text-center" style="padding-bottom: 5px; padding-top: 5px;">
+		<div class="col-3 col-md-4 text-center" style="padding-bottom: 5px; padding-top: 5px;">
 			<img class="rounded img-fluid" src="<{$category_logo}>" alt="<{$category_name}>">
 		</div>
 		<div class="col-9 col-md-8 col-lg-9 " style="padding-bottom: 5px; padding-top: 5px;">
@@ -46,39 +46,47 @@
 <{if $document_count != 0}>
 	<div class="row">
 	<{foreach item=document from=$documents}>
-		<div class="col-12 col-sm-6 col-md-4 p-2">
+		<div class="col-sm-12 col-md-6 col-lg-4 p-2">
 		<div class="card">
-			<div class="card-header text-center">
+			<div class="card-header text-center text-truncate d-none d-sm-block">
 				<a class="text-decoration-none" title="<{$document.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank">
-					<{$document.name|truncate:25:'...'}>
+					<{$document.name}>
+				</a>
+			</div>
+			<div class="card-header text-center d-block d-sm-none">
+				<a class="text-decoration-none" title="<{$document.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank">
+					<{$document.name}>
 				</a>
 			</div>
 			<div class="card-body text-center">
-				<div class="row" >
+				<div class="row d-flex justify-content-center">
 					<div class="col-12" style="height: 150px;">
 						<{if $document.logo != ''}>
-						<a title="<{$document.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank">
-							<img class="rounded img-fluid mh-100" src="<{$document.logo}>" alt="<{$document.name}>">
-						</a>
+							<a title="<{$document.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank">
+								<img class="rounded img-fluid mh-100" src="<{$document.logo}>" alt="<{$document.name}>">
+							</a>
 						<{/if}>
 					</div>
-					<div class="col-12 pt-2 text-left">	
+					<div class="col-12 text-left">	
+						<hr />
 						<{$document.description_short}>
+						<hr />
 					</div>
-					<div class="col-12 pt-2 text-left">
+
+					<div class="col-6 col-md-11 col-xl-9 btn-group" role="group">
 						<{if $use_modal == 1}>
-						<button type="button" class="btn btn-light btn-sm" data-toggle="modal" data-target="#myModal<{$document.id}>"><i class="fa fa-eye" aria-hidden="true"></i></button>
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal<{$document.id}>">
+								<span class="fa fa-info-circle fa-lg" aria-hidden="true"></span>
+							</button>
 						<{else}>
-						<a href="<{$xoops_url}>/modules/xmdoc/document.php?doc_id=<{$document.id}>">
-							<button type="button" class="btn btn-light btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button>
-						</a>
+							<a class="btn btn-primary" href="<{$xoops_url}>/modules/xmdoc/document.php?doc_id=<{$document.id}>" role="button">
+								<span class="fa fa-info-circle fa-lg" aria-hidden="true"></span>
+							</a>
 						<{/if}>
-					</div>
-					<div class="col-12 pt-2">
-						<a class="text-decoration-none" title="<{$document.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank">
-							<button class="btn btn-primary btn-sm"><{$smarty.const._MA_XMDOC_DOWNLOAD}></button>
+						<a class="btn btn-primary"  href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank" title="<{$document.name}>">
+							<span class="fa fa-download fa-lg" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_DOWNLOAD}>
 						</a>
-					</div>					
+					</div>
 				</div>				
 			</div>				
 		</div>
@@ -86,6 +94,7 @@
 	<div class="modal" tabindex="-1" id="myModal<{$document.id}>" role="dialog">
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
+
 				<div class="modal-header">
 					<h5 class="modal-title"><{$document.name}></h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -93,6 +102,8 @@
 					</button>
 				</div>
 				<div class="modal-body">
+					Hello
+					
 					<div class="row">
 						<div class="col-12 col-md-3">
 							<{if $document.logo != ''}>
@@ -153,6 +164,7 @@
 						</div>
 					</div>
 				</div>
+
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				</div>

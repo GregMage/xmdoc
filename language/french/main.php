@@ -130,8 +130,10 @@ define('_MA_XMDOC_UTILITY_GBYTES', "Go");
 define('_MA_XMDOC_FORMDOC_ADD', 'Ajouter des documents');
 define('_MA_XMDOC_FORMDOC_AUTHOR', 'Auteur ');
 define('_MA_XMDOC_FORMDOC_DATE', 'Date de création ');
+define('_MA_XMDOC_FORMDOC_DATE_BT', 'Mise en ligne');
 define('_MA_XMDOC_FORMDOC_DOWNLOAD', 'Téléchargements ');
 define('_MA_XMDOC_FORMDOC_MDATE', 'Date de modification ');
+define('_MA_XMDOC_FORMDOC_MDATE_BT', 'Mise à jour');
 define('_MA_XMDOC_FORMDOC_NAME', 'Gestion de documents');
 define('_MA_XMDOC_FORMDOC_REMOVE', 'Supprimer des documents');
 define('_MA_XMDOC_FORMDOC_LISTDOCUMENT', 'Liste des documents');
@@ -144,7 +146,8 @@ define('_MA_XMDOC_FORMDOC_VOTES', '(%s Votes)');
 
 // user
 define('_MA_XMDOC_DOWNLOAD', 'Télécharger');
-define('_MA_XMDOC_SELECTCATEGORY', 'Sélectionnez une catégorie à laquelle ajouter un document');
+define('_MA_XMDOC_SELECTCATEGORY', 'Sélectionnez une catégorie à afficher');
+define('_MA_XMDOC_SELECTCATEGORY_BT', 'Proposer un fichier - Choix de la catégorie');
 define('_MA_XMDOC_INDEX_SELECTCATEGORY', 'Sélectionnez une catégorie pour filtrer les documents');
 
 //block
