@@ -146,8 +146,7 @@ define('_MA_XMDOC_FORMDOC_VOTES', '(%s Votes)');
 
 // user
 define('_MA_XMDOC_DOWNLOAD', 'Télécharger');
-define('_MA_XMDOC_SELECTCATEGORY', 'Sélectionnez une catégorie à afficher');
-define('_MA_XMDOC_SELECTCATEGORY_BT', 'Proposer un fichier - Choix de la catégorie');
+define('_MA_XMDOC_SELECTCATEGORY', 'Sélectionnez une catégorie à laquelle ajouter un document');
 define('_MA_XMDOC_INDEX_SELECTCATEGORY', 'Sélectionnez une catégorie pour filtrer les documents');
 
 //block
