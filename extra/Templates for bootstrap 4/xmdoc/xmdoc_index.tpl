@@ -22,7 +22,7 @@
 <div align="center">
 	<form class="form-inline" id="form_document_tri" name="form_document_tri" method="get" action="index.php">
 		<div class="form-group">
-			<label><{$smarty.const._MA_XMDOC_SELECTCATEGORY}>&nbsp;</label>
+			<label><{$smarty.const._MA_XMDOC_INDEX_SELECTCATEGORY}>&nbsp;</label>
 			<select class="form-control form-control-sm" name="news_filter" id="news_filter" onchange="location='index.php?doc_cid='+this.options[this.selectedIndex].value">
 				<{$doc_cid_options}>
 			</select>
