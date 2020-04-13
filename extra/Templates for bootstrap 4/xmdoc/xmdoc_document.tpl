@@ -108,7 +108,7 @@
 
 				</div>	
 
-				<div class="card-footer mb-3 d-flex justify-content-center">
+				<div class="card-footer d-flex justify-content-center">
 					<a class="btn btn-primary btn-lg" title="<{$name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$category_id}>&amp;doc_id=<{$doc_id}>" target="_blank">
 						<span class="fa fa-download fa-2x" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_DOWNLOAD}>
 					</a>
