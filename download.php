@@ -123,6 +123,7 @@ $xoopsDB->queryF($sql);
 
 $url = XmdocUtility::formatURL($document->getVar('document_document'));
 $contentLength = XmdocUtility::StringSizeConvert($document->getVar('document_size'));
+echo $url ;
 Header("Content-Length: $contentLength");
 Header("Location: $url");
 exit();
