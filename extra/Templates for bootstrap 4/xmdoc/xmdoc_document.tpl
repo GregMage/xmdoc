@@ -89,23 +89,13 @@
 						<div class="col-md-9 align-self-center">
 								<{if $description_end}>
 									<{$description_short}>
-									<{if !($category_id == 3)}>	
-										<hr />
-										<{$description_end}>
-									<{/if}>
+									<hr />
+									<{$description_end}>
 								<{else}>
 									<{$description}>
 								<{/if}>
 						</div>
 					</div>	
-
-					<{if $category_id == 3}>
-						<div> 
-							<hr />
-							<{$description_end}>
-						</div>
-					<{/if}>			
-
 				</div>	
 
 				<div class="card-footer d-flex justify-content-center">

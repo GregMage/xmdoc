@@ -75,9 +75,7 @@
 
 					<div class="col-6 col-md-11 col-xl-9 btn-group" role="group">
 						<{if $use_modal == 1}>
-							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal<{$document.id}>">
-								<span class="fa fa-info-circle fa-lg" aria-hidden="true"></span>
-							</button>
+							<a class="btn btn-primary" data-toggle="modal" data-target="#myModal<{$document.id}>" role="button"> <span class="fa fa-info-circle fa-lg text-light" aria-hidden="true"></span></a>
 						<{else}>
 							<a class="btn btn-primary" href="<{$xoops_url}>/modules/xmdoc/document.php?doc_id=<{$document.id}>" role="button">
 								<span class="fa fa-info-circle fa-lg" aria-hidden="true"></span>
