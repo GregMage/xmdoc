@@ -83,7 +83,7 @@ define('_MA_XMDOC_CATEGORY_WEIGHT', 'Weight');
 define('_MA_XMDOC_DOCUMENT_CATEGORY', 'In category');
 define('_MA_XMDOC_DOCUMENT_DATEUPDATE', 'Update the creation date');
 define('_MA_XMDOC_DOCUMENT_DESC', 'Description');
-define('_MA_XMDOC_DOCUMENT_DESC_DESC', "Use the <span style='color:blue'>[break]</span> delimiter to define the size of the short description.");
+define('_MA_XMDOC_DOCUMENT_DESC_DESC', "Use the <span style='color:orange'>[break]</span> delimiter to define the size of the short description.");
 define('_MA_XMDOC_DOCUMENT_DOCUMENT', 'File to attach');
 define('_MA_XMDOC_DOCUMENT_DOCUMENTURL', 'Document URL');
 define('_MA_XMDOC_DOCUMENT_FORMPATH', 'Files are in: %s');
