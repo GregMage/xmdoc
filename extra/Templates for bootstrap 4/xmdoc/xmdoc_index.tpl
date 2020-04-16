@@ -72,7 +72,6 @@
 						<{$document.description_short}>
 						<hr />
 					</div>
-
 					<div class="col-6 col-md-11 col-xl-9 btn-group" role="group">
 						<{if $use_modal == 1}>
 							<a class="btn btn-primary" data-toggle="modal" data-target="#myModal<{$document.id}>" role="button"> <span class="fa fa-info-circle fa-lg text-light" aria-hidden="true"></span></a>
@@ -81,7 +80,10 @@
 								<span class="fa fa-info-circle fa-lg" aria-hidden="true"></span>
 							</a>
 						<{/if}>
-						<a class="btn btn-primary"  href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank" title="<{$document.name}>">
+						<a class="btn btn-primary d-block d-sm-none"  href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank" title="<{$document.name}>">
+							<span class="fa fa-download fa-lg" aria-hidden="true"></span> 
+						</a>
+						<a class="btn btn-primary d-none d-sm-block"  href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank" title="<{$document.name}>">
 							<span class="fa fa-download fa-lg" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_DOWNLOAD}>
 						</a>
 					</div>
@@ -100,8 +102,6 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					Hello
-					
 					<div class="row">
 						<div class="col-12 col-md-3">
 							<{if $document.logo != ''}>
