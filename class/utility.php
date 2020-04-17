@@ -145,7 +145,6 @@ class XmdocUtility{
             if (is_array($_REQUEST['removeDocs'])){
                 foreach ($_REQUEST['removeDocs'] as $index) {
                     $obj  = $docdataHandler->get($index);
-                    echo 'index: ' . $index. '<br>';
                     if ($docdataHandler->delete($obj)){
                         $error_message .= '';
                     } else {
@@ -188,6 +187,20 @@ class XmdocUtility{
 			}
             $sessionHelper->del('selectiondocs');
 		}
+        return $error_message;
+    }
+	
+	public static function delDocdata($modulename = '', $itemid = 0)
+    {
+        include __DIR__ . '/../include/common.php';
+		$error_message = '';
+		
+		$helper = Helper::getHelper($modulename);
+		$moduleid = $helper->getModule()->getVar('mid');
+		$criteria = new CriteriaCompo();
+		$criteria->add(new Criteria('docdata_modid', $moduleid));
+		$criteria->add(new Criteria('docdata_itemid', $itemid));
+		$error_message = $docdataHandler->deleteAll($criteria);
         return $error_message;
     }
 	
