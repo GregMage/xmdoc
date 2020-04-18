@@ -122,23 +122,23 @@
 								<div class="card-body">
 									<div class="row">
 										<div class="col-12 col-lg-6">
-											<i class="fa fa-calendar" aria-hidden="true"></i> <{$smarty.const._MA_XMDOC_FORMDOC_DATE}>: <{$document.date}>
+											<span class="fa fa-calendar" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_FORMDOC_DATE}>: <{$document.date}>
 										</div>
 										<div class="col-12 col-lg-6">
-											<i class="fa fa-user" aria-hidden="true"></i> <{$smarty.const._MA_XMDOC_FORMDOC_AUTHOR}>: <{$document.author}>
+											<span class="fa fa-user" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_FORMDOC_AUTHOR}>: <{$document.author}>
 										</div>
 										<{if $document.mdate}>
 										<div class="col-12 col-lg-6">
-											<i class="fa fa-calendar" aria-hidden="true"></i> <{$smarty.const._MA_XMDOC_FORMDOC_MDATE}>: <{$document.mdate}>
+											<span class="fa fa-calendar" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_FORMDOC_MDATE}>: <{$document.mdate}>
 										</div>
 										<{/if}>
 										<{if $document.size}>
 										<div class="col-12 col-lg-6">
-											<i class="fa fa-expand" aria-hidden="true"></i> <{$smarty.const._MA_XMDOC_FORMDOC_SIZE}>: <{$document.size}>
+											<span class="fa fa-expand" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_FORMDOC_SIZE}>: <{$document.size}>
 										</div>
 										<{/if}>
 										<div class="col-12 col-lg-6">
-											<i class="fa fa-download" aria-hidden="true"></i> <{$smarty.const._MA_XMDOC_FORMDOC_DOWNLOAD}>: <{$document.counter}>
+											<span class="fa fa-download" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_FORMDOC_DOWNLOAD}>: <{$document.counter}>
 										</div>
 										<{if $document.dorating == 1}>
 										<div class="col-12 col-lg-6">
@@ -154,10 +154,10 @@
 					<div class="text-center">
 						<div class="btn-group text-center" role="group">
 							<{if $document.perm_edit == true}>
-								<button type="button" class="btn btn-secondary" onclick=window.location.href="<{$xoops_url}>/modules/xmdoc/action.php?op=edit&amp;document_id=<{$document.id}>"><i class="fa fa-edit" aria-hidden="true"></i> <{$smarty.const._MA_XMDOC_EDIT}></button>
+								<button type="button" class="btn btn-secondary" onclick=window.location.href="<{$xoops_url}>/modules/xmdoc/action.php?op=edit&amp;document_id=<{$document.id}>"><span class="fa fa-edit" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_EDIT}></button>
 							<{/if}>
 							<{if $document.perm_del == true}>
-								<button type="button" class="btn btn-secondary" onclick=window.location.href="<{$xoops_url}>/modules/xmdoc/action.php?op=del&amp;document_id=<{$document.id}>"><i class="fa fa-trash" aria-hidden="true"></i> <{$smarty.const._MA_XMDOC_DEL}></button>
+								<button type="button" class="btn btn-secondary" onclick=window.location.href="<{$xoops_url}>/modules/xmdoc/action.php?op=del&amp;document_id=<{$document.id}>"><span class="fa fa-trash" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_DEL}></button>
 							<{/if}>
 						</div>
 					</div>
