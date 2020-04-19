@@ -37,6 +37,19 @@ $select = Request::getString('select', '');
 
 $sessionHelper = new Helper\Session();
 
+$bootstrap = XOOPS_THEME_PATH . '/' . $GLOBALS['xoopsConfig']['theme_set'] . '/css/bootstrap.css';
+$bootstrap_min = XOOPS_THEME_PATH . '/' . $GLOBALS['xoopsConfig']['theme_set'] . '/css/bootstrap.min.css';
+
+if (file_exists($bootstrap) || file_exists($bootstrap_min)){
+	if (file_exists($bootstrap_min)){	
+		$xoopsTpl->assign('bootstrap_css', XOOPS_THEME_URL . '/' . $GLOBALS['xoopsConfig']['theme_set'] . '/css/bootstrap.min.css');
+	} else {
+		$xoopsTpl->assign('bootstrap_css', XOOPS_THEME_URL . '/' . $GLOBALS['xoopsConfig']['theme_set'] . '/css/bootstrap.css');
+	}
+} else{
+	$xoopsTpl->assign('bootstrap_css', '');
+}
+
 if (isset($_REQUEST['selectreset'])){
     $sessionHelper->del('selectiondocs');
 }
