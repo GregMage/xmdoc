@@ -261,12 +261,14 @@ class XmdocUtility{
                 $document['category']          = $document_arr[$i]->getVar('category_name');
                 $document['categoryid']        = $document_arr[$i]->getVar('document_category');
                 $document['document']          = $document_arr[$i]->getVar('document_document');
+				$document['description']       	   = str_replace('[break]', '', $document_arr[$i]->getVar('document_description', 'show'));
 				if (false == strpos($document_arr[$i]->getVar('document_description', 'e'), '[break]')){
-					$document['description_short'] = $document_arr[$i]->getVar('document_description', 'show');
+					$document['description_short'] = '';
+					$document['description_end']   = '';
 				}else{
 					$document['description_short'] = substr($document_arr[$i]->getVar('document_description', 'show'), 0, strpos($document_arr[$i]->getVar('document_description', 'show'),'[break]'));
-				}
-				$document['description']       = str_replace('[break]', '', $document_arr[$i]->getVar('document_description', 'show'));
+					$document['description_end']   = str_replace('[break]', '', substr($document_arr[$i]->getVar('document_description', 'show'), strpos($document_arr[$i]->getVar('document_description', 'show'),'[break]')));
+				}				
 				$document['size']              = XmdocUtility::SizeConvertString($document_arr[$i]->getVar('document_size'));
                 $document['author']            = XoopsUser::getUnameFromId($document_arr[$i]->getVar('document_userid'));
                 $document['date']              = formatTimestamp($document_arr[$i]->getVar('document_date'), 's');
