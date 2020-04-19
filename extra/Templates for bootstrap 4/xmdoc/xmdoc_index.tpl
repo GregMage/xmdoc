@@ -1,10 +1,3 @@
-<{if $index_header}>
-    <div class="row">
-        <div class="col-sm-12" style="padding-bottom: 10px; padding-top: 5px;">
-            <{$index_header}>
-        </div>
-    </div>
-<{/if}>
 <{if $cat}>
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
@@ -19,6 +12,13 @@
 		</ol>
 	</nav>
 <{/if}>
+<{if $index_header}>
+    <div class="row">
+        <div class="col-sm-12 pb-3">
+            <{$index_header}>
+        </div>
+    </div>
+<{/if}>
 <div align="center">
 	<form class="form-inline" id="form_document_tri" name="form_document_tri" method="get" action="index.php">
 		<div class="form-group">
@@ -29,19 +29,16 @@
 		</div>
 	</form>
 </div>
-<br>
-<br>
 <{if $cat}>
-	<div class="row">
-		<div class="col-3 col-md-4 text-center" style="padding-bottom: 5px; padding-top: 5px;">
-			<img class="rounded img-fluid" src="<{$category_logo}>" alt="<{$category_name}>">
+		<div class="row mt-4">
+			<div class="col-3 col-md-4 text-center">
+				<img class="rounded img-fluid" src="<{$category_logo}>" alt="<{$category_name}>">
+			</div>
+			<div class="col-9 col-md-8 py-2">
+				<h4 class="mt-0"><{$category_name}></h4>
+				<{$category_description}>
+			</div>
 		</div>
-		<div class="col-9 col-md-8 col-lg-9 " style="padding-bottom: 5px; padding-top: 5px;">
-			<h4 class="mt-0"><{$category_name}></h4>
-			<{$category_description}>
-		</div>
-	</div>
-	<br>
 <{/if}>
 <{if $document_count != 0}>
 	<div class="row">
@@ -122,23 +119,23 @@
 								<div class="card-body">
 									<div class="row">
 										<div class="col-12 col-lg-6">
-											<i class="fa fa-calendar" aria-hidden="true"></i> <{$smarty.const._MA_XMDOC_FORMDOC_DATE}>: <{$document.date}>
+											<span class="fa fa-calendar" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_FORMDOC_DATE}>: <{$document.date}>
 										</div>
 										<div class="col-12 col-lg-6">
-											<i class="fa fa-user" aria-hidden="true"></i> <{$smarty.const._MA_XMDOC_FORMDOC_AUTHOR}>: <{$document.author}>
+											<span class="fa fa-user" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_FORMDOC_AUTHOR}>: <{$document.author}>
 										</div>
 										<{if $document.mdate}>
 										<div class="col-12 col-lg-6">
-											<i class="fa fa-calendar" aria-hidden="true"></i> <{$smarty.const._MA_XMDOC_FORMDOC_MDATE}>: <{$document.mdate}>
+											<span class="fa fa-calendar" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_FORMDOC_MDATE}>: <{$document.mdate}>
 										</div>
 										<{/if}>
 										<{if $document.size}>
 										<div class="col-12 col-lg-6">
-											<i class="fa fa-expand" aria-hidden="true"></i> <{$smarty.const._MA_XMDOC_FORMDOC_SIZE}>: <{$document.size}>
+											<span class="fa fa-expand" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_FORMDOC_SIZE}>: <{$document.size}>
 										</div>
 										<{/if}>
 										<div class="col-12 col-lg-6">
-											<i class="fa fa-download" aria-hidden="true"></i> <{$smarty.const._MA_XMDOC_FORMDOC_DOWNLOAD}>: <{$document.counter}>
+											<span class="fa fa-download" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_FORMDOC_DOWNLOAD}>: <{$document.counter}>
 										</div>
 										<{if $document.dorating == 1}>
 										<div class="col-12 col-lg-6">
@@ -154,10 +151,10 @@
 					<div class="text-center">
 						<div class="btn-group text-center" role="group">
 							<{if $document.perm_edit == true}>
-								<button type="button" class="btn btn-secondary" onclick=window.location.href="<{$xoops_url}>/modules/xmdoc/action.php?op=edit&amp;document_id=<{$document.id}>"><i class="fa fa-edit" aria-hidden="true"></i> <{$smarty.const._MA_XMDOC_EDIT}></button>
+								<button type="button" class="btn btn-secondary" onclick=window.location.href="<{$xoops_url}>/modules/xmdoc/action.php?op=edit&amp;document_id=<{$document.id}>"><span class="fa fa-edit" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_EDIT}></button>
 							<{/if}>
 							<{if $document.perm_del == true}>
-								<button type="button" class="btn btn-secondary" onclick=window.location.href="<{$xoops_url}>/modules/xmdoc/action.php?op=del&amp;document_id=<{$document.id}>"><i class="fa fa-trash" aria-hidden="true"></i> <{$smarty.const._MA_XMDOC_DEL}></button>
+								<button type="button" class="btn btn-secondary" onclick=window.location.href="<{$xoops_url}>/modules/xmdoc/action.php?op=del&amp;document_id=<{$document.id}>"><span class="fa fa-trash" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_DEL}></button>
 							<{/if}>
 						</div>
 					</div>
@@ -186,7 +183,7 @@
 <{/if}>
 
 <{if $index_footer}>
-    <div class="row" style="padding-bottom: 5px; padding-top: 5px;">
+    <div class="row pt-3 pb-2">
         <div class="col-sm-12">
             <{$index_footer}>
         </div>
