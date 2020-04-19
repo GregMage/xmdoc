@@ -1,10 +1,3 @@
-<{if $index_header}>
-    <div class="row">
-        <div class="col-sm-12" style="padding-bottom: 10px; padding-top: 5px;">
-            <{$index_header}>
-        </div>
-    </div>
-<{/if}>
 <{if $cat}>
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
@@ -19,6 +12,13 @@
 		</ol>
 	</nav>
 <{/if}>
+<{if $index_header}>
+    <div class="row">
+        <div class="col-sm-12 pb-3">
+            <{$index_header}>
+        </div>
+    </div>
+<{/if}>
 <div align="center">
 	<form class="form-inline" id="form_document_tri" name="form_document_tri" method="get" action="index.php">
 		<div class="form-group">
@@ -29,19 +29,16 @@
 		</div>
 	</form>
 </div>
-<br>
-<br>
 <{if $cat}>
-	<div class="row">
-		<div class="col-3 col-md-4 text-center" style="padding-bottom: 5px; padding-top: 5px;">
-			<img class="rounded img-fluid" src="<{$category_logo}>" alt="<{$category_name}>">
+		<div class="row mt-4">
+			<div class="col-3 col-md-4 text-center">
+				<img class="rounded img-fluid" src="<{$category_logo}>" alt="<{$category_name}>">
+			</div>
+			<div class="col-9 col-md-8 py-2">
+				<h4 class="mt-0"><{$category_name}></h4>
+				<{$category_description}>
+			</div>
 		</div>
-		<div class="col-9 col-md-8 col-lg-9 " style="padding-bottom: 5px; padding-top: 5px;">
-			<h4 class="mt-0"><{$category_name}></h4>
-			<{$category_description}>
-		</div>
-	</div>
-	<br>
 <{/if}>
 <{if $document_count != 0}>
 	<div class="row">
@@ -186,7 +183,7 @@
 <{/if}>
 
 <{if $index_footer}>
-    <div class="row" style="padding-bottom: 5px; padding-top: 5px;">
+    <div class="row pt-3 pb-2">
         <div class="col-sm-12">
             <{$index_footer}>
         </div>
