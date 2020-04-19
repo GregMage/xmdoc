@@ -20,7 +20,7 @@
 // Button
 define('_MA_XMDOC_CATEGORY_ADD', 'Ajout d\'une catégorie');
 define('_MA_XMDOC_CATEGORY_LIST', 'Liste des catégories');
-define('_MA_XMDOC_DOCUMENT_ADD', 'Ajout d\'un document');
+define('_MA_XMDOC_DOCUMENT_ADD', 'Ajout d\'un nouveau document');
 define('_MA_XMDOC_DOCUMENT_LIST', 'Liste des documents');
 
 // Error message
