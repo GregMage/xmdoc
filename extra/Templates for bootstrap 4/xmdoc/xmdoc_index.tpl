@@ -109,47 +109,27 @@
 							<{if $document.showinfo == 1}>
 								<div class="row border-bottom border-secondary mx-1 pl-1">
 									<figure class="figure text-muted my-1 pr-2 text-center border-right border-secondary">
-										  <span class="fa fa-circle-notch fa-fw" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_FORMDOC_DATE_BT}>
+										  <span class="fa fa-calendar fa-fw" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_FORMDOC_DATE_BT}>
 										  <figcaption class="figure-caption text-center"><{$document.date}></figcaption>
 									</figure>
-
 									<{if $document.mdate}>
 									<figure class="figure text-muted my-1 pr-2 text-center border-right border-secondary">
 										  <span class="fa fa-repeat fa-fw" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_FORMDOC_MDATE_BT}>
 										  <figcaption class="figure-caption text-center"><{$document.mdate}></figcaption>
 									</figure>
 									<{/if}>
-
 									<figure class="figure text-muted my-1 pr-2 text-center border-right border-secondary">
 										  <span class="fa fa-user fa-fw" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_FORMDOC_AUTHOR}>
 										  <figcaption class="figure-caption text-center"><{$document.author}></figcaption>
 									</figure>
-
-<!--
-									<{if $document.size != ''}>
-									<figure class="figure text-muted my-1 pr-2 text-center border-right border-secondary">
-										  <span class="fa fa-archive fa-fw" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_FORMDOC_SIZE}>
-										  <figcaption class="figure-caption text-center"><{$document.size}></figcaption>
-									</figure>
-									<{/if}>
--->
-<!--
-									<figure class="figure text-muted my-1 pr-2 text-center border-right border-secondary">
-										  <span class="fa fa-download fa-fw" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_FORMDOC_DOWNLOAD}>
-										  <figcaption class="figure-caption text-center"><{$document.counter}></figcaption>
-									</figure>
--->
-
 									<{if $document.dorating == 1}>
 									<figure class="text-muted m-1 pr-2 text-center border-right border-secondary">
-										<{include file="db:xmsocial_rating.tpl" down_xmsocial=$xmsocial_arr}>
+										<{include file="db:xmsocial_rating.tpl" down_xmsocial=$document.xmsocial_arr}>
 										<figcaption class="figure-caption text-center"></figcaption>
 									</figure>
-									<{/if}>
-									
+									<{/if}>									
 								</div>
 							<{/if}>
-
 								<div class="row">
 									<div class="col-md-3 d-flex justify-content-center">
 										<figure class="figure mt-3">
@@ -166,16 +146,13 @@
 												<{$document.description}>
 											<{/if}>
 									</div>
-								</div>	
-
+								</div>
 						</div>
-
 						<div class="modal-footer d-flex justify-content-center">
 							<a class="btn btn-primary" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank" title="<{$document.name}>">
 								<span class="fa fa-download fa-lg" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_DOWNLOAD}>
 							</a>
 						</div>
-
 						<{if ($document.perm_edit == true) || ($document.perm_del == true)}>
 							<div class="modal-footer d-flex justify-content-center">
 								<div class="btn-group text-center" role="group">
@@ -188,11 +165,9 @@
 								</div>
 							</div>
 						<{/if}>
-
 					</div>
 				</div>
-			</div>
-			
+			</div>			
 		<{/foreach}>
 	</div>
 	<{if $nav_menu}>
