@@ -178,9 +178,9 @@ if ($search != ''){
 			$document['id']              = $document_id;
 			$document['name']            = $document_arr[$i]->getVar('document_name');
 			if (false == strpos($document_arr[$i]->getVar('document_description', 'e'), '[break]')){
-				$document['description'] = substr($document_arr[$i]->getVar('document_description', 'e'), 0, 300) . '...';
+				$document['description'] = $document_arr[$i]->getVar('document_description', 'show');
 			}else{
-				$document['description'] = substr($document_arr[$i]->getVar('document_description', 'e'), 0, strpos($document_arr[$i]->getVar('document_description', 'e'),'[break]'));
+				$document['description'] = substr($document_arr[$i]->getVar('document_description', 'show'), 0, strpos($document_arr[$i]->getVar('document_description', 'show'),'[break]'));
 			}
 			$document['category']        = $document_arr[$i]->getVar('category_name');
 			$document['categoryid']      = $document_arr[$i]->getVar('document_category');
