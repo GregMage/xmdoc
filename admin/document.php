@@ -34,7 +34,8 @@ switch ($op) {
         $xoTheme->addScript('modules/system/js/admin.js');
         // Module admin
         $moduleAdmin->addItemButton(_MA_XMDOC_DOCUMENT_ADD, 'document.php?op=add', 'add');
-        $xoopsTpl->assign('renderbutton', $moduleAdmin->renderButton());        
+        $xoopsTpl->assign('renderbutton', $moduleAdmin->renderButton());
+		$xoopsTpl->assign('usemodal', $helper->getConfig('general_usemodal', 1));		
         // Get start pager
         $start = Request::getInt('start', 0);
         $xoopsTpl->assign('start', $start);
