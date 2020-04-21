@@ -105,7 +105,12 @@ if ($op == 'add' || $op == 'save' || $op == 'loaddocument' || $op == 'edit' || $
 			} else {
 				$obj = $documentHandler->get($document_id);
 			}
-			$error_message = $obj->saveDocument($documentHandler, 'index.php');
+			if ($helper->getConfig('general_usemodal', 1) == 1){
+				$redirect = 'index.php';
+			} else {
+				$redirect = 'document.php?doc_id=' . $document_id;
+			}
+			$error_message = $obj->saveDocument($documentHandler, $redirect);
 			if ($error_message != ''){
 				$xoopsTpl->assign('error_message', $error_message);
 				$document_category = Request::getInt('document_category', 0);
