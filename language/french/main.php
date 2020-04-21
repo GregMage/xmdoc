@@ -20,7 +20,7 @@
 // Button
 define('_MA_XMDOC_CATEGORY_ADD', 'Ajout d\'une catégorie');
 define('_MA_XMDOC_CATEGORY_LIST', 'Liste des catégories');
-define('_MA_XMDOC_DOCUMENT_ADD', 'Ajout d\'un nouveau document');
+define('_MA_XMDOC_DOCUMENT_ADD', 'Ajouter un nouveau document');
 define('_MA_XMDOC_DOCUMENT_LIST', 'Liste des documents');
 
 // Error message
@@ -43,7 +43,7 @@ define('_MA_XMDOC_ACTION', 'Action');
 define('_MA_XMDOC_DEL', 'Effacer');
 define('_MA_XMDOC_EDIT', 'Modifier');
 define('_MA_XMDOC_REDIRECT_SAVE', 'Enregistré avec succès');
-define('_MA_XMDOC_SEARCH', 'Rechercher un document');
+define('_MA_XMDOC_SEARCH', 'Rechercher un document existant');
 define('_MA_XMDOC_STATUS', 'Statut');
 define('_MA_XMDOC_STATUS_A', 'Activé');
 define('_MA_XMDOC_STATUS_NA', 'Désactivé');
@@ -136,13 +136,19 @@ define('_MA_XMDOC_FORMDOC_MDATE', 'Date de modification ');
 define('_MA_XMDOC_FORMDOC_MDATE_BT', 'Mise à jour');
 define('_MA_XMDOC_FORMDOC_NAME', 'Gestion de documents');
 define('_MA_XMDOC_FORMDOC_REMOVE', 'Supprimer des documents');
-define('_MA_XMDOC_FORMDOC_LISTDOCUMENT', 'Liste des documents');
+define('_MA_XMDOC_FORMDOC_LISTDOCUMENT', 'Liste des documents existants');
 define('_MA_XMDOC_FORMDOC_RATING', 'Évaluation');
-define('_MA_XMDOC_FORMDOC_RESETSELECTED', 'Réinitialiser les documents sélectionnés');
-define('_MA_XMDOC_FORMDOC_SELECT', 'Sélectionner');
-define('_MA_XMDOC_FORMDOC_SELECTED', 'Documents sélectionnés');
+define('_MA_XMDOC_FORMDOC_RESETSELECTED', 'Réinitialiser la sélection');
+define('_MA_XMDOC_FORMDOC_VALIDATE', 'valider');
+define('_MA_XMDOC_FORMDOC_SELECT', 'Sélection');
+define('_MA_XMDOC_FORMDOC_SELECTED', 'documents sélectionnés');
+define('_MA_XMDOC_FORMDOC_1SELECTED', 'document sélectionné');
+define('_MA_XMDOC_FORMDOC_NODOCSELECTED', 'Aucun document sélectionné...');
 define('_MA_XMDOC_FORMDOC_SIZE', "Taille du fichier ");
 define('_MA_XMDOC_FORMDOC_VOTES', '(%s Votes)');
+define('_MA_XMDOC_FORMDOC_CHECKLINK', 'Lien');
+
+
 
 // user
 define('_MA_XMDOC_DOWNLOAD', 'Télécharger');
