@@ -148,8 +148,6 @@ define('_MA_XMDOC_FORMDOC_SIZE', "Taille du fichier ");
 define('_MA_XMDOC_FORMDOC_VOTES', '(%s Votes)');
 define('_MA_XMDOC_FORMDOC_CHECKLINK', 'Lien');
 
-
-
 // user
 define('_MA_XMDOC_DOWNLOAD', 'Télécharger');
 define('_MA_XMDOC_SELECTCATEGORY', 'Proposer un document - Choix de la catégorie');
