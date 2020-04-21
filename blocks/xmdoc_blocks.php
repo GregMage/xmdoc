@@ -80,7 +80,7 @@ function block_xmdoc_show($options) {
 			$document['document']          = $document_arr[$i]->getVar('document_document');
 			$document['description']       	   = str_replace('[break]', '', $document_arr[$i]->getVar('document_description', 'show'));
 			if (false == strpos($document_arr[$i]->getVar('document_description', 'e'), '[break]')){
-				$document['description_short'] = '';
+				$document['description_short'] = $document_arr[$i]->getVar('document_description', 'show');;
 				$document['description_end']   = '';
 			}else{
 				$document['description_short'] = substr($document_arr[$i]->getVar('document_description', 'show'), 0, strpos($document_arr[$i]->getVar('document_description', 'show'),'[break]'));
