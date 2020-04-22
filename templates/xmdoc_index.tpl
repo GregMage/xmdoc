@@ -17,6 +17,21 @@
 	</ol>
 <{/if}>
 <div align="center">
+	<{if $index_cat == 2 || $index_cat == 3}>
+	<div class="xm-category row">
+	<{foreach item=categories from=$cat_array}>		
+		<div class="col-xs-2 <{if $cat && $categories.id == $doc_cid}>bg-info<{/if}> xm-category-list">			
+			<a title="<{$categories.name}>" href="<{$xoops_url}>/modules/xmdoc/index.php?doc_cid=<{$categories.id}>" class="xm-category-image">
+				<h4><{$categories.name}></h4>
+				<{if $categories.logo != ''}>
+				<img src="<{$categories.logo}>" alt="<{$categories.name}>" style="max-width:100px">
+				<{/if}>
+			</a>
+		</div>	
+	<{/foreach}>
+	</div>
+	<{/if}>
+	<{if $index_cat == 1 || $index_cat == 3}>
 	<form class="form-inline" id="form_news_tri" name="form_news_tri" method="get" action="index.php">
 		<div class="form-group">
 			<label><{$smarty.const._MA_XMDOC_INDEX_SELECTCATEGORY}></label>
@@ -25,6 +40,7 @@
 			<select>
 		</div>
 	</form>
+	<{/if}>
 </div>
 <br>		
 <br>

@@ -28,6 +28,7 @@ $xoTheme->addStylesheet(XOOPS_URL . '/modules/' . $xoopsModule->getVar('dirname'
 
 $xoopsTpl->assign('index_header', $helper->getConfig('index_header', ""));
 $xoopsTpl->assign('index_footer', $helper->getConfig('index_footer', ""));
+$xoopsTpl->assign('index_cat', $helper->getConfig('index_cat', 1));
 $xoopsTpl->assign('use_modal', $helper->getConfig('general_usemodal', 1));
 
 // Get Permission to view
@@ -58,6 +59,17 @@ if (count($category_arr) > 0) {
 	if (!empty($viewPermissionCat)) {
 		foreach (array_keys($category_arr) as $i) {
 			$doc_cid_options .= '<option value="' . $i . '"' . ($doc_cid == $i ? ' selected="selected"' : '') . '>' . $category_arr[$i]->getVar('category_name') . '</option>';
+			$cat_array['id']          = $category_arr[$i]->getVar('category_id');
+			$cat_array['name'] 		  = $category_arr[$i]->getVar('category_name');
+			$cat_array['description'] = $category_arr[$i]->getVar('category_description');
+			$category_img  			  = $category_arr[$i]->getVar('category_logo');
+			if ($category_img == ''){
+				$cat_array['logo']    = '';
+			} else {
+				$cat_array['logo']    = $url_logo_category . $category_img;
+			}
+			$xoopsTpl->append_by_ref('cat_array', $cat_array);
+			unset($cat_array);
 		}
 	}
 	$xoopsTpl->assign('doc_cid_options', $doc_cid_options);

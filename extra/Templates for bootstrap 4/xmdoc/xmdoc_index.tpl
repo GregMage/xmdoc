@@ -20,6 +20,31 @@
     </div>
 <{/if}>
 <div align="center">
+	<{if $index_cat == 2 || $index_cat == 3}>
+	<div class="xm-category row">
+	<{foreach item=categories from=$cat_array}>
+		<div class="col-6 col-sm-4 col-md-2 p-2 <{if $cat && $categories.id == $doc_cid}>bg-info<{/if}>">
+			<a title="<{$categories.name}>" href="<{$xoops_url}>/modules/xmdoc/index.php?doc_cid=<{$categories.id}>">
+				<div class="card">
+					<div class="card-header text-center">						
+						<{$categories.name}>
+					</div>
+					<div class="card-body h-md-550 text-center">
+						<div class="row" style="height: 90px;">
+							<div class="col-12 h-75">
+								<{if $categories.logo != ''}>								
+									<img class="rounded img-fluid mh-100" src="<{$categories.logo}>" alt="<{$categories.name}>">
+								<{/if}>
+							</div>							
+						</div>				
+					</div>				
+				</div>
+			</a>
+		</div>	
+	<{/foreach}>
+	</div>
+	<{/if}>
+	<{if $index_cat == 1 || $index_cat == 3}>
 	<form class="form-inline" id="form_document_tri" name="form_document_tri" method="get" action="index.php">
 		<div class="form-group">
 			<label><{$smarty.const._MA_XMDOC_INDEX_SELECTCATEGORY}>&nbsp;</label>
@@ -28,6 +53,7 @@
 			</select>
 		</div>
 	</form>
+	<{/if}>
 </div>
 <{if $cat}>
 	<div class="row mt-4">

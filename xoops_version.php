@@ -140,6 +140,19 @@ $modversion['config'][] = array(
     'default'     => ''
 );
 
+$optionindexcat[_MI_XMDOC_PREF_INDEXCAT_A] = 1;
+$optionindexcat[_MI_XMDOC_PREF_INDEXCAT_B] = 2;
+$optionindexcat[_MI_XMDOC_PREF_INDEXCAT_C] = 3;
+$modversion['config'][] = [
+    'name'        => 'index_cat',
+    'title'       => '_MI_XMDOC_PREF_INDEXCAT',
+    'description' => '_MI_XMDOC_PREF_INDEXCAT_DESC',
+    'formtype'    => 'select',
+    'valuetype'   => 'int',
+    'default'     => 1,
+	'options' => $optionindexcat,
+];
+
 $modversion['config'][] = array(
     'name'        => 'break',
     'title'       => '_MI_XMDOC_PREF_HEAD_OPTIONS',
