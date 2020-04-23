@@ -35,6 +35,13 @@
 							</div>
 						<{/foreach}>
 					</div>
+					<div class="alert alert-warning" role="alert">						
+						<{if $seldoc_count > 1}>
+							<{$smarty.const._MA_XMDOC_FORMDOC_WARNING}>
+						<{else}>
+							<{$smarty.const._MA_XMDOC_FORMDOC_1WARNING}>
+						<{/if}>
+					</div>
 				</div>
 				<div class="card-footer">
 					<form class="text-center" name="selreset" id="selreset" action="docmanager.php" method="post">

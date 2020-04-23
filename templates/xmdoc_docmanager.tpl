@@ -14,7 +14,14 @@
 <body onload="window.resizeTo(<{$xsize|default:800}>, <{$ysize|default:800}>);">
 <div class="xmdoc">
 	<{if $selected}>
-		<h2><{$smarty.const._MA_XMDOC_FORMDOC_SELECTED}></h2>
+		<h2>
+			<{$seldoc_count}>
+			<{if $seldoc_count > 1}>
+				<{$smarty.const._MA_XMDOC_FORMDOC_SELECTED}>
+			<{else}>
+				<{$smarty.const._MA_XMDOC_FORMDOC_1SELECTED}>
+			<{/if}>
+		</h2>
 		<table cellspacing="0" id="imagemain">
 			<tr>
 			<{foreach item=seldoc from=$seldoc}>			
@@ -25,6 +32,17 @@
 				<{/if}>
 			<{/foreach}>
 			</tr>
+			<tr>
+				<td>
+					<div class="resultMsg" role="alert">						
+						<{if $seldoc_count > 1}>
+							<{$smarty.const._MA_XMDOC_FORMDOC_WARNING}>
+						<{else}>
+							<{$smarty.const._MA_XMDOC_FORMDOC_1WARNING}>
+						<{/if}>
+					</div>
+				</tr>
+			</td>
 		</table>
 		<form name="selreset" id="selreset" action="docmanager.php" method="post">
 			<input type="hidden" name="selectreset" value="true" />

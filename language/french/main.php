@@ -148,6 +148,8 @@ define('_MA_XMDOC_FORMDOC_NODOCSELECTED', 'Aucun document sélectionné...');
 define('_MA_XMDOC_FORMDOC_SIZE', "Taille du fichier ");
 define('_MA_XMDOC_FORMDOC_VOTES', '(%s Votes)');
 define('_MA_XMDOC_FORMDOC_CHECKLINK', 'Lien');
+define('_MA_XMDOC_FORMDOC_WARNING', 'Attention, les documents sélectionés ici, ne seront pas affichés dans le formulaire d\'origine une fois cette fenêtre fermée. Pas d\'inquiètude, les documents seront enregistrés lors de la validation du formulaire d\'origine.');
+define('_MA_XMDOC_FORMDOC_1WARNING', 'Attention, le document sélectioné ici, ne sera pas affiché dans le formulaire d\'origine une fois cette fenêtre fermée. Pas d\'inquiètude, le document sera enregistré lors de la validation du formulaire d\'origine.');
 
 // user
 define('_MA_XMDOC_DOWNLOAD', 'Télécharger');

@@ -148,6 +148,8 @@ define('_MA_XMDOC_FORMDOC_NODOCSELECTED', 'No document selected ...');
 define('_MA_XMDOC_FORMDOC_SIZE', "File Size");
 define('_MA_XMDOC_FORMDOC_VOTES', '(%s Votes)');
 define('_MA_XMDOC_FORMDOC_CHECKLINK', 'Link');
+define('_MA_XMDOC_FORMDOC_WARNING', 'Please note that the documents selected here will not be displayed in the original form once this window is closed. No worries, the documents will be saved when validating the original form.');
+define('_MA_XMDOC_FORMDOC_1WARNING', 'Please note that the document selected here will not be displayed in the original form once this window is closed. No worries, the document will be saved when validating the original form.');
 
 // user
 define('_MA_XMDOC_DOWNLOAD', 'Download');
