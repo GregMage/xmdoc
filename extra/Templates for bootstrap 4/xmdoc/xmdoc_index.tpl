@@ -60,8 +60,8 @@
 	</form>
 	<{/if}>
 </div>
-<hr />
 <{if $cat}>
+<hr />
 	<div class="row mt-4">
 		<div class="col-3 col-md-4 text-center">
 			<img class="rounded img-fluid" src="<{$category_logo}>" alt="<{$category_name}>">
