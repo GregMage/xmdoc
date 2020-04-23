@@ -14,16 +14,21 @@
 <{/if}>
 <{if $index_header}>
     <div class="row">
-        <div class="col-sm-12 pb-3">
+        <div class="col-sm-12">
             <{$index_header}>
+			<hr />
         </div>
     </div>
 <{/if}>
 <div align="center">
 	<{if $index_cat == 2 || $index_cat == 3}>
+	<h3><{$smarty.const._MA_XMDOC_CATEGORY_LIST}></h3>
 	<div class="xm-category row">
 	<{foreach item=categories from=$cat_array}>
-		<div class="col-6 col-sm-4 col-md-2 p-2 <{if $cat && $categories.id == $doc_cid}>bg-info<{/if}>">
+		<div class="col-6 col-sm-4 col-md-3 col-lg-2 p-2 
+			<{if $cat && $categories.id == $doc_cid}>
+				bg-info
+			<{/if}>">
 			<a title="<{$categories.name}>" href="<{$xoops_url}>/modules/xmdoc/index.php?doc_cid=<{$categories.id}>">
 				<div class="card">
 					<div class="card-header text-center">						
@@ -55,6 +60,7 @@
 	</form>
 	<{/if}>
 </div>
+<hr />
 <{if $cat}>
 	<div class="row mt-4">
 		<div class="col-3 col-md-4 text-center">
@@ -67,6 +73,7 @@
 	</div>
 <{/if}>
 <{if $document_count != 0}>
+	<hr />
 	<div class="row">
 		<{foreach item=document from=$documents}>
 			<div class="col-sm-12 col-md-6 col-lg-4 p-2">
@@ -211,9 +218,10 @@
 <{/if}>
 
 <{if $index_footer}>
-    <div class="row pt-3 pb-2">
+    <div class="row pb-2">
         <div class="col-sm-12">
-            <{$index_footer}>
+            <hr />
+			<{$index_footer}>
         </div>
     </div>
 <{/if}>
