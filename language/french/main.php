@@ -83,7 +83,6 @@ define('_MA_XMDOC_CATEGORY_WEIGHT', 'Poids');
 // document
 define('_MA_XMDOC_DOCUMENT_CATEGORY', 'Catégorie');
 define('_MA_XMDOC_DOCUMENT_INCATEGORY', 'Dans la catégorie');
-define('_MA_XMDOC_DOCUMENT_CATEGORY', 'Dans la catégorie');
 define('_MA_XMDOC_DOCUMENT_DATEUPDATE', 'Mettre à jour la date de création');
 define('_MA_XMDOC_DOCUMENT_DESC', 'Description');
 define('_MA_XMDOC_DOCUMENT_DESC_DESC', "Utilisez le délimiteur <span style='color:orange'>[break]</span> pour définir la taille de la description courte.");
