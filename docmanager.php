@@ -121,7 +121,7 @@ $form = new XoopsThemeForm('', 'form', 'docmanager.php', 'post', true);
 $form->addElement(new XoopsFormText(_MA_XMDOC_DOCUMENT_NAME, 's_name', 50, 255, $s_name));
 
 // category       
-$category = new XoopsFormSelect(_MA_XMDOC_DOCUMENT_CATEGORY, 's_cat', $s_cat);
+$category = new XoopsFormSelect(_MA_XMDOC_DOCUMENT_INCATEGORY, 's_cat', $s_cat);
 $criteria = new CriteriaCompo();
 $criteria->add(new Criteria('category_status', 1));
 $criteria->setSort('category_weight ASC, category_name');
