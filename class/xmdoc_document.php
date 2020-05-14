@@ -333,6 +333,7 @@ class xmdoc_document extends XoopsObject
 		];
 		$type->addOptionArray($typeArray);
 		$aff_size->addElement($type);
+		$aff_size->setDescription(_MA_XMDOC_DOCUMENT_SIZE_DSC);
 		$form->addElement($aff_size);
         
         // showinfo
