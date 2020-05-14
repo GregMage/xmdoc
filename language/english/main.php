@@ -97,7 +97,7 @@ define('_MA_XMDOC_DOCUMENT_RESETCOUNTER', 'Reset download counter');
 define('_MA_XMDOC_DOCUMENT_RESETMDATE', 'Reset (empty date)');
 define('_MA_XMDOC_DOCUMENT_SHOWINFO', 'View file information');
 define('_MA_XMDOC_DOCUMENT_SIZE', "File Size");
-define('_MA_XMDOC_DOCUMENT_SIZE_DSC', "File SizeTo use the automatic system for calculating the file size, leave this field empty.<br>Please note the automatic system which calculates the size works only for uploaded files!!!");
+define('_MA_XMDOC_DOCUMENT_SIZE_DSC', "File SizeTo use the automatic system for calculating the file size, leave this field empty.<br>Please note that the automatic size calculation system may not work on files hosted on another server!");
 define('_MA_XMDOC_DOCUMENT_SUREDEL', 'Sure to delete this document? %s');
 define('_MA_XMDOC_DOCUMENT_UPLOAD', 'Upload');
 define('_MA_XMDOC_DOCUMENT_UPLOADSIZE', 'Maximum size: %s kB');

@@ -97,7 +97,7 @@ define('_MA_XMDOC_DOCUMENT_RESETCOUNTER', 'Réinitialiser le compteur de téléc
 define('_MA_XMDOC_DOCUMENT_RESETMDATE', 'Réinitialiser (date vide)');
 define('_MA_XMDOC_DOCUMENT_SHOWINFO', 'Afficher les informations sur le fichier');
 define('_MA_XMDOC_DOCUMENT_SIZE', "Taille du fichier");
-define('_MA_XMDOC_DOCUMENT_SIZE_DSC', "Pour utiliser le système automatique de calcul de la taille du fichier, laissez ce champ vide<br>Attention le système automatique qui calcul la taille fonctionne uniquement pour des fichiers uploadés!!!");
+define('_MA_XMDOC_DOCUMENT_SIZE_DSC', "Pour utiliser le système automatique de calcul de la taille du fichier, laissez ce champ vide<br>Attention le système de calcul automatique de la taille peu ne pas fonctionner sur des fichiers hébergés sur un autre serveur!");
 define('_MA_XMDOC_DOCUMENT_SUREDEL', 'Voulez-vous vraiment supprimer ce document? %s');
 define('_MA_XMDOC_DOCUMENT_UPLOAD', 'Upload');
 define('_MA_XMDOC_DOCUMENT_UPLOADSIZE', 'Taille maximum : %s Ko');
