@@ -18,7 +18,7 @@
  */
 $modversion['dirname']     = basename(__DIR__);
 $modversion['name']        = ucfirst(basename(__DIR__));
-$modversion['version']     = '0.5';
+$modversion['version']     = '1.0';
 $modversion['description'] = _MI_XMDOC_DESC;
 $modversion['author']      = 'Grégory Mage (Mage)';
 $modversion['url']         = 'https://github.com/GregMage';
@@ -274,12 +274,12 @@ $modversion['config'][] = array(
 );
 
 // About stuff
-$modversion['module_status'] = 'Beta';
-$modversion['release_date']  = '2019/01/18';
+$modversion['module_status'] = 'Final';
+$modversion['release_date']  = '2020/05/15';
 
 $modversion['developer_lead']      = 'Mage';
-$modversion['module_website_url']  = 'github.com/GregMage';
-$modversion['module_website_name'] = 'github.com/GregMage';
+$modversion['module_website_url']  = 'www.monxoops.fr/';
+$modversion['module_website_name'] = 'MonXoops';
 
 $modversion['min_xoops'] = '2.5.10';
 $modversion['min_php']   = '7.0';

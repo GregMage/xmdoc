@@ -1,6 +1,8 @@
-﻿------------------------------------------------
-Version: 0.10 Alpha
-Date:    05.07.2017
+﻿-------------------------------------------------
+Version: 1.0 Final
+Date:    15.05.2020
 -------------------------------------------------
 
-Lancement du projet xmdoc
+Première version du module.
+
+First version of the module.
