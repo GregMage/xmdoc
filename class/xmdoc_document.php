@@ -408,7 +408,13 @@ class xmdoc_document extends XoopsObject
         }
 		$error_message = '';
 		include __DIR__ . '/../include/common.php';
+		$doc_id = $this->getVar('document_id');
 		if ($documentHandler->delete($this)) {
+			//xmsocial
+			if (xoops_isActiveModule('xmsocial') && $helper->getConfig('general_xmsocial', 0) == 1) {
+				xoops_load('utility', 'xmsocial');
+				$error_message .= XmsocialUtility::delRatingdata('xmdoc', $doc_id);
+			}
 			//Del logo
 			if ($this->getVar('document_logo') != 'blank_doc.gif') {
 				// Test if the image is used
