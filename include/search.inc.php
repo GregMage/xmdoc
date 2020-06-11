@@ -27,6 +27,14 @@ function xmdoc_search($queryarray, $andor, $limit, $offset, $userid)
         $sql .= " AND document_userid=" . intval($userid) . " ";
     }
 	
+	xoops_load('utility', 'xmdoc');
+	$viewPermissionCat = XmdocUtility::getPermissionCat('xmdoc_view');
+	if(!empty($viewPermissionCat)) {
+        $sql .= ' AND document_id IN ('.implode(',', $viewPermissionCat).') ';
+    } else {
+        return null;
+    }
+	
     if ( is_array($queryarray) && $count = count($queryarray) )
     {
         $sql .= " AND ((document_name LIKE '%$queryarray[0]%' OR document_description LIKE '%$queryarray[0]%')";
