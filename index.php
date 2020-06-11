@@ -49,6 +49,9 @@ $xoopsTpl->assign('doc_cid', $doc_cid);
 $criteria = new CriteriaCompo();
 $criteria->add(new Criteria('category_status', 1));
 if (!empty($viewPermissionCat)) {
+	if (!in_array($doc_cid , $viewPermissionCat) && $doc_cid != 0){
+		redirect_header('index.php?$doc_cid=0',2, _NOPERM);
+	}
     $criteria->add(new Criteria('category_id', '(' . implode(',', $viewPermissionCat) . ')', 'IN'));
 }
 $criteria->setSort('category_weight ASC, category_name');
