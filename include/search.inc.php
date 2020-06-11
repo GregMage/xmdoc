@@ -16,6 +16,7 @@
  * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
  * @author          Mage Gregory (AKA Mage)
  */
+use Xmf\Module\Helper;
 
 function xmdoc_search($queryarray, $andor, $limit, $offset, $userid)
 {
@@ -51,10 +52,15 @@ function xmdoc_search($queryarray, $andor, $limit, $offset, $userid)
     $result = $xoopsDB->query($sql,$limit,$offset);
     $ret = array();
     $i = 0;
+	$helper = Helper::getHelper('xmdoc');
     while($myrow = $xoopsDB->fetchArray($result))
     {
         $ret[$i]["image"] = "assets/images/xmdoc_search.png";
-        $ret[$i]["link"] = "download.php?doc_id=" . $myrow["document_id"] . '&cat_id=' . $myrow["document_category"];
+		if ($helper->getConfig('general_usemodal', 1) == 1){
+			$ret[$i]["link"] = "download.php?doc_id=" . $myrow["document_id"] . '&cat_id=' . $myrow["document_category"];
+		} else {
+			$ret[$i]["link"] = "document.php?doc_id=" . $myrow["document_id"];
+		}
         $ret[$i]["title"] = $myrow["document_name"];
         $ret[$i]["time"] = $myrow["document_date"];
         $ret[$i]["uid"] = $myrow["document_userid"];
