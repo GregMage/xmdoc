@@ -127,10 +127,14 @@ if ($op == 'add' || $op == 'save' || $op == 'loaddocument' || $op == 'edit' || $
 				$xoopsTpl->assign('error_message', _MA_XMDOC_ERROR_NODOCUMENT);
 			} else {
 				$obj = $documentHandler->get($document_id);
-				// Get Permission to edit in category
-				$permHelper->checkPermissionRedirect('xmdoc_editapprove', $obj->getVar('document_category'), 'index.php', 2, _NOPERM);
-				$form = $obj->getForm();
-				$xoopsTpl->assign('form', $form->render()); 
+				if (empty($obj)) {
+					$xoopsTpl->assign('error_message', _MA_XMDOC_ERROR_NODOCUMENT);
+				} else {
+					// Get Permission to edit in category
+					$permHelper->checkPermissionRedirect('xmdoc_editapprove', $obj->getVar('document_category'), 'index.php', 2, _NOPERM);
+					$form = $obj->getForm();
+					$xoopsTpl->assign('form', $form->render());
+				}
 			}
             break;
 
