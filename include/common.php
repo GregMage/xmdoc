@@ -27,11 +27,22 @@ $docdataHandler = $helper->getHandler('xmdoc_docdata');
 $downlimitHandler = $helper->getHandler('xmdoc_downlimit');
 
 // Path & url Config
-$url_logo_category  = $helper->uploadUrl('images/category/');
-$path_logo_category = $helper->uploadPath('images/category/');
-$url_logo_document  = $helper->uploadUrl('images/document/');
-$path_logo_document = $helper->uploadPath('images/document/');
-$url_document       = $helper->uploadUrl('documents/');
-$path_document      = $helper->uploadPath('documents/');
+
+if (method_exists($helper,'uploadUrl')) {
+    $url_logo_category  = $helper->uploadUrl('images/category/');
+	$path_logo_category = $helper->uploadPath('images/category/');
+	$url_logo_document  = $helper->uploadUrl('images/document/');
+	$path_logo_document = $helper->uploadPath('images/document/');
+	$url_document       = $helper->uploadUrl('documents/');
+	$path_document      = $helper->uploadPath('documents/');
+} else {
+	$url_logo_category  = XOOPS_UPLOAD_URL . '/xmdoc/images/category/';
+	$path_logo_category = XOOPS_UPLOAD_PATH . '/xmdoc/images/category/';
+	$url_logo_document  = XOOPS_UPLOAD_URL . '/xmdoc/images/document/';
+	$path_logo_document = XOOPS_UPLOAD_PATH . '/xmdoc/images/document/';
+	$url_document       = XOOPS_UPLOAD_URL . '/xmdoc/documents/';
+	$path_document      = XOOPS_UPLOAD_PATH . '/xmdoc/documents/';
+}
+
 
 $upload_size = $helper->getConfig('general_maxuploadsize', 104858);
