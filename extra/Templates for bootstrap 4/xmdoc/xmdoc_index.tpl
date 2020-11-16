@@ -62,11 +62,11 @@
 </div>
 <{if $cat}>
 <hr />
-	<div class="row mt-4">
-		<div class="col-3 col-md-4 text-center">
+	<div class="row mb-2">
+		<div class="col-3 col-md-4 col-lg-3 text-center">
 			<img class="rounded img-fluid" src="<{$category_logo}>" alt="<{$category_name}>">
 		</div>
-		<div class="col-9 col-md-8 py-2">
+		<div class="col-9 col-md-8 col-lg-9 " style="padding-bottom: 5px; padding-top: 5px;">
 			<h4 class="mt-0"><{$category_name}></h4>
 			<{$category_description}>
 		</div>
