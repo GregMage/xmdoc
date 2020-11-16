@@ -92,7 +92,7 @@ if ($doc_cid != 0){
 	// vérification si la categorie est activée
 	$check_category = $categoryHandler->get($doc_cid);
 	if (empty($check_category)) {
-		redirect_header('index.php', 2, _MA_XMNEWS_ERROR_NOCATEGORY);
+		redirect_header('index.php', 2, _MA_XMDOC_ERROR_NOCATEGORY);
 	}
 	if ($check_category->getVar('category_status') != 1){
 		redirect_header('index.php', 2, _MA_XMDOC_ERROR_NACTIVE);
