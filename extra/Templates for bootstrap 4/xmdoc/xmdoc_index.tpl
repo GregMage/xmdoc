@@ -1,4 +1,4 @@
-<{if $cat}>
+<{if $cat|default:false}>
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="index.php"><{$index_module}></a></li>
@@ -12,7 +12,7 @@
 		</ol>
 	</nav>
 <{/if}>
-<{if $index_header}>
+<{if $index_header|default:'' != ''}>
     <div class="row">
         <div class="col-sm-12">
             <{$index_header}>
@@ -72,7 +72,7 @@
 		</div>
 	</div>
 <{/if}>
-<{if $document_count != 0}>
+<{if $document_count|default:0 != 0}>
 	<hr />
 	<div class="row">
 		<{foreach item=document from=$documents}>
@@ -203,7 +203,7 @@
 			</div>			
 		<{/foreach}>
 	</div>
-	<{if $nav_menu}>
+	<{if $nav_menu|default:false}>
 		<div class="row">
 			<div class="col-sm-12" style="padding-bottom: 10px; padding-top: 5px; padding-right: 60px; text-align: right;">
 				<{$nav_menu}>
@@ -217,7 +217,7 @@
 	</div>
 <{/if}>
 
-<{if $index_footer}>
+<{if $index_footer|default:'' != ''}>
     <div class="row pb-2">
         <div class="col-sm-12">
             <hr />

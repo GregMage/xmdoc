@@ -1,5 +1,5 @@
 <div class="xmdoc">
-    <{if $category_count gt 0}>
+    <{if $category_count|default:0 gt 0}>
         <ol class="breadcrumb">
 			<li><a href="index.php"><{$index_module}></a></li>
             <li class="active"><{$smarty.const._MA_XMDOC_SELECTCATEGORY}></li>
@@ -44,25 +44,25 @@
 			<{/foreach}>
 		</div><!-- .xm-category -->
 		<div class="clear spacer"></div>
-		<{if $nav_menu}>
+		<{if $nav_menu|default:false}>
 			<div class="floatright"><{$nav_menu}></div>
 			<div class="clear spacer"></div>
 		<{/if}>
     <{/if}>
-	<{if $error_message != ''}>
+	<{if $error_message|default:'' != ''}>
 		<div class="alert alert-danger alert-dismissible" role="alert">
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			<{$error_message}>
 		</div>
 	<{/if}>    
 
-	<{if $form}>
+	<{if $form|default:false}>
         <ol class="breadcrumb">
 			<li><a href="index.php"><{$index_module}></a></li>
             <li><a href="action.php?op=add"><{$smarty.const._MA_XMDOC_SELECTCATEGORY}></a></li>
             <li class="active"><{$smarty.const._MA_XMDOC_ADD}></li>
         </ol>
-        <{if $tips != ''}>
+        <{if $tips|default:'' != ''}>
             <div class="alert alert-info alert-dismissible" role="alert">
                 <div class="floatleft">
                     <h4><{$smarty.const._MA_XMDOC_DOCUMENT_DOCUMENT}></h4>

@@ -3,8 +3,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=<{$xoops_charset}>">
     <meta http-equiv="content-language" content="<{$xoops_langcode}>">
-    <title><{$xoops_sitename}> <{$lang_imgmanager}></title>
-    <{$image_form.javascript}>
+    <title>Xmdoc manager</title>
     <link rel="stylesheet" type="text/css" media="screen" href="<{xoAppUrl xoops.css}>">
 	<link rel="stylesheet" type="text/css" media="screen" href="<{xoAppUrl modules/system/css/imagemanager.css}>">
 	<link rel="stylesheet" type="text/css" media="screen" href="<{xoAppUrl modules/system/css/admin.css}>">
@@ -13,7 +12,7 @@
 
 <body onload="window.resizeTo(<{$xsize|default:800}>, <{$ysize|default:800}>);">
 <div class="xmdoc">
-	<{if $selected}>
+	<{if $selected|default:false}>
 		<h2>
 			<{$seldoc_count}>
 			<{if $seldoc_count > 1}>
@@ -59,12 +58,12 @@
 	<div id="addimage" class="txtright">
 		<a href="<{$xoops_url}>/modules/xmdoc/action.php?op=add" title="<{$smarty.const._MA_XMDOC_DOCUMENT_ADD}>" target="_blank"><{$smarty.const._MA_XMDOC_DOCUMENT_ADD}></a>
 	</div>
-	<{if $error_message != ''}>
+	<{if $error_message|default:'' != ''}>
 		<div class="errorMsg" style="text-align: left;">
 			<{$error_message}>
 		</div>
 	<{/if}>
-	<{if $document != ""}>
+	<{if $document|default:'' != ""}>
         <h3 class="tdm-title"><{$smarty.const._MA_XMDOC_FORMDOC_LISTDOCUMENT}>:</h3>
 		<form name="formsel" id="formsel" action="docmanager.php" method="post">
 			<table cellspacing="0" id="imagemain">
@@ -94,7 +93,7 @@
 		</form>
     <{/if}>
     <div class="clear spacer"></div>
-    <{if $nav_menu}>
+    <{if $nav_menu|default:false}>
         <div class="floatright"><{$nav_menu}></div>
         <div class="clear spacer"></div>
     <{/if}>

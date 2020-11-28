@@ -1,4 +1,4 @@
-<{if $index_header}>
+<{if $index_header|default:'' != ''}>
     <div class="row">
         <div class="col-sm-12" style="padding-bottom: 10px; padding-top: 5px;">
             <{$index_header}>
@@ -59,7 +59,7 @@
 	<br>		
 	<br>	
 <{/if}>
-<{if $document_count != 0}>
+<{if $document_count|default:0 != 0}>
 	<div class="row">
 	<{foreach item=document from=$documents}>
 		<div class="col-sm-6 col-md-6 xm-minibox">
@@ -163,7 +163,7 @@
 		</div>
 	<{/foreach}>
 	</div>
-	<{if $nav_menu}>
+	<{if $nav_menu|default:false}>
 		<div class="row">
 			<div class="col-sm-12" style="padding-bottom: 10px; padding-top: 5px; padding-right: 60px; text-align: right;">
 				<{$nav_menu}>
@@ -177,7 +177,7 @@
 </div>
 <{/if}>
 
-<{if $index_footer}>
+<{if $index_footer|default:'' != ''}>
     <div class="row" style="padding-bottom: 5px; padding-top: 5px;">
         <div class="col-sm-12">
             <{$index_footer}>

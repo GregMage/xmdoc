@@ -5,7 +5,7 @@
 <div>
     <{$renderbutton}>
 </div>
-<{if $tips != ''}>
+<{if $tips|default:'' != ''}>
     <div class="tips ui-corner-all">
         <img class="floatleft tooltip" src="<{xoAdminIcons tips.png}>" alt="<{$smarty.const._AM_SYSTEM_TIPS}>" title="<{$smarty.const._AM_SYSTEM_TIPS}>"/>
 
@@ -19,17 +19,17 @@
         <div class="clear">&nbsp;</div>
     </div>
 <{/if}>
-<{if $error_message != ''}>
+<{if $error_message|default:'' != ''}>
     <div class="errorMsg" style="text-align: left;">
         <{$error_message}>
     </div>
 <{/if}>
-<{if $form}>
+<{if $form|default:false}>
     <div>
         <{$form}>
     </div>
 <{/if}>
-<{if $filter}>
+<{if $filter|default:false}>
 	<div align="right">
 		<form id="form_document_tri" name="form_document_tri" method="get" action="document.php">
 			<{$smarty.const._MA_XMDOC_DOCUMENT_CATEGORY}>
@@ -43,7 +43,7 @@
 		</form>
 	</div>
 <{/if}>
-<{if $document_count != 0}>
+<{if $document_count|default:0 != 0}>
     <table id="xo-xmdoc-sorter" cellspacing="1" class="outer tablesorter">
         <thead>
         <tr>
@@ -97,7 +97,7 @@
         </tbody>
     </table>
     <div class="clear spacer"></div>
-    <{if $nav_menu}>
+    <{if $nav_menu|default:false}>
         <div class="floatright"><{$nav_menu}></div>
         <div class="clear spacer"></div>
     <{/if}>
