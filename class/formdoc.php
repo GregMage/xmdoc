@@ -44,25 +44,27 @@ class XmdocFormDoc extends XoopsFormElementTray
 		$helper = Helper::getHelper($modulename);
 		$moduleid = $helper->getModule()->getVar('mid');
 		// remove doc
-        $criteria = new CriteriaCompo();
-		$criteria->add(new Criteria('docdata_modid', $moduleid));
-		$criteria->add(new Criteria('docdata_itemid', $itemid));
-		$criteria->setSort('document_weight ASC, document_name');
-        $criteria->setOrder('ASC');
-		$docdataHandler->table_link = $docdataHandler->db->prefix("xmdoc_document");
-        $docdataHandler->field_link = "document_id";
-        $docdataHandler->field_object = "docdata_docid";
-        $docdata_arr = $docdataHandler->getByLink($criteria);
-		$docdata_count = $docdataHandler->getCount($criteria);	
-		if ($docdata_count > 0) {
-			$remove_doc = new XoopsFormCheckBox('<h4>' . _MA_XMDOC_FORMDOC_REMOVE . '</h4>', 'removeDocs');
-			$remove_doc->columns = 3;
-            foreach (array_keys($docdata_arr) as $i) {
-				$document_img = $docdata_arr[$i]->getVar('document_logo') ?: 'blank_doc.gif';
-				$value_doc = '<img src="' . $url_logo_document .  $document_img . '" alt="' . $document_img . '" style="max-width:100px"/>' . $docdata_arr[$i]->getVar('document_name');
-				$remove_doc->addOption($i, $value_doc);
-            }
-			$this->addElement($remove_doc);
+		if (!empty($itemid)){		
+			$criteria = new CriteriaCompo();
+			$criteria->add(new Criteria('docdata_modid', $moduleid));
+			$criteria->add(new Criteria('docdata_itemid', $itemid));
+			$criteria->setSort('document_weight ASC, document_name');
+			$criteria->setOrder('ASC');
+			$docdataHandler->table_link = $docdataHandler->db->prefix("xmdoc_document");
+			$docdataHandler->field_link = "document_id";
+			$docdataHandler->field_object = "docdata_docid";
+			$docdata_arr = $docdataHandler->getByLink($criteria);
+			$docdata_count = $docdataHandler->getCount($criteria);	
+			if ($docdata_count > 0) {
+				$remove_doc = new XoopsFormCheckBox('<h4>' . _MA_XMDOC_FORMDOC_REMOVE . '</h4>', 'removeDocs');
+				$remove_doc->columns = 3;
+				foreach (array_keys($docdata_arr) as $i) {
+					$document_img = $docdata_arr[$i]->getVar('document_logo') ?: 'blank_doc.gif';
+					$value_doc = '<img src="' . $url_logo_document .  $document_img . '" alt="' . $document_img . '" style="max-width:100px"/>' . $docdata_arr[$i]->getVar('document_name');
+					$remove_doc->addOption($i, $value_doc);
+				}
+				$this->addElement($remove_doc);
+			}
 		}
 		// add doc
 		$add_text = "<br>";
