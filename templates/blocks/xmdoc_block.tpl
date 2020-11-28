@@ -1,7 +1,8 @@
+<{if $block.document|default:'' != ''}>
 <{foreach item=blockdocument from=$block.document}>
 	<div class="col-sm-4 col-md-4 xm-minibox">
 		<div class="xm-document-logo">
-			<img src="<{$blockdocument.logo}>" alt="<{$document.name}>" style="max-width:120px">
+			<img src="<{$blockdocument.logo}>" alt="<{$blockdocument.name}>" style="max-width:120px">
 		</div>
 		<a class="xm-document-title" title="<{$blockdocument.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$blockdocument.categoryid}>&amp;doc_id=<{$blockdocument.id}>" target="_blank">
 			<{$blockdocument.name}>
@@ -100,4 +101,5 @@
 		</div>
 	</div>
 <{/foreach}>
+<{/if}>
 <div class="clearfix"></div>
