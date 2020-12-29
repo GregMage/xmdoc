@@ -23,7 +23,7 @@ Security:
 
 Correction de bogues:	
 	- Un accès depuis l'index à une catégorie inexistante générait un message d'erreur.
-	- La recherche ne tenait pas compte des droits d'acès.
+	- La recherche ne tenait pas compte des droits d'accès.
 	- Une erreur apparaissait si l'id du document était fausse(édition depuis la partie user).
 	- Une erreur apparaissait lors de la supression d'un document.
 
