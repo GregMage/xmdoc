@@ -1,4 +1,45 @@
 ﻿-------------------------------------------------
+Version: 1.1 Final
+Date:    29.12.2020
+-------------------------------------------------
+Bug fixes:
+	- Access from the index to a non-existent category generated an error message.
+	- The search did not take account of access rights.
+	- An error appeared if the document id was wrong (edition from the user part).
+	- An error appeared when deleting a document.
+
+Improvements:
+	- Added the suppression of votes when deleting a document (xmsocial).
+	- If the modal option is not used, the link points to the description of the document (otherwise direct download).
+	- Added compatibility with XOOPS 2.5.10 (previously only compatible with XOOPS 2.5.11).
+	- Update of boostrap 4 templates.
+	- Fixed define (language).
+	- Compatibility with PHP 8.
+
+Security:
+	- /
+
+
+
+Correction de bogues:	
+	- Un accès depuis l'index à une catégorie inexistante générait un message d'erreur.
+	- La recherche ne tenait pas compte des droits d'acès.
+	- Une erreur apparaissait si l'id du document était fausse(édition depuis la partie user).
+	- Une erreur apparaissait lors de la supression d'un document.
+
+Améliorations:
+	- Ajout de la supression des votes lors de la supression d'un document (xmsocial).
+	- Si l'option modal n'est pas utilisée, le lien pointe sur le descriptif du document (sinon téléchargement directe).
+	- Ajout de la compatibilité avec XOOPS 2.5.10 (avant uniquement compatible avec XOOPS 2.5.11).
+	- Mise à jour des templates boostrap 4.
+	- Correction de define (langue).
+	- Compatibilité avec PHP 8.
+	
+
+Sécurités:
+	- /
+
+-------------------------------------------------
 Version: 1.0 Final
 Date:    15.05.2020
 -------------------------------------------------
