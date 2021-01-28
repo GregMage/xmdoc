@@ -44,7 +44,7 @@ class XmdocFormDoc extends XoopsFormElementTray
 		$helper = Helper::getHelper($modulename);
 		$moduleid = $helper->getModule()->getVar('mid');
 		// remove doc
-		if (!empty($itemid)){		
+		if (!empty($itemid) &&  $itemid != 0){		
 			$criteria = new CriteriaCompo();
 			$criteria->add(new Criteria('docdata_modid', $moduleid));
 			$criteria->add(new Criteria('docdata_itemid', $itemid));
