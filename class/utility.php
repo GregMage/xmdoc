@@ -192,16 +192,14 @@ class XmdocUtility{
 	
 	public static function delDocdata($modulename = '', $itemid = 0)
     {
-        include __DIR__ . '/../include/common.php';
-		$error_message = '';
-		
+        include __DIR__ . '/../include/common.php';		
 		$helper = Helper::getHelper($modulename);
 		$moduleid = $helper->getModule()->getVar('mid');
 		$criteria = new CriteriaCompo();
 		$criteria->add(new Criteria('docdata_modid', $moduleid));
 		$criteria->add(new Criteria('docdata_itemid', $itemid));
-		$error_message = $docdataHandler->deleteAll($criteria);
-        return $error_message;
+		$docdataHandler->deleteAll($criteria);
+        return '';
     }
 	
 	public static function renderDocuments($xoopsTpl, $xoTheme, $modulename = '', $itemid = 0)
