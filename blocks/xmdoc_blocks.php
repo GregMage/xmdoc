@@ -127,7 +127,7 @@ function block_xmdoc_edit($options) {
     xoops_load('XoopsFormLoader');
 
     $form = new XmdocBlockForm();
-	$category = new XoopsFormSelect(_MB_XMDOC_CATEGORY, 'options[0]', $options[0], 5, true);
+	$category = new XoopsFormSelect(_MB_XMDOC_CATEGORY, 'options[0]', explode(',', $options[0]), 5, true);
 	$category->addOption(0, _MB_XMDOC_ALLCATEGORY);
 	foreach (array_keys($category_arr) as $i) {
 		$category->addOption($category_arr[$i]->getVar('category_id'), $category_arr[$i]->getVar('category_name'));
