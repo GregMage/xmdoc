@@ -22,6 +22,8 @@ use Xmf\Module\Helper;
 require_once dirname(dirname(__DIR__)) . '/mainfile.php';
 
 include __DIR__ . '/include/common.php';
+error_reporting(0);
+$xoopsLogger->activated = false;
 xoops_load('utility', basename(__DIR__));
 
 $helper     = Helper::getHelper('xmdoc');
@@ -123,7 +125,20 @@ $xoopsDB->queryF($sql);
 
 $url = XmdocUtility::formatURL($document->getVar('document_document'));
 $contentLength = XmdocUtility::StringSizeConvert($document->getVar('document_size'));
-echo $url ;
-Header("Content-Length: $contentLength");
-Header("Location: $url");
+if(strpos($url, XOOPS_URL) === false){
+	echo $url ;
+	Header("Content-Length: $contentLength");
+	Header("Location: $url");
+} else {
+	$file = str_replace(XOOPS_URL, XOOPS_ROOT_PATH, $url);
+	header('Content-Description: File Transfer', false);
+	header('Content-Type: application/octet-stream');
+	header('Content-Disposition: attachment; filename="'.basename($file).'"');
+	header('Expires: 0');
+	header('Cache-Control: must-revalidate');
+	header('Pragma: public');
+	Header("content-length: $contentLength");
+	readfile($file);
+
+}
 exit();
