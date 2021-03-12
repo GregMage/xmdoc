@@ -3,7 +3,7 @@
     IMG_OFF = '<{xoAdminIcons cancel.png}>';
 </script>
 <div>
-    <{$renderbutton}>
+    <{$renderbutton|default:''}>
 </div>
 <{if $tips|default:'' != ''}>
     <div class="tips ui-corner-all">
