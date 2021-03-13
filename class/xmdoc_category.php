@@ -171,7 +171,7 @@ class xmdoc_category extends XoopsObject
         } else {
             $status = 1;
             $weight = 0;
-            $rename = 1;
+            $rename = 0;
         }
 
         // title

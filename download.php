@@ -125,20 +125,33 @@ $xoopsDB->queryF($sql);
 
 $url = XmdocUtility::formatURL($document->getVar('document_document'));
 $contentLength = XmdocUtility::StringSizeConvert($document->getVar('document_size'));
-if(strpos($url, XOOPS_URL) === false){
-	echo $url ;
-	Header("Content-Length: $contentLength");
-	Header("Location: $url");
-} else {
-	$file = str_replace(XOOPS_URL, XOOPS_ROOT_PATH, $url);
-	header('Content-Description: File Transfer', false);
-	header('Content-Type: application/octet-stream');
-	header('Content-Disposition: attachment; filename="'.basename($file).'"');
-	header('Expires: 0');
-	header('Cache-Control: must-revalidate');
-	header('Pragma: public');
-	Header("content-length: $contentLength");
-	readfile($file);
+if ($url != ''){
+	if(strpos($url, XOOPS_URL) === false){
+		echo $url ;
+		Header("Content-Length: $contentLength");
+		Header("Location: $url");
+	} else {
+		$file = str_replace(XOOPS_URL, XOOPS_ROOT_PATH, $url);
+		$filename = basename($file);
+		if (strripos($filename, '_') !== false) {
+			if (strripos($filename, '.') !== false) {
+				$ext = substr($filename, strripos($filename, '.'));
+			} else {
+				$ext = '';
+			}
+			$filename = substr($filename, 0, strripos($filename, '_')) . $ext;
+		}
+		header('Content-Description: File Transfer', false);
+		header('Content-Type: application/octet-stream');
+		header('Content-Disposition: attachment; filename="' . $filename . '"');
+		header('Expires: 0');
+		header('Cache-Control: must-revalidate');
+		header('Pragma: public');
+		Header("content-length: $contentLength");
+		readfile($file);
 
+	}
+	exit();
+} else {
+	echo _MA_XMDOC_ERROR_NODOCUMENT;
 }
-exit();

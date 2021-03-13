@@ -70,7 +70,7 @@ define('_MA_XMDOC_CATEGORY_LOGO', 'Logo de la catégorie');
 define('_MA_XMDOC_CATEGORY_LOGOFILE', 'Fichier de logo');
 define('_MA_XMDOC_CATEGORY_EXTENSION', 'Extensions autorisées');
 define('_MA_XMDOC_CATEGORY_NAME', 'Nom');
-define('_MA_XMDOC_CATEGORY_RENAME', "Renommez les documents téléchargés ? <br> <span style = 'font-size: small;'> Si l'option est non et que vous avez téléchargé un fichier avec un nom qui existe déjà sur le serveur, il sera écrasé </span>");
+define('_MA_XMDOC_CATEGORY_RENAME', "Renommez les documents téléchargés ?");
 define('_MA_XMDOC_CATEGORY_SIZE', 'Taille maximale de téléchargement');
 define('_MA_XMDOC_CATEGORY_SIZEINFO', "La taille ne doit pas dépasser les valeurs de 'post_max_size' et 'upload_max_filesize' dans votre configuration dans php.ini");
 define('_MA_XMDOC_CATEGORY_SUREDEL', 'Voulez-vous vraiment supprimer cette catégorie? %s');

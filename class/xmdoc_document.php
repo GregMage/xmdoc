@@ -94,7 +94,11 @@ class xmdoc_document extends XoopsObject
             if ($uploader_document->fetchMedia('document_document')) {
 				if ($category->getVar('category_rename') == true){
 					$uploader_document->setPrefix('document_');
-				}                
+				} else {
+					$filename = $uploader_document->getMediaName();
+					$filename = substr($filename, 0, strripos($filename, '.')) . '_';
+					$uploader_document->setPrefix($filename);
+				}
                 if (!$uploader_document->upload()) {
                     $error_message .= $uploader_document->getErrors() . '<br />';
                 } else {
@@ -168,7 +172,7 @@ class xmdoc_document extends XoopsObject
 		
 		// permission edit and approve submitted doc		
         $permHelper = new Helper\Permission();
-		$permission = $permHelper->checkPermission('xmdoc_editapprove', $news_cid);
+		$permission = $permHelper->checkPermission('xmdoc_editapprove', $category_id);
         if ($permission == false){
             $this->setVar('document_status', 2);
         } else {

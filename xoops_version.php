@@ -275,7 +275,7 @@ $modversion['config'][] = array(
 
 // About stuff
 $modversion['module_status'] = 'Alpha';
-$modversion['release_date']  = 'work in progress ';
+$modversion['release_date']  = '2021/03/21';
 
 $modversion['developer_lead']      = 'Mage';
 $modversion['module_website_url']  = 'www.monxoops.fr/';

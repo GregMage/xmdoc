@@ -70,7 +70,7 @@ define('_MA_XMDOC_CATEGORY_LOGO', 'Logo');
 define('_MA_XMDOC_CATEGORY_LOGOFILE', 'Logo file');
 define('_MA_XMDOC_CATEGORY_EXTENSION', 'Extensions allowed');
 define('_MA_XMDOC_CATEGORY_NAME', 'Name');
-define('_MA_XMDOC_CATEGORY_RENAME', "Rename documents uploaded?<br><span style='font-size: small;'>If the option is no and you uploaded a file with a name that already exists on the server, it will be overwritten</span>");
+define('_MA_XMDOC_CATEGORY_RENAME', "Rename documents uploaded?");
 define('_MA_XMDOC_CATEGORY_SIZE', 'Maximum upload size');
 define('_MA_XMDOC_CATEGORY_SIZEINFO', "The size should not exceed the values of 'post_max_size' and 'upload_max_filesize' in your configuration in php.ini");
 define('_MA_XMDOC_CATEGORY_SUREDEL', 'Sure to delete this category? %s');
