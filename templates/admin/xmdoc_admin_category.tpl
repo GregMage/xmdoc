@@ -32,7 +32,7 @@
         <{foreach item=category from=$category}>
             <tr class="<{cycle values='even,odd'}> alignmiddle">
 				<td class="txtcenter"><img src="<{$category.logo}>" alt="<{$category.name}>" style="max-width:150px"></td>
-                <td class="txtleft"><{$category.name}></td>
+				<td class="txtleft"><a href="../index.php?doc_cid=<{$category.id}>" title="<{$category.name}>"><{$category.name}></a></td>
                 <td class="txtleft"><{$category.description}></td>
 				<td class="txtcenter"><{if $category.color != false}><div style="background-color:<{$category.color}>;width:50px; height:20px;margin-left: auto; margin-right: auto;"></div><{/if}></td> 
                 <td class="txtcenter"><{$category.size}></td>

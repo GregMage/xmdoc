@@ -62,8 +62,12 @@
         <{foreach item=document from=$document}>
             <tr class="<{cycle values='even,odd'}> alignmiddle">
                 <td class="txtcenter"><img src="<{$document.logo}>" alt="<{$document.name}>" style="max-width:150px"></td>
-                <td class="txtleft"><{$document.category}></td>
-                <td class="txtleft"><{$document.name}></td>
+				<td class="txtleft"><a href="../index.php?doc_cid=<{$document.categoryid}>" title="<{$document.category}>"><{$document.category}></a></td>
+				<{if $modal == true}>
+					<td class="txtleft"><a href="../document.php?doc_id=<{$document.id}>" title="<{$document.name}>"><{$document.name}></a></td>
+				<{else}>
+					<td class="txtleft"><{$document.name}></td>
+				<{/if}>
                 <td class="txtleft"><{$document.description}></td>
                 <td class="txtcenter"><{$document.counter}></td>
                 <{if $document.showinfo == 0}>

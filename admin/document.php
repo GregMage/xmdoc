@@ -39,6 +39,12 @@ switch ($op) {
         // Get start pager
         $start = Request::getInt('start', 0);
         $xoopsTpl->assign('start', $start);
+		
+		if ($helper->getConfig('general_usemodal', 1) == 1){
+			$xoopsTpl->assign('modal', false);
+		} else {
+			$xoopsTpl->assign('modal', true);
+		}
         
         $xoopsTpl->assign('filter', true);
         // Category
