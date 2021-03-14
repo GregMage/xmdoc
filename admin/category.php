@@ -56,6 +56,12 @@ switch ($op) {
 				} else {
 					$category['description'] = $category_arr[$i]->getVar('category_description', 'e');
 				}
+				$color					     = $category_arr[$i]->getVar('category_color');
+				if ($color == '#ffffff'){
+					$category['color']	     = false;
+				} else {
+					$category['color']	     = $color;
+				}
                 $category['extensions']      = implode(', ', $category_arr[$i]->getVar('category_extensions'));
                 $category['size']            = XmdocUtility::SizeConvertString($category_arr[$i]->getVar('category_size'));
                 $category['weight']          = $category_arr[$i]->getVar('category_weight');

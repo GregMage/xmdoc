@@ -3,6 +3,7 @@ CREATE TABLE `xmdoc_category` (
   `category_name`           varchar(255)            NOT NULL DEFAULT '',
   `category_description`    text,
   `category_logo`           varchar(50)             NOT NULL DEFAULT '',
+  `category_color`          varchar(7)              NOT NULL DEFAULT '#ffffff',
   `category_size`           varchar(15)             NOT NULL DEFAULT '500 K',
   `category_extensions`     text,
   `category_folder`         varchar(50)             NOT NULL DEFAULT '',

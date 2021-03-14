@@ -80,7 +80,7 @@ function block_xmdoc_show($options) {
 			$document['document']          = $document_arr[$i]->getVar('document_document');
 			$document['description']       	   = str_replace('[break]', '', $document_arr[$i]->getVar('document_description', 'show'));
 			if (false == strpos($document_arr[$i]->getVar('document_description', 'e'), '[break]')){
-				$document['description_short'] = $document_arr[$i]->getVar('document_description', 'show');;
+				$document['description_short'] = $document_arr[$i]->getVar('document_description', 'show');
 				$document['description_end']   = '';
 			}else{
 				$document['description_short'] = substr($document_arr[$i]->getVar('document_description', 'show'), 0, strpos($document_arr[$i]->getVar('document_description', 'show'),'[break]'));
@@ -96,6 +96,12 @@ function block_xmdoc_show($options) {
 			$document['showinfo']          = $document_arr[$i]->getVar('document_showinfo');
 			$document_img                  = $document_arr[$i]->getVar('document_logo') ?: 'blank_doc.gif';
 			$document['logo']              = $url_logo_document . $document_img;
+			$color 						   = $document_arr[$i]->getVar('category_color');
+			if ($color == '#ffffff'){
+				$document['color'] 		   = false;				
+			} else {
+				$document['color'] 		   = $color;
+			}
 			$document['perm_edit']         = $permDocHelper->checkPermission('xmdoc_editapprove', $document['categoryid']);
 			$document['perm_del']          = $permDocHelper->checkPermission('xmdoc_delete', $document['categoryid']);
 			//xmsocial

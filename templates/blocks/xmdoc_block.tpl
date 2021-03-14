@@ -51,7 +51,7 @@
 										<{$smarty.const._MA_XMDOC_FORMDOC_AUTHOR}>: <{$blockdocument.author}>
 									</div>
 								</div>
-								<{if $blockdocument.mdate}>
+								<{if $blockdocument.mdate|default:''}>
 								<div class="row xm-document-view">
 									<div class="col-md-12"><span class="glyphicon glyphicon-calendar" title="<{$smarty.const._MA_XMDOC_FORMDOC_MDATE}>"></span>
 										<{$smarty.const._MA_XMDOC_FORMDOC_MDATE}>: <{$blockdocument.mdate}>

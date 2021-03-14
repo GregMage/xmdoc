@@ -53,6 +53,7 @@ class xmdoc_document extends XoopsObject
         $this->initVar('document_weight', XOBJ_DTYPE_INT, 0, false, 11);
         $this->initVar('document_status', XOBJ_DTYPE_INT, 1, false, 1);
         $this->initVar('category_name', XOBJ_DTYPE_TXTBOX, null, false);
+		$this->initVar('category_color', XOBJ_DTYPE_TXTBOX, '#ffffff', false);
     }
     /**
      * @return mixed

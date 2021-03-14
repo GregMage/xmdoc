@@ -62,6 +62,7 @@ define('_MA_XMDOC_INDEXCONFIG_XMSOCIAL_WARNINGNOTINSTALLED', 'Vous n\'avez pas i
 define('_MA_XMDOC_INDEXCONFIG_XMSOCIAL_WARNINGNOTACTIVATE', 'Vous devez activer dans les préférences de xmdoc l\'utilisation de xmsocial (si vous souhaitez évaluer des documents)');
 
 // Category
+define('_MA_XMDOC_CATEGORY_COLOR', 'Couleur');
 define('_MA_XMDOC_CATEGORY_DESC', 'Description');
 define('_MA_XMDOC_CATEGORY_FORMPATH', 'Les fichiers sont dans : %s');
 define('_MA_XMDOC_CATEGORY_LIMITDOWNLOAD', 'Nombre de téléchargements en 24 heures <br> <small> Nombre de téléchargements pour chaque utilisateur en 24 heures. Sélectionnez 0 pour illimité. </small>');

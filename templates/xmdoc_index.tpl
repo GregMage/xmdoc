@@ -45,7 +45,7 @@
 <br>		
 <br>
 <{if $cat}>
-	<div class="media">
+	<div class="media xmdoc-border" <{if $category_color != false}>style="border-color : <{$category_color}>;"<{/if}>>
 		<div class="media-left">
 			<{if $category_logo != ''}>
 			<img class="media-object" src="<{$category_logo}>" alt="<{$category_name}>" style="max-width:150px">
@@ -62,7 +62,7 @@
 <{if $document_count|default:0 != 0}>
 	<div class="row">
 	<{foreach item=document from=$documents}>
-		<div class="col-sm-6 col-md-6 xm-minibox">
+		<div class="col-sm-6 col-md-6 xm-minibox xmdoc-border" <{if $document.color != false}>style="border-color : <{$document.color}>;"<{/if}>>
 			<div class="xm-document-logo">
 				<img src="<{$document.logo}>" alt="<{$document.name}>" style="max-width:120px">
 			</div>
@@ -112,7 +112,7 @@
 											<{$smarty.const._MA_XMDOC_FORMDOC_AUTHOR}>: <{$document.author}>
 										</div>
 									</div>
-									<{if $document.mdate}>
+									<{if $document.mdate|default:''}>
 									<div class="row xm-document-view">
 										<div class="col-md-12"><span class="glyphicon glyphicon-calendar" title="<{$smarty.const._MA_XMDOC_FORMDOC_MDATE}>"></span>
 											<{$smarty.const._MA_XMDOC_FORMDOC_MDATE}>: <{$document.mdate}>

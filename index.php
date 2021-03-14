@@ -71,6 +71,12 @@ if (count($category_arr) > 0) {
 			} else {
 				$cat_array['logo']    = $url_logo_category . $category_img;
 			}
+			$color					  = $category_arr[$i]->getVar('category_color');
+			if ($color == '#ffffff'){
+				$cat_array['color']	  = false;
+			} else {
+				$cat_array['color']	  = $category_arr[$i]->getVar('category_color');
+			}
 			$xoopsTpl->append_by_ref('cat_array', $cat_array);
 			unset($cat_array);
 		}
@@ -105,13 +111,23 @@ if ($doc_cid != 0){
 	} else {
 		$xoopsTpl->assign('category_logo', $url_logo_category . $category_img);
 	}
+	$color = $category_arr[$doc_cid]->getVar('category_color');
+	if ($color == '#ffffff'){
+		$xoopsTpl->assign('category_color', false);
+		
+	} else {
+		$xoopsTpl->assign('category_color', $color);
+	}
 	$xoopsTpl->assign('category_description', $category_arr[$doc_cid]->getVar('category_description'));
 	$xoopsTpl->assign('cat', true);
 } else {
 	$xoopsTpl->assign('cat', false);
 }
 
-$document_arr         = $documentHandler->getall($criteria);
+$documentHandler->table_link = $documentHandler->db->prefix("xmdoc_category");
+$documentHandler->field_link = "category_id";
+$documentHandler->field_object = "document_category";
+$document_arr = $documentHandler->getByLink($criteria);
 $document_count_total = $documentHandler->getCount($criteria);
 $document_count       = count($document_arr);
 $xoopsTpl->assign('document_count', $document_count);
@@ -123,9 +139,9 @@ if ($document_count > 0 && !empty($viewPermissionCat)) {
 		$document['name']              = $document_arr[$i]->getVar('document_name');
 		$document['categoryid']        = $document_arr[$i]->getVar('document_category');
 		$document['document']          = $document_arr[$i]->getVar('document_document');
-		$document['description']       	   = str_replace('[break]', '', $document_arr[$i]->getVar('document_description', 'show'));
+		$document['description']       = str_replace('[break]', '', $document_arr[$i]->getVar('document_description', 'show'));
 		if (false == strpos($document_arr[$i]->getVar('document_description', 'e'), '[break]')){
-			$document['description_short'] = '';
+			$document['description_short'] = $document_arr[$i]->getVar('document_description', 'show');
 			$document['description_end']   = '';
 		}else{
 			$document['description_short'] = substr($document_arr[$i]->getVar('document_description', 'show'), 0, strpos($document_arr[$i]->getVar('document_description', 'show'),'[break]'));
@@ -141,6 +157,12 @@ if ($document_count > 0 && !empty($viewPermissionCat)) {
 		$document['showinfo']          = $document_arr[$i]->getVar('document_showinfo');
 		$document_img                  = $document_arr[$i]->getVar('document_logo') ?: 'blank_doc.gif';
 		$document['logo']              = $url_logo_document . $document_img;
+		$color						   = $document_arr[$i]->getVar('category_color');
+		if ($color == '#ffffff'){
+			$document['color']	 	   = false;
+		} else {
+			$document['color']		   = $color;
+		}
 		$document['perm_edit']         = $permDocHelper->checkPermission('xmdoc_editapprove', $document['categoryid']);
 		$document['perm_del']          = $permDocHelper->checkPermission('xmdoc_delete', $document['categoryid']);
 		//xmsocial

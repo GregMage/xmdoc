@@ -62,6 +62,7 @@ define('_MA_XMDOC_INDEXCONFIG_XMSOCIAL_WARNINGNOTINSTALLED', 'You have not insta
 define('_MA_XMDOC_INDEXCONFIG_XMSOCIAL_WARNINGNOTACTIVATE', 'You must enable in xmdoc preferences the use of xmsocial (if you want to rate documents)');
 
 // Category
+define('_MA_XMDOC_CATEGORY_COLOR', 'Color');
 define('_MA_XMDOC_CATEGORY_DESC', 'Description');
 define('_MA_XMDOC_CATEGORY_FORMPATH', 'Files are in: %s');
 define('_MA_XMDOC_CATEGORY_LIMITDOWNLOAD', 'Number of downloads in 24 hours<br><small>Number of download for each user in 24 hours. Select 0 for unlimited.</small>');

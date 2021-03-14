@@ -40,6 +40,7 @@ class xmdoc_category extends XoopsObject
         // use html
         $this->initVar('dohtml', XOBJ_DTYPE_INT, 1, false);
         $this->initVar('category_logo', XOBJ_DTYPE_TXTBOX, null, false);
+		$this->initVar('category_color', XOBJ_DTYPE_TXTBOX, '#ffffff', false);
         $this->initVar('category_size', XOBJ_DTYPE_TXTBOX, '500 K', false);
         $this->initVar('category_extensions', XOBJ_DTYPE_ARRAY, array());
         $this->initVar('category_folder', XOBJ_DTYPE_TXTBOX, null, false);
@@ -102,6 +103,7 @@ class xmdoc_category extends XoopsObject
             $this->setVar('category_logo', Request::getString('category_logo', ''));
         }
         $this->setVar('category_name', Request::getString('category_name', ''));
+		$this->setVar('category_color', Request::getString('category_color', ''));
         $this->setVar('category_description',  Request::getText('category_description', ''));
         $this->setVar('category_extensions', Request::getArray('category_extensions', array()));
         $this->setVar('category_rename', Request::getInt('category_rename', 0));
@@ -206,6 +208,9 @@ class xmdoc_category extends XoopsObject
         $fileseltray_img->addElement(new XoopsFormLabel(''), false);
         $imgtray_img->addElement($fileseltray_img);
         $form->addElement($imgtray_img);
+		
+		//color
+		$form->addElement(new XoopsFormColorPicker(_MA_XMDOC_CATEGORY_COLOR, 'category_color', $this->getVar('category_color')), false);
         
         // upload size max		
 		$size_value_arr = explode(' ', $this->getVar('category_size'));

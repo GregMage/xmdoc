@@ -61,3 +61,8 @@ a.xm-category-image {
     text-align: center;
 	padding-top: 15px;
 }
+
+.xmdoc-border {
+border-style : solid;
+border-width : thin;
+}
