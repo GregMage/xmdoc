@@ -1,4 +1,49 @@
 ﻿-------------------------------------------------
+Version: 1.2 Final
+Date:    30.03.2021
+-------------------------------------------------
+Bug fixes:
+	- In some cases, documents were not displayed when creating an item.
+	- The error message when removing the link from a document was not displayed.
+	- If several categories were selected when editing blocks, they were no longer selected when editing the block again. 
+
+Improvements:
+	- Addition of a system allowing to force the download (only the files on the site will be forced).
+	- By default the option to rename documents (in categories) is set to false.
+	- Documents with the "rename documents" category option set to false have a suffix added so as not to overwrite a document with the same name.
+	- The name of the document is reconstructed when downloading.
+	- Categories now have a color.
+	- The names of the categories in the administration (list view) now have a link which allows direct access to the category on the user side.
+	- The names of the documents in the administration (list view) now have a link which allows direct access to the document on the user side (only if the modal display is not used).
+	- Compatibility with PHP 8. 
+
+Security:
+	- The message under the about heading regarding file protection is now revised, with the new system that forces a .htaccess download with "Deny From All" to work.
+	- Change from index.html to index.php 
+
+
+
+Correction de bogues:	
+	- Dans certains cas, les documents n'étaient pas affichés lors de la création d'un item.
+	- Le message d'erreur lors de la suppression de la liaison d'un document ne s'affichait pas.
+	- Si plusieurs catégories étaient sélectionnées dans l'édition des blocs, elles n'étaient plus sélectionnées lors d'une nouvelle édition du bloc.
+
+Améliorations:
+	- Ajout d'un système permettant de forcer le téléchargement (seuls les fichiers sur le site seront forcés).
+	- Par défaut l'option de renommer les documents (dans les catégories) est sur faux.
+	- Les documents avec l'option de catégorie "renommer les documents" à faux ont un suffixe ajouté pour ne pas écraser un document qui aurait le même nom.
+	- Le nom du document est reconstruit au moment du téléchargement.
+	- Les catégories ont maintenant une couleur.
+	- Les noms des catégories dans l'administration (vue liste) ont maintenant un lien qui permet d'accéder directement à la catégorie côté user.
+	- Les noms des documents dans l'administration (vue liste) ont maintenant un lien qui permet d'accéder directement au document côté user (uniquement si l'affichage modal n'est pas utilisé).
+	- Compatibilité avec PHP 8.
+
+Sécurités:
+	- Le message sous la rubrique about concernant la protection des fichiers est maintenant revue, avec le nouveau système qui force le téléchargement un .htaccess avec "Deny From All" fonctionne.
+	- Passage de index.html à index.php 
+
+
+-------------------------------------------------
 Version: 1.1 Final
 Date:    29.12.2020
 -------------------------------------------------
@@ -25,11 +70,11 @@ Correction de bogues:
 	- Un accès depuis l'index à une catégorie inexistante générait un message d'erreur.
 	- La recherche ne tenait pas compte des droits d'accès.
 	- Une erreur apparaissait si l'id du document était fausse(édition depuis la partie user).
-	- Une erreur apparaissait lors de la supression d'un document.
+	- Une erreur apparaissait lors de la suppression d'un document.
 
 Améliorations:
-	- Ajout de la supression des votes lors de la supression d'un document (xmsocial).
-	- Si l'option modal n'est pas utilisée, le lien pointe sur le descriptif du document (sinon téléchargement directe).
+	- Ajout de la suppression des votes lors de la suppression d'un document (xmsocial).
+	- Si l'option modale n'est pas utilisée, le lien pointe sur le descriptif du document (sinon téléchargement direct).
 	- Ajout de la compatibilité avec XOOPS 2.5.10 (avant uniquement compatible avec XOOPS 2.5.11).
 	- Mise à jour des templates boostrap 4.
 	- Correction de define (langue).
