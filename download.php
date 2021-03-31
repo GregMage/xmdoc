@@ -149,7 +149,7 @@ if ($url != ''){
 		header('Pragma: public');
 		Header("content-length: $contentLength");
 		readfile($file);
-
+		echo $url;
 	}
 	exit();
 } else {
