@@ -274,7 +274,7 @@ $modversion['config'][] = array(
 );
 
 // About stuff
-$modversion['module_status'] = 'Alpha';
+$modversion['module_status'] = 'Final';
 $modversion['release_date']  = '2021/03/31';
 
 $modversion['developer_lead']      = 'Mage';
