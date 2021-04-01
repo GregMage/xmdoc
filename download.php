@@ -124,12 +124,9 @@ $sql = 'UPDATE ' . $xoopsDB->prefix('xmdoc_document') . ' SET document_counter=d
 $xoopsDB->queryF($sql);
 
 $url = XmdocUtility::formatURL($document->getVar('document_document'));
-$contentLength = XmdocUtility::StringSizeConvert($document->getVar('document_size'));
 if ($url != ''){
 	if(strpos($url, XOOPS_URL) === false){
-		echo $url ;
-		Header("Content-Length: $contentLength");
-		Header("Location: $url");
+		redirect_header($url, 0, '');
 	} else {
 		$file = str_replace(XOOPS_URL, XOOPS_ROOT_PATH, $url);
 		$filename = basename($file);
@@ -147,9 +144,8 @@ if ($url != ''){
 		header('Expires: 0');
 		header('Cache-Control: must-revalidate');
 		header('Pragma: public');
-		Header("content-length: $contentLength");
+		header("content-length: " . filesize($file));			
 		readfile($file);
-		echo $url;
 	}
 	exit();
 } else {
