@@ -110,7 +110,7 @@ if ($reset == ''){
 	$s_name = '';
 	$s_cat = 0;
 }
-
+$helper = Helper::getHelper('xmdoc');
 $nb_limit = $helper->getConfig('general_perpage', 15);
 
 // Get start pager
