@@ -107,7 +107,7 @@ if (xoops_isActiveModule('xmsocial') && $helper->getConfig('general_xmsocial', 0
     xoops_load('utility', 'xmsocial');
 	$options['mod'] = 'xmdoc_document';
 	$options['id'] = $doc_id;
-	$xmsocial_arr = XmsocialUtility::renderRating($xoTheme, 'xmdoc', $doc_id , 5, $document->getVar('document_rating'), $document->getVar('document_votes'), $options);
+	$xmsocial_arr = XmsocialUtility::renderRating('xmdoc', $doc_id , 5, $document->getVar('document_rating'), $document->getVar('document_votes'), $options);
 	$xoopsTpl->assign('xmsocial_arr', $xmsocial_arr);
 	$xoopsTpl->assign('dorating', 1);
 } else {

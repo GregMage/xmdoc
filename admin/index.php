@@ -26,7 +26,7 @@ $moduleAdmin->addConfigModuleVersion('system', 212);
 // xmsocial
 if (xoops_isActiveModule('xmsocial')){
 	if ($helper->getConfig('general_xmsocial', 0) == 1){
-		$moduleAdmin->addConfigModuleVersion('xmsocial', 100);
+		$moduleAdmin->addConfigModuleVersion('xmsocial', 200);
 	} else {
 		$moduleAdmin->addConfigWarning(_MA_XMDOC_INDEXCONFIG_XMSOCIAL_WARNINGNOTACTIVATE);
 	}	
