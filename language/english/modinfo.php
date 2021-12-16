@@ -63,6 +63,8 @@ define('_MI_XMDOC_PREF_MAXUPLOADSIZE', 'Max uploaded files size');
 define('_MI_XMDOC_PREF_MAXUPLOADSIZE_DESC', 'This concerns the logos that are uploaded for categories');
 define('_MI_XMDOC_PREF_MAXUPLOADSIZE_MBYTES', 'MB');
 define('_MI_XMDOC_PREF_HEAD_DOWNLOAD', '<span style="font-size: large;  font-weight: bold;">Download</span>');
+define('_MI_XMDOC_PREF_FORCE', 'Force downloads ');
+define('_MI_XMDOC_PREF_FORCE_DESC', 'Allows you to force the downloading of documents. On some servers it is necessary to deactivate this option for the correct functioning of this module.');
 define('_MI_XMDOC_PREF_CHECKHOST', 'Disallow direct download linking (leeching)?');
 define('_MI_XMDOC_PREF_HOST', 'These sites can link directly to your files. Separate each one with "|"');
 define('_MI_XMDOC_PREF_HEAD_ADMIN', '<span style="font-size: large;  font-weight: bold;">Administration</span>');

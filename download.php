@@ -56,7 +56,7 @@ if ($category->getVar('category_status') == 0 || $document->getVar('document_sta
 //check download limit download
 if ($category->getVar('category_limitdownload') != 0){
     $limitdownload = $category->getVar('category_limitdownload');
-    $yesterday = time() - 86400; //24hrs    
+    $yesterday = time() - 86400; //24hrs
     $criteria = new CriteriaCompo();
     if ($xoopsUser) {
         $criteria->add(new Criteria('downlimit_uid', $xoopsUser->getVar('uid') , '='));
@@ -68,13 +68,13 @@ if ($category->getVar('category_limitdownload') != 0){
     $downlimit_count = $downlimitHandler->getCount($criteria);
     if ($downlimit_count >= $limitdownload) {
         redirect_header(XOOPS_URL, 5, sprintf(_MA_XMDOC_ERROR_LIMITDOWNLOAD, $downlimit_count, $limitdownload));
-    }    
+    }
 }
 
 //check download limit item
 if ($category->getVar('category_limititem') != 0){
     $limititem = $category->getVar('category_limititem');
-    $yesterday = time() - 86400; //24hrs    
+    $yesterday = time() - 86400; //24hrs
     $criteria = new CriteriaCompo();
     if ($xoopsUser) {
         $criteria->add(new Criteria('downlimit_uid', $xoopsUser->getVar('uid') , '='));
@@ -86,10 +86,10 @@ if ($category->getVar('category_limititem') != 0){
     $downlimit_count = $downlimitHandler->getCount($criteria);
     if ($downlimit_count >= $limititem) {
         redirect_header(XOOPS_URL, 5, sprintf(_MA_XMDOC_ERROR_LIMITDOWNLOADITEM, $downlimit_count, $limititem));
-    }    
+    }
 }
 
-// save information to limit downloading 
+// save information to limit downloading
 if ($category->getVar('category_limitdownload') != 0 || $category->getVar('category_limititem') != 0){
     $obj = $downlimitHandler->create();
     $obj->setVar('downlimit_docid', $doc_id);
@@ -99,8 +99,6 @@ if ($category->getVar('category_limitdownload') != 0 || $category->getVar('categ
     $obj->setVar('downlimit_date', time());
     $downlimitHandler->insert($obj) or $obj->getHtmlErrors();
 }
-
-
 
 // checkhost
 if ($helper->getConfig('download_checkhost', 0) == 1) {
@@ -122,10 +120,9 @@ if ($helper->getConfig('download_checkhost', 0) == 1) {
 //counter
 $sql = 'UPDATE ' . $xoopsDB->prefix('xmdoc_document') . ' SET document_counter=document_counter+1 WHERE document_id = ' . $doc_id;
 $xoopsDB->queryF($sql);
-
 $url = XmdocUtility::formatURL($document->getVar('document_document'));
 if ($url != ''){
-	if(strpos($url, XOOPS_URL) === false){
+	if(strpos($url, XOOPS_URL) === false || $helper->getConfig('download_force', 0) == 0){
 		redirect_header($url, 0, '');
 	} else {
 		$file = str_replace(XOOPS_URL, XOOPS_ROOT_PATH, $url);
@@ -144,7 +141,7 @@ if ($url != ''){
 		header('Expires: 0');
 		header('Cache-Control: must-revalidate');
 		header('Pragma: public');
-		header("content-length: " . filesize($file));			
+		header("Content-Length: " . filesize($file));
 		readfile($file);
 	}
 	exit();

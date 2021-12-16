@@ -237,6 +237,15 @@ $modversion['config'][] = array(
 );
 
 $modversion['config'][] = array(
+    'name'        => 'download_force',
+    'title'       => '_MI_XMDOC_PREF_FORCE',
+    'description' => '_MI_XMDOC_PREF_FORCE_DESC',
+    'formtype'    => 'yesno',
+    'valuetype'   => 'int',
+    'default'     => 1,
+);
+
+$modversion['config'][] = array(
     'name'        => 'download_checkhost',
     'title'       => '_MI_XMDOC_PREF_CHECKHOST',
     'description' => '',
