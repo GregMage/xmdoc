@@ -1,6 +1,6 @@
 ﻿-------------------------------------------------
-Version: 1.3 RC1
-Date:    16.12.2021
+Version: 1.3 Stable
+Date:    29.01.2022
 -------------------------------------------------
 Bug fixes:
 	- In docmanager, the number of documents displayed did not respect the value in the module's preferences.
