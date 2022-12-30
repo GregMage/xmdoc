@@ -22,11 +22,11 @@ require __DIR__ . '/admin_header.php';
 
 $moduleAdmin = Admin::getInstance();
 $moduleAdmin->displayNavigation('index.php');
-$moduleAdmin->addConfigModuleVersion('system', 212);
+$moduleAdmin->addConfigModuleVersion('system', '2.1.2');
 // xmsocial
 if (xoops_isActiveModule('xmsocial')){
 	if ($helper->getConfig('general_xmsocial', 0) == 1){
-		$moduleAdmin->addConfigModuleVersion('xmsocial', 200);
+		$moduleAdmin->addConfigModuleVersion('xmsocial', '2.1.0');
 	} else {
 		$moduleAdmin->addConfigWarning(_MA_XMDOC_INDEXCONFIG_XMSOCIAL_WARNINGNOTACTIVATE);
 	}	
