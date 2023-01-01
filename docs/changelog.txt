@@ -1,15 +1,43 @@
 ﻿-------------------------------------------------
+Version: 1.4.0 Alpha
+Date:    30.12.2022
+-------------------------------------------------
+Bug fixes:
+	- /
+
+Improvements:
+	- Compatibility with smarty 3 (xoops 2.5.11).
+
+Security:
+	- /
+
+Important:	- The 1.4.0 series is only compatible under xoops 2.5.11.
+			- The default templates are only compatible with a bootstrap 4 theme, the templates for version 3 of boostrap are in the extra folder.
+
+Correction de bogues:
+	- /
+
+Améliorations:
+	- Compatibilité avec smarty 3 (xoops 2.5.11).
+
+Sécurités:
+	- /
+
+Important:	- La série 1.7.0 est compatible uniquement sous xoops 2.5.11.
+			- Les templates par défaut sont compatibles uniquement avec un thème bootstrap 4, les templates pour la version 3 de boostrap sont dans le dossier extra.
+
+-------------------------------------------------
 Version: 1.3 Stable
 Date:    29.01.2022
 -------------------------------------------------
 Bug fixes:
 	- In docmanager, the number of documents displayed did not respect the value in the module's preferences.
-	- Addition of an option "Force the download" (on some servers it is necessary to redirect on the documents because the download does not work). 
-	
+	- Addition of an option "Force the download" (on some servers it is necessary to redirect on the documents because the download does not work).
+
 Improvements:
-	- Compatibility with version 2 of xmsocial. 
-	
-Correction de bogues:	
+	- Compatibility with version 2 of xmsocial.
+
+Correction de bogues:
 	- Dans docmanager, le nombre de documents affichés ne respectait pas la valeur dans les préférences du module.
 	- Ajout d'une option "Forcer le téléchargement" (sur certains serveurs il est nécessaire de rediriger sur les documents car le téléchargement ne fonctionne pas).
 
@@ -22,8 +50,8 @@ Date:    01.04.2021
 -------------------------------------------------
 Bug fixes:
 	- Some extensions cannot be downloaded.
-	
-Correction de bogues:	
+
+Correction de bogues:
 	- Certaines extensions ne pouvaient pas être téléchargée.
 
 -------------------------------------------------
@@ -32,8 +60,8 @@ Date:    31.03.2021
 -------------------------------------------------
 Bug fixes:
 	- Some extensions cannot be downloaded.
-	
-Correction de bogues:	
+
+Correction de bogues:
 	- Certaines extensions ne pouvaient pas être téléchargée.
 
 -------------------------------------------------
@@ -43,7 +71,7 @@ Date:    30.03.2021
 Bug fixes:
 	- In some cases, documents were not displayed when creating an item.
 	- The error message when removing the link from a document was not displayed.
-	- If several categories were selected when editing blocks, they were no longer selected when editing the block again. 
+	- If several categories were selected when editing blocks, they were no longer selected when editing the block again.
 
 Improvements:
 	- Addition of a system allowing to force the download (only the files on the site will be forced).
@@ -53,15 +81,15 @@ Improvements:
 	- Categories now have a color.
 	- The names of the categories in the administration (list view) now have a link which allows direct access to the category on the user side.
 	- The names of the documents in the administration (list view) now have a link which allows direct access to the document on the user side (only if the modal display is not used).
-	- Compatibility with PHP 8. 
+	- Compatibility with PHP 8.
 
 Security:
 	- The message under the about heading regarding file protection is now revised, with the new system that forces a .htaccess download with "Deny From All" to work.
-	- Change from index.html to index.php 
+	- Change from index.html to index.php
 
 
 
-Correction de bogues:	
+Correction de bogues:
 	- Dans certains cas, les documents n'étaient pas affichés lors de la création d'un item.
 	- Le message d'erreur lors de la suppression de la liaison d'un document ne s'affichait pas.
 	- Si plusieurs catégories étaient sélectionnées dans l'édition des blocs, elles n'étaient plus sélectionnées lors d'une nouvelle édition du bloc.
@@ -78,7 +106,7 @@ Améliorations:
 
 Sécurités:
 	- Le message sous la rubrique about concernant la protection des fichiers est maintenant revue, avec le nouveau système qui force le téléchargement un .htaccess avec "Deny From All" fonctionne.
-	- Passage de index.html à index.php 
+	- Passage de index.html à index.php
 
 
 -------------------------------------------------
@@ -104,7 +132,7 @@ Security:
 
 
 
-Correction de bogues:	
+Correction de bogues:
 	- Un accès depuis l'index à une catégorie inexistante générait un message d'erreur.
 	- La recherche ne tenait pas compte des droits d'accès.
 	- Une erreur apparaissait si l'id du document était fausse(édition depuis la partie user).
@@ -117,7 +145,7 @@ Améliorations:
 	- Mise à jour des templates boostrap 4.
 	- Correction de define (langue).
 	- Compatibilité avec PHP 8.
-	
+
 
 Sécurités:
 	- /
