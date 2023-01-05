@@ -7,6 +7,7 @@ Bug fixes:
 
 Improvements:
 	- Compatibility with smarty 3 (xoops 2.5.11).
+	- Addition of a list of documents block (only the title).
 
 Security:
 	- /
@@ -19,6 +20,7 @@ Correction de bogues:
 
 Améliorations:
 	- Compatibilité avec smarty 3 (xoops 2.5.11).
+	- Ajout d'un bloc liste de documents (uniquement le titre).
 
 Sécurités:
 	- /

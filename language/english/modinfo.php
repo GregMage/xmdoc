@@ -33,12 +33,14 @@ define('_MI_XMDOC_MENU_ABOUT', 'About');
 // Block
 define('_MI_XMDOC_BLOCK_DATE', 'Recent Documents');
 define('_MI_XMDOC_BLOCK_DATE_DESC', 'Display Recent Documents');
-define('_MI_XMDOC_BLOCK_HITS', 'Top Documents');
+define('_MI_XMDOC_BLOCK_HITS', 'Top Documents (hits)');
 define('_MI_XMDOC_BLOCK_HITS_DESC', 'Display Top Documents');
 define('_MI_XMDOC_BLOCK_RATING', 'Top Rated Documents');
 define('_MI_XMDOC_BLOCK_RATING_DESC', 'Display Top Rated Documents');
 define('_MI_XMDOC_BLOCK_RANDOM', 'Random Documents');
 define('_MI_XMDOC_BLOCK_RANDOM_DESC', 'Display documents randomly');
+define('_MI_XMDOC_BLOCK_TITLE', 'Document list (title)');
+define('_MI_XMDOC_BLOCK_TITLE_DESC', 'Display document titles as a list');
 
 // Pref
 define('_MI_XMDOC_PREF_HEAD_INDEX', '<span style="font-size: large;  font-weight: bold;">Index</span>');

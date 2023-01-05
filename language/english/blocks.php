@@ -20,3 +20,10 @@
 define('_MB_XMDOC_ALLCATEGORY', 'All Categories');
 define('_MB_XMDOC_CATEGORY', 'Display category:');
 define('_MB_XMDOC_NBDOC', 'Number of documents to display');
+define('_MB_XMDOC_TYPE', 'Block type');
+define('_MB_XMDOC_TYPE_DATE', 'Recent documents');
+define('_MB_XMDOC_TYPE_HITS', 'Top documents (hits)');
+define('_MB_XMDOC_TYPE_RATING', 'Top rated documents');
+define('_MB_XMDOC_TYPE_RANDOM', 'Random documents');
+define('_MB_XMDOC_SIZE', 'Image width in pixel');
+define('_MB_XMDOC_LOGO', 'Show logo');

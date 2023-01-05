@@ -39,6 +39,8 @@ define('_MI_XMDOC_BLOCK_RATING', 'Documents les mieux notés');
 define('_MI_XMDOC_BLOCK_RATING_DESC', 'Afficher les documents les mieux notés');
 define('_MI_XMDOC_BLOCK_RANDOM', 'Documents aléatoires');
 define('_MI_XMDOC_BLOCK_RANDOM_DESC', 'Afficher les documents aléatoirement');
+define('_MI_XMDOC_BLOCK_TITLE', 'Liste des documents (titre)');
+define('_MI_XMDOC_BLOCK_TITLE_DESC', 'Afficher les titres des documents sous forme de liste');
 
 // Pref
 define('_MI_XMDOC_PREF_HEAD_INDEX', '<span style="font-size: large;  font-weight: bold;">Index</span>');

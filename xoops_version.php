@@ -109,6 +109,15 @@ $modversion['blocks'][] = array(
 	'options'     => '0|5|random',
     'template'    => 'xmdoc_block.tpl'
 );
+$modversion['blocks'][] = array(
+    'file'        => 'xmdoc_blocks.php',
+    'name'        => _MI_XMDOC_BLOCK_TITLE,
+    'description' => _MI_XMDOC_BLOCK_TITLE_DESC,
+    'show_func'   => 'block_xmdoc_show',
+    'edit_func'   => 'block_xmdoc_edit',
+	'options'     => '0|5|title|0|48|0',
+    'template'    => 'xmdoc_block_title.tpl'
+);
 
 // Configs
 $modversion['config'] = array();

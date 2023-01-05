@@ -20,3 +20,10 @@
 define('_MB_XMDOC_ALLCATEGORY', 'Toutes les catégories');
 define('_MB_XMDOC_CATEGORY', 'Afficher les catégories:');
 define('_MB_XMDOC_NBDOC', 'Nombre de document à afficher');
+define('_MB_XMDOC_TYPE', 'Type de bloc');
+define('_MB_XMDOC_TYPE_DATE', 'Documents récents');
+define('_MB_XMDOC_TYPE_HITS', 'Top documents (lectures)');
+define('_MB_XMDOC_TYPE_RATING', 'Documents les mieux notés');
+define('_MB_XMDOC_TYPE_RANDOM', 'Documents aléatoires');
+define('_MB_XMDOC_SIZE', 'Largeur de l\'image en pixel');
+define('_MB_XMDOC_LOGO', 'Afficher le logo');
