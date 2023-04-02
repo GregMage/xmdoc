@@ -40,7 +40,7 @@ if ($op == 'add' || $op == 'save' || $op == 'loaddocument' || $op == 'edit' || $
 			$submitPermissionCat = XmdocUtility::getPermissionCat('xmdoc_submit');
 			if (empty($submitPermissionCat)){
 				redirect_header('index.php', 2, _NOPERM);
-			}	
+			}
 			$criteria = new CriteriaCompo();
 			$criteria->add(new Criteria('category_status', 1));
 			$criteria->setSort('category_weight ASC, category_name');
@@ -61,7 +61,7 @@ if ($op == 'add' || $op == 'save' || $op == 'loaddocument' || $op == 'edit' || $
 					$category['description']  = $category_arr[$i]->getVar('category_description', 'show');
 					$category_img             = $category_arr[$i]->getVar('category_logo') ?: 'blank.gif';
 					$category['logo']         = $url_logo_category . $category_img;
-					$xoopsTpl->append_by_ref('categories', $category);
+					$xoopsTpl->appendByRef('categories', $category);
 					unset($category);
 				}
 				// Display Page Navigation
@@ -75,7 +75,7 @@ if ($op == 'add' || $op == 'save' || $op == 'loaddocument' || $op == 'edit' || $
             break;
 		// Loaddocument
         case 'loaddocument':
-			$category_id = Request::getInt('category_id', 0);		
+			$category_id = Request::getInt('category_id', 0);
 			if ($category_id == 0) {
 				$xoopsTpl->assign('error_message', _MA_XMDOC_ERROR_NOCATEGORY);
 			} else {
@@ -101,7 +101,7 @@ if ($op == 'add' || $op == 'save' || $op == 'loaddocument' || $op == 'edit' || $
 			}
 			$document_id = Request::getInt('document_id', 0);
 			if ($document_id == 0) {
-				$obj = $documentHandler->create();            
+				$obj = $documentHandler->create();
 			} else {
 				$obj = $documentHandler->get($document_id);
 			}
@@ -116,9 +116,9 @@ if ($op == 'add' || $op == 'save' || $op == 'loaddocument' || $op == 'edit' || $
 				$document_category = Request::getInt('document_category', 0);
 				$form = $obj->getForm($document_category);
 				$xoopsTpl->assign('form', $form->render());
-			}			
+			}
 			break;
-			
+
 		// Edit
         case 'edit':
 			// Form
@@ -147,7 +147,7 @@ if ($op == 'add' || $op == 'save' || $op == 'loaddocument' || $op == 'edit' || $
 				$surdel = Request::getBool('surdel', false);
 				$obj  = $documentHandler->get($document_id);
 				// Get Permission to delete in category
-				$permHelper->checkPermissionRedirect('xmdoc_delete', $obj->getVar('document_category'), 'index.php', 2, _NOPERM);	
+				$permHelper->checkPermissionRedirect('xmdoc_delete', $obj->getVar('document_category'), 'index.php', 2, _NOPERM);
 				if ($surdel === true) {
 					if (!$GLOBALS['xoopsSecurity']->check()) {
 						redirect_header(XOOPS_URL, 3, implode('<br>', $GLOBALS['xoopsSecurity']->getErrors()));
@@ -158,12 +158,12 @@ if ($op == 'add' || $op == 'save' || $op == 'loaddocument' || $op == 'edit' || $
 					}
 				} else {
 					$document_img = $obj->getVar('document_logo') ?: 'blank.gif';
-					xoops_confirm(array('surdel' => true, 'document_id' => $document_id, 'op' => 'del'), $_SERVER['REQUEST_URI'], 
+					xoops_confirm(array('surdel' => true, 'document_id' => $document_id, 'op' => 'del'), $_SERVER['REQUEST_URI'],
 										sprintf(_MA_XMDOC_DOCUMENT_SUREDEL, $obj->getVar('document_name')) . '<br>
-										<img src="' . $url_logo_document . $document_img . '" title="' . 
+										<img src="' . $url_logo_document . $document_img . '" title="' .
 										$obj->getVar('document_name') . '" /><br>');
 				}
-			}        
+			}
 			break;
     }
 } else {

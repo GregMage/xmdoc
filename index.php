@@ -56,7 +56,7 @@ if (!empty($viewPermissionCat)) {
 }
 $criteria->setSort('category_weight ASC, category_name');
 $criteria->setOrder('ASC');
-$category_arr = $categoryHandler->getall($criteria);		
+$category_arr = $categoryHandler->getall($criteria);
 if (count($category_arr) > 0) {
 	$doc_cid_options = '<option value="0"' . ($doc_cid == 0 ? ' selected="selected"' : '') . '>' . _ALL .'</option>';
 	if (!empty($viewPermissionCat)) {
@@ -77,7 +77,7 @@ if (count($category_arr) > 0) {
 			} else {
 				$cat_array['color']	  = $category_arr[$i]->getVar('category_color');
 			}
-			$xoopsTpl->append_by_ref('cat_array', $cat_array);
+			$xoopsTpl->appendByRef('cat_array', $cat_array);
 			unset($cat_array);
 		}
 	}
@@ -102,7 +102,7 @@ if ($doc_cid != 0){
 	}
 	if ($check_category->getVar('category_status') != 1){
 		redirect_header('index.php', 2, _MA_XMDOC_ERROR_NACTIVE);
-	}	
+	}
 	$criteria->add(new Criteria('document_category', $doc_cid));
 	$xoopsTpl->assign('category_name', $category_arr[$doc_cid]->getVar('category_name'));
 	$category_img  = $category_arr[$doc_cid]->getVar('category_logo');
@@ -114,7 +114,7 @@ if ($doc_cid != 0){
 	$color = $category_arr[$doc_cid]->getVar('category_color');
 	if ($color == '#ffffff'){
 		$xoopsTpl->assign('category_color', false);
-		
+
 	} else {
 		$xoopsTpl->assign('category_color', $color);
 	}
@@ -173,7 +173,7 @@ if ($document_count > 0 && !empty($viewPermissionCat)) {
 			$document['dorating'] = 0;
 		}
 		$keywords .= Metagen::generateSeoTitle($document_arr[$i]->getVar('document_name')) . ',';
-		$xoopsTpl->append_by_ref('documents', $document);
+		$xoopsTpl->appendByRef('documents', $document);
 		unset($document);
 	}
     // Display Page Navigation

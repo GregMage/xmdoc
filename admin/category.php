@@ -34,7 +34,7 @@ switch ($op) {
         $xoTheme->addScript('modules/system/js/admin.js');
         // Module admin
         $moduleAdmin->addItemButton(_MA_XMDOC_CATEGORY_ADD, 'category.php?op=add', 'add');
-        $xoopsTpl->assign('renderbutton', $moduleAdmin->renderButton());        
+        $xoopsTpl->assign('renderbutton', $moduleAdmin->renderButton());
         // Get start pager
         $start = Request::getInt('start', 0);
         // Criteria
@@ -68,7 +68,7 @@ switch ($op) {
                 $category['status']          = $category_arr[$i]->getVar('category_status');
                 $category_img                = $category_arr[$i]->getVar('category_logo') ?: 'blank.gif';
                 $category['logo']            = $url_logo_category .  $category_img;
-                $xoopsTpl->append_by_ref('category', $category);
+                $xoopsTpl->appendByRef('category', $category);
                 unset($category);
             }
             // Display Page Navigation
@@ -80,23 +80,23 @@ switch ($op) {
             $xoopsTpl->assign('error_message', _MA_XMDOC_ERROR_NOCATEGORY);
         }
         break;
-    
+
     // Add
     case 'add':
         // Module admin
         $moduleAdmin->addItemButton(_MA_XMDOC_CATEGORY_LIST, 'category.php', 'list');
-        $xoopsTpl->assign('renderbutton', $moduleAdmin->renderButton());        
+        $xoopsTpl->assign('renderbutton', $moduleAdmin->renderButton());
         // Form
         $obj  = $categoryHandler->create();
         $form = $obj->getForm();
         $xoopsTpl->assign('form', $form->render());
         break;
-        
+
     // Edit
     case 'edit':
         // Module admin
         $moduleAdmin->addItemButton(_MA_XMDOC_CATEGORY_LIST, 'category.php', 'list');
-        $xoopsTpl->assign('renderbutton', $moduleAdmin->renderButton());        
+        $xoopsTpl->assign('renderbutton', $moduleAdmin->renderButton());
         // Form
         $category_id = Request::getInt('category_id', 0);
         if ($category_id == 0) {
@@ -104,7 +104,7 @@ switch ($op) {
         } else {
             $obj = $categoryHandler->get($category_id);
             $form = $obj->getForm();
-            $xoopsTpl->assign('form', $form->render()); 
+            $xoopsTpl->assign('form', $form->render());
         }
 
         break;
@@ -115,7 +115,7 @@ switch ($op) {
         }
         $category_id = Request::getInt('category_id', 0);
         if ($category_id == 0) {
-            $obj = $categoryHandler->create();            
+            $obj = $categoryHandler->create();
         } else {
             $obj = $categoryHandler->get($category_id);
         }
@@ -125,11 +125,11 @@ switch ($op) {
             $form = $obj->getForm();
             $xoopsTpl->assign('form', $form->render());
         }
-        
+
         break;
-        
+
     // del
-    case 'del':    
+    case 'del':
         $category_id = Request::getInt('category_id', 0);
         if ($category_id == 0) {
             $xoopsTpl->assign('error_message', _MA_XMDOC_ERROR_NOCATEGORY);
@@ -161,7 +161,7 @@ switch ($op) {
 					$permHelper->deletePermissionForItem('xmdoc_submit', $category_id);
 					$permHelper->deletePermissionForItem('xmdoc_editapprove', $category_id);
 					$permHelper->deletePermissionForItem('xmdoc_delete', $category_id);
-                    
+
                     // Del document
                     $criteria = new CriteriaCompo();
                     $criteria->add(new Criteria('document_category', $category_id));
@@ -177,15 +177,15 @@ switch ($op) {
                 }
             } else {
                 $category_img = $obj->getVar('category_logo') ?: 'blank.gif';
-                xoops_confirm(array('surdel' => true, 'category_id' => $category_id, 'op' => 'del'), $_SERVER['REQUEST_URI'], 
+                xoops_confirm(array('surdel' => true, 'category_id' => $category_id, 'op' => 'del'), $_SERVER['REQUEST_URI'],
                                     sprintf(_MA_XMDOC_CATEGORY_SUREDEL, $obj->getVar('category_name')) . '<br>
-                                    <img src="' . $url_logo_category . $category_img . '" title="' . 
+                                    <img src="' . $url_logo_category . $category_img . '" title="' .
                                     $obj->getVar('category_name') . '" /><br>' . XmdocUtility::documentNamePerCat($category_id));
             }
         }
-        
+
         break;
-        
+
     // Update status
     case 'category_update_status':
         $category_id = Request::getInt('category_id', 0);

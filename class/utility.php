@@ -22,7 +22,7 @@ use Xmf\Module\Helper;
  * Class XmdocUtility
  */
 class XmdocUtility{
-	
+
     public static function FileSizeConvert($size){
         if ($size > 0) {
             $kb = 1024;
@@ -43,14 +43,14 @@ class XmdocUtility{
             return '';
         }
     }
-	
+
 	public static function StringSizeConvert($stringSize){
         if ($stringSize != '') {
             $kb = 1024;
             $mb = 1024*1024;
             $gb = 1024*1024*1024;
 			$size_value_arr = explode(' ', $stringSize);
-			
+
             if ($size_value_arr[1] == 'B') {
                 $mysize = $size_value_arr[0];
             } elseif ($size_value_arr[1] == 'K') {
@@ -65,7 +65,7 @@ class XmdocUtility{
             return 0;
         }
     }
-	
+
 	public static function SizeConvertString($sizeString){
 		$mysizeString = '';
 		if ($sizeString != '') {
@@ -77,26 +77,26 @@ class XmdocUtility{
 						case 'B':
 							$mysizeString = $size_value_arr[0] . ' ' . _MA_XMDOC_UTILITY_BYTES;
 							break;
-							
+
 						case 'K':
 							$mysizeString = $size_value_arr[0] . ' ' . _MA_XMDOC_UTILITY_KBYTES;
 							break;
-							
+
 						case 'M':
 							$mysizeString = $size_value_arr[0] . ' ' . _MA_XMDOC_UTILITY_MBYTES;
 							break;
-							
+
 						case 'G':
 							$mysizeString = $size_value_arr[0] . ' ' . _MA_XMDOC_UTILITY_GBYTES;
 							break;
-					}					
+					}
 					return $mysizeString;
 				}
 			}
-		}		
+		}
 		return $mysizeString;
     }
-        
+
     public static function ExtensionToMime($extensions){
         $extensionToMime = include $GLOBALS['xoops']->path('include/mimetypes.inc.php');
         foreach (array_keys($extensions) as $i) {
@@ -104,7 +104,7 @@ class XmdocUtility{
         }
         return $mimetypes;
     }
-    
+
     public static function getPermissionCat($permtype = 'xmdoc_view')
     {
         global $xoopsUser;
@@ -117,7 +117,7 @@ class XmdocUtility{
 
         return $categories;
     }
-    
+
     public static function documentNamePerCat($category_id)
     {
         include __DIR__ . '/../include/common.php';
@@ -135,11 +135,11 @@ class XmdocUtility{
         }
         return $document_name;
     }
-	
+
 	public static function saveDocuments($modulename = '', $itemid = 0)
     {
         include __DIR__ . '/../include/common.php';
-		$error_message = '';		
+		$error_message = '';
 
 		if (isset($_REQUEST['removeDocs'])) {
             if (is_array($_REQUEST['removeDocs'])){
@@ -166,7 +166,7 @@ class XmdocUtility{
 		$helper = Helper::getHelper($modulename);
 		$moduleid = $helper->getModule()->getVar('mid');
 		if ($sessionHelper->get('selectiondocs') != false){
-			foreach ($sessionHelper->get('selectiondocs') as $index) {				
+			foreach ($sessionHelper->get('selectiondocs') as $index) {
 				// vérification pour savoir si le document est déjà existant
 				$criteria = new CriteriaCompo();
 				$criteria->add(new Criteria('docdata_docid', $index));
@@ -177,7 +177,7 @@ class XmdocUtility{
 					$obj  = $docdataHandler->create();
 					$obj->setVar('docdata_docid', $index);
 					$obj->setVar('docdata_modid', $moduleid);
-					$obj->setVar('docdata_itemid', $itemid);					
+					$obj->setVar('docdata_itemid', $itemid);
 					if ($docdataHandler->insert($obj)){
 						$error_message .= '';
 					} else {
@@ -189,10 +189,10 @@ class XmdocUtility{
 		}
         return $error_message;
     }
-	
+
 	public static function delDocdata($modulename = '', $itemid = 0)
     {
-        include __DIR__ . '/../include/common.php';		
+        include __DIR__ . '/../include/common.php';
 		$helper = Helper::getHelper($modulename);
 		$moduleid = $helper->getModule()->getVar('mid');
 		$criteria = new CriteriaCompo();
@@ -201,18 +201,18 @@ class XmdocUtility{
 		$docdataHandler->deleteAll($criteria);
         return '';
     }
-	
+
 	public static function renderDocuments($xoopsTpl, $xoTheme, $modulename = '', $itemid = 0)
     {
         include __DIR__ . '/../include/common.php';
-        
+
         $xoTheme->addStylesheet( XOOPS_URL . '/modules/xmdoc/assets/css/styles.css', null );
-        
+
         $xmdocHelper = Helper::getHelper('xmdoc');
 		$permDocHelper = new Helper\Permission('xmdoc');
         // Load language files
         $xmdocHelper->loadLanguage('main');
-        
+
 		$helper = Helper::getHelper($modulename);
 		$moduleid = $helper->getModule()->getVar('mid');
 		//docdata
@@ -232,7 +232,7 @@ class XmdocUtility{
 		if (xoops_isActiveModule('xmsocial') && $helper->getConfig('general_xmsocial', 0) == 1) {
 			xoops_load('utility', 'xmsocial');
 		}
-        // Document  
+        // Document
         $criteria = new CriteriaCompo();
 		if (count($docdata_ids) > 0) {
 			$criteria->add(new Criteria('document_id', '(' . implode(',', $docdata_ids) . ')','IN'));
@@ -266,7 +266,7 @@ class XmdocUtility{
 				}else{
 					$document['description_short'] = substr($document_arr[$i]->getVar('document_description', 'show'), 0, strpos($document_arr[$i]->getVar('document_description', 'show'),'[break]'));
 					$document['description_end']   = str_replace('[break]', '', substr($document_arr[$i]->getVar('document_description', 'show'), strpos($document_arr[$i]->getVar('document_description', 'show'),'[break]')));
-				}				
+				}
 				$document['size']              = XmdocUtility::SizeConvertString($document_arr[$i]->getVar('document_size'));
                 $document['author']            = XoopsUser::getUnameFromId($document_arr[$i]->getVar('document_userid'));
                 $document['date']              = formatTimestamp($document_arr[$i]->getVar('document_date'), 's');
@@ -286,7 +286,7 @@ class XmdocUtility{
 				} else {
 					$document['dorating'] = 0;
 				}
-                $xoopsTpl->append_by_ref('document', $document);
+                $xoopsTpl->appendByRef('document', $document);
                 unset($document);
             }
             $xoopsTpl->assign('xmdoc_viewdocs', true);
@@ -300,7 +300,7 @@ class XmdocUtility{
         $form->addElement(new XmdocFormDoc($modulename, $itemid), false);
         return $form;
     }
-    
+
     public static function creatFolder($path = '')
     {
         $folder = str_shuffle(substr(uniqid(), 6, 7)) . uniqid();
@@ -313,7 +313,7 @@ class XmdocUtility{
         copy($indexFile, $dir . '/index.html');
         return $folder;
     }
-    
+
     public static function delDirectory($dir)
     {
         if (is_dir($dir)) {
@@ -328,7 +328,7 @@ class XmdocUtility{
             rmdir($dir);
         }
     }
-    
+
     /**
      * formatURL()
      *
@@ -356,8 +356,8 @@ class XmdocUtility{
 		if (function_exists('curl_init') && false !== ($curlHandle  = curl_init($url))) {
 			curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, TRUE);
 			curl_setopt($curlHandle, CURLOPT_HEADER, TRUE);
-			curl_setopt($curlHandle, CURLOPT_NOBODY, TRUE);	
-			curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, false);			
+			curl_setopt($curlHandle, CURLOPT_NOBODY, TRUE);
+			curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, false);
 			$curlReturn = curl_exec($curlHandle);
 			if (false === $curlReturn) {
 				trigger_error(curl_error($curlHandle));
@@ -368,13 +368,13 @@ class XmdocUtility{
 			curl_close($curlHandle);
 			if ($size <= 0){
 				return 0;
-			} else {			
+			} else {
 				return XmdocUtility::FileSizeConvert($size);
 			}
 		} else {
 			return 0;
 		}
-    }  
+    }
     public static function getServerStats()
     {
         $moduleDirName      = basename(dirname(dirname(__DIR__)));
@@ -396,7 +396,7 @@ class XmdocUtility{
 
         return $html;
     }
-	
+
 	public static function returnBytes($val)
 	{
 		switch (mb_substr($val, -1)) {

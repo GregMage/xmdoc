@@ -41,7 +41,7 @@ $bootstrap = XOOPS_THEME_PATH . '/' . $GLOBALS['xoopsConfig']['theme_set'] . '/c
 $bootstrap_min = XOOPS_THEME_PATH . '/' . $GLOBALS['xoopsConfig']['theme_set'] . '/css/bootstrap.min.css';
 
 if (file_exists($bootstrap) || file_exists($bootstrap_min)){
-	if (file_exists($bootstrap_min)){	
+	if (file_exists($bootstrap_min)){
 		$xoopsTpl->assign('bootstrap_css', XOOPS_THEME_URL . '/' . $GLOBALS['xoopsConfig']['theme_set'] . '/css/bootstrap.min.css');
 	} else {
 		$xoopsTpl->assign('bootstrap_css', XOOPS_THEME_URL . '/' . $GLOBALS['xoopsConfig']['theme_set'] . '/css/bootstrap.css');
@@ -53,8 +53,8 @@ if (file_exists($bootstrap) || file_exists($bootstrap_min)){
 if (isset($_REQUEST['selectreset'])){
     $sessionHelper->del('selectiondocs');
 }
-		
-if (isset($_REQUEST['selDocs'])){			
+
+if (isset($_REQUEST['selDocs'])){
 	if (isset($_REQUEST['selDocs']) && is_array($_REQUEST['selDocs'])) {
         if ($sessionHelper->get('selectiondocs') != false){
             $arr_selectiondocs = $sessionHelper->get('selectiondocs');
@@ -71,7 +71,7 @@ if (isset($_REQUEST['selDocs'])){
 }
 if ($sessionHelper->get('selectiondocs') != False){
 	$xoopsTpl->assign('selected', true);
-	
+
 	$criteria = new CriteriaCompo();
 	$criteria->add(new Criteria('document_status', 1));
     if (is_array($sessionHelper->get('selectiondocs'))){
@@ -92,14 +92,14 @@ if ($sessionHelper->get('selectiondocs') != False){
 			$seldoc_img                = $seldoc_arr[$i]->getVar('document_logo') ?: 'blank_doc.gif';
 			$seldoc['logo']            = '<img src="' . $url_logo_document .  $seldoc_img . '" alt="' . $seldoc_img . '" style="max-width:100px" />';
 			$seldoc['count']           = $count;
-			$xoopsTpl->append_by_ref('seldoc', $seldoc);
+			$xoopsTpl->appendByRef('seldoc', $seldoc);
 			unset($seldoc);
 			$count++;
-			
+
 		}
 	} else {
 		$xoopsTpl->assign('error_message', _MA_XMDOC_ERROR_NODOCUMENT);
-	}	
+	}
 	$reset = '';
 }
 
@@ -114,13 +114,13 @@ $helper = Helper::getHelper('xmdoc');
 $nb_limit = $helper->getConfig('general_perpage', 15);
 
 // Get start pager
-$start = Request::getInt('start', 0); 
+$start = Request::getInt('start', 0);
 
 $form = new XoopsThemeForm('', 'form', 'docmanager.php', 'post', true);
 // name
 $form->addElement(new XoopsFormText(_MA_XMDOC_DOCUMENT_NAME, 's_name', 50, 255, $s_name));
 
-// category       
+// category
 $category = new XoopsFormSelect(_MA_XMDOC_DOCUMENT_INCATEGORY, 's_cat', $s_cat);
 $criteria = new CriteriaCompo();
 $criteria->add(new Criteria('category_status', 1));
@@ -129,7 +129,7 @@ $criteria->setOrder('ASC');
 if (!empty($viewPermissionCat)){
 	$criteria->add(new Criteria('category_id', '(' . implode(',', $viewPermissionCat) . ')','IN'));
 }
-$category_arr = $categoryHandler->getall($criteria);        
+$category_arr = $categoryHandler->getall($criteria);
 if (count($category_arr) == 0 || empty($viewPermissionCat)){
 	redirect_header(XOOPS_URL, 3, _MA_XMDOC_ERROR_NOACESSCATEGORY);
 }
@@ -138,7 +138,7 @@ foreach (array_keys($category_arr) as $i) {
 	$category->addOption($category_arr[$i]->getVar('category_id'), $category_arr[$i]->getVar('category_name'));
 }
 $form->addElement($category, true);
-	 
+
 // search
 $button = new XoopsFormElementTray('');
 $button->addElement(new XoopsFormButton('', 'search', _SEARCH, 'submit'));
@@ -186,7 +186,7 @@ if ($search != ''){
 			$document['categoryid']      = $document_arr[$i]->getVar('document_category');
 			$document_img                = $document_arr[$i]->getVar('document_logo') ?: 'blank_doc.gif';
 			$document['logo']            = '<img src="' . $url_logo_document .  $document_img . '" alt="' . $document_img . '" style="max-width:100px" />';
-			$xoopsTpl->append_by_ref('document', $document);
+			$xoopsTpl->appendByRef('document', $document);
 			unset($document);
 		}
 		// Display Page Navigation

@@ -35,17 +35,17 @@ switch ($op) {
         // Module admin
         $moduleAdmin->addItemButton(_MA_XMDOC_DOCUMENT_ADD, 'document.php?op=add', 'add');
         $xoopsTpl->assign('renderbutton', $moduleAdmin->renderButton());
-		$xoopsTpl->assign('usemodal', $helper->getConfig('general_usemodal', 1));		
+		$xoopsTpl->assign('usemodal', $helper->getConfig('general_usemodal', 1));
         // Get start pager
         $start = Request::getInt('start', 0);
         $xoopsTpl->assign('start', $start);
-		
+
 		if ($helper->getConfig('general_usemodal', 1) == 1){
 			$xoopsTpl->assign('modal', false);
 		} else {
 			$xoopsTpl->assign('modal', true);
 		}
-        
+
         $xoopsTpl->assign('filter', true);
         // Category
 		$category = Request::getInt('category', 0);
@@ -53,7 +53,7 @@ switch ($op) {
 		$criteria = new CriteriaCompo();
 		$criteria->setSort('category_weight ASC, category_name');
 		$criteria->setOrder('ASC');
-		$category_arr = $categoryHandler->getall($criteria);		
+		$category_arr = $categoryHandler->getall($criteria);
 		if (count($category_arr) > 0) {
 			$category_options = '<option value="0"' . ($category == 0 ? ' selected="selected"' : '') . '>' . _ALL .'</option>';
 			foreach (array_keys($category_arr) as $i) {
@@ -70,7 +70,7 @@ switch ($op) {
             $status_options .= '<option value="' . $i . '"' . ($status == $i ? ' selected="selected"' : '') . '>' . $status_options_arr[$i] . '</option>';
         }
         $xoopsTpl->assign('status_options', $status_options);
-        
+
         // Criteria
         $criteria = new CriteriaCompo();
         $criteria->setSort('document_weight ASC, document_name');
@@ -108,7 +108,7 @@ switch ($op) {
                 $document['status']          = $document_arr[$i]->getVar('document_status');
                 $document_img                = $document_arr[$i]->getVar('document_logo') ?: 'blank_doc.gif';
                 $document['logo']            = $url_logo_document .  $document_img;
-                $xoopsTpl->append_by_ref('document', $document);
+                $xoopsTpl->appendByRef('document', $document);
                 unset($document);
             }
             // Display Page Navigation
@@ -120,7 +120,7 @@ switch ($op) {
             $xoopsTpl->assign('error_message', _MA_XMDOC_ERROR_NODOCUMENT);
         }
         break;
-    
+
     // Add
     case 'add':
         // Module admin
@@ -138,7 +138,7 @@ switch ($op) {
             redirect_header('category.php?op=add', 2, _MA_XMDOC_ERROR_NOCATEGORY);
         }
         break;
-    
+
     // Loaddocument
     case 'loaddocument':
         // Define Stylesheet
@@ -146,7 +146,7 @@ switch ($op) {
         $xoTheme->addScript('modules/system/js/admin.js');
         // Module admin
         $moduleAdmin->addItemButton(_MA_XMDOC_DOCUMENT_LIST, 'document.php', 'list');
-        $xoopsTpl->assign('renderbutton', $moduleAdmin->renderButton());  
+        $xoopsTpl->assign('renderbutton', $moduleAdmin->renderButton());
         $document_category = Request::getInt('document_category', 0);
         if ($document_category == 0) {
             $xoopsTpl->assign('error_message', _MA_XMDOC_ERROR_NOCATEGORY);
@@ -160,12 +160,12 @@ switch ($op) {
             $xoopsTpl->assign('form', $form->render());
         }
         break;
-        
+
     // Edit
     case 'edit':
         // Module admin
         $moduleAdmin->addItemButton(_MA_XMDOC_DOCUMENT_LIST, 'document.php', 'list');
-        $xoopsTpl->assign('renderbutton', $moduleAdmin->renderButton());        
+        $xoopsTpl->assign('renderbutton', $moduleAdmin->renderButton());
         // Form
         $document_id = Request::getInt('document_id', 0);
         if ($document_id == 0) {
@@ -173,7 +173,7 @@ switch ($op) {
         } else {
             $obj = $documentHandler->get($document_id);
             $form = $obj->getForm();
-            $xoopsTpl->assign('form', $form->render()); 
+            $xoopsTpl->assign('form', $form->render());
         }
 
         break;
@@ -184,7 +184,7 @@ switch ($op) {
         }
         $document_id = Request::getInt('document_id', 0);
         if ($document_id == 0) {
-            $obj = $documentHandler->create();            
+            $obj = $documentHandler->create();
         } else {
             $obj = $documentHandler->get($document_id);
         }
@@ -195,7 +195,7 @@ switch ($op) {
             $form = $obj->getForm($document_category);
             $xoopsTpl->assign('form', $form->render());
         }
-        
+
         break;
 
 	// del
@@ -216,14 +216,14 @@ switch ($op) {
 				}
 			} else {
 				$document_img = $obj->getVar('document_logo') ?: 'blank.gif';
-				xoops_confirm(array('surdel' => true, 'document_id' => $document_id, 'op' => 'del'), $_SERVER['REQUEST_URI'], 
+				xoops_confirm(array('surdel' => true, 'document_id' => $document_id, 'op' => 'del'), $_SERVER['REQUEST_URI'],
 									sprintf(_MA_XMDOC_DOCUMENT_SUREDEL, $obj->getVar('document_name')) . '<br>
-									<img src="' . $url_logo_document . $document_img . '" title="' . 
+									<img src="' . $url_logo_document . $document_img . '" title="' .
 									$obj->getVar('document_name') . '" /><br>');
 			}
-		}        
+		}
 		break;
-        
+
     // Update status
     case 'document_update_status':
         $document_id = Request::getInt('document_id', 0);
