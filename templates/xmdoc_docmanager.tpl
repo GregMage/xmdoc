@@ -26,7 +26,7 @@
 				</div>
 				<div class="card-body">
 					<div class="row">
-						<{foreach item=seldoc from=$seldoc}>
+						<{foreach item=seldoc from=$seldocs}>
 							<div class="col-6 col-sm-3 col-lg-2 p-1">
 								<div class="card">
 									<div class="card-body text-center text-truncate"><strong><{$seldoc.name}></strong><br><{$seldoc.logo}></div>
@@ -95,7 +95,7 @@
 										</tr>
 									<thead>
 									<tbody>
-									<{foreach item=document from=$document}>
+									<{foreach item=document from=$documents}>
 										<tr class="table-primary" scope="row">
 											<td class="align-middle text-center">
 

@@ -92,7 +92,7 @@ if ($sessionHelper->get('selectiondocs') != False){
 			$seldoc_img                = $seldoc_arr[$i]->getVar('document_logo') ?: 'blank_doc.gif';
 			$seldoc['logo']            = '<img src="' . $url_logo_document .  $seldoc_img . '" alt="' . $seldoc_img . '" style="max-width:100px" />';
 			$seldoc['count']           = $count;
-			$xoopsTpl->appendByRef('seldoc', $seldoc);
+			$xoopsTpl->appendByRef('seldocs', $seldoc);
 			unset($seldoc);
 			$count++;
 
@@ -186,7 +186,7 @@ if ($search != ''){
 			$document['categoryid']      = $document_arr[$i]->getVar('document_category');
 			$document_img                = $document_arr[$i]->getVar('document_logo') ?: 'blank_doc.gif';
 			$document['logo']            = '<img src="' . $url_logo_document .  $document_img . '" alt="' . $document_img . '" style="max-width:100px" />';
-			$xoopsTpl->appendByRef('document', $document);
+			$xoopsTpl->appendByRef('documents', $document);
 			unset($document);
 		}
 		// Display Page Navigation
