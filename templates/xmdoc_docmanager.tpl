@@ -77,7 +77,7 @@
 							<{$error_message}>
 						</div>
 					<{/if}>
-					<{if $document|default:'' != ""}>
+					<{if $documents|default:'' != ""}>
 						<div class="">
 							<form name="formsel" id="formsel" action="docmanager.php" method="post">
 
