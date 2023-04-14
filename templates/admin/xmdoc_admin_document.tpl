@@ -1,6 +1,6 @@
 <script type="text/javascript">
-    IMG_ON = '<{xoAdminIcons "success.png"}>';
-    IMG_OFF = '<{xoAdminIcons "cancel.png"}>';
+    IMG_ON = "<{xoAdminIcons 'success.png'}>";
+    IMG_OFF = "<{xoAdminIcons 'cancel.png'}>";
 </script>
 <div>
     <{$renderbutton|default:''}>
@@ -14,7 +14,7 @@
             <ul>
                 <li><{$smarty.const._MA_XMDOC_CATEGORY_SIZE}>: <{$size}></li>
                 <li><{$smarty.const._MA_XMDOC_CATEGORY_EXTENSION}>: <{$extensions}></li>
-            </ul>        
+            </ul>
         </div>
         <div class="clear">&nbsp;</div>
     </div>
@@ -51,8 +51,8 @@
             <th class="txtleft width15"><{$smarty.const._MA_XMDOC_DOCUMENT_CATEGORY}></th>
             <th class="txtleft width15"><{$smarty.const._MA_XMDOC_DOCUMENT_NAME}></th>
             <th class="txtleft"><{$smarty.const._MA_XMDOC_DOCUMENT_DESC}></th>
-            <th class="txtcenter width5"><{$smarty.const._MA_XMDOC_FORMDOC_DOWNLOAD}></th> 
-            <th class="txtcenter width10"><{$smarty.const._MA_XMDOC_DOCUMENT_SHOWINFO}></th>          
+            <th class="txtcenter width5"><{$smarty.const._MA_XMDOC_FORMDOC_DOWNLOAD}></th>
+            <th class="txtcenter width10"><{$smarty.const._MA_XMDOC_DOCUMENT_SHOWINFO}></th>
             <th class="txtcenter width5"><{$smarty.const._MA_XMDOC_DOCUMENT_WEIGHT}></th>
             <th class="txtcenter width5"><{$smarty.const._MA_XMDOC_STATUS}></th>
             <th class="txtcenter width10"><{$smarty.const._MA_XMDOC_ACTION}></th>

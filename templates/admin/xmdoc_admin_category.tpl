@@ -1,6 +1,6 @@
 <script type="text/javascript">
-    IMG_ON = '<{xoAdminIcons "success.png"}>';
-    IMG_OFF = '<{xoAdminIcons "cancel.png"}>';
+    IMG_ON = "<{xoAdminIcons 'success.png'}>";
+    IMG_OFF = "<{xoAdminIcons 'cancel.png'}>";
 </script>
 <div>
     <{$renderbutton|default:''}>
@@ -22,7 +22,7 @@
             <th class="txtleft"><{$smarty.const._MA_XMDOC_CATEGORY_DESC}></th>
 			<th class="txtcenter width5"><{$smarty.const._MA_XMDOC_CATEGORY_COLOR}></th>
             <th class="txtcenter width10"><{$smarty.const._MA_XMDOC_CATEGORY_SIZE}></th>
-            <th class="txtcenter width10"><{$smarty.const._MA_XMDOC_CATEGORY_EXTENSION}></th>            
+            <th class="txtcenter width10"><{$smarty.const._MA_XMDOC_CATEGORY_EXTENSION}></th>
             <th class="txtcenter width5"><{$smarty.const._MA_XMDOC_CATEGORY_WEIGHT}></th>
             <th class="txtcenter width5"><{$smarty.const._MA_XMDOC_STATUS}></th>
             <th class="txtcenter width10"><{$smarty.const._MA_XMDOC_ACTION}></th>
@@ -34,7 +34,7 @@
 				<td class="txtcenter"><img src="<{$itemcategory.logo}>" alt="<{$itemcategory.name}>" style="max-width:150px"></td>
 				<td class="txtleft"><a href="../index.php?doc_cid=<{$itemcategory.id}>" title="<{$itemcategory.name}>"><{$itemcategory.name}></a></td>
                 <td class="txtleft"><{$itemcategory.description}></td>
-				<td class="txtcenter"><{if $itemcategory.color != false}><div style="background-color:<{$itemcategory.color}>;width:50px; height:20px;margin-left: auto; margin-right: auto;"></div><{/if}></td> 
+				<td class="txtcenter"><{if $itemcategory.color != false}><div style="background-color:<{$itemcategory.color}>;width:50px; height:20px;margin-left: auto; margin-right: auto;"></div><{/if}></td>
                 <td class="txtcenter"><{$itemcategory.size}></td>
                 <td class="txtcenter"><{$itemcategory.extensions}></td>
                 <td class="txtcenter"><{$itemcategory.weight}></td>
