@@ -23,7 +23,7 @@
 		</h2>
 		<table cellspacing="0" id="imagemain">
 			<tr>
-			<{foreach item=seldoc from=$seldoc}>
+			<{foreach item=seldoc from=$seldocs}>
 				<td class="txtcenter"><{$seldoc.name}><br><{$seldoc.logo}></td>
 				<{if $seldoc.count is div by 4}>
 				</tr>
