@@ -308,9 +308,9 @@ class XmdocUtility{
         if (!is_dir($dir)) {
             mkdir($dir, 0777);
         }
-        //Copy index.html
-        $indexFile = XOOPS_ROOT_PATH . '/modules/xmdoc/include/index.html';
-        copy($indexFile, $dir . '/index.html');
+        //Copy index.php
+        $indexFile = XOOPS_ROOT_PATH . '/modules/xmdoc/include/index.php';
+        copy($indexFile, $dir . '/index.php');
         return $folder;
     }
 
