@@ -10,7 +10,7 @@
 			<li class="breadcrumb-item active"><{$smarty.const._MA_XMDOC_ADD}></li>
 		  </ol>
 		</nav>
-		<{if $tips != ''}>
+		<{if $tips|default:'' != ''}>
             <div class="alert alert-info" role="alert">
                 <div class="floatleft">
                     <h4><{$smarty.const._MA_XMDOC_DOCUMENT_DOCUMENT}></h4>
