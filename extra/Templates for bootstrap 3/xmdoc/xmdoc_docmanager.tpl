@@ -74,7 +74,7 @@
 				</tr>
 				<tbody>
 
-				<{foreach item=document from=$document}>
+				<{foreach item=document from=$documents}>
 					<tr class="<{cycle values='even,odd'}> alignmiddle">
 						<td class="txtcenter"><input type="checkbox" name="selDocs[]" id="selDocs<{$document.id}>"  title="Selectio documents" value="<{$document.id}>"  /></td>
 						<td class="txtcenter"><{$document.logo}></td>

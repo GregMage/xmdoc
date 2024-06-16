@@ -25,27 +25,27 @@
 	<h3><{$smarty.const._MA_XMDOC_CATEGORY_LIST}></h3>
 	<div class="xm-category row">
 	<{foreach item=categories from=$cat_array}>
-		<div class="col-6 col-sm-4 col-md-3 col-lg-2 p-2 
+		<div class="col-6 col-sm-4 col-md-3 col-lg-2 p-2
 			<{if $cat && $categories.id == $doc_cid}>
 				bg-secondary
 			<{/if}>">
 			<a title="<{$categories.name}>" href="<{$xoops_url}>/modules/xmdoc/index.php?doc_cid=<{$categories.id}>">
 				<div class="card xmdoc-border" <{if $categories.color != false}>style="border-color : <{$categories.color}>;"<{/if}>>
-					<div class="card-header text-center" <{if $categories.color != false}>style="background-color : <{$categories.color}>;"<{/if}>>						
+					<div class="card-header text-center" <{if $categories.color != false}>style="background-color : <{$categories.color}>;"<{/if}>>
 						<h6 class="mb-0 text-white"><{$categories.name}></h6>
 					</div>
 					<div class="card-body h-md-550 text-center">
 						<div class="row" style="height: 90px;">
 							<div class="col-12 h-75">
-								<{if $categories.logo != ''}>								
+								<{if $categories.logo != ''}>
 									<img class="rounded img-fluid mh-100" src="<{$categories.logo}>" alt="<{$categories.name}>">
 								<{/if}>
-							</div>							
-						</div>				
-					</div>				
+							</div>
+						</div>
+					</div>
 				</div>
 			</a>
-		</div>	
+		</div>
 	<{/foreach}>
 	</div>
 	<{/if}>
@@ -81,14 +81,14 @@
 					<div class="card-header text-center text-truncate d-none d-sm-block" <{if $document.color != false}>style="background-color : <{$document.color}>;"<{/if}>>
 						<div class="d-flex justify-content-center text-center">
 							<a class="text-decoration-none" title="<{$document.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank">
-								<h5 class="mb-0 text-white"><{$document.name}></h5>
+								<h5 class="mb-0"><{$document.name}></h5>
 							</a>
 						</div>
 					</div>
 					<div class="card-header text-center d-block d-sm-none">
 						<div class="d-flex justify-content-center text-center">
 							<a class="text-decoration-none" title="<{$document.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank">
-								<h5 class="mb-0 text-white"><{$document.name}></h5>
+								<h5 class="mb-0"><{$document.name}></h5>
 							</a>
 						</div>
 					</div>
@@ -101,7 +101,7 @@
 									</a>
 								<{/if}>
 							</div>
-							<div class="col-12 text-left">	
+							<div class="col-12 text-left">
 								<hr />
 								<{$document.description_short}>
 								<hr />
@@ -115,14 +115,14 @@
 									</a>
 								<{/if}>
 								<a class="btn btn-primary d-block d-sm-none"  href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank" title="<{$document.name}>">
-									<span class="fa fa-download fa-lg" aria-hidden="true"></span> 
+									<span class="fa fa-download fa-lg" aria-hidden="true"></span>
 								</a>
 								<a class="btn btn-primary d-none d-sm-block"  href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank" title="<{$document.name}>">
 									<span class="fa fa-download fa-lg" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_DOWNLOAD}>
 								</a>
 							</div>
-						</div>				
-					</div>				
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="modal" tabindex="-1" id="myModal<{$document.id}>" role="dialog">
@@ -136,10 +136,10 @@
 										<span class="badge badge-secondary fa-lg text-primary ml-1"><span class="fa fa-download" aria-hidden="true"></span><small> <{$document.counter}></small></span>
 										<{if $document.size != ''}>
 											<span class="badge badge-secondary fa-lg text-primary ml-1 mt-1 mt-lg-0"><span class="fa fa-archive" aria-hidden="true"></span><small> <{$document.size}></small></span>
-										<{/if}>	
+										<{/if}>
 									<{/if}>
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-								</div>	
+								</div>
 							</div>
 						</div>
 						<div class="modal-body">
@@ -164,7 +164,7 @@
 										<{include file="db:xmsocial_rating.tpl" down_xmsocial=$document.xmsocial_arr}>
 										<figcaption class="figure-caption text-center"></figcaption>
 									</figure>
-									<{/if}>									
+									<{/if}>
 								</div>
 							<{/if}>
 								<div class="row">
@@ -204,7 +204,7 @@
 						<{/if}>
 					</div>
 				</div>
-			</div>			
+			</div>
 		<{/foreach}>
 	</div>
 	<{if $nav_menu|default:false}>

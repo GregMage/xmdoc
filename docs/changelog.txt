@@ -1,4 +1,34 @@
 ﻿-------------------------------------------------
+Version: 1.4.1 Alpha
+Date:    04.06.2024
+-------------------------------------------------
+Bug fixes:
+	- Fixed PHP 8 errors
+	- Smarty 3 problem with bootstrap 3 template
+
+Improvements:
+	- /
+
+Security:
+	- /
+
+Important:	- The 1.4.0 series is only compatible under xoops 2.5.11.
+			- The default templates are only compatible with a bootstrap 4 theme, the templates for version 3 of boostrap are in the extra folder.
+
+Correction de bogues:
+	- Correction d'erreurs PHP 8
+	- Problème smarty 3 avec template bootstrap 3
+
+Améliorations:
+	- /
+
+Sécurités:
+	- /
+
+Important:	- La série 1.4.0 est compatible uniquement sous xoops 2.5.11.
+			- Les templates par défaut sont compatibles uniquement avec un thème bootstrap 4, les templates pour la version 3 de boostrap sont dans le dossier extra.
+
+-------------------------------------------------
 Version: 1.4.0 Stable
 Date:    04.06.2024
 -------------------------------------------------
