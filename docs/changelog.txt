@@ -1,13 +1,13 @@
 ﻿-------------------------------------------------
-Version: 1.4.1 Alpha
-Date:    04.06.2024
+Version: 1.5.0 Alpha
+Date:    24.12.2024
 -------------------------------------------------
 Bug fixes:
 	- Fixed PHP 8 errors
 	- Smarty 3 problem with bootstrap 3 template
 
 Improvements:
-	- /
+	- Compatibility with the xlanguage module
 
 Security:
 	- /
@@ -20,7 +20,7 @@ Correction de bogues:
 	- Problème smarty 3 avec template bootstrap 3
 
 Améliorations:
-	- /
+	- Compatibilité avec le module xlanguage
 
 Sécurités:
 	- /
