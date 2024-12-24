@@ -172,7 +172,7 @@ if ($document_count > 0 && !empty($viewPermissionCat)) {
 		} else {
 			$document['dorating'] = 0;
 		}
-		$keywords .= Metagen::generateSeoTitle($document_arr[$i]->getVar('document_name')) . ',';
+		$keywords .= Metagen::generateSeoTitle(XmdocUtility::TagSafe($document_arr[$i]->getVar('document_name'))) . ',';
 		$xoopsTpl->appendByRef('documents', $document);
 		unset($document);
 	}

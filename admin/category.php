@@ -51,11 +51,7 @@ switch ($op) {
                 $category_id                 = $category_arr[$i]->getVar('category_id');
                 $category['id']              = $category_id;
                 $category['name']            = $category_arr[$i]->getVar('category_name');
-				if (strlen($category_arr[$i]->getVar('category_description', 'e')) > 300){
-					$category['description'] = substr($category_arr[$i]->getVar('category_description', 'e'), 0, 300) . '...';
-				} else {
-					$category['description'] = $category_arr[$i]->getVar('category_description', 'e');
-				}
+                $category['description'] 	 = XmdocUtility::generateDescriptionTagSafe($category_arr[$i]->getVar('category_description', 'e'), 50);
 				$color					     = $category_arr[$i]->getVar('category_color');
 				if ($color == '#ffffff'){
 					$category['color']	     = false;

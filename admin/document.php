@@ -97,10 +97,11 @@ switch ($op) {
                 $document['category']        = $document_arr[$i]->getVar('category_name');
                 $document['categoryid']      = $document_arr[$i]->getVar('document_category');
                 $document['document']        = $document_arr[$i]->getVar('document_document');
-				if (false == strpos($document_arr[$i]->getVar('document_description', 'e'), '[break]')){
-					$document['description'] = substr($document_arr[$i]->getVar('document_description', 'e'), 0, 300) . '...';
+                $description                 = XmdocUtility::TagSafe($document_arr[$i]->getVar('document_description', 'e'));
+				if (false == strpos($description, '[break]')){
+					$document['description'] = XmdocUtility::generateDescriptionTagSafe($description, 50);
 				}else{
-					$document['description'] = substr($document_arr[$i]->getVar('document_description', 'e'), 0, strpos($document_arr[$i]->getVar('document_description', 'e'),'[break]'));
+					$document['description'] = substr($description, 0, strpos($description,'[break]'));
 				}
                 $document['counter']         = $document_arr[$i]->getVar('document_counter');
                 $document['showinfo']        = $document_arr[$i]->getVar('document_showinfo');

@@ -27,7 +27,7 @@ include_once XOOPS_ROOT_PATH . '/header.php';
 $xoTheme->addStylesheet(XOOPS_URL . '/modules/' . $xoopsModule->getVar('dirname', 'n') . '/assets/css/styles.css', null);
 
 if ($helper->getConfig('general_usemodal', 1) == 1){
-	redirect_header('index.php', 2, _MA_XMDOC_ERROR_MODAL);	
+	redirect_header('index.php', 2, _MA_XMDOC_ERROR_MODAL);
 }
 $doc_id  = Request::getInt('doc_id', 0);
 
@@ -81,13 +81,17 @@ $xoopsTpl->assign('index_module', $helper->getModule()->getVar('name'));
 $xoopsTpl->assign('doc_id', $doc_id);
 $xoopsTpl->assign('name', $document->getVar('document_name'));
 $xoopsTpl->assign('document', $document->getVar('document_document'));
-$xoopsTpl->assign('description', str_replace('[break]', '', $document->getVar('document_description', 'show')));
-if (false == strpos($document->getVar('document_description', 'e'), '[break]')){
+$description_s = XmdocUtility::TagSafe($document->getVar('document_description', 'show'));
+$description_e = XmdocUtility::TagSafe($document->getVar('document_description', 'e'));
+$xoopsTpl->assign('description', str_replace('[break]', '', $description_s));
+if (false == strpos($description_e, '[break]')){
+	$description_SEO = Metagen::generateDescription($description_e, 80);
 	$xoopsTpl->assign('description_short', '');
 	$xoopsTpl->assign('description_end', '');
 }else{
-	$xoopsTpl->assign('description_short', substr($document->getVar('document_description', 'show'), 0, strpos($document->getVar('document_description', 'show'),'[break]')));
-	$xoopsTpl->assign('description_end', str_replace('[break]', '', substr($document->getVar('document_description', 'show'), strpos($document->getVar('document_description', 'show'),'[break]'))));
+	$xoopsTpl->assign('description_short', substr($description_s, 0, strpos($description_s,'[break]')));
+	$description_SEO = substr($description_s, 0, strpos($description_s,'[break]'));
+	$xoopsTpl->assign('description_end', str_replace('[break]', '', substr($description_s, strpos($description_s,'[break]'))));
 }
 $xoopsTpl->assign('size', XmdocUtility::SizeConvertString($document->getVar('document_size')));
 $xoopsTpl->assign('author', XoopsUser::getUnameFromId($document->getVar('document_userid')));
@@ -119,10 +123,9 @@ if (xoops_isActiveModule('xmsocial') && $helper->getConfig('general_xmsocial', 0
 // pagetitle
 $xoopsTpl->assign('xoops_pagetitle', Metagen::generateSeoTitle($document->getVar('document_name') . '-' . $xoopsModule->name()));
 //description
-$xoTheme->addMeta('meta', 'description', Metagen::generateDescription($document->getVar('document_description'), 30));
+$xoTheme->addMeta('meta', 'description', $description_SEO);
 //keywords
-
-$keywords = Metagen::generateKeywords($document->getVar('document_description'), 10);    
+$keywords = Metagen::generateKeywords(XmdocUtility::TagSafe($document->getVar('document_description')), 10);
 $xoTheme->addMeta('meta', 'keywords', implode(', ', $keywords));
 
 include XOOPS_ROOT_PATH . '/footer.php';
