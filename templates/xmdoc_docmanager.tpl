@@ -5,8 +5,6 @@
     <meta http-equiv="content-language" content="<{$xoops_langcode}>">
     <title>Xmdoc manager</title>
     <link rel="stylesheet" type="text/css" media="screen" href="<{xoAppUrl 'xoops.css'}>">
-	<link rel="stylesheet" type="text/css" media="screen" href="<{xoAppUrl 'modules/system/css/imagemanager.css'}>">
-	<link rel="stylesheet" type="text/css" media="screen" href="<{xoAppUrl 'modules/system/css/admin.css'}>">
     <link rel="stylesheet" type="text/css" media="screen" href="<{xoAppUrl 'media/font-awesome/css/font-awesome.min.css'}>">
 	<{if $bootstrap_css != ''}>
 	<link rel="stylesheet" type="text/css" media="screen" href="<{$bootstrap_css}>">
@@ -45,8 +43,8 @@
 				<div class="card-footer">
 					<form class="text-center" name="selreset" id="selreset" action="docmanager.php" method="post">
 						<input type="hidden" name="selectreset" value="true" />
-						<input type='submit' class='formButton' name='subselect'  id='subselect' value='<{$smarty.const._MA_XMDOC_FORMDOC_RESETSELECTED}>' title='<{$smarty.const._MA_XMDOC_FORMDOC_RESETSELECTED}>'  />
-						<input value="<{$smarty.const._MA_XMDOC_FORMDOC_VALIDATE}>" type="button" onclick="window.close();"/>
+						<input type='submit' class='btn btn-warning' name='subselect'  id='subselect' value='<{$smarty.const._MA_XMDOC_FORMDOC_RESETSELECTED}>' title='<{$smarty.const._MA_XMDOC_FORMDOC_RESETSELECTED}>'  />
+						<input value="<{$smarty.const._MA_XMDOC_FORMDOC_VALIDATE}>" class='btn btn-success' type="button" onclick="window.close();"/>
 					</form>
 				</div>
 			<{else}>
@@ -61,13 +59,12 @@
 					<div class="col-9 border-right">
 						<{if $form}>
 							<div class="xmform mb-3">
-								<h5><{$smarty.const._MA_XMDOC_SEARCH}></h5>
 								<{$form}>
 							</div>
 						<{/if}>
 					</div>
 					<div class="col-3">
-						<a href="<{$xoops_url}>/modules/xmdoc/action.php?op=add" class="btn btn-primary btn-sm" target="_blank" role="button" aria-pressed="true" title="<{$smarty.const._MA_XMDOC_DOCUMENT_ADD}>">
+						<a href="<{$xoops_url}>/modules/xmdoc/action.php?op=add" class="btn btn-secondary btn-sm" target="_blank" role="button" aria-pressed="true" title="<{$smarty.const._MA_XMDOC_DOCUMENT_ADD}>">
 							<{$smarty.const._MA_XMDOC_DOCUMENT_ADD}>
 						</a>
 					</div>
@@ -80,8 +77,6 @@
 					<{if $documents|default:'' != ""}>
 						<div class="">
 							<form name="formsel" id="formsel" action="docmanager.php" method="post">
-
-								<!--<table cellspacing="0" id="imagemain">-->
 								<table class="table table-hover table-striped table-bordered mt-4" id="">
 									<thead>
 										<tr class="table-secondary">
@@ -98,12 +93,6 @@
 									<{foreach item=document from=$documents}>
 										<tr class="table-primary" scope="row">
 											<td class="align-middle text-center">
-
-<!--
-												<input type="checkbox" name="selDocs[]" id="selDocs<{$document.id}>"  title="Selectio documents" value="<{$document.id}>"  />
--->
-
-
 												<fieldset>
 													<div class="form-group">
 														<div class="custom-control custom-checkbox">
@@ -128,7 +117,7 @@
 									<{/foreach}>
 									</tbody>
 								</table>
-							<input type='submit' class='formButton' name='select'  id='select' value='<{$smarty.const._MA_XMDOC_FORMDOC_SELECT}>' title='<{$smarty.const._MA_XMDOC_FORMDOC_SELECT}>'  />
+							<input type='submit' class='btn btn-success' name='select'  id='select' value='<{$smarty.const._MA_XMDOC_FORMDOC_SELECT}>' title='<{$smarty.const._MA_XMDOC_FORMDOC_SELECT}>'  />
 							</form>
 						</div>
 					<{/if}>
@@ -142,7 +131,7 @@
 		<{/if}>
 	</div><!-- .xmdoc -->
 	<div id="footer" class="text-center">
-		<input value="<{$smarty.const._CLOSE}>" type="button" onclick="window.close();"/>
+		<input value="<{$smarty.const._CLOSE}>" class='btn btn-secondary' type="button" onclick="window.close();"/>
 	</div>
 </body>
 </html>

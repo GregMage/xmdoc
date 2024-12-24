@@ -46,6 +46,8 @@ if (file_exists($bootstrap) || file_exists($bootstrap_min)){
 	} else {
 		$xoopsTpl->assign('bootstrap_css', XOOPS_THEME_URL . '/' . $GLOBALS['xoopsConfig']['theme_set'] . '/css/bootstrap.css');
 	}
+	include_once XOOPS_ROOT_PATH . '/class/xoopsform/renderer/XoopsFormRendererBootstrap4.php';
+	XoopsFormRenderer::getInstance()->set(new XoopsFormRendererBootstrap4());
 } else{
 	$xoopsTpl->assign('bootstrap_css', '');
 }
@@ -116,7 +118,7 @@ $nb_limit = $helper->getConfig('general_perpage', 15);
 // Get start pager
 $start = Request::getInt('start', 0);
 
-$form = new XoopsThemeForm('', 'form', 'docmanager.php', 'post', true);
+$form = new XoopsThemeForm(_MA_XMDOC_SEARCH, 'form', 'docmanager.php', 'post', true);
 // name
 $form->addElement(new XoopsFormText(_MA_XMDOC_DOCUMENT_NAME, 's_name', 50, 255, $s_name));
 
