@@ -32,10 +32,10 @@ class XmdocFormDoc extends XoopsFormElementTray
      */
     public function __construct($modulename = '', $itemid = 0)
     {
-        
+
 		include __DIR__ . '/../include/common.php';
 		xoops_loadLanguage('main', 'xmdoc');
-        
+
         $sessionHelper = new Helper\Session('xmdoc');
         $sessionHelper->del('selectiondocs');
 
@@ -44,7 +44,7 @@ class XmdocFormDoc extends XoopsFormElementTray
 		$helper = Helper::getHelper($modulename);
 		$moduleid = $helper->getModule()->getVar('mid');
 		// remove doc
-		if (!empty($itemid) &&  $itemid != 0){		
+		if (!empty($itemid) &&  $itemid != 0){
 			$criteria = new CriteriaCompo();
 			$criteria->add(new Criteria('docdata_modid', $moduleid));
 			$criteria->add(new Criteria('docdata_itemid', $itemid));
@@ -54,7 +54,7 @@ class XmdocFormDoc extends XoopsFormElementTray
 			$docdataHandler->field_link = "document_id";
 			$docdataHandler->field_object = "docdata_docid";
 			$docdata_arr = $docdataHandler->getByLink($criteria);
-			$docdata_count = $docdataHandler->getCount($criteria);	
+			$docdata_count = $docdataHandler->getCount($criteria);
 			if ($docdata_count > 0) {
 				$remove_doc = new XoopsFormCheckBox('<h4>' . _MA_XMDOC_FORMDOC_REMOVE . '</h4>', 'removeDocs');
 				$remove_doc->columns = 3;
@@ -68,7 +68,7 @@ class XmdocFormDoc extends XoopsFormElementTray
 		}
 		// add doc
 		$add_text = "<br>";
-		$add_text .= "<button type='button' class='btn btn-default btn-sm' onclick='openWithSelfMain(\"" . XOOPS_URL . "/modules/xmdoc/docmanager.php\",\"docmanager\",400,430);' onmouseover='style.cursor=\"hand\"' title='" . _MA_XMDOC_FORMDOC_ADD . "'>";
+		$add_text .= "<button type='button' class='btn btn-secondary btn-sm' onclick='openWithSelfMain(\"" . XOOPS_URL . "/modules/xmdoc/docmanager.php\",\"docmanager\",400,430);' onmouseover='style.cursor=\"hand\"' title='" . _MA_XMDOC_FORMDOC_ADD . "'>";
 		$add_text .= "<span class='fa fa-file' aria-hidden='true'></span>";
 		$add_text .= "<small> " . _MA_XMDOC_FORMDOC_ADD . "</small>";
 		$add_text .= "</button>";
