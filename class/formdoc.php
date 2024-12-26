@@ -37,7 +37,7 @@ class XmdocFormDoc extends XoopsFormElementTray
 		xoops_loadLanguage('main', 'xmdoc');
 
         $sessionHelper = new Helper\Session('xmdoc');
-        $sessionHelper->del('selectiondocs');
+		$sessionHelper->del('selectiondocs');
 
 		parent::__construct(_MA_XMDOC_FORMDOC_NAME, '<br>');
 		// module id
