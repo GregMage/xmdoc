@@ -8,6 +8,8 @@ Bug fixes:
 
 Improvements:
 	- Compatibility with the xlanguage module
+	- Viewing pending documents in the administration
+	- Added pending documents to the "Document list (title)" block
 
 Security:
 	- /
@@ -21,6 +23,8 @@ Correction de bogues:
 
 Améliorations:
 	- Compatibilité avec le module xlanguage
+	- Visualisation des documents en attente dans l'administration
+	- Ajout dans le bloc "Liste des documents (titre)" les documents en attente
 
 Sécurités:
 	- /
