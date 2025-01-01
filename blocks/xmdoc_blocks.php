@@ -37,48 +37,62 @@ function block_xmdoc_show($options) {
 	$block['use_modal'] = $helper->getConfig('general_usemodal', 1);
 
 	$criteria = new CriteriaCompo();
-	$criteria->add(new Criteria('document_status', 1));
 	switch ($options[2]) {
         case "date":
+			$criteria->add(new Criteria('document_status', 1));
 			$criteria->setSort('document_date DESC, document_name');
 			$criteria->setOrder('ASC');
         break;
 
         case "hits":
+			$criteria->add(new Criteria('document_status', 1));
 			$criteria->setSort('document_counter DESC, document_name');
 			$criteria->setOrder('ASC');
         break;
 
         case "rating":
+			$criteria->add(new Criteria('document_status', 1));
 			$criteria->setSort('document_rating DESC, document_name');
 			$criteria->setOrder('ASC');
         break;
 
         case "random":
+			$criteria->add(new Criteria('document_status', 1));
             $criteria->setSort('RAND()');
         break;
 
 		case "title":
 			switch ($options[3]) {
 				case 0:
+					$criteria->add(new Criteria('document_status', 1));
 					$criteria->setSort('document_date DESC, document_name');
 					$criteria->setOrder('ASC');
 					break;
 
 				case 1:
+					$criteria->add(new Criteria('document_status', 1));
 					$criteria->setSort('document_counter DESC, document_name');
 					$criteria->setOrder('ASC');
 					break;
 
 				case 2:
+					$criteria->add(new Criteria('document_status', 1));
 					$criteria->setSort('document_rating DESC, document_name');
 					$criteria->setOrder('ASC');
 					break;
 
 				case 3:
+					$criteria->add(new Criteria('document_status', 1));
 					$criteria->setSort('RAND()');
 					break;
+
+				case 4:
+					$criteria->add(new Criteria('document_status', 2));
+            		$criteria->setSort('document_date DESC, document_name');
+					$criteria->setOrder('ASC');
+					break;
 			}
+			$block['type'] = $options[3];
 			$block['size'] = $options[4];
 			$block['logo'] = $options[5];
 			break;
@@ -173,6 +187,7 @@ function block_xmdoc_edit($options) {
 			$type->addOption(1, _MB_XMDOC_TYPE_HITS);
 			$type->addOption(2, _MB_XMDOC_TYPE_RATING);
 			$type->addOption(3, _MB_XMDOC_TYPE_RANDOM);
+			$type->addOption(4, _MB_XMDOC_TYPE_WAITING);
 			$form->addElement($type);
 			$form->addElement(new XoopsFormText(_MB_XMDOC_SIZE, 'options[4]', 5, 5, $options[4]), true);
 			$form->addElement(new XoopsFormRadioYN(_MB_XMDOC_LOGO, 'options[5]', $options[5]), true);
