@@ -70,7 +70,7 @@ class xmdoc_document extends XoopsObject
      */
     public function saveDocument($documentHandler, $action = false)
     {
-        global $xoopsUser;        
+        global $xoopsUser;
         if ($action === false) {
             $action = $_SERVER['REQUEST_URI'];
         }
@@ -83,7 +83,7 @@ class xmdoc_document extends XoopsObject
             $error_message .= _MA_XMDOC_ERROR_WEIGHT . '<br>';
             $this->setVar('document_weight', 0);
         }
-        
+
         // document
 		$mediaSize = 0;
         $category_id = Request::getInt('document_category', 1);
@@ -145,7 +145,7 @@ class xmdoc_document extends XoopsObject
 		} else {
 			$this->setVar('document_size', Request::getFloat('sizeValue', 0) . ' ' . Request::getString('sizeType', ''));
 		}
-        
+
         if (isset($_POST['document_userid'])) {
             $this->setVar('document_userid', Request::getInt('document_userid', 0));
         } else {
@@ -170,8 +170,8 @@ class xmdoc_document extends XoopsObject
 		if (Request::getInt('document_resetcounter', 0) == 1){
 			$this->setVar('document_counter', 0);
 		}
-		
-		// permission edit and approve submitted doc		
+
+		// permission edit and approve submitted doc
         $permHelper = new Helper\Permission();
 		$permission = $permHelper->checkPermission('xmdoc_editapprove', $category_id);
         if ($permission == false){
@@ -203,7 +203,7 @@ class xmdoc_document extends XoopsObject
         }
         return $error_message;
     }
-    
+
     /**
      * @param bool $action
      * @return XoopsThemeForm
@@ -214,13 +214,13 @@ class xmdoc_document extends XoopsObject
             $action = $_SERVER['REQUEST_URI'];
         }
         include_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
-        include __DIR__ . '/../include/common.php';  
+        include __DIR__ . '/../include/common.php';
 
         // Get Permission to submit
-        $submitPermissionCat = XmdocUtility::getPermissionCat('xmdoc_submit');        
-        
+        $submitPermissionCat = XmdocUtility::getPermissionCat('xmdoc_submit');
+
         $form = new XoopsThemeForm(_MA_XMDOC_ADD, 'form', $action, 'post', true);
-        // category       
+        // category
         $category = new XoopsFormSelect(_MA_XMDOC_DOCUMENT_CATEGORY, 'document_category', $this->getVar('document_category'));
         $criteria = new CriteriaCompo();
 		$criteria->add(new Criteria('category_status', 1));
@@ -229,7 +229,7 @@ class xmdoc_document extends XoopsObject
         if (!empty($submitPermissionCat)){
             $criteria->add(new Criteria('category_id', '(' . implode(',', $submitPermissionCat) . ')','IN'));
         }
-        $category_arr = $categoryHandler->getall($criteria);        
+        $category_arr = $categoryHandler->getall($criteria);
         if (count($category_arr) == 0 || empty($submitPermissionCat)){
             redirect_header('index.php', 3, _MA_XMDOC_ERROR_NOACESSCATEGORY);
         }
@@ -237,12 +237,12 @@ class xmdoc_document extends XoopsObject
             $category->addOption($category_arr[$i]->getVar('category_id'), $category_arr[$i]->getVar('category_name'));
         }
         $form->addElement($category, true);
-        
-        $form->addElement(new XoopsFormHidden('op', 'loaddocument'));        
+
+        $form->addElement(new XoopsFormHidden('op', 'loaddocument'));
         // submit
         $form->addElement(new XoopsFormButton('', 'submit', _SUBMIT, 'submit'));
         return $form;
-    } 
+    }
 
     /**
      * @param bool $action
@@ -258,9 +258,9 @@ class xmdoc_document extends XoopsObject
         }
         include_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
         include __DIR__ . '/../include/common.php';
-        
+
         // Get Permission to submit
-        $submitPermissionCat = XmdocUtility::getPermissionCat('xmdoc_submit');  
+        $submitPermissionCat = XmdocUtility::getPermissionCat('xmdoc_submit');
 
         //form title
         $title = $this->isNew() ? sprintf(_MA_XMDOC_ADD) : sprintf(_MA_XMDOC_EDIT);
@@ -278,11 +278,11 @@ class xmdoc_document extends XoopsObject
         $category_img = $category->getVar('category_logo') ?: 'blank.gif';
         $form->addElement(new xoopsFormLabel (_MA_XMDOC_DOCUMENT_CATEGORY, '<img src="' . $url_logo_category .  $category_img . '" alt="' . $category_img . '" style="max-width:100px"/> <strong>' . $category->getVar('category_name') . '</strong>'));
         $form->addElement(new XoopsFormHidden('document_category', $category_id));
-        
+
         // title
         $form->addElement(new XoopsFormText(_MA_XMDOC_DOCUMENT_NAME, 'document_name', 50, 255, $this->getVar('document_name')), true);
-        
-        // document       
+
+        // document
         $document = new XoopsFormElementTray(_MA_XMDOC_DOCUMENT_DOCUMENT,'<br /><br />');
         $document_url = new XoopsFormText(_MA_XMDOC_DOCUMENT_DOCUMENTURL, 'document_document', 75, 255, $this->getVar('document_document'));
         $document->addElement($document_url,false);
@@ -301,7 +301,7 @@ class xmdoc_document extends XoopsObject
 		$description = new XoopsFormEditor(_MA_XMDOC_DOCUMENT_DESC, 'document_description', $editor_configs);
 		$description->setDescription(_MA_XMDOC_DOCUMENT_DESC_DESC);
         $form->addElement($description, false);
-        
+
         // logo
         $blank_img = $this->getVar('document_logo') ?: 'blank_doc.gif';
         $uploadirectory = str_replace(XOOPS_URL, '', $url_logo_document);
@@ -321,8 +321,8 @@ class xmdoc_document extends XoopsObject
         $fileseltray_img->addElement(new XoopsFormLabel(''), false);
         $imgtray_img->addElement($fileseltray_img);
         $form->addElement($imgtray_img);
-		
-		// size		
+
+		// size
 		$size_value_arr = explode(' ', $this->getVar('document_size'));
 		$aff_size = new \XoopsFormElementTray(_MA_XMDOC_DOCUMENT_SIZE, '');
 		$aff_size->addElement(new \XoopsFormText('', 'sizeValue', 13, 13, $size_value_arr[0]));
@@ -340,13 +340,13 @@ class xmdoc_document extends XoopsObject
 		$aff_size->addElement($type);
 		$aff_size->setDescription(_MA_XMDOC_DOCUMENT_SIZE_DSC);
 		$form->addElement($aff_size);
-        
+
         // showinfo
         $form->addElement(new XoopsFormRadioYN(_MA_XMDOC_DOCUMENT_SHOWINFO, 'document_showinfo', $this->getVar('document_showinfo')));
-        
+
         // weight
         $form->addElement(new XoopsFormText(_MA_XMDOC_DOCUMENT_WEIGHT, 'document_weight', 5, 5, $this->getVar('document_weight')), true);
-        
+
         if ($helper->isUserAdmin() == true){
 			if ($this->isNew()) {
 				$userid = !empty($xoopsUser) ? $xoopsUser->getVar('uid') : 0;
@@ -355,7 +355,7 @@ class xmdoc_document extends XoopsObject
 			}
 			// userid
 			$form->addElement(new XoopsFormSelectUser(_MA_XMDOC_DOCUMENT_USERID, 'document_userid', true, $userid, 1, false), true);
-			
+
 			// date and mdate
 			if (!$this->isNew()) {
 				$selection_date = new XoopsFormElementTray(_MA_XMDOC_DOCUMENT_DATEUPDATE);
@@ -375,24 +375,24 @@ class xmdoc_document extends XoopsObject
 					$form->addElement($selection_mdate);
 				}
 			}
-			
+
 			// reset counter
 			$form->addElement(new XoopsFormRadioYN(_MA_XMDOC_DOCUMENT_RESETCOUNTER, 'document_resetcounter', 0, _YES, _NO  . ' (' . $this->getVar('document_counter') . ')'));
-			
+
 		}
 
-		// permission edit and approve submitted doc		
+		// permission edit and approve submitted doc
         $permHelper = new Helper\Permission();
 		$permission = $permHelper->checkPermission('xmdoc_editapprove', $category_id);
         if ($permission == true || $helper->isUserAdmin() == true){
             // status
 			$form_status = new XoopsFormRadio(_MA_XMDOC_STATUS, 'document_status', $this->getVar('document_status'));
-			$options = array(1 => _MA_XMDOC_STATUS_A, 0 =>_MA_XMDOC_STATUS_NA,);
+			$options = array(1 => _MA_XMDOC_STATUS_A, 0 =>_MA_XMDOC_STATUS_NA, 2 => _MA_XMDOC_DOCUMENT_WFV);
 			$form_status->addOptionArray($options);
 			$form->addElement($form_status);
         }
-		
-		//captcha		
+
+		//captcha
 		if ($helper->getConfig('general_captcha', 0) == 1) {
 			$form->addElement(new XoopsFormCaptcha(), true);
 		}
@@ -434,10 +434,10 @@ class xmdoc_document extends XoopsObject
 					}
 				}
 			}
-			redirect_header($action, 2, _MA_XMDOC_REDIRECT_SAVE);			
+			redirect_header($action, 2, _MA_XMDOC_REDIRECT_SAVE);
 		} else {
 			$error_message .= $obj->getHtmlErrors();
-		}		
+		}
 		return $error_message;
 	}
 }

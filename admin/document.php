@@ -31,6 +31,7 @@ switch ($op) {
     case 'list':
         // Define Stylesheet
         $xoTheme->addStylesheet(XOOPS_URL . '/modules/system/css/admin.css');
+        $xoTheme->addStylesheet( XOOPS_URL . '/modules/' . $xoopsModule->getVar('dirname', 'n') . '/assets/css/admin.css', null );
         $xoTheme->addScript('modules/system/js/admin.js');
         // Module admin
         $moduleAdmin->addItemButton(_MA_XMDOC_DOCUMENT_ADD, 'document.php?op=add', 'add');
@@ -64,12 +65,20 @@ switch ($op) {
         // Status
         $status = Request::getInt('status', 10);
         $xoopsTpl->assign('status', $status);
-        $status_options_arr = array(1 => _MA_XMDOC_STATUS_A, 0 =>_MA_XMDOC_STATUS_NA);
+        $status_options_arr = array(1 => _MA_XMDOC_STATUS_A, 0 =>_MA_XMDOC_STATUS_NA, 2 => _MA_XMDOC_DOCUMENT_WFV);
 		$status_options = '<option value="10"' . ($status == 0 ? ' selected="selected"' : '') . '>' . _ALL .'</option>';
         foreach (array_keys($status_options_arr) as $i) {
             $status_options .= '<option value="' . $i . '"' . ($status == $i ? ' selected="selected"' : '') . '>' . $status_options_arr[$i] . '</option>';
         }
         $xoopsTpl->assign('status_options', $status_options);
+
+        // Waiting document
+        $criteria = new CriteriaCompo();
+        $criteria->add(new Criteria('document_status', 2));
+        $Waiting_document = $documentHandler->getCount($criteria);
+        if ($Waiting_document > 0){
+            $xoopsTpl->assign('warning_message', sprintf(_MA_XMDOC_DOCUMENT_WAITING, $Waiting_document));
+        }
 
         // Criteria
         $criteria = new CriteriaCompo();
@@ -229,9 +238,13 @@ switch ($op) {
     case 'document_update_status':
         $document_id = Request::getInt('document_id', 0);
         if ($document_id > 0) {
+            $document_status = Request::getInt('document_status', 10);
             $obj = $documentHandler->get($document_id);
-            $old = $obj->getVar('document_status');
-            $obj->setVar('document_status', !$old);
+            if ($document_status == 0 || $document_status == 2){
+                $obj->setVar('document_status', 1);
+            } else {
+                $obj->setVar('document_status', 0);
+            }
             if ($documentHandler->insert($obj)) {
                 exit;
             }

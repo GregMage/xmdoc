@@ -24,6 +24,14 @@
         <{$error_message}>
     </div>
 <{/if}>
+<{if $warning_message|default:'' != ''}>
+    <div class="xm-warning-msg xo-actions">
+        <{$warning_message}>
+		<a class="tooltip" href="document.php?status=2" title="<{$smarty.const._MA_XMDOC_VIEW}>">
+			<img src="<{xoAdminIcons 'view.png'}>" alt="<{$smarty.const._MA_XMDOC_VIEW}>">
+		</a>
+    </div>
+<{/if}>
 <{if $form|default:false}>
     <div>
         <{$form}>
@@ -79,10 +87,10 @@
                 <td class="xo-actions txtcenter">
                     <img id="loading_sml<{$itemdocument.id}>" src="../assets/images/spinner.gif" style="display:none;" title="<{$smarty.const._AM_SYSTEM_LOADING}>"
                     alt="<{$smarty.const._AM_SYSTEM_LOADING}>"/><img class="cursorpointer tooltip" id="sml<{$itemdocument.id}>"
-                    onclick="system_setStatus( { op: 'document_update_status', document_id: <{$itemdocument.id}> }, 'sml<{$itemdocument.id}>', 'document.php' )"
-                    src="<{if $itemdocument.status}><{xoAdminIcons 'success.png'}><{else}><{xoAdminIcons 'cancel.png'}><{/if}>"
-                    alt="<{if $itemdocument.status}><{$smarty.const._MA_XMDOC_STATUS_NA}><{else}><{$smarty.const._MA_XMDOC_STATUS_A}><{/if}>"
-                    title="<{if $itemdocument.status}><{$smarty.const._MA_XMDOC_STATUS_NA}><{else}><{$smarty.const._MA_XMDOC_STATUS_A}><{/if}>"/>
+                    onclick="system_setStatus( { op: 'document_update_status', document_id: <{$itemdocument.id}>, document_status: <{$itemdocument.status}> }, 'sml<{$itemdocument.id}>', 'document.php' )"
+                    src="<{if $itemdocument.status == 1}><{xoAdminIcons 'success.png'}><{/if}><{if $itemdocument.status == 0}><{xoAdminIcons 'cancel.png'}><{/if}><{if $itemdocument.status == 2}><{xoAdminIcons 'messagebox_warning.png'}><{/if}>"
+                    alt="<{if $itemdocument.status == 1}><{$smarty.const._MA_XMDOC_STATUS_NA}><{/if}><{if $itemdocument.status == 0 || $itemdocument.status == 2}><{$smarty.const._MA_XMDOC_STATUS_A}><{/if}>"
+                    title="<{if $itemdocument.status == 1}><{$smarty.const._MA_XMDOC_STATUS_NA}><{/if}><{if $itemdocument.status == 0 || $itemdocument.status == 2}><{$smarty.const._MA_XMDOC_STATUS_A}><{/if}>"/>
                 </td>
                 <td class="xo-actions txtcenter">
 					<{if $usemodal == 0}>

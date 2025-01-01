@@ -103,7 +103,9 @@ define('_MA_XMDOC_DOCUMENT_SUREDEL', 'Sure to delete this document? %s');
 define('_MA_XMDOC_DOCUMENT_UPLOAD', 'Upload');
 define('_MA_XMDOC_DOCUMENT_UPLOADSIZE', 'Maximum size: %s kB');
 define('_MA_XMDOC_DOCUMENT_USERID', 'Author');
+define('_MA_XMDOC_DOCUMENT_WAITING', 'There are <strong>%s</strong> document(s) waiting for validation!');
 define('_MA_XMDOC_DOCUMENT_WEIGHT', 'Weight');
+define('_MA_XMDOC_DOCUMENT_WFV', 'Waiting for validation');
 
 // permission
 define('_MA_XMDOC_PERMISSION_VIEW', 'View Permissions');
