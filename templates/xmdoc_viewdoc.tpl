@@ -41,15 +41,15 @@
 		</tr>
 		<{else}>
 		<div class="col-12 col-md-6 col-lg-4 p-2">
-			<div class="card">
-				<div class="card-header text-center text-truncate d-none d-sm-block">
+			<div class="card" <{if $viewdocument.color != false}>style="border-color : <{$viewdocument.color}>;"<{/if}>>
+				<div class="card-header text-center text-truncate d-none d-sm-block" <{if $viewdocument.color != false}>style="background-color : <{$viewdocument.color}>;"<{/if}>>
 					<a class="text-decoration-none" title="<{$viewdocument.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$viewdocument.categoryid}>&amp;doc_id=<{$viewdocument.id}>" target="_blank">
-						<{$viewdocument.name}>
+						<h5 class="mb-0"><{$viewdocument.name}></h5>
 					</a>
 				</div>
-				<div class="card-header text-center d-block d-sm-none">
+				<div class="card-header text-center d-block d-sm-none" <{if $viewdocument.color != false}>style="background-color : <{$viewdocument.color}>;"<{/if}>>
 					<a class="text-decoration-none" title="<{$viewdocument.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$viewdocument.categoryid}>&amp;doc_id=<{$viewdocument.id}>" target="_blank">
-						<{$viewdocument.name}>
+					<h5 class="mb-0"><{$viewdocument.name}></h5>
 					</a>
 				</div>
 				<div class="card-body text-center">

@@ -12,6 +12,7 @@ Improvements:
 	- Added pending documents to the "Document list (title)" block
 	- Changed the redirect message if the document is awaiting validation
 	- Added list view instead of thumbnails (enabled from preferences)
+	- Category color was not applied to thumbnails embedded in other modules
 
 Security:
 	- /
@@ -29,6 +30,7 @@ Améliorations:
 	- Ajout dans le bloc "Liste des documents (titre)" les documents en attente
 	- Modification du message de redirection si le document est en attente de validation
 	- Ajout d'une vue sous forme de liste à la place des vignettes(activation depuis les préférences)
+	- La couleur de la catégorie n'était pas appliquée sur les vignettes intégrées à d'autres modules
 
 Sécurités:
 	- /

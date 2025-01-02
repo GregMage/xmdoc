@@ -277,6 +277,12 @@ class XmdocUtility{
                 $document['showinfo']          = $document_arr[$i]->getVar('document_showinfo');
                 $document_img                  = $document_arr[$i]->getVar('document_logo') ?: 'blank_doc.gif';
                 $document['logo']              = $url_logo_document . $document_img;
+                $color						   = $document_arr[$i]->getVar('category_color');
+                if ($color == '#ffffff'){
+                    $document['color']	 	   = false;
+                } else {
+                    $document['color']		   = $color;
+                }
                 $document['perm_edit']         = $permDocHelper->checkPermission('xmdoc_editapprove', $document['categoryid']);
                 $document['perm_del']          = $permDocHelper->checkPermission('xmdoc_delete', $document['categoryid']);
 				//xmsocial
