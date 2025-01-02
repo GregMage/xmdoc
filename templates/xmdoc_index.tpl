@@ -124,7 +124,7 @@
 							</a>
 						</div>
 					</div>
-					<div class="card-header text-center d-block d-sm-none">
+					<div class="card-header text-center d-block d-sm-none" <{if $document.color != false}>style="background-color : <{$document.color}>;"<{/if}>>
 						<div class="d-flex justify-content-center text-center">
 							<a class="text-decoration-none" title="<{$document.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank">
 								<h5 class="mb-0"><{$document.name}></h5>

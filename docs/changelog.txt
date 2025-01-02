@@ -5,6 +5,7 @@ Date:    02.01.2025
 Bug fixes:
 	- Fixed PHP 8 errors
 	- Smarty 3 problem with bootstrap 3 template
+	- Category color was not applied to thumbnails on small screens
 
 Improvements:
 	- Compatibility with the xlanguage module
@@ -23,6 +24,7 @@ Important:	- The 1.4.0 series is only compatible under xoops 2.5.11.
 Correction de bogues:
 	- Correction d'erreurs PHP 8
 	- Problème smarty 3 avec template bootstrap 3
+	- La couleur de la catégorie n'était pas appliquée sur les vignettes sur les petits écrans
 
 Améliorations:
 	- Compatibilité avec le module xlanguage
