@@ -11,6 +11,7 @@ Improvements:
 	- Viewing pending documents in the administration
 	- Added pending documents to the "Document list (title)" block
 	- Changed the redirect message if the document is awaiting validation
+	- Added list view instead of thumbnails (enabled from preferences)
 
 Security:
 	- /
@@ -27,6 +28,7 @@ Améliorations:
 	- Visualisation des documents en attente dans l'administration
 	- Ajout dans le bloc "Liste des documents (titre)" les documents en attente
 	- Modification du message de redirection si le document est en attente de validation
+	- Ajout d'une vue sous forme de liste à la place des vignettes(activation depuis les préférences)
 
 Sécurités:
 	- /

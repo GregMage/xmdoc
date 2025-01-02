@@ -290,6 +290,8 @@ class XmdocUtility{
                 unset($document);
             }
             $xoopsTpl->assign('xmdoc_viewdocs', true);
+            $xoopsTpl->assign('xmdoc_viewlist', $xmdocHelper->getConfig('general_uselist', 0));
+            $xoopsTpl->assign('xmdoc_logosize', $xmdocHelper->getConfig('general_logosize', 0));
 			$xoopsTpl->assign('use_modal', $xmdocHelper->getConfig('general_usemodal', 1));
         }
     }

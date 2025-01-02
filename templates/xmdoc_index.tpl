@@ -74,8 +74,47 @@
 <{/if}>
 <{if $document_count|default:0 != 0}>
 	<hr />
+	<{if $viewlist == true}>
+	<table class="table table-hover">
+		<thead class="thead-light">
+			<tr>
+				<th scope="col" class="text-center col-3"><{$smarty.const._MA_XMDOC_DOCUMENT_LOGO}></th>
+				<th scope="col" class="text-left col-5"><{$smarty.const._MA_XMDOC_DOCUMENT_NAME}></th>
+				<th scope="col" class="text-left col-3"><{$smarty.const._MA_XMDOC_DOCUMENT_CATEGORY}></th>
+				<th scope="col" class="text-center col-1"><span class="fa fa-info-circle fa-lg" aria-hidden="true"></span></th>
+			</tr>
+		</thead>
+		<tbody>
+	<{else}>
 	<div class="row">
+	<{/if}>
 		<{foreach item=document from=$documents}>
+		<{if $viewlist == true}>
+			<tr>
+				<td class="text-center">
+				<{if $document.logo != ''}>
+					<a title="<{$document.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank">
+						<img class="rounded img-fluid mh-100" src="<{$document.logo}>" alt="<{$document.name}>" style="max-width:<{$logosize}>px">
+					</a>
+				<{/if}>
+				</td>
+				<td class="text-left">
+					<a class="text-decoration-none" title="<{$document.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$document.categoryid}>&amp;doc_id=<{$document.id}>" target="_blank">
+						<{$document.name}>
+					</a>
+				</td>
+				<td class="text-left">category</td>
+				<td class="text-center">
+					<{if $use_modal == 1}>
+						<a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal<{$document.id}>" role="button"> <span class="fa fa-info-circle fa-lg text-light" aria-hidden="true"></span></a>
+					<{else}>
+						<a class="btn btn-primary btn-sm" href="<{$xoops_url}>/modules/xmdoc/document.php?doc_id=<{$document.id}>" role="button" target="_blank">
+							<span class="fa fa-info-circle fa-lg" aria-hidden="true"></span>
+						</a>
+					<{/if}>
+				</td>
+			</tr>
+			<{else}>
 			<div class="col-sm-12 col-md-6 col-lg-4 p-2">
 				<div class="card xmdoc-border" <{if $document.color != false}>style="border-color : <{$document.color}>;"<{/if}>>
 					<div class="card-header text-center text-truncate d-none d-sm-block" <{if $document.color != false}>style="background-color : <{$document.color}>;"<{/if}>>
@@ -125,6 +164,7 @@
 					</div>
 				</div>
 			</div>
+			<{/if}>
 			<div class="modal" tabindex="-1" id="myModal<{$document.id}>" role="dialog">
 				<div class="modal-dialog modal-lg" role="document">
 					<div class="modal-content">
@@ -206,7 +246,12 @@
 				</div>
 			</div>
 		<{/foreach}>
+	<{if $viewlist == true}>
+		</tbody>
+	</table>
+	<{else}>
 	</div>
+	<{/if}>
 	<{if $nav_menu|default:false}>
 		<div class="row">
 			<div class="col-sm-12" style="padding-bottom: 10px; padding-top: 5px; padding-right: 60px; text-align: right;">

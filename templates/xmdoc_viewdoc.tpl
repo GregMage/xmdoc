@@ -1,51 +1,91 @@
 <{if $xmdoc_viewdocs == true}>
+<{if $xmdoc_viewlist == true}>
+<table class="table table-hover">
+	<thead class="thead-light">
+		<tr>
+			<th scope="col" class="text-center col-3"><{$smarty.const._MA_XMDOC_DOCUMENT_LOGO}></th>
+			<th scope="col" class="text-left col-5"><{$smarty.const._MA_XMDOC_DOCUMENT_NAME}></th>
+			<th scope="col" class="text-left col-3"><{$smarty.const._MA_XMDOC_DOCUMENT_CATEGORY}></th>
+			<th scope="col" class="text-center col-1"><span class="fa fa-info-circle fa-lg" aria-hidden="true"></span></th>
+		</tr>
+	</thead>
+	<tbody>
+<{else}>
 <div class="row">
+<{/if}>
 	<{foreach item=viewdocument from=$document}>
-	<div class="col-12 col-md-6 col-lg-4 p-2">
-		<div class="card">
-			<div class="card-header text-center text-truncate d-none d-sm-block">
+		<{if $xmdoc_viewlist == true}>
+		<tr>
+			<td class="text-center">
+			<{if $viewdocument.logo != ''}>
+				<a title="<{$viewdocument.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$viewdocument.categoryid}>&amp;doc_id=<{$viewdocument.id}>" target="_blank">
+					<img class="rounded img-fluid mh-100" src="<{$viewdocument.logo}>" alt="<{$viewdocument.name}>" style="max-width:<{$xmdoc_logosize}>px">
+				</a>
+			<{/if}>
+			</td>
+			<td class="text-left">
 				<a class="text-decoration-none" title="<{$viewdocument.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$viewdocument.categoryid}>&amp;doc_id=<{$viewdocument.id}>" target="_blank">
 					<{$viewdocument.name}>
 				</a>
-			</div>
-			<div class="card-header text-center d-block d-sm-none">
-				<a class="text-decoration-none" title="<{$viewdocument.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$viewdocument.categoryid}>&amp;doc_id=<{$viewdocument.id}>" target="_blank">
-					<{$viewdocument.name}>
-				</a>
-			</div>
-			<div class="card-body text-center">
-				<div class="row d-flex justify-content-center" >
-					<div class="col-12" style="height: 150px;">
-						<{if $viewdocument.logo != ''}>
-						<a title="<{$viewdocument.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$viewdocument.categoryid}>&amp;doc_id=<{$viewdocument.id}>" target="_blank">
-							<img class="rounded img-fluid mh-100" src="<{$viewdocument.logo}>" alt="<{$viewdocument.name}>">
-						</a>
-						<{/if}>
-					</div>
-					<div class="col-12 text-left">
-						<hr />
-						<{$viewdocument.description_short}>
-						<hr />
-					</div>
-					<div class="col-10 col-md-11 col-xl-10 btn-group" role="group">
-						<{if $use_modal == 1}>
-							<a class="btn btn-primary" data-toggle="modal" data-target="#myModal<{$viewdocument.id}>" role="button"> <span class="fa fa-info-circle fa-lg text-light" aria-hidden="true"></span></a>
-						<{else}>
-							<a class="btn btn-primary" href="<{$xoops_url}>/modules/xmdoc/document.php?doc_id=<{$viewdocument.id}>" role="button" target="_blank">
-								<span class="fa fa-info-circle fa-lg" aria-hidden="true"></span>
+			</td>
+			<td class="text-left">category</td>
+			<td class="text-center">
+				<{if $use_modal == 1}>
+					<a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal<{$viewdocument.id}>" role="button"> <span class="fa fa-info-circle fa-lg text-light" aria-hidden="true"></span></a>
+				<{else}>
+					<a class="btn btn-primary btn-sm" href="<{$xoops_url}>/modules/xmdoc/document.php?doc_id=<{$viewdocument.id}>" role="button" target="_blank">
+						<span class="fa fa-info-circle fa-lg" aria-hidden="true"></span>
+					</a>
+				<{/if}>
+			</td>
+		</tr>
+		<{else}>
+		<div class="col-12 col-md-6 col-lg-4 p-2">
+			<div class="card">
+				<div class="card-header text-center text-truncate d-none d-sm-block">
+					<a class="text-decoration-none" title="<{$viewdocument.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$viewdocument.categoryid}>&amp;doc_id=<{$viewdocument.id}>" target="_blank">
+						<{$viewdocument.name}>
+					</a>
+				</div>
+				<div class="card-header text-center d-block d-sm-none">
+					<a class="text-decoration-none" title="<{$viewdocument.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$viewdocument.categoryid}>&amp;doc_id=<{$viewdocument.id}>" target="_blank">
+						<{$viewdocument.name}>
+					</a>
+				</div>
+				<div class="card-body text-center">
+					<div class="row d-flex justify-content-center" >
+						<div class="col-12" style="height: 150px;">
+							<{if $viewdocument.logo != ''}>
+							<a title="<{$viewdocument.name}>" href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$viewdocument.categoryid}>&amp;doc_id=<{$viewdocument.id}>" target="_blank">
+								<img class="rounded img-fluid mh-100" src="<{$viewdocument.logo}>" alt="<{$viewdocument.name}>">
 							</a>
-						<{/if}>
-						<a class="btn btn-primary d-block d-sm-none"  href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$viewdocument.categoryid}>&amp;doc_id=<{$viewdocument.id}>" target="_blank" title="<{$viewdocument.name}>">
-							<span class="fa fa-download fa-lg" aria-hidden="true"></span>
-						</a>
-						<a class="btn btn-primary d-none d-sm-block"  href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$viewdocument.categoryid}>&amp;doc_id=<{$viewdocument.id}>" target="_blank" title="<{$viewdocument.name}>">
-							<span class="fa fa-download fa-lg" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_DOWNLOAD}>
-						</a>
+							<{/if}>
+						</div>
+						<div class="col-12 text-left">
+							<hr />
+							<{$viewdocument.description_short}>
+							<hr />
+						</div>
+						<div class="col-10 col-md-11 col-xl-10 btn-group" role="group">
+							<{if $use_modal == 1}>
+								<a class="btn btn-primary" data-toggle="modal" data-target="#myModal<{$viewdocument.id}>" role="button"> <span class="fa fa-info-circle fa-lg text-light" aria-hidden="true"></span></a>
+							<{else}>
+								<a class="btn btn-primary" href="<{$xoops_url}>/modules/xmdoc/document.php?doc_id=<{$viewdocument.id}>" role="button" target="_blank">
+									<span class="fa fa-info-circle fa-lg" aria-hidden="true"></span>
+								</a>
+							<{/if}>
+							<a class="btn btn-primary d-block d-sm-none"  href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$viewdocument.categoryid}>&amp;doc_id=<{$viewdocument.id}>" target="_blank" title="<{$viewdocument.name}>">
+								<span class="fa fa-download fa-lg" aria-hidden="true"></span>
+							</a>
+							<a class="btn btn-primary d-none d-sm-block"  href="<{$xoops_url}>/modules/xmdoc/download.php?cat_id=<{$viewdocument.categoryid}>&amp;doc_id=<{$viewdocument.id}>" target="_blank" title="<{$viewdocument.name}>">
+								<span class="fa fa-download fa-lg" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_DOWNLOAD}>
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	<{/if}>
 	<div class="modal" tabindex="-1" id="myModal<{$viewdocument.id}>" role="dialog">
 		<div class="modal-dialog modal-lg" role="viewdocument">
 			<div class="modal-content">
@@ -67,18 +107,18 @@
 					<{if $viewdocument.showinfo == 1}>
 						<div class="row border-bottom border-secondary mx-1 pl-1">
 							<figure class="figure text-muted my-1 pr-2 text-center border-right border-secondary">
-								  <span class="fa fa-calendar fa-fw" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_FORMDOC_DATE_BT}>
-								  <figcaption class="figure-caption text-center"><{$viewdocument.date}></figcaption>
+								<span class="fa fa-calendar fa-fw" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_FORMDOC_DATE_BT}>
+								<figcaption class="figure-caption text-center"><{$viewdocument.date}></figcaption>
 							</figure>
 							<{if $viewdocument.mdate|default:false}>
 							<figure class="figure text-muted my-1 pr-2 text-center border-right border-secondary">
-								  <span class="fa fa-repeat fa-fw" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_FORMDOC_MDATE_BT}>
-								  <figcaption class="figure-caption text-center"><{$viewdocument.mdate}></figcaption>
+								<span class="fa fa-repeat fa-fw" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_FORMDOC_MDATE_BT}>
+								<figcaption class="figure-caption text-center"><{$viewdocument.mdate}></figcaption>
 							</figure>
 							<{/if}>
 							<figure class="figure text-muted my-1 pr-2 text-center border-right border-secondary">
-								  <span class="fa fa-user fa-fw" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_FORMDOC_AUTHOR}>
-								  <figcaption class="figure-caption text-center"><{$viewdocument.author}></figcaption>
+								<span class="fa fa-user fa-fw" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_FORMDOC_AUTHOR}>
+								<figcaption class="figure-caption text-center"><{$viewdocument.author}></figcaption>
 							</figure>
 							<{if $viewdocument.dorating == 1}>
 							<figure class="text-muted m-1 pr-2 text-center border-right border-secondary">
@@ -127,6 +167,11 @@
 		</div>
 	</div>
 	<{/foreach}>
+<{if $xmdoc_viewlist == true}>
+	</tbody>
+</table>
+<{else}>
 </div>
+<{/if}>
 <{/if}>
 <!-- .xmdoc -->

@@ -30,6 +30,8 @@ $xoopsTpl->assign('index_header', $helper->getConfig('index_header', ""));
 $xoopsTpl->assign('index_footer', $helper->getConfig('index_footer', ""));
 $xoopsTpl->assign('index_cat', $helper->getConfig('index_cat', 1));
 $xoopsTpl->assign('use_modal', $helper->getConfig('general_usemodal', 1));
+$xoopsTpl->assign('viewlist', $helper->getConfig('general_uselist', 0));
+$xoopsTpl->assign('logosize', $helper->getConfig('general_logosize', 0));
 
 // Get Permission to view
 $viewPermissionCat = XmdocUtility::getPermissionCat('xmdoc_view');

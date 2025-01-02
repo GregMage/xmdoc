@@ -181,6 +181,24 @@ $modversion['config'][] = array(
 );
 
 $modversion['config'][] = array(
+    'name'        => 'general_uselist',
+    'title'       => '_MI_XMDOC_PREF_GENERALUSELIST',
+    'description' => '_MI_XMDOC_PREF_GENERALUSELIST_DESC',
+    'formtype'    => 'yesno',
+    'valuetype'   => 'int',
+    'default'     => 0
+);
+
+$modversion['config'][] = array(
+    'name'        => 'general_logosize',
+    'title'       => '_MI_XMDOC_PREF_GENERALLOGOSIZE',
+    'description' => '_MI_XMDOC_PREF_GENERALLOGOSIZE_DESC',
+    'formtype'    => 'textbox',
+    'valuetype'   => 'int',
+    'default'     => 48
+);
+
+$modversion['config'][] = array(
     'name'        => 'general_perpage',
     'title'       => '_MI_XMDOC_PREF_GENERALITEMPERPAGE',
     'description' => '',
