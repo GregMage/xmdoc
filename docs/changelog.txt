@@ -1,6 +1,6 @@
 ﻿-------------------------------------------------
 Version: 1.5.0 Alpha
-Date:    24.12.2024
+Date:    02.01.2025
 -------------------------------------------------
 Bug fixes:
 	- Fixed PHP 8 errors
@@ -10,6 +10,7 @@ Improvements:
 	- Compatibility with the xlanguage module
 	- Viewing pending documents in the administration
 	- Added pending documents to the "Document list (title)" block
+	- Changed the redirect message if the document is awaiting validation
 
 Security:
 	- /
@@ -25,6 +26,7 @@ Améliorations:
 	- Compatibilité avec le module xlanguage
 	- Visualisation des documents en attente dans l'administration
 	- Ajout dans le bloc "Liste des documents (titre)" les documents en attente
+	- Modification du message de redirection si le document est en attente de validation
 
 Sécurités:
 	- /

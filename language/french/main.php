@@ -82,6 +82,7 @@ define('_MA_XMDOC_CATEGORY_WARNINGDELARTICLE', '<strong> Attention, les élémen
 define('_MA_XMDOC_CATEGORY_WEIGHT', 'Poids');
 
 // document
+define('_MA_XMDOC_DOCUMENT_AWAITING_VALIDATION', 'Votre document a bien été envoyé, il est maintenant en attente de validation!');
 define('_MA_XMDOC_DOCUMENT_CATEGORY', 'Catégorie');
 define('_MA_XMDOC_DOCUMENT_INCATEGORY', 'Dans la catégorie');
 define('_MA_XMDOC_DOCUMENT_DATEUPDATE', 'Mettre à jour la date de création');

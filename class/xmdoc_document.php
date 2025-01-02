@@ -195,6 +195,10 @@ class xmdoc_document extends XoopsObject
 				$error_message = _MA_XMDOC_ERROR_SIZE;
 				$timeToRedirect = 10;
 			}
+            if ($this->getVar('document_status') == 2){
+				$error_message = _MA_XMDOC_DOCUMENT_AWAITING_VALIDATION;
+				$timeToRedirect = 5;
+			}
             if ($documentHandler->insert($this)) {
 				redirect_header($action, $timeToRedirect, _MA_XMDOC_REDIRECT_SAVE . '<br><br>' . $error_message);
             } else {

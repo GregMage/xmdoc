@@ -292,7 +292,7 @@ $modversion['config'][] = array(
 );
 
 // About stuff
-$modversion['release_date']  = '2024/12/24';
+$modversion['release_date']  = '2025/01/02';
 
 $modversion['developer_lead']      = 'Mage';
 $modversion['module_website_url']  = 'www.monxoops.fr/';
