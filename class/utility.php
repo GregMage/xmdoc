@@ -382,11 +382,6 @@ class XmdocUtility{
             $size = curl_getinfo($curlHandle, CURLINFO_CONTENT_LENGTH_DOWNLOAD);
 			curl_close($curlHandle);
             return ($size > 0) ? XmdocUtility::FileSizeConvert($size) : 0;
-			if ($size <= 0){
-				return 0;
-			} else {
-				return XmdocUtility::FileSizeConvert($size);
-			}
 		}
 		return 0;
     }
