@@ -6,6 +6,7 @@ Bug fixes:
 	- Fixed PHP 8 errors
 	- Smarty 3 problem with bootstrap 3 template
 	- Category color was not applied to thumbnails on small screens
+	- Slowness problem in validating a document if there is no file
 
 Improvements:
 	- Compatibility with the xlanguage module
@@ -25,6 +26,7 @@ Correction de bogues:
 	- Correction d'erreurs PHP 8
 	- Problème smarty 3 avec template bootstrap 3
 	- La couleur de la catégorie n'était pas appliquée sur les vignettes sur les petits écrans
+	- Problème de lenteur dans la validation d'un document si il n'y pas de fichier
 
 Améliorations:
 	- Compatibilité avec le module xlanguage
