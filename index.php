@@ -140,6 +140,7 @@ if ($document_count > 0 && !empty($viewPermissionCat)) {
 		$document['id']                = $document_id;
 		$document['name']              = $document_arr[$i]->getVar('document_name');
 		$document['categoryid']        = $document_arr[$i]->getVar('document_category');
+		$document['category']        = $document_arr[$i]->getVar('category_name');
 		$document['document']          = $document_arr[$i]->getVar('document_document');
 		$document['description']       = str_replace('[break]', '', $document_arr[$i]->getVar('document_description', 'show'));
 		if (false == strpos($document_arr[$i]->getVar('document_description', 'e'), '[break]')){

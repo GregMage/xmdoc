@@ -103,7 +103,7 @@
 						<{$document.name}>
 					</a>
 				</td>
-				<td class="text-left">category</td>
+				<td class="text-left"><{$document.category}></td>
 				<td class="text-center">
 					<{if $use_modal == 1}>
 						<a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal<{$document.id}>" role="button"> <span class="fa fa-info-circle fa-lg text-light" aria-hidden="true"></span></a>
