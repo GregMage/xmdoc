@@ -27,8 +27,14 @@ include __DIR__ . '/include/common.php';
 xoops_load('utility', basename(__DIR__));
 include_once $GLOBALS['xoops']->path('class/xoopsformloader.php');
 
-// Get Permission to submit
+// Get Permission to view categories
 $viewPermissionCat = XmdocUtility::getPermissionCat('xmdoc_view');
+
+// Get Permission to submit documents
+$submitPermissionCat = XmdocUtility::getPermissionCat('xmdoc_submit');
+if (empty($submitPermissionCat)){
+	redirect_header(XOOPS_URL, 3, _MA_XMDOC_ERROR_NOACESSCATEGORY);
+}
 
 // Get values
 $search = Request::getString('search', '');
