@@ -24,6 +24,7 @@ define('_MA_XMDOC_DOCUMENT_ADD', 'Ajouter un nouveau document');
 define('_MA_XMDOC_DOCUMENT_LIST', 'Liste des documents');
 
 // Error message
+define('_MA_XMDOC_ERROR_EXIST', 'Le document existe déjà!');
 define('_MA_XMDOC_ERROR_LIMITDOWNLOAD', 'Vous avez téléchargé %s fichiers dans cette catégorie et la limite est de %s en 24h');
 define('_MA_XMDOC_ERROR_LIMITDOWNLOADITEM', 'Vous avez téléchargé ce fichier %s fois et la limite est de %s en 24h');
 define('_MA_XMDOC_ERROR_MODAL', 'Information: La fiche n\'est pas disponible car les informations sont détaillées dans une fenêtre "modal" (sur la même page)');
@@ -31,6 +32,7 @@ define('_MA_XMDOC_ERROR_NACTIVE', 'Erreur : Contenu désactivé!');
 define('_MA_XMDOC_ERROR_NOACESSCATEGORY', 'Vous n\'avez accès à aucune catégorie');
 define('_MA_XMDOC_ERROR_NOCATEGORY', 'Il n\'y a pas de catégories dans la base de données');
 define('_MA_XMDOC_ERROR_NODOCUMENT', 'Il n\'y a aucun document dans la base de données');
+define('_MA_XMDOC_ERROR_NOMODULE', 'Il n\'y a pas de modules disponibles pour lier les documents.');
 define('_MA_XMDOC_ERROR_NOPERMISETOLINK', 'Ce fichier n\'appartient pas au site d\'où vous venez.<br><br>Merci d\'écrire un courrier électronique au webmestre du site d\'où vous venez et dites-lui : <br><strong>VOUS N\'ÊTES PAS PROPRIÉTAIRE DE LIENS PROVENANT D\'AUTRES SITES ! (LEECH)</strong><br><strong>Définition de leecher : </strong> Quelqu\'un qui est trop paresseux pour afficher et héberger des liens sur son propre serveur ou vole le dur travail fait par d\'autres personnes.<br><br><strong>Vous êtes déjà enregistré</strong>');
 define('_MA_XMDOC_ERROR_PERMISSION', 'Pour utiliser des autorisations, vous devez créer des catégories.');
 define('_MA_XMDOC_ERROR_WEIGHT', 'Le poids doit être un nombre');
@@ -138,6 +140,7 @@ define('_MA_XMDOC_FORMDOC_ADD', 'Ajouter des documents');
 define('_MA_XMDOC_FORMDOC_AUTHOR', 'Auteur ');
 define('_MA_XMDOC_FORMDOC_DATE', 'Date de création ');
 define('_MA_XMDOC_FORMDOC_DATE_BT', 'Mise en ligne');
+define('_MA_XMDOC_FORMDOC_DIRECTADD', 'Ajouter le(s) document(s)');
 define('_MA_XMDOC_FORMDOC_DOWNLOAD', 'Téléchargements ');
 define('_MA_XMDOC_FORMDOC_MDATE', 'Date de modification ');
 define('_MA_XMDOC_FORMDOC_MDATE_BT', 'Mise à jour');

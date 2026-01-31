@@ -11,6 +11,11 @@
 	<{/if}>
 </head>
 <body onload="window.resizeTo(<{$xsize|default:1024}>, <{$ysize|default:768}>);window.moveTo(400,300);">
+	<{if $error_message|default:'' != ''}>
+		<div class="alert alert-warning" role="alert">
+			<{$error_message}>
+		</div>
+	<{/if}>
 	<div class="m-3">
 		<div class="card text-center mb-3">
 			<{if $selected|default:false}>
@@ -42,9 +47,17 @@
 				</div>
 				<div class="card-footer">
 					<form class="text-center" name="selreset" id="selreset" action="docmanager.php" method="post">
-						<input type="hidden" name="selectreset" value="true" />
-						<input type='submit' class='btn btn-warning' name='subselect'  id='subselect' value='<{$smarty.const._MA_XMDOC_FORMDOC_RESETSELECTED}>' title='<{$smarty.const._MA_XMDOC_FORMDOC_RESETSELECTED}>'  />
-						<input value="<{$smarty.const._MA_XMDOC_FORMDOC_VALIDATE}>" class='btn btn-success' type="button" onclick="window.close();"/>
+						<{if $op == 'add'}>
+							<input type='hidden' name='op' id='op' value='directadd'/>
+							<input type='hidden' name='docitemid' id='docitemid' value='<{$docitemid}>'/>
+							<input type='hidden' name='mod' id='mod' value='<{$mod}>'/>
+							<input type='submit' class='btn btn-warning' name='subselect'  id='subselect' value='<{$smarty.const._MA_XMDOC_FORMDOC_RESETSELECTED}>' title='<{$smarty.const._MA_XMDOC_FORMDOC_RESETSELECTED}>'  />
+							<input type='submit' class='btn btn-success' name='valid'  id='valid' value='<{$smarty.const._MA_XMDOC_FORMDOC_DIRECTADD}>' title='<{$smarty.const._MA_XMDOC_FORMDOC_DIRECTADD}>'/>
+						<{else}>
+							<input type="hidden" name="selectreset" value="true" />
+							<input type='submit' class='btn btn-warning' name='subselect'  id='subselect' value='<{$smarty.const._MA_XMDOC_FORMDOC_RESETSELECTED}>' title='<{$smarty.const._MA_XMDOC_FORMDOC_RESETSELECTED}>'  />
+							<input value="<{$smarty.const._MA_XMDOC_FORMDOC_VALIDATE}>" class='btn btn-success' type="button" onclick="window.close();"/>
+						<{/if}>
 					</form>
 				</div>
 			<{else}>
@@ -69,11 +82,6 @@
 						</a>
 					</div>
 				</div>
-					<{if $error_message|default:'' != ''}>
-						<div class="errorMsg text-left mt-2">
-							<{$error_message}>
-						</div>
-					<{/if}>
 					<{if $documents|default:'' != ""}>
 						<div class="">
 							<form name="formsel" id="formsel" action="docmanager.php" method="post">
@@ -117,7 +125,10 @@
 									<{/foreach}>
 									</tbody>
 								</table>
-							<input type='submit' class='btn btn-success' name='select'  id='select' value='<{$smarty.const._MA_XMDOC_FORMDOC_SELECT}>' title='<{$smarty.const._MA_XMDOC_FORMDOC_SELECT}>'  />
+								<input type='hidden' name='op' id='op' value='<{$op}>'/>
+								<input type='hidden' name='docitemid' id='docitemid' value='<{$docitemid}>'/>
+								<input type='hidden' name='mod' id='mod' value='<{$mod}>'/>
+								<input type='submit' class='btn btn-success' name='select'  id='select' value='<{$smarty.const._MA_XMDOC_FORMDOC_SELECT}>' title='<{$smarty.const._MA_XMDOC_FORMDOC_SELECT}>'  />
 							</form>
 						</div>
 					<{/if}>

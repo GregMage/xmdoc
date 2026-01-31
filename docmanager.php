@@ -34,6 +34,9 @@ $viewPermissionCat = XmdocUtility::getPermissionCat('xmdoc_view');
 $search = Request::getString('search', '');
 $reset = Request::getString('reset', '');
 $select = Request::getString('select', '');
+$op = Request::getString('op', '');
+$mod = Request::getString('mod', '');
+$docitemid = Request::getInt('docitemid', 0);
 
 $sessionHelper = new Helper\Session();
 
@@ -52,25 +55,49 @@ if (file_exists($bootstrap) || file_exists($bootstrap_min)){
 	$xoopsTpl->assign('bootstrap_css', '');
 }
 
+if ($op == 'directadd'){
+	if (isset($_REQUEST['valid'])){
+		$error_message = XmdocUtility::saveDocuments($mod, $docitemid);
+		if ($error_message != ''){
+			$xoopsTpl->assign('error_message', $error_message);
+			$op = 'add';
+		} else {
+			echo '<script type="text/javascript">
+				window.opener.location.reload();
+				window.close();
+			</script>';
+			exit();
+		}
+	}
+	if (isset($_REQUEST['subselect'])){
+		$sessionHelper->del('selectiondocs');
+		$op = 'add';
+	}
+}
+$xoopsTpl->assign('op', $op);
+$xoopsTpl->assign('docitemid', $docitemid);
+$xoopsTpl->assign('mod', $mod);
+
 if (isset($_REQUEST['selectreset'])){
     $sessionHelper->del('selectiondocs');
 }
 
 if (isset($_REQUEST['selDocs'])){
 	if (isset($_REQUEST['selDocs']) && is_array($_REQUEST['selDocs'])) {
-        if ($sessionHelper->get('selectiondocs') != false){
-            $arr_selectiondocs = $sessionHelper->get('selectiondocs');
-        } else {
-            $arr_selectiondocs = array();
-        }
+		if ($sessionHelper->get('selectiondocs') != false){
+			$arr_selectiondocs = $sessionHelper->get('selectiondocs');
+		} else {
+			$arr_selectiondocs = array();
+		}
 		foreach ($_REQUEST['selDocs'] as $index) {
-            if (!in_array($index, $arr_selectiondocs)){
+			if (!in_array($index, $arr_selectiondocs)){
 				$arr_selectiondocs[] = $index;
 			}
 		}
-        $sessionHelper->set('selectiondocs', $arr_selectiondocs);
+		$sessionHelper->set('selectiondocs', $arr_selectiondocs);
 	}
 }
+
 if ($sessionHelper->get('selectiondocs') != False){
 	$xoopsTpl->assign('selected', true);
 
@@ -146,6 +173,10 @@ $button = new XoopsFormElementTray('');
 $button->addElement(new XoopsFormButton('', 'search', _SEARCH, 'submit'));
 $button->addElement(new XoopsFormButton('', 'reset', _RESET, 'submit'));
 $form->addElement($button);
+
+$form->addElement(new XoopsFormHidden('op', $op));
+$form->addElement(new XoopsFormHidden('docitemid', $docitemid));
+$form->addElement(new XoopsFormHidden('mod', $mod));
 
 $xoopsTpl->assign('form', $form->render());
 

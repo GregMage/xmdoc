@@ -24,6 +24,7 @@ define('_MA_XMDOC_DOCUMENT_ADD', 'Add a new document');
 define('_MA_XMDOC_DOCUMENT_LIST', 'Document list');
 
 // Error message
+define('_MA_XMDOC_ERROR_EXIST', 'The document already exists!');
 define('_MA_XMDOC_ERROR_LIMITDOWNLOAD', 'You have downloaded %s files from this category and the limit is %s in 24h');
 define('_MA_XMDOC_ERROR_LIMITDOWNLOADITEM', 'You have downloaded this file %s times and the limit is %s in 24h');
 define('_MA_XMDOC_ERROR_MODAL', 'Information: The form is not available because the information is detailed in a "modal" window (on the same page)');
@@ -31,6 +32,7 @@ define('_MA_XMDOC_ERROR_NACTIVE', 'Error: Disable content!');
 define('_MA_XMDOC_ERROR_NOACESSCATEGORY', 'You don\'t have access to any categories');
 define('_MA_XMDOC_ERROR_NOCATEGORY', 'There are no categories in the database');
 define('_MA_XMDOC_ERROR_NODOCUMENT', 'There are no documents in the database');
+define('_MA_XMDOC_ERROR_NOMODULE', 'There are no modules available to link the documents to.');
 define('_MA_XMDOC_ERROR_NOPERMISETOLINK', 'This file does not belong to the website from where you are coming.<br /><br />thanks for writing an email to the webmaster of the website from where you are coming and tell him: <br /><strong>NO OWNERSHIP OF LINKS FROM OTHER SITES! (LEECH)</strong><br /><br /><strong>Leecher definition: </strong>Someone who is lazy to link to its own server or steals the hard work done by other people <br /><br />You are already <strong>registered</strong>.');
 define('_MA_XMDOC_ERROR_PERMISSION', 'To use permissions, you must create categories.');
 define('_MA_XMDOC_ERROR_WEIGHT', 'Weight must be a number');
@@ -139,6 +141,7 @@ define('_MA_XMDOC_FORMDOC_AUTHOR', 'Author');
 define('_MA_XMDOC_FORMDOC_DATE', 'Creation date');
 define('_MA_XMDOC_FORMDOC_DATE_BT', 'On line');
 define('_MA_XMDOC_FORMDOC_DOWNLOAD', 'Downloads');
+define('_MA_XMDOC_FORMDOC_DIRECTADD', 'Add documents(s)');
 define('_MA_XMDOC_FORMDOC_MDATE', 'Modification date');
 define('_MA_XMDOC_FORMDOC_MDATE_BT', 'Updated');
 define('_MA_XMDOC_FORMDOC_NAME', 'Document management');

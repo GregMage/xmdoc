@@ -164,29 +164,35 @@ class XmdocUtility{
         $sessionHelper = new Helper\Session('xmdoc');
 		// module id
 		$helper = Helper::getHelper($modulename);
-		$moduleid = $helper->getModule()->getVar('mid');
-		if ($sessionHelper->get('selectiondocs') != false){
-			foreach ($sessionHelper->get('selectiondocs') as $index) {
-				// vérification pour savoir si le document est déjà existant
-				$criteria = new CriteriaCompo();
-				$criteria->add(new Criteria('docdata_docid', $index));
-				$criteria->add(new Criteria('docdata_modid', $moduleid));
-				$criteria->add(new Criteria('docdata_itemid', $itemid));
-				$docdata_count = $docdataHandler->getCount($criteria);
-				if ($docdata_count == 0) {
-					$obj  = $docdataHandler->create();
-					$obj->setVar('docdata_docid', $index);
-					$obj->setVar('docdata_modid', $moduleid);
-					$obj->setVar('docdata_itemid', $itemid);
-					if ($docdataHandler->insert($obj)){
-						$error_message .= '';
-					} else {
-						$error_message .= 'docdata id: ' . $index . '<br>' . $obj->getHtmlErrors();
-					}
-				}
-			}
-            $sessionHelper->del('selectiondocs');
-		}
+        if (false !== $helper) {
+            $moduleid = $helper->getModule()->getVar('mid');
+            if ($sessionHelper->get('selectiondocs') != false){
+                foreach ($sessionHelper->get('selectiondocs') as $index) {
+                    // vérification pour savoir si le document est déjà existant
+                    $criteria = new CriteriaCompo();
+                    $criteria->add(new Criteria('docdata_docid', $index));
+                    $criteria->add(new Criteria('docdata_modid', $moduleid));
+                    $criteria->add(new Criteria('docdata_itemid', $itemid));
+                    $docdata_count = $docdataHandler->getCount($criteria);
+                    if ($docdata_count == 0) {
+                        $obj  = $docdataHandler->create();
+                        $obj->setVar('docdata_docid', $index);
+                        $obj->setVar('docdata_modid', $moduleid);
+                        $obj->setVar('docdata_itemid', $itemid);
+                        if ($docdataHandler->insert($obj)){
+                            $error_message .= '';
+                        } else {
+                            $error_message .= 'docdata id: ' . $index . '<br>' . $obj->getHtmlErrors();
+                        }
+                    } else {
+                        $error_message .= _MA_XMDOC_ERROR_EXIST . '<br>';
+                    }
+                }
+                $sessionHelper->del('selectiondocs');
+            }
+        } else {
+            $error_message .= _MA_XMDOC_ERROR_NOMODULE . '<br>';
+        }
         return $error_message;
     }
 
