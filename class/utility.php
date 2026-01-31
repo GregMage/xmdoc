@@ -234,6 +234,9 @@ class XmdocUtility{
         }
 		// Get Permission to view
 		$viewPermissionCat = XmdocUtility::getPermissionCat('xmdoc_view');
+		// Get Permission to submit
+        $submitPermissionCat = XmdocUtility::getPermissionCat('xmdoc_submit');
+
 		//xmsocial
 		if (xoops_isActiveModule('xmsocial') && $helper->getConfig('general_xmsocial', 0) == 1) {
 			xoops_load('utility', 'xmsocial');
@@ -305,8 +308,18 @@ class XmdocUtility{
             $xoopsTpl->assign('xmdoc_viewlist', $xmdocHelper->getConfig('general_uselist', 0));
             $xoopsTpl->assign('xmdoc_logosize', $xmdocHelper->getConfig('general_logosize', 0));
 			$xoopsTpl->assign('use_modal', $xmdocHelper->getConfig('general_usemodal', 1));
+            if (!empty($submitPermissionCat)){
+                $xoopsTpl->assign('adddoc', true);
+			} else {
+                $xoopsTpl->assign('adddoc', false);
+            }
         } else {
-            $xoopsTpl->assign('xmdoc_viewdocs', false);
+            if (!empty($submitPermissionCat)){
+				$xoopsTpl->assign('xmdoc_viewdocs', true);
+                $xoopsTpl->assign('adddoc', true);
+			} else {
+                $xoopsTpl->assign('xmdoc_viewdocs', false);
+            }
         }
     }
 

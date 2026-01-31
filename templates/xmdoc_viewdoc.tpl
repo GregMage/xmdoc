@@ -1,6 +1,8 @@
+<{if $adddoc == true}>
 <div style="display: flex; justify-content: flex-end;">
 	<button type='button' class='btn btn-sm btn-outline-secondary' onclick='openWithSelfMain("<{$xoops_url}>/modules/xmdoc/docmanager.php?op=add&docitemid=<{$docitemid}>&mod=<{$mod}>","docmanager",400,430);' onmouseover='style.cursor="hand"' title='<{$smarty.const._MA_XMDOC_LINK}>'><span class="fa fa-link" aria-hidden="true"></span></button>
 </div>
+<{/if}>
 <{if $xmdoc_viewdocs == true}>
 <{if $xmdoc_viewlist == true}>
 <table class="table table-hover">
