@@ -313,6 +313,22 @@ class XmdocUtility{
 			} else {
                 $xoopsTpl->assign('adddoc', false);
             }
+            // Grouper les documents par catégorie
+            $categories = [];
+            foreach ($xoopsTpl->getTemplateVars('document') as $doc) {
+                $catid = $doc['categoryid'];
+                if (!isset($categories[$catid])) {
+                    $categories[$catid] = [
+                        'id'    => $catid,
+                        'name'  => $doc['category'],
+                        'docs'  => []
+                    ];
+                }
+                $categories[$catid]['docs'][] = $doc;
+            }
+            // Réindexer en liste pour itération Smarty
+            $categories = array_values($categories);
+            $xoopsTpl->assign('xmdoc_categories', $categories);
         } else {
             if (!empty($submitPermissionCat)){
 				$xoopsTpl->assign('xmdoc_viewdocs', true);
