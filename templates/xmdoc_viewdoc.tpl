@@ -5,7 +5,7 @@
 <{/if}>
 <{if $xmdoc_viewdocs == true}>
 
-<{if $xmdoc_categories|@count > 0}>
+<{if $xmdoc_categories|default:array()|@count > 0}>
 	<ul class="nav nav-tabs" id="xmdocTabs" role="tablist">
 		<{foreach from=$xmdoc_categories item=cat name=tabs}>
 			<li class="nav-item">
