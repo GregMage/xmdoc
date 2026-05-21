@@ -428,6 +428,10 @@ class xmdoc_document extends XoopsObject
 		include __DIR__ . '/../include/common.php';
 		$doc_id = $this->getVar('document_id');
 		if ($documentHandler->delete($this)) {
+			// Clean up all docdata links pointing to this document
+			$delCriteria = new CriteriaCompo();
+			$delCriteria->add(new Criteria('docdata_docid', $doc_id));
+			$docdataHandler->deleteAll($delCriteria);
 			//xmsocial
 			if (xoops_isActiveModule('xmsocial') && $helper->getConfig('general_xmsocial', 0) == 1) {
 				xoops_load('utility', 'xmsocial');
@@ -449,7 +453,7 @@ class xmdoc_document extends XoopsObject
 			}
 			redirect_header($action, 2, _MA_XMDOC_REDIRECT_SAVE);
 		} else {
-			$error_message .= $obj->getHtmlErrors();
+			$error_message .= $this->getHtmlErrors();
 		}
 		return $error_message;
 	}
