@@ -49,7 +49,15 @@ $xoopsTpl->assign('index_module', $helper->getModule()->getVar('name'));
 $doc_cid = Request::getInt('doc_cid', 0);
 $xoopsTpl->assign('doc_cid', $doc_cid);
 $doc_search = trim(Request::getString('doc_search', ''));
+$open_doc   = Request::getInt('open_doc', 0);
+if ($open_doc > 0 && $doc_search === '') {
+    $docForModal = $documentHandler->get($open_doc);
+    if ($docForModal) {
+        $doc_search = $docForModal->getVar('document_name', 'n');
+    }
+}
 $xoopsTpl->assign('doc_search', htmlspecialchars($doc_search, ENT_QUOTES));
+$xoopsTpl->assign('open_doc', $open_doc);
 $criteria = new CriteriaCompo();
 $criteria->add(new Criteria('category_status', 1));
 if (!empty($viewPermissionCat)) {

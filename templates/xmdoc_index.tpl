@@ -302,4 +302,14 @@
 		timer = setTimeout(function() { inp.form.submit(); }, 600);
 	});
 })();
+// Auto-ouverture modale depuis résultats de recherche
+(function() {
+	var params = new URLSearchParams(window.location.search);
+	var docId = params.get('open_doc');
+	if (!docId) return;
+	var modal = document.getElementById('myModal' + docId);
+	if (modal && typeof $ !== 'undefined') {
+		$(modal).modal('show');
+	}
+})();
 </script>

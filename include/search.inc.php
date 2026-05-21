@@ -38,12 +38,14 @@ function xmdoc_search($queryarray, $andor, $limit, $offset, $userid)
 
     if ( is_array($queryarray) && $count = count($queryarray) )
     {
-        $sql .= " AND ((document_name LIKE '%$queryarray[0]%' OR document_description LIKE '%$queryarray[0]%')";
+        $term0 = $xoopsDB->escape($queryarray[0]);
+        $sql .= " AND ((document_name LIKE '%$term0%' OR document_description LIKE '%$term0%')";
 
         for($i=1;$i<$count;$i++)
         {
+            $term = $xoopsDB->escape($queryarray[$i]);
             $sql .= " $andor ";
-            $sql .= "(document_name LIKE '%$queryarray[$i]%' OR document_description LIKE '%$queryarray[$i]%')";
+            $sql .= "(document_name LIKE '%$term%' OR document_description LIKE '%$term%')";
         }
         $sql .= ")";
     }
@@ -56,11 +58,11 @@ function xmdoc_search($queryarray, $andor, $limit, $offset, $userid)
     while($myrow = $xoopsDB->fetchArray($result))
     {
         $ret[$i]["image"] = "assets/images/xmdoc_search.png";
-		if ($helper->getConfig('general_usemodal', 1) == 1){
-			$ret[$i]["link"] = "download.php?doc_id=" . $myrow["document_id"] . '&cat_id=' . $myrow["document_category"];
-		} else {
-			$ret[$i]["link"] = "document.php?doc_id=" . $myrow["document_id"];
-		}
+        if ($helper->getConfig('general_usemodal', 1) == 1) {
+            $ret[$i]["link"] = "index.php?doc_cid=" . $myrow["document_category"] . "&open_doc=" . $myrow["document_id"];
+        } else {
+            $ret[$i]["link"] = "document.php?doc_id=" . $myrow["document_id"];
+        }
         $ret[$i]["title"] = $myrow["document_name"];
         $ret[$i]["time"] = $myrow["document_date"];
         $ret[$i]["uid"] = $myrow["document_userid"];
