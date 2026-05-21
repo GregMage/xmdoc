@@ -171,3 +171,18 @@ define('_MA_XMDOC_GENINFORMATION', 'General informations');
 // Info message
 define('_MA_XMDOC_INFO_NEWSDISABLE', 'The document is disabled, you see it because you are allowed to change its status');
 define('_MA_XMDOC_INFO_NEWSWAITING', 'The document is pending validation, you see it because you are allowed to change its status');
+
+// xmdoc widget AJAX (formdoc)
+define('_MA_XMDOC_LINK', 'Link documents');
+define('_MA_XMDOC_FORMDOC_SAVEFIRST', 'Documents can be linked once this record has been saved.');
+define('_MA_XMDOC_FORMDOC_LINKED', 'Linked documents');
+define('_MA_XMDOC_FORMDOC_LINK', 'Link');
+define('_MA_XMDOC_FORMDOC_UNLINK', 'Unlink');
+define('_MA_XMDOC_FORMDOC_SEARCH', 'Search for an existing document');
+define('_MA_XMDOC_FORMDOC_SEARCH_PLACEHOLDER', 'Document name...');
+define('_MA_XMDOC_FORMDOC_NORESULT', 'No result');
+define('_MA_XMDOC_FORMDOC_AJAXERROR', 'Server communication error');
+define('_MA_XMDOC_FORMDOC_CONFIRMUNLINK', 'Unlink this document?');
+define('_MA_XMDOC_FORMDOC_UPLOADNEW', 'Upload a new document');
+define('_MA_XMDOC_FORMDOC_LINKEXISTING', 'Link an existing document');
+define('_MA_XMDOC_FORMDOC_EDITDOC', 'Edit');

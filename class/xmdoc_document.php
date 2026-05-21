@@ -66,9 +66,12 @@ class xmdoc_document extends XoopsObject
     }
 
     /**
+     * @param XoopsObjectHandler $documentHandler
+     * @param bool|string        $action        redirect URL on success (legacy behaviour)
+     * @param bool               $skipRedirect  when true, returns array(error_message, inserted) and never redirects
      * @return mixed
      */
-    public function saveDocument($documentHandler, $action = false)
+    public function saveDocument($documentHandler, $action = false, $skipRedirect = false)
     {
         global $xoopsUser;
         if ($action === false) {
@@ -200,10 +203,16 @@ class xmdoc_document extends XoopsObject
 				$timeToRedirect = 5;
 			}
             if ($documentHandler->insert($this)) {
+				if ($skipRedirect) {
+					return array('error_message' => $error_message, 'inserted' => true);
+				}
 				redirect_header($action, $timeToRedirect, _MA_XMDOC_REDIRECT_SAVE . '<br><br>' . $error_message);
             } else {
                 $error_message =  $this->getHtmlErrors();
             }
+        }
+        if ($skipRedirect) {
+            return array('error_message' => $error_message, 'inserted' => false);
         }
         return $error_message;
     }
