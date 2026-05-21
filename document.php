@@ -104,6 +104,11 @@ $xoopsTpl->assign('showinfo', $document->getVar('document_showinfo'));
 $xoopsTpl->assign('counter', $document->getVar('document_counter'));
 $document_img = $document->getVar('document_logo') ?: 'blank_doc.gif';
 $xoopsTpl->assign('logo', $url_logo_document . $document_img);
+$docFile    = $document->getVar('document_document');
+$extension  = strtolower(pathinfo($docFile, PATHINFO_EXTENSION));
+$xoopsTpl->assign('extension',     $extension);
+$xoopsTpl->assign('filetype',      XmdocUtility::getFiletype($extension));
+$xoopsTpl->assign('download_url',  XOOPS_URL . '/modules/xmdoc/download.php?cat_id=' . $category_id . '&amp;doc_id=' . $doc_id);
 $xoopsTpl->assign('status', $document->getVar('document_status'));
 
 //xmsocial

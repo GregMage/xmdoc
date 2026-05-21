@@ -66,11 +66,11 @@
 
 				<div class="card-body">
 					<div class="row">
-						<div class="col-md-3 d-flex justify-content-center">
-							<figure class="figure mt-3">
-								<img src="<{$logo}>" class="figure-img img-fluid rounded mx-auto d-block" alt="<{$name}>">
-								<figcaption class="figure-caption text-center"><h5 class="mt-0"><{$name}></h5></figcaption>
-							</figure>
+						<div class="col-md-3 d-flex justify-content-center align-items-center">
+							<div class="text-center py-3">
+								<span class="fa fa-5x xmdoc-ft xmdoc-ft-<{$filetype}> fa-<{if $filetype == 'pdf'}>file-pdf-o<{elseif $filetype == 'image'}>file-image-o<{elseif $filetype == 'word'}>file-word-o<{elseif $filetype == 'excel'}>file-excel-o<{elseif $filetype == 'powerpoint'}>file-powerpoint-o<{elseif $filetype == 'archive'}>file-archive-o<{elseif $filetype == 'video'}>file-video-o<{elseif $filetype == 'audio'}>file-audio-o<{elseif $filetype == 'text'}>file-text-o<{else}>file-o<{/if}>" aria-hidden="true"></span>
+								<{if $size != ''}><div class="small text-muted mt-1"><{$size}></div><{/if}>
+							</div>
 						</div>
 						<div class="col-md-9 align-self-center">
 								<{if $description_end}>
@@ -82,6 +82,19 @@
 								<{/if}>
 						</div>
 					</div>
+					<{if $filetype == 'pdf'}>
+					<div class="row mt-3">
+						<div class="col-12">
+							<embed src="<{$download_url}>" type="application/pdf" width="100%" style="height:75vh;min-height:500px;" />
+						</div>
+					</div>
+					<{elseif $filetype == 'image'}>
+					<div class="row mt-3">
+						<div class="col-12 text-center">
+							<img src="<{$download_url}>" alt="<{$name}>" class="img-fluid rounded" />
+						</div>
+					</div>
+					<{/if}>
 				</div>
 
 				<div class="card-footer d-flex justify-content-center" <{if $category_color != false}>style="background-color : <{$category_color}>;"<{/if}>>
