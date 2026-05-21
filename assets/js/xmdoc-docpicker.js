@@ -121,6 +121,7 @@
     };
 
     XmdocDocPicker.prototype._fetch = function (params, method) {
+        var self = this;
         var url = this.ajaxUrl;
         var opts = { method: method || 'GET', credentials: 'same-origin' };
         if (opts.method === 'GET') {
@@ -134,7 +135,11 @@
             opts.body = body;
             opts.headers = { 'X-Requested-With': 'XMLHttpRequest' };
         }
-        return fetch(url, opts).then(function (r) { return r.json(); });
+        return fetch(url, opts).then(function (r) { return r.json(); }).then(function (data) {
+            // Le token XOOPS est consommé à chaque check() — on récupère le nouveau
+            if (data && data.new_token) { self.token = data.new_token; }
+            return data;
+        });
     };
 
     XmdocDocPicker.prototype.search = function () {

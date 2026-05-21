@@ -185,6 +185,7 @@ switch ($op) {
                 'extension'  => strtolower(pathinfo($doc->getVar('document_document'), PATHINFO_EXTENSION)),
                 'size'       => XmdocUtility::SizeConvertString($doc->getVar('document_size')),
             ),
+            'new_token'  => $GLOBALS['xoopsSecurity']->createToken(),
         ));
         break;
 
@@ -226,7 +227,7 @@ switch ($op) {
         if (!$docdataHandler->delete($obj)) {
             xmdoc_ajax_json(array('ok' => false, 'error' => 'Delete failed'));
         }
-        xmdoc_ajax_json(array('ok' => true));
+        xmdoc_ajax_json(array('ok' => true, 'new_token' => $GLOBALS['xoopsSecurity']->createToken()));
         break;
 
     default:

@@ -82,7 +82,8 @@ class xmdoc_document extends XoopsObject
         $error_message = '';
         $upload_size = 512000;
         // test error
-        if ((int)$_REQUEST['document_weight'] == 0 && $_REQUEST['document_weight'] != '0') {
+        $doc_weight_raw = $_REQUEST['document_weight'] ?? null;
+        if ($doc_weight_raw !== null && (int)$doc_weight_raw == 0 && $doc_weight_raw !== '0') {
             $error_message .= _MA_XMDOC_ERROR_WEIGHT . '<br>';
             $this->setVar('document_weight', 0);
         }
@@ -117,7 +118,7 @@ class xmdoc_document extends XoopsObject
         }
 
         //logo
-        if ($_FILES['document_logo']['error'] != UPLOAD_ERR_NO_FILE) {
+        if (isset($_FILES['document_logo']) && $_FILES['document_logo']['error'] != UPLOAD_ERR_NO_FILE) {
             include_once XOOPS_ROOT_PATH . '/class/uploader.php';
             $uploader_document_img = new XoopsMediaUploader($path_logo_document, array('image/gif', 'image/jpeg', 'image/pjpeg', 'image/x-png', 'image/png'), $upload_size, null, null);
             if ($uploader_document_img->fetchMedia('document_logo')) {

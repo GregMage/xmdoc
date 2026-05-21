@@ -112,7 +112,7 @@ class XmdocFormDoc extends XoopsFormElementTray
                 $docId     = (int)$obj->getVar('docdata_docid');
                 $docdataId = (int)$obj->getVar('docdata_id');
                 $name      = $obj->getVar('document_name');
-                $ext       = strtolower(pathinfo($obj->getVar('document_document'), PATHINFO_EXTENSION));
+                $ext       = strtolower(pathinfo($obj->getVar('document_document') ?? '', PATHINFO_EXTENSION));
                 $iconClass = $this->_iconForExt($ext);
                 $linkedHtml .= '<div class="xmdoc-linked-row d-flex justify-content-between align-items-center border-bottom py-1" data-doc-id="' . $docId . '" data-docdata-id="' . $docdataId . '">'
                             .  '<span><span class="fa ' . $iconClass . ' fa-fw text-muted"></span> '

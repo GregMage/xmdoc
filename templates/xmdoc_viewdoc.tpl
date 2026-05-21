@@ -49,6 +49,7 @@
 					<input type="hidden" name="<{$xmdoc_token_name}>" value="<{$xmdoc_token}>">
 					<input type="hidden" name="from_mod" value="<{$xmdoc_from_mod}>">
 					<input type="hidden" name="from_itemid" value="<{$xmdoc_from_itemid}>">
+					<input type="hidden" name="return_url" value="<{$smarty.server.REQUEST_URI|escape:'html'}>">
 					<input type="hidden" name="document_id" value="0">
 					<div class="form-row">
 						<div class="col-md-4 mb-2">

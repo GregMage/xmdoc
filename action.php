@@ -108,7 +108,11 @@ if ($op == 'add' || $op == 'save' || $op == 'loaddocument' || $op == 'edit' || $
 			// If creation was triggered from another module's view, link the new doc to that item
 			$from_mod    = Request::getString('from_mod', '');
 			$from_itemid = Request::getInt('from_itemid', 0);
-			if ($from_mod !== '' && $from_itemid > 0) {
+			$return_url  = Request::getString('return_url', '');
+			// Valider return_url : URL relative uniquement (commence par / mais pas //)
+			if ($return_url !== '' && substr($return_url, 0, 1) === '/' && substr($return_url, 0, 2) !== '//') {
+				$redirect = XOOPS_URL . $return_url;
+			} elseif ($from_mod !== '' && $from_itemid > 0) {
 				$modHelper = Helper::getHelper($from_mod);
 				if (false !== $modHelper) {
 					$redirect = XOOPS_URL . '/modules/' . $from_mod . '/';
