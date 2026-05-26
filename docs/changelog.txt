@@ -1,4 +1,44 @@
 ﻿-------------------------------------------------
+Version: 2.0.0 Stable
+Date:    26.05.2026
+-------------------------------------------------
+Bug fixes:
+	- Fixed category name issue
+	- Fixed XOOPS search plugin error
+	- Fixed Smarty error when no documents are available
+	- Fixed add link visibility to respect permissions
+	- Fixed cleanup issue where xmdoc_docdata table was not purged when deleting a document
+	- Fixed several issues when linking and unlinking documents
+
+Improvements:
+	- Added direct link feature to link a document
+	- Added one tab per category in document display
+	- Improved search result rendering to allow document preview
+	- Optimized display and added a filter to find documents more easily
+	- Simplified document linking with Ajax
+
+Security:
+	- Fixed unauthorized access to docmanager
+
+Correction de bogues:
+	- Correction d'un problème sur le nom de la catégorie
+	- Correction d'une erreur dans le plugin de recherche XOOPS
+	- Correction d'une erreur Smarty lorsqu'aucun document n'est disponible
+	- Correction de la visibilité du lien d'ajout pour respecter les droits
+	- Correction d'un problème de nettoyage de la table xmdoc_docdata lors de la suppression d'un document
+	- Correction de plusieurs problèmes pour lier et délier des documents
+
+Améliorations:
+	- Ajout d'une fonctionnalité de lien direct pour lier un document
+	- Ajout d'un onglet par catégorie dans l'affichage des documents
+	- Amélioration du rendu de la recherche pour permettre la visualisation d'un document
+	- Optimisation de l'affichage et ajout d'un filtre pour retrouver plus facilement un document
+	- Simplification de la liaison des documents avec Ajax
+
+Sécurités:
+	- Correction d'un accès non autorisé au docmanager
+
+-------------------------------------------------
 Version: 1.5.0 Alpha
 Date:    02.01.2025
 -------------------------------------------------

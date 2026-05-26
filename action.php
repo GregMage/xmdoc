@@ -105,12 +105,49 @@ if ($op == 'add' || $op == 'save' || $op == 'loaddocument' || $op == 'edit' || $
 			} else {
 				$obj = $documentHandler->get($document_id);
 			}
-			if ($helper->getConfig('general_usemodal', 1) == 1){
+			// If creation was triggered from another module's view, link the new doc to that item
+			$from_mod    = Request::getString('from_mod', '');
+			$from_itemid = Request::getInt('from_itemid', 0);
+			$return_url  = Request::getString('return_url', '');
+			// Valider return_url : URL relative uniquement (commence par / mais pas //)
+			if ($return_url !== '' && substr($return_url, 0, 1) === '/' && substr($return_url, 0, 2) !== '//') {
+				$redirect = XOOPS_URL . $return_url;
+			} elseif ($from_mod !== '' && $from_itemid > 0) {
+				$modHelper = Helper::getHelper($from_mod);
+				if (false !== $modHelper) {
+					$redirect = XOOPS_URL . '/modules/' . $from_mod . '/';
+				} else {
+					$redirect = 'index.php';
+				}
+			} elseif ($helper->getConfig('general_usemodal', 1) == 1){
 				$redirect = 'index.php';
 			} else {
 				$redirect = 'document.php?doc_id=' . $document_id;
 			}
-			$error_message = $obj->saveDocument($documentHandler, $redirect);
+			$result = $obj->saveDocument($documentHandler, false, true);
+			$error_message = is_array($result) ? $result['error_message'] : (string)$result;
+			$inserted      = is_array($result) ? !empty($result['inserted']) : false;
+			if ($inserted && $from_mod !== '' && $from_itemid > 0) {
+				$newDocId = (int)$obj->getVar('document_id');
+				if ($newDocId > 0) {
+					$modid = (int)Helper::getHelper($from_mod)->getModule()->getVar('mid');
+					$check = new CriteriaCompo();
+					$check->add(new Criteria('docdata_docid', $newDocId));
+					$check->add(new Criteria('docdata_modid', $modid));
+					$check->add(new Criteria('docdata_itemid', $from_itemid));
+					if ($docdataHandler->getCount($check) === 0) {
+						$dd = $docdataHandler->create();
+						$dd->setVar('docdata_docid', $newDocId);
+						$dd->setVar('docdata_modid', $modid);
+						$dd->setVar('docdata_itemid', $from_itemid);
+						$docdataHandler->insert($dd);
+					}
+				}
+				redirect_header($redirect, 2, _MA_XMDOC_REDIRECT_SAVE . '<br><br>' . $error_message);
+			}
+			if ($inserted) {
+				redirect_header($redirect, 2, _MA_XMDOC_REDIRECT_SAVE . '<br><br>' . $error_message);
+			}
 			if ($error_message != ''){
 				$xoopsTpl->assign('error_message', $error_message);
 				$document_category = Request::getInt('document_category', 0);

@@ -66,9 +66,12 @@ class xmdoc_document extends XoopsObject
     }
 
     /**
+     * @param XoopsObjectHandler $documentHandler
+     * @param bool|string        $action        redirect URL on success (legacy behaviour)
+     * @param bool               $skipRedirect  when true, returns array(error_message, inserted) and never redirects
      * @return mixed
      */
-    public function saveDocument($documentHandler, $action = false)
+    public function saveDocument($documentHandler, $action = false, $skipRedirect = false)
     {
         global $xoopsUser;
         if ($action === false) {
@@ -79,7 +82,8 @@ class xmdoc_document extends XoopsObject
         $error_message = '';
         $upload_size = 512000;
         // test error
-        if ((int)$_REQUEST['document_weight'] == 0 && $_REQUEST['document_weight'] != '0') {
+        $doc_weight_raw = $_REQUEST['document_weight'] ?? null;
+        if ($doc_weight_raw !== null && (int)$doc_weight_raw == 0 && $doc_weight_raw !== '0') {
             $error_message .= _MA_XMDOC_ERROR_WEIGHT . '<br>';
             $this->setVar('document_weight', 0);
         }
@@ -114,7 +118,7 @@ class xmdoc_document extends XoopsObject
         }
 
         //logo
-        if ($_FILES['document_logo']['error'] != UPLOAD_ERR_NO_FILE) {
+        if (isset($_FILES['document_logo']) && $_FILES['document_logo']['error'] != UPLOAD_ERR_NO_FILE) {
             include_once XOOPS_ROOT_PATH . '/class/uploader.php';
             $uploader_document_img = new XoopsMediaUploader($path_logo_document, array('image/gif', 'image/jpeg', 'image/pjpeg', 'image/x-png', 'image/png'), $upload_size, null, null);
             if ($uploader_document_img->fetchMedia('document_logo')) {
@@ -200,10 +204,16 @@ class xmdoc_document extends XoopsObject
 				$timeToRedirect = 5;
 			}
             if ($documentHandler->insert($this)) {
+				if ($skipRedirect) {
+					return array('error_message' => $error_message, 'inserted' => true);
+				}
 				redirect_header($action, $timeToRedirect, _MA_XMDOC_REDIRECT_SAVE . '<br><br>' . $error_message);
             } else {
                 $error_message =  $this->getHtmlErrors();
             }
+        }
+        if ($skipRedirect) {
+            return array('error_message' => $error_message, 'inserted' => false);
         }
         return $error_message;
     }
@@ -419,6 +429,10 @@ class xmdoc_document extends XoopsObject
 		include __DIR__ . '/../include/common.php';
 		$doc_id = $this->getVar('document_id');
 		if ($documentHandler->delete($this)) {
+			// Clean up all docdata links pointing to this document
+			$delCriteria = new CriteriaCompo();
+			$delCriteria->add(new Criteria('docdata_docid', $doc_id));
+			$docdataHandler->deleteAll($delCriteria);
 			//xmsocial
 			if (xoops_isActiveModule('xmsocial') && $helper->getConfig('general_xmsocial', 0) == 1) {
 				xoops_load('utility', 'xmsocial');
@@ -440,7 +454,7 @@ class xmdoc_document extends XoopsObject
 			}
 			redirect_header($action, 2, _MA_XMDOC_REDIRECT_SAVE);
 		} else {
-			$error_message .= $obj->getHtmlErrors();
+			$error_message .= $this->getHtmlErrors();
 		}
 		return $error_message;
 	}

@@ -66,6 +66,33 @@ class XmdocUtility{
         }
     }
 
+	/**
+	 * Classify a file extension into a coarse filetype bucket used by the UI.
+	 *
+	 * @param  string $ext lower-case extension without dot
+	 * @return string one of: pdf|image|word|excel|powerpoint|archive|video|audio|text|other
+	 */
+	public static function getFiletype($ext){
+		$ext = strtolower((string)$ext);
+		$map = array(
+			'pdf'        => array('pdf'),
+			'image'      => array('jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp', 'svg'),
+			'word'       => array('doc', 'docx', 'odt', 'rtf'),
+			'excel'      => array('xls', 'xlsx', 'ods', 'csv'),
+			'powerpoint' => array('ppt', 'pptx', 'odp'),
+			'archive'    => array('zip', 'rar', '7z', 'tar', 'gz', 'bz2'),
+			'video'      => array('mp4', 'avi', 'mov', 'wmv', 'mkv', 'webm', 'flv'),
+			'audio'      => array('mp3', 'wav', 'ogg', 'flac', 'm4a'),
+			'text'       => array('txt', 'md', 'log'),
+		);
+		foreach ($map as $type => $list) {
+			if (in_array($ext, $list, true)) {
+				return $type;
+			}
+		}
+		return 'other';
+	}
+
 	public static function SizeConvertString($sizeString){
 		$mysizeString = '';
 		if ($sizeString != '') {
@@ -286,6 +313,10 @@ class XmdocUtility{
                 $document['showinfo']          = $document_arr[$i]->getVar('document_showinfo');
                 $document_img                  = $document_arr[$i]->getVar('document_logo') ?: 'blank_doc.gif';
                 $document['logo']              = $url_logo_document . $document_img;
+                // Extension + filetype + download URL (for compact list & inline preview)
+                $document['extension']         = strtolower(pathinfo((string)$document_arr[$i]->getVar('document_document'), PATHINFO_EXTENSION));
+                $document['filetype']          = XmdocUtility::getFiletype($document['extension']);
+                $document['download_url']      = XOOPS_URL . '/modules/xmdoc/download.php?cat_id=' . $document['categoryid'] . '&amp;doc_id=' . $document['id'];
                 $color						   = $document_arr[$i]->getVar('category_color');
                 if ($color == '#ffffff'){
                     $document['color']	 	   = false;
@@ -336,6 +367,37 @@ class XmdocUtility{
 			} else {
                 $xoopsTpl->assign('xmdoc_viewdocs', false);
             }
+        }
+
+        // Widget add/edit doc — vars for the inline picker (only useful when user can submit)
+        if (!empty($submitPermissionCat)) {
+            // Token
+            $tokenName  = 'XOOPS_TOKEN_REQUEST';
+            $tokenValue = $GLOBALS['xoopsSecurity']->createToken();
+            // Categories list (only those where user can submit)
+            $cats = array();
+            $catCrit = new CriteriaCompo();
+            $catCrit->add(new Criteria('category_status', 1));
+            $catCrit->add(new Criteria('category_id', '(' . implode(',', $submitPermissionCat) . ')', 'IN'));
+            $catCrit->setSort('category_weight ASC, category_name');
+            $catCrit->setOrder('ASC');
+            $catRows = $categoryHandler->getAll($catCrit);
+            foreach ($catRows as $catRow) {
+                $cats[] = array(
+                    'id'   => (int)$catRow->getVar('category_id'),
+                    'name' => $catRow->getVar('category_name'),
+                );
+            }
+            $xoopsTpl->assign('xmdoc_token_name',     $tokenName);
+            $xoopsTpl->assign('xmdoc_token',          $tokenValue);
+            $xoopsTpl->assign('xmdoc_ajax_url',       XOOPS_URL . '/modules/xmdoc/ajax.php');
+            $xoopsTpl->assign('xmdoc_ajaxdoc_url',    XOOPS_URL . '/modules/xmdoc/ajaxdoc.php');
+            $xoopsTpl->assign('xmdoc_action_url',     XOOPS_URL . '/modules/xmdoc/action.php');
+            $xoopsTpl->assign('xmdoc_from_mod',       $modulename);
+            $xoopsTpl->assign('xmdoc_from_itemid',    (int)$itemid);
+            $xoopsTpl->assign('xmdoc_categories_submit', $cats);
+            // Add picker JS to the page
+            $xoTheme->addScript(XOOPS_URL . '/modules/xmdoc/assets/js/xmdoc-docpicker.js', array('type' => 'text/javascript'));
         }
     }
 

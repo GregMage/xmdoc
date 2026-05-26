@@ -171,3 +171,17 @@ define('_MA_XMDOC_GENINFORMATION', 'Informations générales');
 // Info message
 define('_MA_XMDOC_INFO_NEWSDISABLE', 'Le document est désactivé, vous le voyez car vous êtes autorisé à modifier son statut.');
 define('_MA_XMDOC_INFO_NEWSWAITING', 'Le document est en attente de validation, vous le voyez car vous êtes autorisé à modifier son statut');
+// xmdoc widget AJAX (formdoc) - constantes ajoutees
+define('_MA_XMDOC_LINK', 'Lier des documents');
+define('_MA_XMDOC_FORMDOC_SAVEFIRST', 'Les documents pourront être liés après la première sauvegarde de l\'enregistrement.');
+define('_MA_XMDOC_FORMDOC_LINKED', 'Documents liés');
+define('_MA_XMDOC_FORMDOC_LINK', 'Lier');
+define('_MA_XMDOC_FORMDOC_UNLINK', 'Délier');
+define('_MA_XMDOC_FORMDOC_SEARCH', 'Rechercher un document existant');
+define('_MA_XMDOC_FORMDOC_SEARCH_PLACEHOLDER', 'Nom du document...');
+define('_MA_XMDOC_FORMDOC_NORESULT', 'Aucun résultat');
+define('_MA_XMDOC_FORMDOC_AJAXERROR', 'Erreur lors de la communication avec le serveur');
+define('_MA_XMDOC_FORMDOC_CONFIRMUNLINK', 'Délier ce document ?');
+define('_MA_XMDOC_FORMDOC_UPLOADNEW', 'Téléverser un nouveau document');
+define('_MA_XMDOC_FORMDOC_LINKEXISTING', 'Lier un document existant');
+define('_MA_XMDOC_FORMDOC_EDITDOC', 'Modifier');

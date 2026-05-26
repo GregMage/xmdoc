@@ -48,6 +48,16 @@ $xoopsTpl->assign('index_module', $helper->getModule()->getVar('name'));
 // Category
 $doc_cid = Request::getInt('doc_cid', 0);
 $xoopsTpl->assign('doc_cid', $doc_cid);
+$doc_search = trim(Request::getString('doc_search', ''));
+$open_doc   = Request::getInt('open_doc', 0);
+if ($open_doc > 0 && $doc_search === '') {
+    $docForModal = $documentHandler->get($open_doc);
+    if ($docForModal) {
+        $doc_search = $docForModal->getVar('document_name', 'n');
+    }
+}
+$xoopsTpl->assign('doc_search', htmlspecialchars($doc_search, ENT_QUOTES));
+$xoopsTpl->assign('open_doc', $open_doc);
 $criteria = new CriteriaCompo();
 $criteria->add(new Criteria('category_status', 1));
 if (!empty($viewPermissionCat)) {
@@ -93,6 +103,9 @@ $criteria->setOrder('ASC');
 $criteria->setStart($start);
 $criteria->setLimit($nb_limit);
 $criteria->add(new Criteria('document_status', 1));
+if ($doc_search !== '') {
+    $criteria->add(new Criteria('document_name', '%' . $documentHandler->db->escape($doc_search) . '%', 'LIKE'));
+}
 if (!empty($viewPermissionCat)) {
     $criteria->add(new Criteria('document_category', '(' . implode(',', $viewPermissionCat) . ')', 'IN'));
 }
@@ -160,6 +173,10 @@ if ($document_count > 0 && !empty($viewPermissionCat)) {
 		$document['showinfo']          = $document_arr[$i]->getVar('document_showinfo');
 		$document_img                  = $document_arr[$i]->getVar('document_logo') ?: 'blank_doc.gif';
 		$document['logo']              = $url_logo_document . $document_img;
+		$docFile               = $document_arr[$i]->getVar('document_document');
+		$docExt                = strtolower(pathinfo($docFile, PATHINFO_EXTENSION));
+		$document['extension'] = $docExt;
+		$document['filetype']  = XmdocUtility::getFiletype($docExt);
 		$color						   = $document_arr[$i]->getVar('category_color');
 		if ($color == '#ffffff'){
 			$document['color']	 	   = false;
@@ -181,7 +198,7 @@ if ($document_count > 0 && !empty($viewPermissionCat)) {
 	}
     // Display Page Navigation
     if ($document_count_total > $nb_limit) {
-        $nav = new XoopsPageNav($document_count_total, $nb_limit, $start, 'start', 'doc_cid=' . $doc_cid);
+        $nav = new XoopsPageNav($document_count_total, $nb_limit, $start, 'start', 'doc_cid=' . $doc_cid . ($doc_search !== '' ? '&doc_search=' . urlencode($doc_search) : ''));
         $xoopsTpl->assign('nav_menu', $nav->renderNav(4));
     }
 }
