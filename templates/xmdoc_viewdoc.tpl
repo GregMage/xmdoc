@@ -264,7 +264,7 @@
 									<div class="modal-footer d-flex justify-content-center">
 										<div class="btn-group text-center" role="group">
 											<{if $doc.perm_edit == true}>
-											<button type="button" class="btn btn-secondary xmdoc-edit-doc-btn" data-doc-id="<{$doc.id}>" data-ajaxdoc-url="<{$xmdoc_ajaxdoc_url}>" data-token-name="<{$xmdoc_token_name}>" data-token="<{$xmdoc_token}>" data-toggle="modal" data-target="#xmdocEditModal"><span class="fa fa-edit" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_EDITDOC|default:_MA_XMDOC_EDIT}></button>
+											<a class="btn btn-secondary" href="<{$xoops_url}>/modules/xmdoc/action.php?op=edit&amp;document_id=<{$doc.id}>&amp;return_url=<{$smarty.server.REQUEST_URI|escape:'url'}>"><span class="fa fa-edit" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_EDITDOC|default:_MA_XMDOC_EDIT}></a>
 											<{/if}>
 											<{if $doc.perm_del == true}>
 												<button type="button" class="btn btn-secondary" onclick=window.location.href="<{$xoops_url}>/modules/xmdoc/action.php?op=del&amp;document_id=<{$doc.id}>"><span class="fa fa-trash" aria-hidden="true"></span> <{$smarty.const._MA_XMDOC_DEL}></button>
@@ -286,23 +286,4 @@
 		<{/foreach}>
 	</div>
 <{/if}>
-<{/if}>
-
-<{if $adddoc == true}>
-<!-- Shared modal for AJAX document edition -->
-<div class="modal fade" id="xmdocEditModal" tabindex="-1" role="dialog" aria-hidden="true">
-	<div class="modal-dialog modal-lg" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title"><{$smarty.const._MA_XMDOC_EDITDOC|default:_MA_XMDOC_EDIT}></h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			</div>
-			<div class="modal-body">
-				<div class="text-center text-muted py-4 xmdoc-edit-loading"><span class="fa fa-spinner fa-spin fa-2x"></span></div>
-				<div class="xmdoc-edit-form-container"></div>
-				<div class="xmdoc-edit-error alert alert-danger" style="display:none"></div>
-			</div>
-		</div>
-	</div>
-</div>
 <{/if}>

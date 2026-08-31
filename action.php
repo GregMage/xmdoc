@@ -110,7 +110,7 @@ if ($op == 'add' || $op == 'save' || $op == 'loaddocument' || $op == 'edit' || $
 			$from_itemid = Request::getInt('from_itemid', 0);
 			$return_url  = Request::getString('return_url', '');
 			// Valider return_url : URL relative uniquement (commence par / mais pas //)
-			if ($return_url !== '' && substr($return_url, 0, 1) === '/' && substr($return_url, 0, 2) !== '//') {
+			if ($return_url !== '' && substr($return_url, 0, 1) === '/' && substr($return_url, 0, 2) !== '//' && substr($return_url, 0, 7) !== 'http://') {
 				$redirect = XOOPS_URL . $return_url;
 			} elseif ($from_mod !== '' && $from_itemid > 0) {
 				$modHelper = Helper::getHelper($from_mod);
@@ -169,7 +169,12 @@ if ($op == 'add' || $op == 'save' || $op == 'loaddocument' || $op == 'edit' || $
 				} else {
 					// Get Permission to edit in category
 					$permHelper->checkPermissionRedirect('xmdoc_editapprove', $obj->getVar('document_category'), 'index.php', 2, _NOPERM);
-					$form = $obj->getForm();
+					$return_url = Request::getString('return_url', '');
+					$form = $obj->getForm(0, XOOPS_URL . '/modules/xmdoc/action.php');
+					// Add return_url to form if provided
+					if ($return_url !== '' && substr($return_url, 0, 1) === '/' && substr($return_url, 0, 2) !== '//') {
+						$form->addElement(new XoopsFormHidden('return_url', $return_url));
+					}
 					$xoopsTpl->assign('form', $form->render());
 				}
 			}
