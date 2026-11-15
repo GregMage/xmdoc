@@ -470,16 +470,13 @@ class XmdocUtility{
 			$curlReturn = curl_exec($curlHandle);
 			if (false === $curlReturn) {
 				trigger_error(curl_error($curlHandle), E_USER_WARNING);
-                curl_close($curlHandle);
 				return 0;
 			}
             $httpCode = curl_getinfo($curlHandle, CURLINFO_HTTP_CODE);
             if ($httpCode >= 400) { // Si le fichier n'existe pas ou erreur serveur
-                curl_close($curlHandle);
                 return 0;
             }
             $size = curl_getinfo($curlHandle, CURLINFO_CONTENT_LENGTH_DOWNLOAD);
-			curl_close($curlHandle);
             return ($size > 0) ? XmdocUtility::FileSizeConvert($size) : 0;
 		}
 		return 0;
